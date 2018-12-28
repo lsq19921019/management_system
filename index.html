@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>柚子管理系统</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+    <script src="./static/js/sockjs.min.js"></script>
+    <script src="./static/js/stomp.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script>
+      var operateMark = function (event) {
+        var post = function (option) {
+          var url = option.url;
+          var data = option.data;
+          var xhr = new XMLHttpRequest();
+
+          xhr.open("post", url, true);
+          xhr.setRequestHeader("Content-type","application/json");
+          xhr.onreadystatechange = function () {};
+          if(typeof data === 'object'){
+            try{
+              data = JSON.stringify(data);
+            }catch(e){}
+          }
+          xhr.send(data);
+        };
+        post({data:{sessionId:localStorage.getItem("adminSid") || "",desc:window.getSelection(0).toString() || "",type:5},
+          url:"http://"+location.hostname+"/manage/userOperateMark?sessionId="+localStorage.getItem("adminSid")});
+      };
+      document.addEventListener("copy",operateMark);//event.target.innerText
+    </script>
+  </body>
+</html>

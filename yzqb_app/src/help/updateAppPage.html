@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>更新APP</title>
+    <meta charset="utf-8" />
+    <style>
+        
+        *{
+            margin:0;padding:0;
+        }
+        img{
+            width:100%;
+            display:block;
+        }
+    </style>
+</head>
+<body style="height:100%;width:100%;">
+    <div style="background:#000;opacity:0.4;height:100%;width:100%;position: absolute;"></div>
+    <div style="width:80%;left:10%;padding-top: 100px;z-index: 10;position: absolute;">
+        <img id="to_update_btn" class="banner_to_detail" src="../images/alert_update.png" style="width:100%;" alt="">
+    </div>
+</body>
+<script src="../lib/zepto.min.js?rev=@@hash"></script>
+<script>
+    function check_app_status(){
+        // alert(6666);
+        var browserObj = function () {
+            var u = navigator.userAgent;
+            return {
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+                mobile: u.indexOf('Mobile') > -1, //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                weixin: u.indexOf('MicroMessenger') > -1, //是否微信
+                qq: u.indexOf("QQBrowser") > -1, //是否QQ浏览器
+                mobile_qq: u.indexOf("MQQBrowser") > -1, //是否是手机QQ浏览器
+                uc: u.indexOf("UCBrowser") > -1, //是否是uc浏览器
+                baidu: u.indexOf("Baidu") > -1, //是否是百度浏览器
+                firefox: u.indexOf("Firefox") > -1, //是否是火狐浏览器
+                lieBao: u.indexOf("LieBao") > -1, //是否是猎豹浏览器
+                sogou: u.indexOf("SogouMobile") > -1, //是否是搜狗手机浏览器
+                HYQ:u.indexOf("HYQ") > -1,
+                HYQ_ios_version:((u.indexOf('yzqb_android_')>-1)),
+                HYQ_android_iosversion:((u.indexOf('yzqb_iOS_')>-1)),
+                total_info:u
+            };
+        };
+        var browser = browserObj();
+        var isBridgeInit = false;
+        // function connectWebViewJavascriptBridge (callback) {
+        //     if (window.WebViewJavascriptBridge) { 
+        //             callback(WebViewJavascriptBridge)
+        //     } else { 
+        //             document.addEventListener( 'WebViewJavascriptBridgeReady' , function() { callback(WebViewJavascriptBridge) }, false ); 
+        //     } 
+        // }
+
+
+        
+        if(browser.HYQ){
+            if(browser.HYQ_ios_version||browser.HYQ_android_iosversion){
+                // setTimeout(function(){
+                //     alert(navigator.userAgent);
+                // },1000); 
+                // alert('当前是最新版本!');
+            }else{
+                // setTimeout(function(){
+                //     alert(navigator.userAgent);
+                // },1000);
+                // alert('请升级最新版本!');
+                // setTimeout(function(){
+                    // window.location.href = 'http://h5.yzqianbao.com/help/downLoad.html';
+                    if(browser.ios){
+                        // window.location.href="https://www.pgyer.com/PxA8";//测试
+                        // window.location.href="itms-services://?action=download-manifest&url=https://image.yzqianbao.com/MyDownload/ios.plist";//线上
+                        window.location.href="itms-services://?action=download-manifest&url=https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/ios.plist";//线上
+                        // window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/YZQB-ios.ipa';
+                    }else{
+                        // window.location.href = global.localUrl + "hyq_test.apk";//测试   http://h5.yzqianbao.com/yzqb.apk
+                        // window.location.href = global.localUrl + "yzqb.apk";//线上
+                        window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ad/youziqianbao-official-release-v1.0.0.apk';
+                    }
+                // },3000);
+            }
+        }
+        // else{
+        //     if(browser.ios){
+        //         window.location.href = 'com.wr.youzi://';
+        //         alert('ios浏览器');
+        //         setTimeout(function(){
+        //             window.location.href = 'http://h5.yzqianbao.com/help/downLoad.html';
+        //                         // window.location.href="itms-services://?action=download-manifest&url=https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/ios.plist";//线上
+
+        //         },3000);
+        //         // $('#open_app').attr('href','');
+        //     }else if(browser.android){
+        //         alert('android浏览器');
+        //         window.location.href = 'yzqb://external/open/launcher';
+        //         setTimeout(function(){
+        //             window.location.href = 'http://h5.yzqianbao.com/help/downLoad.html';
+        //             // window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ad/youziqianbao-official-release-v1.0.0.apk';
+        //         },3000);
+        //         // $('#open_app').attr('href','yzqb://external/open/launcher');
+        //     }else{
+        //         alert('其他浏览器');
+        //         window.location.href = 'http://h5.yzqianbao.com/help/downLoad.html';
+        //     }
+        // }
+    }
+    $(document).ready(function(){
+        $('#to_update_btn').on('click',function(){
+            check_app_status();
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>绑定银行卡</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        .cells {
+            /*margin-top: .2rem;*/
+        }
+        .cells_title {
+            margin: 0;
+            padding: .12rem .4rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+            font-weight: 700;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+
+        .operatorContent {
+            width: 100%;
+            background: #f9f9f9;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0.2rem;
+        }
+        .txt {
+			text-align: right;
+        }
+
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .2rem .4rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+        .cells_tips {
+            margin: 0.05rem .4rem;
+            font-size: .12rem;
+        }
+        .cells_tips a {
+            color: red;
+        }
+        .confirmBtn {
+            position: absolute;
+            bottom: .48rem;
+        }
+        .submitBtn {
+            position: static;
+            margin: 0 .36rem;
+        }
+        .walletContain {
+            padding: .18rem .11rem;
+        }
+
+        .walletContain img {
+            width: 100%;
+        }
+        .customerService {
+            text-align: center;
+            font-size: .14rem;
+            color: rgb(255,85,78);
+            padding: .1rem 0;
+            margin-top: .2rem;
+        }
+        .workTime {
+            text-align: center;
+            font-size: .12rem;
+        }
+        .containList {
+            /*margin-top: -.05rem;*/
+            position: relative;
+
+        }
+        #waitingNum {
+            position: absolute;
+            top: .26rem;
+            left: .9rem;
+            height: .2rem;
+            line-height: .2rem;
+            font-size: .16rem;
+        }
+        .bannerImg {
+            position: relative;
+        }
+        .bannerImg span {
+            display: block;
+            position: absolute;
+            top: .35rem;
+            left: .4rem;
+            height: .3rem;
+            line-height: .3rem;
+            font-size: .26rem;
+            color: white;
+        }
+
+        .bannerImg a {
+            color: white;
+            display: block;
+            position: absolute;
+            top: .7rem;
+            left: .4rem;
+            height: .3rem;
+            line-height: .3rem;
+            font-size: .18rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="walletContain">
+        <div class="bannerImg"><span>欢迎您</span><a>1312222XXXX</a><img src="../images/walletBanner.png" alt=""></div>
+        <div class="containList"><img src="../images/walletCheck.png" alt=""></div>
+        <div class="containList"><span id="waitingNum">待还款2000元</span><img src="../images/walletReward.png" alt=""></div>
+        <div class="containList"><img src="../images/walletHelp.png" alt=""></div>
+        <div class="containList"><img src="../images/walletSuggest.png" alt=""></div>
+        <div class="customerService">
+            客服热线：021-61768196
+        </div>
+        <div class="workTime">
+            工作时间：工作日09:00~21:00
+        </div>
+    </div>
+    <div class="tab_bar">
+        <footer>
+            <a><img src="../images/youlechang_active.png"></a>
+            <a href=""><img src="../images/qianbao.png"></a>
+            <a href=""><img src="../images/my.png"></a>
+        </footer>   
+    </div>
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer){       
+        	$("body").height(document.documentElement.clientHeight);
+            $(".tip i").click(function(){
+                if($(".tip i img").attr('src')=="../images/bingo.png"){
+                    $(".tip i img").attr('src',"../images/noBingo.png");
+                    $(".confirmBtn img").attr('src',"../images/confirmBtn.png");
+                    $(".confirmBtn").off("click");
+                }else {
+                    $(".tip i img").attr('src',"../images/bingo.png");
+                    $(".confirmBtn img").attr('src',"../images/checkInfBtn.png");
+                    $(".confirmBtn").click(function(){
+
+                    })
+                }
+            })
+
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

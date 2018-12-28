@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>我的</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            position: relative;
+        }
+        .cells {
+            /*margin-top: .2rem;*/
+        }
+        .cells_title {
+            margin: 0;
+            padding: .12rem .4rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+            font-weight: 700;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+
+        .operatorContent {
+            width: 100%;
+            background: #f9f9f9;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0.2rem;
+        }
+        .txt {
+			text-align: right;
+        }
+
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .2rem .4rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+        .cells_tips {
+            margin: 0.05rem .4rem;
+            font-size: .12rem;
+        }
+        .cells_tips a {
+            color: red;
+        }
+        .confirmBtn {
+            position: absolute;
+            bottom: .48rem;
+        }
+        .submitBtn {
+            position: static;
+            margin: 0 .36rem;
+        }
+        .walletContain {
+            padding: 0rem .11rem .8rem;
+        }
+
+        .walletContain img {
+            width: 100%;
+        }
+        .customerService {
+            text-align: center;
+            font-size: .14rem;
+            color: rgb(255,85,78);
+            padding: 0;
+        }
+        .workTime {
+            text-align: center;
+            font-size: .12rem;
+        }
+        .containList {
+            position: relative;
+            height: .75rem;
+            overflow: hidden;
+
+        }
+        .containList img{
+            /*margin-top: -.05rem;*/
+        }
+        #waitingNum {
+            position: absolute;
+            top: .3rem;
+            left: .9rem;
+            height: .2rem;
+            line-height: .2rem;
+            font-size: .16rem;
+            color: #474e5d;
+        }
+        .bannerImg {
+            position: relative;
+
+        }
+        .bannerImg span {
+            display: block;
+            position: absolute;
+            top: .35rem;
+            left: .4rem;
+            height: .3rem;
+            line-height: .3rem;
+            font-size: .24rem;
+            color: white;
+        }
+
+        .bannerImg a {
+            color: white;
+            /*background-color: red;*/
+            display: block;
+            position: absolute;
+            top: .7rem;
+            left: .4rem;
+            height: .3rem;
+            line-height: .3rem;
+            font-size: .18rem;
+
+        }
+        .downLoadBar {
+            height: .5rem;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .downLoadBar img {
+            width: 110%;
+            position: absolute;
+            top: 0;
+            left: -5%;
+        }
+        .alert .layer_dialog_cn {
+            text-align: center;
+            color: rgb(65,65,65);
+        }
+        .tuishouTips {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            height: .3rem;
+            line-height: .3rem;
+            font-size: .12rem;
+            color: rgb(166,166,166);
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="downLoadBar"><img src="../images/downLoad.png" alt=""></div>
+    <div class="walletContain">
+        <div class="bannerImg"><span>欢迎您</span><a id="mobileNumber"></a><img src="../images/walletBanner.png" alt=""></div>
+        <div class="containList"><a href="../trust/identification.html?from=myWallet" id="to_id_page"><img src="../images/walletCheck.png" alt=""></a></div>
+        <div class="containList"><a href="../trust/applyRecord.html"><span id="waitingNum" class="hide"></span><img src="../images/walletReward.png" alt=""></a></div>
+        <div class="containList"><a href="../help/helpcenter.html"><img src="../images/walletHelp.png" alt=""></a></div>
+        <div class="containList"><a href="../help/feedback.html"><img src="../images/walletSuggest.png" alt=""></a></div>
+        <div class="containList cuishoutousu"><a href="#"><img src="../images/cuishoutousu.png" alt=""></a></div>
+        <div class="containList"><a href="./setting.html"><img src="../images/walletSetting.png" alt=""></a></div>
+        
+        <div class="customerService">
+            客服热线：400-107-0800<br>催收投诉：400-107-0800
+        </div>
+        <div class="workTime">
+            工作时间：09:00-12:00、13:30-18:00
+        </div>
+
+    </div>
+    <div class="tab_bar">
+        <footer>
+            <a href="../index.html"><img src="../images/youlechang.png"></a>
+            <a href="../apply/apply.html"><img src="../images/qianbao.png"></a>
+            <a href="./oneStep.html"><img src="../images/oneStep.png"></a>
+            <a href="#"><img src="../images/my_active.png"></a>
+        </footer>   
+    </div>
+
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="cuishouAlert"></div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer){       
+
+            if(userUtil.sid() && userUtil.userID()){    //登录状态
+                userUtil.ajax({
+                    url: global.localUrl+ 'nw/users/userInfo',
+                    data:{},
+                    done:function(re){
+                        // layer.hideLoad();
+                        $('#mobileNumber').html(re.data.mobileNumber);
+                        if(re.data.status == 1){
+                            $('#waitingNum').removeClass('hide');
+                            $('#waitingNum').html('待还'+re.data.refundAmount+'元');
+                        }
+                    }
+                })
+            }else{
+                window.location.href="../user/login.html";
+            }
+            $(".cuishoutousu").click(function(){
+                var conf = {
+                    title: "催收投诉",
+                    content: "催收投诉：400-107-0800<br><span class='tuishouTips'>工作时间：9:00-12:00、13:30-18:00</span>",
+                    btnText: "我知道了",
+                    btnEvent: function () { }
+                };
+                layer.alert(conf)
+            })
+            $('#to_id_page').click(function(){
+                localStorage.setItem('fromWallet','fromWallet');
+            });
+            //APP内隐藏
+            if(browser.HYQ){
+                $(".downLoadBar img").css({"display":"none"});
+                $(".downLoadBar").height(".2rem");
+            }
+            $(".downLoadBar img").click(function(){
+                window.location.href = global.localUrl + "help/downLoad.html"
+            })
+
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

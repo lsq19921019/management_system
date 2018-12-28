@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>个人信息</title>
+    <meta charset="utf-8" />
+    <link href="../css/mobileSelect.css?rev=@@hash" rel="stylesheet" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        input {
+            height: .2rem;
+            line-height: .2rem;
+        }
+        .cells {
+            padding-top: .2rem;
+            padding-bottom: .2rem;
+        }
+        .cell_cn {
+            color: gray;
+        }
+        .cell_cn input {
+            height: .2rem;
+            line-height: .2rem;
+            width: 100%;
+            font-size: .14rem;
+            color: gray;
+        }
+        .cell_cn img {
+            float: right;
+            width: .2rem;
+            height: .2rem;
+        }
+        #btnCode {
+            color: rgb(255,85,78);
+
+        }
+        .cell_cn ::-webkit-input-placeholder{
+            color: gray;
+            font-size: .14rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+<!--     <div class="cells_title">
+        <a>个人信息</a>
+    </div> -->
+	<div class="cells">
+        <div class="cell">
+            <label class="cell_hd">婚姻状况：</label>
+            <div id="trigger1" class="cell_cn">
+                <span>请选择婚姻状况</span>
+                <img src="../images/goForward.png" alt="">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">居住地区：</label>
+            <div id="trigger2" class="cell_cn">
+                <span>请选择居住地区</span>
+                <img src="../images/goForward.png" alt="">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">详细地址：</label>
+            <div class="cell_cn">
+                <input id="addressDetail" type="text" placeholder="请输入详细地址">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">住宅类型：</label>
+            <div id="trigger3" class="cell_cn">
+                <span>请选择住宅类型</span>
+                <img src="../images/goForward.png" alt="">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">居住时长：</label>
+            <div id="trigger4" class="cell_cn">
+                <span>请选择居住时长</span>
+                <img src="../images/goForward.png" alt="">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">微信号：</label>
+            <div class="cell_cn">
+                <input id="weixinId" type="text" placeholder="请输入微信号">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">教育程度：</label>
+            <div id="trigger5" class="cell_cn">
+                <span>请选择教育程度</span>
+                <img src="../images/goForward.png" alt="">
+            </div>
+        </div>
+	</div>
+
+        <div class="submitBtn">
+            提交
+        </div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../lib/mobileSelect.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer){       
+            var localH=localStorage.getItem("localH")
+            if(!localH){
+                localH=localStorage.setItem("localH",document.documentElement.clientHeight)
+            }
+            $("body").height(Number(localH));
+            
+            var sessionId=userUtil.sid(),userUuid=userUtil.userID(),bankId,bankCardName;
+            var marriage,inhabit,detailed,residential,inhabitFixedYear,wexinId,academic;
+            var marriageStatus=['未婚','已婚','离异'];
+            var homeProvince=['北京市'];
+            var homeCity=['待选择'];
+            var homeCounty=["待选择"];
+
+            var mobileSelect1 = new MobileSelect({
+                trigger: '#trigger1',
+                title: '婚姻状况',
+                wheels: [
+                            {data: marriageStatus}
+                        ],
+                position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                transitionEnd:function(indexArr, data){
+                    marriage=data;
+                },
+                callback:function(indexArr, data){
+                    marriage=data;
+                }
+            });
+
+
+            //判断填写还是修改，如果修改，加载内容
+            $.ajax({
+                url: global.localUrl + "nw/orders/getInfoComplete",
+                type: "post",
+                data: JSON.stringify({"sessionId": sessionId}),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    if (1 == re.code) {
+                        if(re.data.marriage){
+                            $("#trigger1 span").text(re.data.marriage);//婚姻
+                            $("#trigger2 span").text(re.data.inhabit);//居住省市区
+                            $("#addressDetail").val(re.data.detailed) //居住详细地址
+                            $("#trigger3 span").text(re.data.residential);//住宅类型
+                            $("#trigger4 span").text(re.data.inhabitFixedYear);//居住时长
+                            $("#weixinId").val(re.data.wexinId); //微信号
+                            $("#trigger5 span").text(re.data.academic);//居住时长
+                            marriage=re.data.marriage;
+                            inhabit=re.data.inhabit;
+                            residential=re.data.residential;
+                            inhabitFixedYear=re.data.inhabitFixedYear;
+                            academic=re.data.academic;
+                        }
+                    }
+                    else{
+
+                        layer.tips(re.message);
+                    }
+                },
+                error: function () {
+                    layer.tips(global.netError);
+                }
+            });
+
+            //省市县地区选择
+            $.ajax({
+                url: global.localUrl + "nw/system/provinceCityList",
+                type: "post",
+                data: JSON.stringify({"sessionId": sessionId,"id": 1,"type": 1}),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    if (1 == re.code) {
+                        var provinceList=re.data.provinceList,homeProvince=[];
+                        for(var i in provinceList){
+                            homeProvince.push(provinceList[i].provinceName)
+                        }
+                        var mobileSelect2 = new MobileSelect({
+                            trigger: '#trigger2',
+                            title: '居住地区',
+                            wheels: [
+                                        {data: homeProvince},
+                                        {data: homeCity},
+                                        {data: homeCounty}
+                                    ],
+                            position:[0,0,0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                            transitionEnd:function(indexArr, data){
+
+                                $.ajax({
+                                    url: global.localUrl + "nw/system/provinceCityList",
+                                    type: "post",
+                                    data: JSON.stringify({"sessionId": sessionId,"id": (indexArr[0]+1),"type": 2}),
+                                    contentType: 'application/json;charset=utf-8',
+                                    success: function (re) {
+                                        if (1 == re.code) {
+                                            var cityList=re.data.cityList,newCityList=[];
+                                            var newCityIdList=[];
+                                            for(var i in cityList){
+                                                newCityList.push(cityList[i].cityName)
+                                                newCityIdList.push(cityList[i].cityId)
+                                            }
+                                            homeCity=newCityList;
+
+                                            mobileSelect2.updateWheel(1,newCityList);
+                                            var cityId=indexArr[1];
+
+                                            setTimeout(function(){
+
+                                                $.ajax({
+                                                    url: global.localUrl + "nw/system/provinceCityList",
+                                                    type: "post",
+                                                    data: JSON.stringify({"sessionId": sessionId,"id": newCityIdList[cityId],"type": 3}),
+                                                    contentType: 'application/json;charset=utf-8',
+                                                    success: function (re) {
+                                                        if (1 == re.code) {
+                                                            var districtList=re.data.districtList,newDistrictList=[];
+                                                            for(var i in districtList){
+                                                                newDistrictList.push(districtList[i].districtName)
+                                                            }
+                                                            // console.log(newDistrictList)
+                                                            mobileSelect2.updateWheel(2,newDistrictList);
+
+                                                            
+                                                        }
+                                                        else{
+                                                            layer.tips(re.message);
+                                                        }
+                                                    },
+                                                    error: function () {
+                                                        layer.tips(global.netError);
+                                                    }
+                                                });
+                                            }, 500);
+                                        }
+                                        else{
+                                            layer.tips(re.message);
+                                        }
+                                    },
+                                    error: function () {
+                                        layer.tips(global.netError);
+                                    }
+                                });
+
+
+                            },
+                            callback:function(indexArr, data){
+                                inhabit=data;
+                            }
+                        });
+                    }
+                    else{
+                        layer.tips(re.message);
+                    }
+                },
+                error: function () {
+                    layer.tips(global.netError);
+                }
+            });
+            
+
+            var mobileSelect3 = new MobileSelect({
+                trigger: '#trigger3',
+                title: '居住类型',
+                wheels: [
+                            {data: ["租房","产权房产","父母所有房产","公司宿舍","其他"]}
+                        ],
+                position:[0,0,0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                transitionEnd:function(indexArr, data){
+
+                },
+                callback:function(indexArr, data){
+                    residential=data;
+                }
+            });
+
+            var mobileSelect4 = new MobileSelect({
+                trigger: '#trigger4',
+                title: '居住时长',
+                wheels: [
+                            {data: ["一年","一到三年","三年以上"]}
+                        ],
+                position:[0,0,0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                transitionEnd:function(indexArr, data){
+
+                },
+                callback:function(indexArr, data){
+                    inhabitFixedYear=data;
+                }
+            });
+
+            var mobileSelect5 = new MobileSelect({
+                trigger: '#trigger5',
+                title: '教育程度',
+                wheels: [
+                            {data: ["初中及以下","中专/高中","大专","本科","硕士研究生","博士研究生"]}
+                        ],
+                position:[0,0,0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                transitionEnd:function(indexArr, data){
+
+                },
+                callback:function(indexArr, data){
+                    academic=data;
+                }
+            });
+                  // 提交/
+            $(".submitBtn").click(function(){
+                if(typeof(marriage)=="object"){
+                    marriage=marriage[0];
+                }
+                if(typeof(inhabit)=="object"){
+                    inhabit=inhabit[0]+inhabit[1]+inhabit[2]
+                }
+                if(typeof(residential)=="object"){
+                    residential=residential[0];
+                }
+                if(typeof(inhabitFixedYear)=="object"){
+                    inhabitFixedYear=inhabitFixedYear[0];
+                }
+                if(typeof(academic)=="object"){
+                    academic=academic[0];
+                }
+                var _data={
+                    "sessionId": sessionId,
+                    "marriage": marriage,
+                    "inhabit": inhabit,
+                    "detailed": $("#addressDetail").val(),
+                    "residential": residential,
+                    "inhabitFixedYear": inhabitFixedYear,
+                    "wexinId": $("#weixinId").val(),
+                    "academic": academic,
+                };
+
+                for(var e in _data){
+                    if(!_data[e]){layer.tips("请填写完整信息");return;}
+                }
+                $.ajax({
+                    url: global.localUrl + "nw/orders/infoComplete",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            layer.tips("提交成功");
+                            setTimeout(function(){
+                                window.location.href=global.localUrl +"trust/identification.html";
+                            },2000);
+                        }
+                        else{
+
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            })
+
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

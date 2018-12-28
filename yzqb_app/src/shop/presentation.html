@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="address=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="browsermode" content="application" />
+  <meta name="x5-page-mode" content="app" />
+  <title>产品介绍</title>
+  <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+  <style>
+  	     *{
+  	     	margin: 0 ;
+  	     	padding: 0 ; 
+  	     }
+  	     .fa-box {
+  	     	height: 206px;
+  	     }
+  	     .logo {
+  	     	 height: 80px;
+  	     	 width: 80px;
+  	     	 background-size: 100% 100%;
+  	     	 margin: 27px auto 0px;
+
+  	     }
+  	     .logo img{
+  	     	 height: 80px;
+  	     	 width: 80px;
+  	     	 background-size: 100% 100%;
+
+  	     }
+  	     .wenzi {
+  	     	height: 16px;
+  	     	line-height: 16px;
+  	     	font-size: 14px;
+  	     	text-align: center;
+  	     	margin: 10px auto 10px;
+
+  	     }
+
+         .deretion {
+         	height: 32px;
+         	font-size: 12px;
+         	color: rgb(117,117,117);
+         	text-align: center;
+         	line-height: 16px;
+         	margin: 10px auto 20px;
+         	padding-top:20px;
+          position: relative;
+         }
+         .tese {
+         	height: 48px;
+         	line-height: 48px;
+         	font-size: 14px;
+         	color: rgb(23,23,23);
+          border-top:0.25px solid #ccc;
+          border-bottom:0.25px solid #ccc;
+ 
+         }
+         .tesef {
+         	padding-left: 15px;
+         }
+         .teseone {
+         	height: 70px;
+         	line-height: 22px;
+         	font-size: 12px;
+          border-bottom:0.2px solid #ccc; 
+
+         }
+         .gao {
+         	height: 16px;
+         }
+
+         .zhong {
+         	height: 38px;
+         	margin-left:30px;	
+          position: relative;
+         }
+         .xunhuan {
+           font-size: 12px;
+           color: rgb(23,23,23);
+         }
+         .shenqing {
+           font-size: 12px;
+           color: rgb(117,117,117);
+         }
+         .tub {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color:rgb(255,189,16);
+            position: absolute;
+            z-index: 4;
+            left: -13px;
+            top: 6px;
+         }
+         .tup{
+             display: inline-block;
+             height: 6px;
+             width: 6px;
+             background-color: red;
+             position: absolute;
+             left: 10%;
+             top: 46%;
+         }
+  </style>
+</head>
+<body>
+	     <div class="contain">
+              <div class="fa-box">
+              	   <div class="logo">
+                        <img class="app_logo_img" src="../images/logo.png" alt="">
+              	   </div>
+              	   <div class="wenzi">
+              	   	 <span class="app_name">柚子钱包</span>
+              	   </div>
+                   
+              	   <div class="deretion"> 
+                    <!-- <span class="tup"></span> -->
+                    <span class="app_name">柚子钱包</span>通过先进的互联网安全和大数据技术，为广<p>大18-40岁的年轻用户开创一个专属的分期商城。
+              	   </div>
+              </div>
+
+              <div class="tese">
+              	   <span class="tesef"><span class="app_name">柚子钱包</span>特色</span>
+              </div>
+              <div class="teseone">
+              	    <div class="gao"></div>
+              	    <div class="zhong"><span class="tub"></span><span class="xunhuan">特色一：循环额度</span><p>
+                    <span class="shenqing">申请一次认证、额度循环使用，再次购物也无需再认证</span>
+                    </div>
+                    <div class="gao"></div>
+              </div>
+                <div class="teseone">
+                    <div class="gao"></div>
+                    <div class="zhong"><span class="tub"></span><span class="xunhuan">特色二：优惠精选</span><p>
+                    <span class="shenqing">爆款特卖、新人红包……优惠活动从不间断</span>
+                    </div>
+                    <div class="gao"></div>
+              </div>
+                <div class="teseone" style="border-bottom: 0;">
+                    <div class="gao"></div>
+                    <div class="zhong"><span class="tub"></span><span class="xunhuan">特色三：品质购物</span><p>
+                    <span class="shenqing">国行正品、质量有保证，让您安心购</span>
+                    </div>
+                    <div class="gao"></div>
+              </div>
+
+
+
+	     	
+	     </div>
+	   
+       <script src="../lib/zepto.min.js?rev=@@hash"></script>
+       <script>
+           $(document).ready(function(){
+               // setTimeout(function(){
+                   if(localStorage.getItem('app_logo_info')){
+                       var app_logo_info = JSON.parse(localStorage.getItem('app_logo_info'));
+                       $('.app_name').html(app_logo_info.themeName);
+                        $('.app_logo_img').attr('src',app_logo_info.logoUrl);
+                   }
+               // },500)
+           });
+       </script>
+</body>
+</html>

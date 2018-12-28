@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="A simple HTML5 Template">
+<meta name="author" content="dron">
+<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>水果忍者</title>
+<!--[if lt IE 9]><script>document.createElement("canvas");</script><![endif]-->
+<style type="text/css">
+		html{
+		color:#000;
+		background:#FFF;
+	}
+	body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td{
+		margin:0;
+		padding:0;
+	}
+	table{
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	fieldset, img{
+		border: 0;
+	}
+	address, caption, cite, code, dfn, em, strong, th, var{
+		font-style: normal;
+		font-weight: normal;
+	}
+	li{
+		list-style:none;
+	}
+	caption, th{
+		text-align:left;
+	}
+	h1, h2, h3, h4, h5, h6{
+		font-size: 100%;
+		font-weight: normal;
+	}
+	q:before, q:after{
+		content: '';
+	}
+	abbr, acronym{
+		border: 0;
+		font-variant: normal;
+	}
+	sup{
+		vertical-align: text-top;
+	}
+	sub{
+		vertical-align: text-bottom;
+	}
+	input, textarea, select{
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+	}
+	input, textarea, select{
+		*font-size: 100%;
+	}
+	legend{
+		color: #000;
+	}
+	html, body{
+		font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+		width: 100%;
+		height: 100%;
+	}
+
+	.clearfix:after{
+		content: "/20";
+		display: block;
+		height: 0;
+		overflow: hidden;
+		clear: both;
+	}
+
+	.clearfix{
+		zoom: 1;
+	}
+
+	html, body{
+		width: 100%;
+		height: 100%;
+		background: #484848;
+	}
+
+	body{
+		position: relative;
+	}
+
+	em{
+		display: none;
+	}
+
+	#extra, #view{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		/*width: 640px;*/
+		width: 3.75rem;
+		height: 480px;
+		margin: -280px auto auto -1.85rem;
+		text-align: left;
+		background: #fff;
+	}
+
+	#view{
+		display: block;
+		background: transparent url(blank.gif) repeat 0 0;
+		cursor: default;
+		z-index: 20;
+	}
+
+	#extra{
+		background: #000;
+	}
+
+	#extra .layer{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 640px;
+		height: 480px;
+		z-index: 10;
+	}
+
+	#fork{
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 356px;
+		height: 92px;
+		cursor: pointer;
+		background-image: url(fork.gif);
+		z-index: 0;
+	}
+
+	#desc{
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		height: 80px;
+		color: #ccc;
+		line-height: 40px;
+		margin-top: 200px;
+		text-align: center;
+		font-size: 14px;
+	}
+
+	#desc a{
+		color: #318fe1;
+	}
+
+	#browser{
+		font-size: 14px;
+		line-height: 16px;
+	}
+
+	#browser .b{
+		color: #fff;
+		font-weight: 700;
+	}
+</style>
+</head>
+<body>
+<div id="extra"></div>
+<canvas id="view" width="640" height="480"></canvas>
+
+<div id="desc">
+<div style="text-align:center;clear:both;">
+<!-- <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script> -->
+<!-- <script src="/follow.js" type="text/javascript"></script> -->
+</div>
+	<!-- <div>水果忍者网页版，由<a href="http://weibo.com/baidujs" target="_blank">百度 JS 小组</a>倾情提供</div> -->
+	<div id="browser"></div>
+</div>
+<script src="../js/game/fruit.js?rev=@@hash"></script>
+</body>
+</html>

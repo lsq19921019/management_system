@@ -1,0 +1,32 @@
+{
+  "name": "wap.maiya.com",
+  "version": "1.0.0",
+  "description": "maiya for weixin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "dev": "gulp server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.18.2",
+    "del": "^2.2.2",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-file-include": "^1.0.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev-append": "^0.1.7",
+    "gulp-tap": "^0.1.3",
+    "gulp-uglify": "^2.0.0",
+    "http-proxy-middleware": "^0.19.1"
+  }
+}

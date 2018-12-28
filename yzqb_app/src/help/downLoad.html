@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>APP下载</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        img{
+            width:100%;
+            display:block;
+        }
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+            background-color: white;
+        }
+        .content {
+            width: 2.5rem;
+            margin: .8rem auto;
+
+        }
+        .logo {
+            width: 2.5rem;
+            margin: .2rem auto;
+        }
+        .logo img {
+            width: 100%;
+        }
+        .isoBtn {
+            width: 1.5rem;
+            height: .4rem;
+            line-height: .4rem;
+            background-color: rgb(230,1,0);
+            text-align: center;
+            font-size: .16rem;
+            color: white;
+            margin: .4rem auto;
+            border: 1px solid #eee;
+            border-radius: .05rem;
+            box-shadow: 0 .05rem .05rem rgb(214,193,192);
+        }
+        .isoBtn img {
+            width: 95%;
+
+        }
+        .iosTips {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    
+
+    <!-- <div class="content">
+        <div class="logo"><img class="app_logo_img" src="../images/downLoadLogo.png" alt=""></div>
+        <div class="iosTips">下载APP，极速审核，实时查询进度！</div>
+        <div class="isoBtn">立即下载</div>
+    </div> -->
+    <div class="register_wrap">
+        <div class="banner">
+            <div><img src="../images/activity/download_page.jpg"></div>
+        </div>
+    </div>
+    
+    <div class="layer_info_box" style="display:none;position:fixed;top:0;left:0;width: 100%;box-sizing: border-box;color: #fff;z-index: 10;padding: 40px 40px;padding-top: 100px;">
+            <div>1. 点击页面右上角&nbsp;<span style="font-size:20px;font-weight:bold;">...</span>&nbsp;图标<img src="../images/activity/pointer.png" style="width:76px;position: fixed;right: 10px;top: 10px;"></div>
+            <div style="line-height:50px;overflow: hidden;padding: 10px 0;">
+                <div style="float:left;">2. 选择用浏览器打开</div>
+                <img src="../images/activity/wx_open_brower.png" style="margin-left: 10px;float:left;height:50px;width:auto;display: inline-block;">
+            </div>
+            <div>3. 在浏览器打开的页面中点击立即下载按钮</div>
+        </div>
+        <div class="background_laywer" style="display:none;background-color: #000;opacity: 0.8;width: 100%;height: 100%;position: fixed;top: 0;left: 0;"></div>
+        
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/upload.js?rev=@@hash"></script>
+    <script>
+        function check_app_status(){
+                // alert(6666);
+                var browserObj = function () {
+                    var u = navigator.userAgent;
+                    return {
+                        trident: u.indexOf('Trident') > -1, //IE内核
+                        presto: u.indexOf('Presto') > -1, //opera内核
+                        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+                        mobile: u.indexOf('Mobile') > -1, //是否为移动终端
+                        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端
+                        iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                        iPad: u.indexOf('iPad') > -1, //是否iPad
+                        webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                        weixin: u.indexOf('MicroMessenger') > -1, //是否微信
+                        qq: u.indexOf("QQBrowser") > -1, //是否QQ浏览器
+                        mobile_qq: u.indexOf("MQQBrowser") > -1, //是否是手机QQ浏览器
+                        uc: u.indexOf("UCBrowser") > -1, //是否是uc浏览器
+                        baidu: u.indexOf("Baidu") > -1, //是否是百度浏览器
+                        firefox: u.indexOf("Firefox") > -1, //是否是火狐浏览器
+                        lieBao: u.indexOf("LieBao") > -1, //是否是猎豹浏览器
+                        sogou: u.indexOf("SogouMobile") > -1, //是否是搜狗手机浏览器
+                        HYQ:u.indexOf("HYQ") > -1,
+                        HYQ_ios_version:((u.indexOf('yzqb_android_')>-1)),
+                        HYQ_android_iosversion:((u.indexOf('yzqb_iOS_')>-1)),
+                        total_info:u
+                    };
+                };
+                var browser = browserObj();
+                var isBridgeInit = false;
+                // function connectWebViewJavascriptBridge (callback) {
+                //     if (window.WebViewJavascriptBridge) { 
+                //             callback(WebViewJavascriptBridge)
+                //     } else { 
+                //             document.addEventListener( 'WebViewJavascriptBridgeReady' , function() { callback(WebViewJavascriptBridge) }, false ); 
+                //     } 
+                // }
+
+
+                //校验app版本;       
+                if(browser.HYQ){
+                    // if(browser.HYQ_ios_version||browser.HYQ_android_iosversion){
+                    //     // setTimeout(function(){
+                    //     //     alert(navigator.userAgent);
+                    //     // },1000); 
+                    //     // alert('当前是最新版本!');
+                    //     window.location.href = '/index.html'
+                    // }else{
+                    //     // setTimeout(function(){
+                    //     //     alert(navigator.userAgent);
+                    //     // },1000);
+                    //     // alert('请升级最新版本!');
+                    //     setTimeout(function(){
+                    //         // window.location.href = 'http://h5.yzqianbao.com/help/downLoad.html';
+                    //         if(browser.ios){
+                    //             // window.location.href="https://www.pgyer.com/PxA8";//测试
+                    //             // window.location.href="itms-services://?action=download-manifest&url=https://image.yzqianbao.com/MyDownload/ios.plist";//线上
+                    //             window.location.href="itms-services://?action=download-manifest&url=https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/ios.plist";//线上
+                    //             // window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/YZQB-ios.ipa';
+                    //         }else{
+                    //             // window.location.href = global.localUrl + "hyq_test.apk";//测试   http://h5.yzqianbao.com/yzqb.apk
+                    //             // window.location.href = global.localUrl + "yzqb.apk";//线上
+                    //             window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ad/youziqianbao-official-release-v1.0.0.apk';
+                    //         }
+                    //     },3000);
+                    // }
+                }else{
+        //校验外部浏览器打开跳转app;
+                    if(browser.ios){
+                        window.location.href = 'com.wr.youzi://';
+                        // alert('ios浏览器');
+                        setTimeout(function(){
+                            // window.location.href = 'http://h5.yzqianbao.com/help/downLoad.html';
+                            window.location.href = 'http://h5.yzqianbao.com/help/notOpenApp.html';
+
+                                        // window.location.href="itms-services://?action=download-manifest&url=https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/ios.plist";//线上
+                                        
+                        },100);
+                        // $('#open_app').attr('href','');
+                    }else if(browser.android){
+                        // alert('android浏览器');
+                        window.location.href = 'yzqb://external/open/launcher';
+                        // setTimeout(function(){
+                            // window.location.href = 'http://h5.yzqianbao.com/help/downLoad.html';
+                            // window.location.href = 'http://h5.yzqianbao.com/help/openApp.html';
+                            // window.location.href = 'http://192.168.2.178:8051/help/notOpenApp.html';
+                            // window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ad/youziqianbao-official-release-v1.0.0.apk';
+                        // },100);
+                        // $('#open_app').attr('href','yzqb://external/open/launcher');
+                    }else{
+                        // alert('其他浏览器');
+                        // window.location.href = 'http://h5.yzqianbao.com/help/downLoad.html';
+                    }
+                }
+            }
+        (function(global,userUtil,layer){
+            check_app_status();
+            /**
+             * 浏览器判断*/
+            var browserObj = function () {
+                var u = navigator.userAgent;
+                return {
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+                    mobile: u.indexOf('Mobile') > -1, //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                    weixin: u.indexOf('MicroMessenger') > -1, //是否微信
+                    qq: u.indexOf("QQBrowser") > -1, //是否QQ浏览器
+                    mobile_qq: u.indexOf("MQQBrowser") > -1, //是否是手机QQ浏览器
+                    uc: u.indexOf("UCBrowser") > -1, //是否是uc浏览器
+                    baidu: u.indexOf("Baidu") > -1, //是否是百度浏览器
+                    firefox: u.indexOf("Firefox") > -1, //是否是火狐浏览器
+                    lieBao: u.indexOf("LieBao") > -1, //是否是猎豹浏览器
+                    sogou: u.indexOf("SogouMobile") > -1, //是否是搜狗手机浏览器
+                    HYQ:u.indexOf("HYQ") > -1
+
+                };
+            };
+
+            var browser = browserObj();
+            $(".register_wrap").click(function(){
+                if(browser.ios){
+                    // window.location.href="https://www.pgyer.com/PxA8";//测试
+                    // window.location.href="itms-services://?action=download-manifest&url=https://image.yzqianbao.com/MyDownload/ios.plist";//线上
+                    window.location.href="itms-services://?action=download-manifest&url=https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/ios.plist";//线上
+                    // window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/YZQB-ios.ipa';
+                }else{
+                    if(browser.weixin){
+                        $('.layer_info_box,.background_laywer').show();
+                        return;
+                    }
+                    // window.location.href = global.localUrl + "hyq_test.apk";//测试   http://h5.yzqianbao.com/yzqb.apk
+                    // window.location.href = global.localUrl + "yzqb.apk";//线上
+                    window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ad/youziqianbao-official-release-v1.0.0.apk';
+                }
+
+            })
+
+        })(global,userUtil,layer)
+    </script>
+    <script>
+        $(document).ready(function(){
+            // setTimeout(function(){
+                if(localStorage.getItem('app_logo_info')){
+                    var app_logo_info = JSON.parse(localStorage.getItem('app_logo_info'));
+                    $('.app_logo_img').attr('src',app_logo_info.logoUrl);
+                }
+            // },500)
+        });
+    </script>
+</body>
+</html>

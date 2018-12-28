@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>帮助中心</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        .link_list {
+            margin-top: .16rem;
+            padding: 0 .5rem;
+            position: relative;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .link_list li {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            text-align: center;
+        }
+
+        .link_list li > img {
+            width: .4rem;
+            height: auto;
+        }
+
+        .link_list li > p {
+            font-size: .13rem;
+            line-height: .2rem;
+        }
+
+        .list {
+            margin-bottom: 40px;
+        }
+
+        .list .head {
+            height: 20px;
+            line-height: 20px;
+            border-left: 7px solid #FFBD56;
+            padding-left: 9px;
+            font-size: 13px;
+            color: rgb(135,143,147);
+            margin: 24px 0 2px 0;
+        }
+
+        .item.on .title:before {
+            content: none;
+        }
+
+        .item .cell_ft {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: all .3s 0s ease;
+            transition: all .3s 0s ease;
+        }
+
+        .item.on .cell_ft {
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+
+        .item .content {
+            display: none;
+            font-size: .13rem;
+            color: #878F93;
+            line-height: .2rem;
+            /*padding-top: 0;*/
+        }
+
+        .item.on .content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="list">
+</div>
+
+
+<script src="../lib/zepto.min.js?rev=@@hash"></script>
+<script src="../js/main.js?rev=@@hash"></script>
+<script src="../json/help.json.js?rev=@@hash"></script>
+<script>
+    !function (global, layer, userUtil) {
+
+
+        function bindHelpList() {
+            $.each(json.help, function (index, item) {
+                // $('<div class="head">' + item.head + '</div>').appendTo(".list")
+                $.each(item.list, function (i, l) {
+                    var _$temp = $('<div class="item"><div class="cell title"><div class="cell_cn">' + l.title + '</div><div class="cell_ft"><i class="btn_go icon-go"></i></div></div><div class="cell content">' + l.content + '</div>');
+                    _$temp.find(".title").on("click", function () {
+                        $(this).parent(".item").toggleClass("on");
+                    })
+
+                    _$temp.appendTo(".list")
+                })
+            })
+        }
+
+        bindHelpList();
+
+    }(global, layer, userUtil);
+</script>
+</body>
+</html>

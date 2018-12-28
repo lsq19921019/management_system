@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>游乐场</title>
+    <meta charset="utf-8" />
+    <link href="./css/main.css?rev=@@hash" rel="stylesheet" />
+
+    <style type="text/css">
+        .header_bar{
+            text-align: right;
+            padding-right: .35rem;
+            font-size: .16rem;
+            
+        }
+        .game_item{
+            width: 3.33rem;
+            height: 2.41rem;
+            margin: 0 auto;
+        }
+        .game_item1{
+            background: url(./images/home01.png) no-repeat center center;
+            background-size: 100% 70%;
+            background-position: 0 0;
+        }
+        .game_item2{
+            background: url(./images/home02.png) no-repeat center center;
+            background-size: 100% 70%;
+            background-position: 0 0;
+        }
+        .game_con{
+            padding: 1.72rem .41rem 0 .45rem;
+        }
+        .game_name p:nth-child(1){
+            font-size: .18rem;
+        }
+        .game_name p:nth-child(2){
+            color: #8c91a0;
+        }
+        .game_con_img{
+            padding-top: .1rem;
+            width: .89rem;
+            height: .36rem;
+        }
+        .buy_game_confirm{
+            width: 2.79rem;
+            height: 2.38rem;
+            position: fixed;
+            z-index: 11;
+            top: 1.47rem;
+            left: 50%;
+            margin-left: -1.4rem;
+        }
+        .pop_home01 .buy_game_confirm{
+            background: url(./images/warning_pop.png) no-repeat center center;
+            background-size: 100% 100%;
+        }
+        .pop_home02 .buy_game_confirm{
+            background: url(./images/info_pop.png) no-repeat center center;
+            background-size: 100% 100%;
+        }
+        .pop_home03 .buy_game_confirm,.pop_home04 .buy_game_confirm{
+            background: url(./images/confirm_pop.png) no-repeat center center;
+            background-size: 100% 100%;
+        }
+        .pop_home04 .buy_game_confirm,.pop_home04 .buy_game_confirm{
+            background: url(./images/warning_pop.png) no-repeat center center;
+            background-size: 100% 100%;
+        }
+        .pop_home_info{
+            margin-top: 1.2rem;
+            text-align: center;
+        }
+        .pop_home03 .pop_home_info{
+            margin-top: 1.3rem;
+        }
+        .pop_home04 .pop_home_info{
+            margin-top: 1.3rem;
+        }
+        .pop_home_btn{
+            width: 1rem;
+            height: .28rem;
+            line-height: .28rem;
+            margin: 0 auto;
+            border-radius: .04rem;
+            color: #fff;
+            margin-top: .13rem;
+        }
+        .pop_home02 .pop_home_btn,.pop_home01 .pop_home_btn{
+            background: rgb(114,201,229);
+        }
+        .pop_close_icon{
+            width: .13rem;
+            height: .12rem;
+            position: absolute;
+            right: .12rem;
+            top: .12rem;
+        }
+        .downLoadBar {
+            height: .5rem;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .downLoadBar img {
+            width: 110%;
+            position: absolute;
+            top: 0;
+            left: -5%;
+        }
+        .alertTips {
+            position: fixed;
+            width: 3rem;
+            left: 50%;
+            top: 20%;
+            margin-left: -1.5rem;
+            z-index: 111;
+            display: none;
+            /*overflow: hidden;*/
+        }
+        .alertTips>img {
+            width: 100%;
+        }
+        .downLoadBar2 {
+            position: absolute;
+            width: 2rem;
+            left: 50%;
+            bottom: .4rem;
+            margin-left: -1rem;
+        }
+
+        .alertTips i {
+            display: block;
+            width: .2rem;
+            height: .2rem;
+            position: absolute;
+            right: 0.1rem;
+            top: 0.1rem;
+            background: url("./images/warning_close.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        .downLoadBar2 img {
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            left: 0%;
+
+        }
+        .topTip {
+            width: 2rem;
+            font-size: .2rem;
+            color: black;
+            bottom: 1.4rem;
+            left: 50%;
+            margin-left: -1rem;
+            position: absolute;
+            text-align: center;
+        }
+        .topTip a {
+            font-size: .45rem;
+            color: rgb(255,86,78);
+        }
+        .midTip {
+            width: 2rem;
+            font-size: .12rem;
+            color: black;
+            bottom: 1.1rem;
+            left: 50%;
+            margin-left: -1rem;
+            position: absolute;
+            text-align: center;  
+            color: #444a59; 
+        }
+        .bottomTip {
+            width: 2rem;
+            font-size: .12rem;
+            color: black;
+            bottom: .25rem;
+            left: 50%;
+            margin-left: -1rem;
+            position: absolute;
+            text-align: center;   
+            color: #444a59; 
+        }
+        .game_item2 {
+            margin-bottom: .6rem;
+        }
+        .alert .layer_dialog_cn a{
+            color: rgb(255,86,78);
+        }
+        .layer_dialog .layer_dialog_box {
+            overflow: visible;
+        }        
+        .boxClose {
+            position: absolute;
+            right: .1rem;
+            top: .1rem;
+            width: .15rem;
+            height: .15rem;
+            z-index: 22!important;
+            display: block;
+            background: url("./images/warning_close.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="layer_load">
+      <div class="layer_mask"></div>
+      <!-- <div class="layer_load_icon iconfont icon-loading"></div> -->
+    </div>
+
+    <div class="downLoadBar"><img src="./images/downLoad.png" alt=""></div>
+    <div class="view">
+        <div class="header_bar" id="gameBalance"></div>
+        <div class="game_item game_item1">
+            <div class="flex space game_con">
+                <div class="game_name">
+                    <p>小游戏</p>
+                    <p>经典切水果</p>
+                </div>
+                <div><img class="game_con_img" src="./images/home_btn.png" alt="" id="btnGoFK"></div>
+            </div>
+        </div>
+        <div class="game_item game_item2">
+            <div class="flex space game_con">
+                <div class="game_name">
+                    <p>小游戏</p>
+                    <p>虐心Flappy Bird</p>
+                </div>
+                <div><img class="game_con_img"  src="./images/home_btn.png" alt="" id="btnGoTCS"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 逾期未还款 -->
+    <div class="pop_home01 hide">
+        <div class='layer_mask'></div>
+        <div class="buy_game_confirm">
+            <img src="./images/warning_close.png" class="pop_close_icon"/>
+            <div class="pop_home_info">
+                <p style="font-size: .16rem;font-weight: bold;">
+                    您已逾期<span style="font-size: .28rem;color: rgb(255,86,78);margin: 0 .03rem;" id="overdueDays"></span><span style="color: rgb(255,86,78)">天</span>
+                </p>
+                <p class="repaymentAmount"></p>
+                <p class="pop_home_btn toRepaymentDetail">马上还款</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 待还款 -->
+    <div class="pop_home02 hide">
+        <div class='layer_mask'></div>
+        <div class="buy_game_confirm">
+            <img src="./images/info_close.png" class="pop_close_icon"/>
+            <div class="pop_home_info">
+                <p style="font-size: .16rem;font-weight: bold;">
+                    距离还款日还有<span style="font-size: .28rem;color: rgb(45,116,179);margin: 0 .03rem;" id="repaymentDays"></span><span style="color: rgb(45,116,179)">天</span>
+                </p>
+                <p class="repaymentAmount"></p>
+                <p class="pop_home_btn toRepaymentDetail">马上还款</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 购买游戏 -->
+    <div class="pop_home03 hide">
+        <div class='layer_mask'></div>
+        <div class="buy_game_confirm">
+            <div class="pop_home_info">
+                <p style="font-size: .16rem;font-weight: bold;">购买游戏</p>
+                <p class="">您将消费50游戏币参与此游戏？</p>
+                <div class="flex" style="margin: 0 .26rem;">
+                    <p class="pop_home_btn pop_close_icon_btn" style="background: rgb(197,200,205);">考虑一下</p>
+                    <p class="pop_home_btn" style="background: rgb(255,86,78);" id="btnGoGame">马上玩</p>  
+                </div>
+                
+            </div>
+        </div>
+    </div>
+     <!-- 余额不足 跳转钱包页面 -->
+     <div class="pop_home04 hide">
+            <div class='layer_mask'></div>
+            <div class="buy_game_confirm">
+                <div class="pop_home_info">
+                    <p style="font-size: .16rem;font-weight: bold;">余额不足</p>
+                    <p style="">余额不足，是否购买游戏币？</p>
+                    <div class="flex" style="margin: 0 .26rem;">
+                        <p class="pop_home_btn pop_close_icon_btn" id="off_pophome04" style="background: rgb(197,200,205);">取消</p>
+                        <p class="pop_home_btn" style="background: rgb(255,86,78);" id="goTowallet">确定</p>  
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    <div class="tab_bar">
+        <footer>
+            <a><img src="./images/youlechang_active.png"></a>
+            <a href="./apply/apply.html"><img src="./images/qianbao.png"></a>
+            <a href="./user/oneStep.html"><img src="./images/oneStep.png"></a>
+            <a href="./user/myWallet.html"><img src="./images/my.png"></a>
+        </footer>   
+    </div>
+    <!-- 脚本 -->
+    <script src="./lib/zepto.min.js?rev=@@hash"></script>
+    <script src="./js/main.js?rev=@@hash"></script>
+    <script src="./js/index.js?rev=@@hash"></script>
+</body>
+</html>

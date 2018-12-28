@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>柚子钱包</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+
+    <style type="text/css">
+
+        body{
+            background: #fff;
+            width: 3.75rem;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .login_logo{
+            width: 100%;
+            display: block;
+        }
+        .login_btn{
+            width: 2.6rem;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: .1rem;
+        }
+        .login_item{
+            margin: .15rem auto;
+            width: 2.5rem;
+            overflow: hidden;
+            position: relative;
+            align-items: center;
+            background-color: white;
+            border-radius: .05rem;
+            height: .35rem;
+        }
+        .login_item input{
+            width: 100%;
+            font-size: .14rem;
+            height: .31rem;
+            line-height: .31rem;
+            width: 1.35rem;
+            padding-left: .05rem;
+        }
+        .loginicon{
+            width: .21rem;
+            height: auto;
+            margin-right: .14rem;
+            margin-top: .05rem;
+        }
+        .login_btn_code{
+            color: rgb(251,94,68);
+            line-height: .35rem;
+            font-size: .14rem;
+            width: 1rem;
+            display: block;
+            text-align: center;
+            color: white;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .login_check{
+            width: .12rem;
+            height: .12rem;
+            margin-right: .07rem;
+            margin-top: .01rem;
+        }
+        #btnImgCode{
+            width: 1rem;
+            height: .35rem;
+
+        }
+        #txtMobile {
+            border-radius: .1rem;
+        }
+        .cell_ft {
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: .35rem;
+            width: 1rem;
+            background-color: rgb(255,89,78);
+            padding: 0;
+            border-radius: .05rem;
+        }
+        .login_box {
+            width: 3rem;
+            padding: .1rem 0;
+            margin: 0 auto;
+            /*background-color: rgb(251,229,206);*/
+        }
+        .bottomImg {
+            margin: .15rem 0;
+        }
+        .bottomImg img{
+            width: 100%;
+        }
+        .bottomFixed {
+            position: fixed;
+            bottom: -.02rem;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            padding: .05rem 0;
+            height: .38rem;
+            background-color: white;
+            border-top: 0.01rem solid #eee;
+        }
+        .bottomFixed a {
+            display: block;
+            height: .38rem;
+            line-height: .4rem;
+            font-weight: 700;
+        }
+        .bottomFixed>img {
+            display: block;
+            float: left;
+            padding: .05rem;
+            height: 80%;
+        }
+        .bottomDown {
+            position: absolute;
+            top:-0.08rem;
+            right: -0.08rem;
+            height: .60rem;
+            color: white;
+            text-align: center;
+            width: 2rem;
+            float: right;
+            overflow: hidden;
+        }
+        .bottomDown span {
+            display: block;
+            position: absolute;
+            top:0.08rem;
+            right: 0rem;
+            height: .45rem;
+            font-size: .18rem;
+            line-height: .45rem;
+            width: 2rem;
+        }
+        .bottomDown img {
+            display: block;
+            width: 2rem;
+            height: .65rem;
+        }
+        #loginBg {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .view {
+            position: absolute;
+            left: .125rem;
+            top: 3.2rem;
+            background-color: white;
+            width: 3.5rem;
+            border-radius: .1rem;
+        }
+        .cell_cn {
+            border: 1px solid gray;
+            border-radius: .05rem;
+        }
+        #txtImgCode {
+            border: 1px solid gray;
+            border-radius: .05rem;
+        }
+        .login_item3 {
+            width: 2.5rem;
+            margin: 0 auto;
+            font-size: .12rem;
+        }
+        #txtCode {
+            width: 1.35rem;
+            border-radius: .05rem;
+            border: 1px solid gray;
+        }
+        #yanzhengma {
+            border: 0;
+        }
+        .guideClose {
+            margin-right: .17rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="layer_load">
+      <div class="layer_mask"></div>
+      <div class="layer_load_icon iconfont icon-loading"></div>
+    </div>
+    <img id="loginBg" src="../images/loginBg.png" alt="">
+    <div class="view">
+        <!-- <div><img class="login_logo" src="../images/guideTopBanner.png"></div> -->
+
+        <div class="login_box">
+            <div class="flex login_item">
+                <!-- <div><img class="loginicon" src="../images/login_user.png"></div> -->
+                <div class="cell_cn">
+                    <input type="tel" name="" id="txtMobile" maxlength="11" placeholder="请输入手机号">
+                </div>
+            </div>
+            <div class="flex login_item login_item2">
+                <!-- <div><img class="loginicon" src="../images/login_imgcode.png"></div> -->
+                <input type="text" placeholder="请输入图形验证码" maxlength="4" id="txtImgCode" />
+                <input type="hidden" id="hdImgCodeID" value="" />
+                <div class="cell_ft">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" id="btnImgCode"/>
+                </div>
+            </div>
+            <div class="flex login_item login_item2">
+                <!-- <div><img class="loginicon" src="../images/login_code.png"></div> -->
+                <div class="cell_cn" id="yanzhengma">
+                    <input type="tel" placeholder="请输入验证码" id="txtCode" maxlength="6" />
+                </div>
+                <div class="cell_ft">
+                    <a href="javascript:;" class="login_btn_code" id="btnCode">获取验证码</a>
+                </div>
+            </div>
+            <div class="flex login_item3">
+                <div><img class="login_check" src="../images/bingo.png"></div>
+                <div>注册即同意<a class="active_color" href="../help/serviceprotocol.html">《注册服务协议》</a></div>
+            </div>
+        </div>
+        <div><img class="login_btn" src="../images/guideBtn.png" id="loginBtn"></div>
+        <div class="bottomFixed">
+            <img class="guideClose" src="../images/guideClose.png" alt="">
+            <img class="app_logo_img" src="../images/logo.png" alt="">
+            <a href="#">&nbsp好&nbsp易&nbsp钱&nbsp</a>
+            <div class="bottomDown">
+                <span>下载享极速到账</span>
+                <img src="../images/guideDown.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <!-- <script src="../js/user/login.js?rev=@@hash"></script> -->
+    <script>
+
+            !function(global, userUtil, layer, dataUtil) {  
+                var channel=global.query["channel"];
+
+                $(".guideClose").click(function(){
+                    $(".bottomFixed").hide();
+                    $(".bottomBlank").hide();
+                })            
+                $(".bottomDown").click(function(){
+                    window.location.href=global.localUrl +"help/downLoad.html";
+                })
+                $('input').bind('focus',function(){
+                    $(".bottomFixed").hide();
+                    // $('.bottomFixed').css('position','relative');
+                    //或者$('#viewport').height($(window).height()+'px');
+                }).bind('blur',function(){
+                    $(".bottomFixed").show();
+                    // $('.bottomFixed').css({'position':'fixed'});
+                    //或者$('#viewport').height('auto');
+                });
+                $("img").onclick=function(){
+                  return false;
+                }
+                  //存贮浏览器界面高度
+                  // var localH=localStorage.getItem("localH")
+                  // if(!localH){
+                  //     localH=localStorage.setItem("localH",document.documentElement.clientHeight)
+                  // }
+                  // 图形验证码
+                  function changeImgCode() {
+                      if ($("#btnImgCode").hasClass("dis")) {
+                          return;
+                      }
+                      $("#btnImgCode").addClass("dis");
+                      userUtil.ajax({
+                          url: global.localUrl + "nw/system/randomImage",
+                          data: {
+                              ss: new Date().getMilliseconds()
+                          },
+                          done:function(re){
+                              $("#btnImgCode").removeClass("dis");
+                              if (1 == re.code) {
+                                  $("#hdImgCodeID").val(re.data.imgSessionId);
+                                  $("#btnImgCode").attr("src", "data:image/jpeg;base64," + re.data.imgBase64);
+                              }
+                          }
+                      });
+                  }
+                  $("#btnImgCode").on("click", function () {
+                      changeImgCode();
+                  });
+                  changeImgCode();
+
+                    //  验证码
+                    $("#btnCode").on("click", function () {
+                        var $this = $(this);
+                        if (!$this.hasClass("dis") && validateMobile() && validateImgCode()) {
+                            $this.addClass("dis");
+                            var _model = getModel();
+                            var _data = {
+                                mobileNumber: _model.mobileNumber,
+                                inCode: _model.inCode,
+                                imgSessionId: _model.imgSessionId,
+                                smsType:"LOGIN",
+                                "channel": channel,
+                                ss: new Date().getMilliseconds()
+                            };
+                            userUtil.mobile(_data.mobileNumber);
+                            $.ajax({
+                                url: global.localUrl + "nw/system/smsCode",
+                                type: "post",
+                                data: JSON.stringify(_data),
+                                contentType: 'application/json;charset=utf-8',
+                                success: function (re) {
+                                    if (1 == re.code) {
+                                        showWaitTips();
+                                    }
+                                    else if(1033 == re.code){
+                                        changeImgCode();
+                                        $("#txtImgCode").val("");
+                                        $this.removeClass("dis");
+                                        layer.tips(re.message);
+                                        setTimeout(function(){
+                                            window.location.href = "../help/refused.html";  //跳转引流页面
+                                        },1000);
+                                    }else {
+                                        changeImgCode();
+                                        $("#txtImgCode").val("");
+                                        $this.removeClass("dis");
+                                        layer.tips(re.message);
+                                    }
+                                },
+                                error: function () {
+                                    $this.removeClass("dis");
+                                    layer.tips(global.netError);
+                                }
+                            });
+                        }
+                    });
+                    
+                    // 验证码倒计时
+                    function showWaitTips() {
+                        var $btnCode = $("#btnCode");
+                        var s = 60;
+                        $btnCode.text("已发送(" + s + ")").addClass("dis");
+                        var sv = setInterval(function () {
+                            if (s > 1) {
+                                s--;
+                                $btnCode.text("已发送(" + s + ")");
+                            } else {
+                                $btnCode.text("重新获取").removeClass("dis");
+                                clearInterval(sv);
+                            }
+                        }, 1000);
+                    }
+
+                    //  注册
+                  $("#loginBtn").on("click", function () {
+                      var $this = $(this);
+                      if (!$this.hasClass("dis") && validateMobile() && validateImgCode() && validateCode()) {
+                          $this.addClass("dis");
+                          var _model = getModel();
+                          var _data =  {
+                            "mobileNumber":_model.mobileNumber,
+                            "smsCode": _model.smsCode,
+                            "userType":"LOGIN",
+                            "channel": channel,
+                            // ss: new Date().getMilliseconds()
+                          };
+                          $('.layer_mask').addClass('on');
+                          $.ajax({
+                              url: global.localUrl + "nw/users/signup",
+                              type: "post",
+                              data: JSON.stringify(_data),
+                              contentType: 'application/json;charset=utf-8',
+                              success: function (re) {
+                                  $('.layer_mask').removeClass('on');
+                                  if (1 == re.code) {
+                                      layer.tips('登录成功');
+                                      userUtil.mobile(_model.mobileNumber)
+                                      userUtil.sid(re.data.sessionId)
+                                      userUtil.userID(re.data.userUuid)
+
+                                      if(browser.HYQ){
+                                          function connectWebViewJavascriptBridge (callback) { if (window.WebViewJavascriptBridge) { callback(WebViewJavascriptBridge) } else { document.addEventListener( 'WebViewJavascriptBridgeReady' , function() { callback(WebViewJavascriptBridge) }, false ); } }
+                                          connectWebViewJavascriptBridge (function(bridge) { 
+                                          // bridge.registerHandler('JS Echo', function(data, responseCallback) { console.log("JS Echo called with:", data) responseCallback(data) }) 
+                                          bridge.callHandler('updateSession', {"sid":re.data.sessionId}, function responseCallback(responseData) { }) })
+                                      }
+                                      setTimeout(function(){
+                                          window.location.href = "../index.html";  //跳转基本信息页面
+                                      },1000);
+
+                                  } else {
+                                      changeImgCode();
+                                      $("#txtImgCode").val("");
+                                      $("#txtCode").val("");
+                                      $this.removeClass("dis");
+                                      layer.tips(re.message);
+
+                                  }
+
+                              },
+                              error: function () {
+                                $('.layer_mask').removeClass('on');
+                                  $this.removeClass("dis");
+                                  layer.tips(global.netError);
+                              }
+                          });
+                      }
+                  });
+
+
+                  function getModel() {
+                      return {
+                          mobileNumber: $.trim($("#txtMobile").val()),
+                          inCode: $.trim($("#txtImgCode").val()),
+                          imgSessionId: $.trim($("#hdImgCodeID").val()),
+                          smsCode: $.trim($("#txtCode").val()),
+                          code: $.trim($("#txtCode").val()),
+                      }
+                  }
+                  function validateMobile() {
+                    var _model = getModel();
+                    if (!dataUtil.isMobile(_model.mobileNumber)) {
+                        layer.tips("请输入正确的手机号");
+                        return false;
+                    } 
+                    return true;
+                  }
+                  function validateCode() {
+                      var _model = getModel();
+                      if (!_model.code) {
+                          layer.tips("请输入短信验证码");
+                          return false;
+                      }
+                      return true;
+                  }
+                  function validateImgCode() {
+                      var _model = getModel();
+                      if (!_model.imgSessionId) {
+                          layer.tips("请刷新图形验证码");
+                          return false;
+                      } else if (!_model.inCode) {
+                          layer.tips("请输入图形验证码");
+                          return false;
+                      }
+                      return true;
+                  }
+
+                  $(".login_item3 img").click(function(){
+                    if($(".login_item3 img").attr("src")=="../images/bingo.png"){
+                      $(".login_item3 img").attr("src","../images/login_check.png");
+                      $(".login_btn").off("click");
+                    }else{
+                      $(".login_item3 img").attr("src","../images/bingo.png")
+                    }
+                  })
+            }(global, userUtil, layer ,dataUtil);
+
+
+
+    </script>
+    <script>
+        $(document).ready(function(){
+            // setTimeout(function(){
+                if(localStorage.getItem('app_logo_info')){
+                    var app_logo_info = JSON.parse(localStorage.getItem('app_logo_info'));
+                    $('title').html(app_logo_info.themeName);
+                    $('.app_logo_img').attr('src',app_logo_info.logoUrl);
+                }
+            // },500)
+        });
+    </script>
+</body>
+</html>

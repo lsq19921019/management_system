@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>微信还款</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            background: rgb(246,246,246);
+            width: 3.75rem;
+            position: relative;
+        }
+        .repay_title{
+            padding-top: .28rem;
+            min-height: 1.22rem;
+            padding: .28rem .38rem 0;
+            background: #fff;
+            text-align: center;
+            margin-bottom: .1rem;
+        }
+        .repay_money{
+            font-size: .3rem;
+            margin: .03rem 0 .1rem;
+        }
+        .repay_tips{
+            font-size: .12rem;
+            text-align: left;
+            line-height: 1.6;
+        }
+        .repay_content{
+            background: #fff;
+            width: 100%;
+        }
+        .btn{
+            margin: 0 .36rem;
+            background: rgb(255,85,78);
+            color: #fff;
+            box-shadow: 1px 2px 2px #e2e2e2;
+            line-height: .4rem;
+            margin-top: 1.5rem;
+        }
+        .cell_cn{
+            text-align: right;
+            color:rgb(191,191,191);
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load on">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+
+</body>
+    <!-- 脚本sd -->
+    <script src="../lib/zepto.min.js"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        !function(global, layer, userUtil, dataUtil){
+
+            //初始化线下还款信息
+            function offlineRepay(){
+                var _data={
+                    orderNo: global.query['orderNo'],
+                    code: global.query['code']
+                }
+                $.ajax({
+                    url: global.localUrl + "wallet/orders/wechatRefundInitial",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        layer.hideLoad();
+                        if (1 == re.code) {
+                            // window.location.href=re.data.redirectUrl;
+                            window.location.replace(re.data.redirectUrl); 
+                        }
+                        else{
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.hideLoad();
+                        layer.tips(global.netError);
+                    }
+                });
+            }
+
+            offlineRepay();
+
+        }(global, layer, userUtil, dataUtil)
+
+    </script>
+</html>

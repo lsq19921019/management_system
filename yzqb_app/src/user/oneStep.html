@@ -1,0 +1,299 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>申请记录</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        .cells {
+            /*margin-top: .2rem;*/
+        }
+        .cells_title {
+            margin: 0;
+            padding: .12rem .4rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+            font-weight: 700;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+
+        .operatorContent {
+            width: 100%;
+            background: #f9f9f9;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0.2rem;
+        }
+        .txt {
+      text-align: right;
+        }
+
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .2rem .4rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+        .cells_tips {
+            margin: 0rem .4rem;
+            border-top: solid .01rem #eee;
+            font-size: .12rem;
+            height: .4rem;
+            line-height: .4rem;
+        }
+
+        .noneOrder .confirmBtn {
+            position: absolute;
+            bottom: 1rem;
+        }
+
+        .cells_line {
+            height: .1rem;
+            width: 100%;
+        }
+        .recordContent {
+            /*width: 100%;*/
+            background-color: white;
+            padding: .15rem .35rem;
+            margin-bottom: .1rem;
+            position: relative;
+        }
+        .recordContent .recordList {
+            font-size: .14rem;
+        }
+        .recordListBtnTop {
+            border: solid .01rem rgb(234,204,169);
+            color: rgb(234,204,169);
+            position: absolute;
+            right: .35rem;
+            top: .15rem;
+            height: .25rem;
+            padding: 0 .1rem;
+            line-height: .25rem;
+            border-radius: .03rem;
+            /*margin: 0 .2rem;*/
+            font-size: .14rem;
+        }
+        .recordListBtnBottom {
+            color: red;
+            position: absolute;
+            right: .35rem;
+            bottom: .15rem;
+            height: .25rem;
+            padding: 0 .1rem;
+            line-height: .25rem;
+            border: solid .01rem red;
+            background-color: red;
+            color: white;
+            border-radius: .03rem;
+            /*margin: 0 .2rem;*/
+            font-size: .14rem;
+        }
+        .orderNone {
+            text-align: center;
+            font-size: .16rem;
+            margin-top: .2rem;
+            color: gray;
+        }
+        .noneOrder {
+          padding: .6rem 0;
+          display: none;
+        }
+        .noneOrder img {
+          display: block;
+          width: 40%;
+          margin: 0 auto;
+        }
+        .noneOrder .oneStepTips {
+          text-align: center;
+          height: .5rem;
+          line-height: .25rem;
+          padding: .2rem 0;
+          font-size: .16rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 蒙版 -->
+    <div class="layer_load on">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    
+    <img class="banner_to_detail" src="../images/activity/banner_apply_onekey.jpg" style="width:100%;" alt="">
+    <div id="borrowList">
+
+    </div>
+<!-- 
+    <div class="recordContent">
+        <div class="recordList">
+            编号：21425321515
+        </div>            
+        <div class="recordList">
+            申请金额：1000元
+        </div>            
+        <div class="recordList">
+            申请期限：7天
+        </div>
+        <div class="recordList">
+            申请时间：2017-1-2 18:29:22
+        </div>
+        <div class="recordListBtnTop">
+            待提交
+        </div>            
+        <div class="recordListBtnBottom">
+            继续提交
+        </div>
+    </div> -->
+    <div class="noneOrder">
+      <img src="../images/oneStepImg.png" alt="">
+      <div class="oneStepTips">暂无待还款订单<br>苦了生活，不能苦了自己</div>
+      <div class="submitBtn confirmBtn">快速领钱</div>
+    </div>
+    <div class="tab_bar">
+        <footer>
+            <a href="../index.html"><img src="../images/youlechang.png"></a>
+            <a href="../apply/apply.html"><img src="../images/qianbao.png"></a>
+            <a href="#"><img src="../images/oneStep_active.png"></a>
+            <a href="./myWallet.html"><img src="../images/my.png"></a>
+        </footer>   
+    </div>
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+      !(function(global,userUtil,layer,dataUtil){   
+          
+	$('.banner_to_detail').on('click',function(){
+		window.location.href = global.localUrl+'activity/toBorrowMoney.html';
+	});
+        var localH=localStorage.getItem("localH")
+        if(!localH){
+            localH=localStorage.setItem("localH",document.documentElement.clientHeight)
+        }
+        $("body").height(Number(localH));
+      	//申请记录
+      	getborrowingInfo();
+
+        var stateConf = {
+            1: { text: "待提交", operateTxt: "继续提交" },
+            2: { text: "审核中", operateTxt: "" },
+            3: { text: "放款中", operateTxt: "" },
+            4: { text: "放款中", operateTxt: "" },
+            5: { text: "待还款", operateTxt: "一键还款" },
+            6: { text: "已还款", operateTxt: "" },
+            7: { text: "审核不通过", operateTxt: "再次申请"},
+            8: { text: "待还款", operateTxt: "一键还款" },
+            9: { text: "已还款", operateTxt: "" },
+            10: { text: "审核不通过", operateTxt: "" },
+            11: { text: "还款处理中", operateTxt: "" },
+            12: { text: "放款失败", operateTxt: "" },
+        }
+
+      	function getborrowingInfo(){
+      		userUtil.ajax({
+      			url: global.localUrl+ 'nw/orders/borrowingInfo',
+      			data:{},
+      			done: function(re){
+      				layer.hideLoad();
+              var n=0;
+      	      var dom='';
+              $.each(re.data,function(k,v){
+                if(v.status == 5 || v.status == 8){    //有操作按钮
+                  dom+= ("<div class=\"recordContent\"><div class=\"recordList\">编号："+v.orderNo+"</div><div class=\"recordList\">申请金额："+v.borrowingAmount+"元</div><div class=\"recordList\">申请期限："+v.borrowingTerm+"</div><div class=\"recordList\">申请时间："+v.createTime+"</div><div class=\"recordList active_color\">"+v.orderRemark+"</div><div class=\"recordListBtnTop\">"+v.orderStatusDesc+"</div><div class=\"recordListBtnBottom\" data-uuid=\""+v.orderNo+"\" data-status=\""+v.status+"\">"+stateConf[v.status].operateTxt+"</div></div>");
+                  n++;
+      					}
+                $("#borrowList").html(dom);
+      				});
+
+              if(n==0){
+                $("#borrowList").hide();
+                $(".noneOrder").css({"display":"block"});
+              }
+      				$('.recordListBtnBottom').on("click",function () { 
+      					var _this = $(this);
+                if (_this.attr("data-status") == 1) {
+                    window.location.href = "../trust/identification.html"
+                } else if (_this.attr("data-status") == 5) {
+                    window.location.href = "../trust/repaymentDetail.html?orderNo="+_this.attr("data-uuid");
+                } else if (_this.attr("data-status") == 7) {
+                    window.location.href = "./apply.html";
+                } else if (_this.attr("data-status") == 8) {
+                   	window.location.href = "../trust/repaymentDetail.html?orderNo="+_this.attr("data-uuid");
+                } 
+      				});
+      				
+      			}
+      		})
+      	}
+
+        $(".confirmBtn").click(function(){
+          window.location.href=global.localUrl+"apply/apply.html"
+        })
+
+      })(global,userUtil,layer,dataUtil)
+      
+    </script>
+</body>
+</html>
+
+
+

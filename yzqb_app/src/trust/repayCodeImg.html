@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>支付宝线下还款</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            background-color: white;
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        .repayContent {
+            width: 3rem;
+            margin: 0 0 .2rem;
+
+
+        }
+        .codeTitle{
+            padding-top: .2rem;
+            /*background: #f7f7f7;*/
+        }
+        .codeTitle div {
+            height: .3rem;
+            padding: .05rem 0;
+            line-height: .3rem;  
+            text-align: center; 
+            width: 100%;
+            /*padding-top: .2rem;*/
+            /*box-sizing:border-box;*/
+        }
+        .repayContent {
+            width: 100%;
+
+        }
+        .codeTitle .showTimeTitle {
+            font-size: .18rem;
+        }
+        .codeTitle .showTime {
+            /*color: rgb(255,85,78);*/
+            font-size: .25rem;
+        }
+        .codeTitle .showTimeTips {
+            font-size: .14rem;
+            width: 3rem;
+            height: .7rem;
+            margin: 0 auto;
+            text-align: left;
+            line-height: .25rem;
+            padding: .05rem .2rem;
+            box-sizing: border-box;
+        }
+        .codeTitle .showTimeTips span {
+            color: rgb(255,85,78);
+        }
+        .codeImgContent {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto;
+            overflow: hidden;
+
+        }
+        .codeImgContent div {
+            height: .3rem;
+            line-height: .3rem;  
+            text-align: center; 
+            width: 100%;
+        }
+        .codeImgTitle {
+            font-size: .18rem;
+            padding-top: .1rem;
+            font-weight: 700;
+        }
+        .codeImgContent img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        .saveLocal {
+            margin: .3rem;
+            /*margin-bottom: .6rem;*/
+            /*width: 1.2rem;*/
+            height: .45rem;
+            line-height: .45rem;
+            font-size: .16rem;
+            color: white;
+            text-align: center;
+            border-radius: .05rem;
+            background-color: rgb(255,85,78);
+        }
+        .pay_tips{
+            text-align:center;
+            margin-top: .2rem;
+            margin-bottom: .2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load on">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="repayContent">
+        <div class="codeTitle">
+            <div class="showTimeTitle">本二维码有效时间</div>
+            <div class="showTime" id="countDown1"></div>
+            <div class="showTimeTips">请务必在<span>有效期</span>内<span>支付宝</span>扫码还款，<span>过期将还款失败</span>，需要重新获取二维码。</div>
+        </div>
+        <div class="codeImgContent">
+            <img class="qr_img" download="" alt="" src="">
+        </div>
+        <div class="saveLocal hide" id="saveImg">一键保存</div>
+        <div class="pay_tips">请使用支付宝扫码支付</div>
+    </div>
+    <input type="button" class="hide" value="download image">    
+
+</body>
+    <!-- 脚本sd -->
+    <script src="../lib/zepto.min.js"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/upload.js?rev=@@hash"></script>
+    <script src="../js/clipboard.min.js"></script>
+    <script>
+        !function(global, layer, userUtil, dataUtil){
+            $("body").height(document.documentElement.clientHeight);
+            var sessionId =userUtil.sid();
+            var orderNo;
+            if(global.query){
+                orderNo=global.query['orderNo'];
+            }
+
+            //判断APP还是普通浏览器
+            if(navigator.userAgent.indexOf("BJHB") > -1){   //app内
+                $('.saveLocal').removeClass('hide');
+            }
+
+            //初始化线下还款信息
+            function offlineRepay(){
+                var _data={
+                    "sessionId": sessionId,
+                    "orderNo": orderNo,
+                    "qrcodeType": "2"
+                }
+                $.ajax({
+                    url: global.localUrl + "wallet/orders/getRefundQrcode",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        layer.hideLoad();
+                        if (1 == re.code) {
+                            // $("#refundAmount").html(re.data.refundAmount);
+                            // $(".qr_img").attr("src","http://image.yqguan.cn"+re.data.qrcode);   //测试
+                            $(".qr_img").attr("src","http://image.yaoqianguan.com"+re.data.qrcode);  //线上
+                            getCountDown(re.data.validTime);
+                            if(navigator.userAgent.indexOf("BJHB") > -1){   //app内
+                                $('#saveImg').on('click',function(){
+                
+                                    WebViewJavascriptBridge.callHandler('savePicture', {imgurl:$('.qr_img').attr('src')}, function (response) { callback(response);});
+                                });
+                            }
+                        }
+                        else{
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.hideLoad();
+                        layer.tips(global.netError);
+                    }
+                });
+            }
+            offlineRepay();
+
+            function getCountDown(timestamp){
+                setInterval(function(){
+                    // var nowTime = new Date();
+                    // var endTime = new Date(timestamp * 1000);
+
+                    // var t = endTime.getTime() - nowTime.getTime();
+                    if(timestamp <= 0){
+                        console.log('time out');
+                        window.location.reload();
+                        return;
+                    }
+                    var t = timestamp;
+                       var min=Math.floor(t/1000/60%60);
+                       var sec=Math.floor(t/1000%60);
+    
+                    if (min < 10) {
+                         min = "0" + min;
+                    }
+                    if (sec < 10) {
+                         sec = "0" + sec;
+                    }
+                    var countDownTime = min + ":" + sec;
+                    $("#countDown1").html(countDownTime);
+                    timestamp = timestamp - 1000;
+                },1000);
+            }
+
+        }(global, layer, userUtil, dataUtil)
+
+    </script>
+</html>

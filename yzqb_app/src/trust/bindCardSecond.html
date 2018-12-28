@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>绑定银行卡</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+
+        .cells_title {
+            margin: 0;
+            padding: .12rem .4rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+            font-weight: 700;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+
+        .operatorContent {
+            width: 100%;
+            background: #f9f9f9;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0.2rem;
+        }
+        .txt {
+			text-align: right;
+        }
+
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .2rem .4rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+        .cells_tips {
+            margin: 0.05rem .4rem;
+            font-size: .12rem;
+        }
+        .cells_tips a {
+            color: red;
+        }
+        select {
+            border: 0;
+            float: right;
+            width: 1.2rem;
+            height: .2rem; 
+            appearance:none;  
+            -moz-appearance:none;  
+            -webkit-appearance:none;  
+            background: url("../images/gogogo.png") ;
+            background-repeat: no-repeat;
+            background-size: 20% 100%;
+            background-position: 100% 0%;
+            /*为下拉小箭头留出一点位置，避免被文字覆盖*/ 
+            
+            padding: 0 .14rem;
+            padding-right: .3rem;
+            font-size: .14rem;
+        }
+        select::-ms-expand { display: none; }
+        select option {
+            width: 1.2rem;
+            height: .2rem; 
+            font-size: .14rem;
+            background-color: white;
+        }
+        .cell_cn img {
+            position: absolute;
+            top: .12rem;
+            right: .4rem;
+            width: .2rem;
+            height: .2rem;
+        }
+        #btnCode {
+            color: rgb(255,85,78);
+
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="cells_title">
+        <a>个人信息</a>
+    </div>
+	<div class="cells">
+<!--         <div class="cell">
+            <label class="cell_hd">持卡人：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请输入真实姓名" id="realName" maxlength="4" />
+            </div>
+        </div> -->
+        <div class="cell">
+            <label class="cell_hd">选择开户行：</label>
+            <div class="cell_cn">
+                <select name="" class="selectChoose" dir="rtl" id="">
+                    <option value="0">请选择</option>
+                </select>
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">卡号：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请输入银行卡号" id="bankCardNo" maxlength="19" />
+            </div>
+        </div>
+	</div>
+
+    <div class="cells_title">
+        <a>银行预留手机号</a>
+    </div>
+    <div class="cells">
+        <div class="cell">
+            <label class="cell_hd">手机号：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请输入手机号码" id="telNum" maxlength="11" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">短信验证码：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请输入" id="telSns" maxlength="6" />
+            </div>
+<!--             <div class="cell_ft">
+                <div class="getCode">获取验证码</div>
+            </div> -->
+            <div class="cell_ft">
+                <a href="javascript:;" class="login_btn_code" id="btnCode">获取验证码</a>
+            </div>
+
+        </div>
+    </div>
+    <!-- <div class="operatorContent confirmBtn"> -->
+        <div class="submitBtn">
+            提交
+        </div>
+<!--         <div class="cells_tips">
+            <span>银行卡绑定失败</span><a href="">猛戳这里></a>
+        </div> -->
+    <!-- </div> -->
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer){       
+        	
+            var localH=localStorage.getItem("localH")
+            if(!localH){
+                localH=localStorage.setItem("localH",document.documentElement.clientHeight)
+            }
+            $("body").height(Number(localH));
+            
+            var sessionId=userUtil.sid(),userUuid=userUtil.userID(),bankId,bankCardName;
+            var _data={
+                "sessionId": sessionId
+            };
+            $(".tip i").click(function(){
+                if($(".tip i img").attr('src')=="../images/bingo.png"){
+                    $(".tip i img").attr('src',"../images/noBingo.png");
+                    $(".confirmBtn img").attr('src',"../images/confirmBtn.png");
+                    $(".confirmBtn").off("click");
+                }else {
+                    $(".tip i img").attr('src',"../images/bingo.png");
+                    $(".confirmBtn img").attr('src',"../images/checkInfBtn.png");
+                    $(".confirmBtn").click(function(){
+
+                    })
+                }
+            })
+            
+            //  验证码
+            $("#btnCode").on("click", function () {
+                var $this = $(this);
+                function isPoneAvailable(str) {  
+                  var myreg=/^[1][3,4,5,6,7,8,9][0-9]{9}$/;  
+                  if (!myreg.test(str)) {  
+                      return false;  
+                  } else {  
+                      return true;  
+                  }  
+                } 
+                if(!isPoneAvailable($("#telNum").val())){
+                    layer.tips("输入的手机号码不合法");
+                    return;
+                }
+                var _data={
+                    "sessionId": sessionId,
+                    "userUuid": userUuid,
+                     "bankId": bankId,
+                     "bankNumberNo": $("#bankCardNo").val(),
+                     "bankNumberMobile": $("#telNum").val(),
+                }
+                if (!$this.hasClass("dis")) {
+                    $this.addClass("dis");
+                    $.ajax({
+                        url: global.localUrl + "wallet/bankCardSmsCode",
+                        type: "post",
+                        data: JSON.stringify(_data),
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (re) {
+                            if (1 == re.code) {
+                                showWaitTips();
+                            }
+                            else{
+                                $this.removeClass("dis");
+                                layer.tips(re.message);
+                            }
+                        },
+                        error: function () {
+                            $this.removeClass("dis");
+                            layer.tips(global.netError);
+                        }
+                    });
+                }
+            });
+            
+            // 验证码倒计时
+            function showWaitTips() {
+                var $btnCode = $("#btnCode");
+                var s = 60;
+                $btnCode.text("已发送(" + s + ")").addClass("dis");
+                var sv = setInterval(function () {
+                    if (s > 1) {
+                        s--;
+                        $btnCode.text("已发送(" + s + ")");
+                    } else {
+                        $btnCode.text("重新获取").removeClass("dis");
+                        clearInterval(sv);
+                    }
+                }, 1000);
+            };
+
+            //银行卡列表获取
+
+            $.ajax({
+                url: global.localUrl + "wallet/bankDefineList",
+                type: "post",
+                data: JSON.stringify(_data),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    if (1 == re.code) {
+                        var _datas=re.data;
+                        $(".selectChoose").html("");
+                        var _html='<option value="0">请选择</option>';
+                        for(var i=0;i<_datas.length;i++){
+                            _html+=('<option value="'+_datas[i].bankCode+'">'+_datas[i].bankName+'</option>');
+                        }
+                        $(".selectChoose").append(_html);
+                    }
+                    else{
+                        layer.tips(re.message);
+                    }
+                },
+                error: function () {
+                    layer.tips(global.netError);
+                }
+            });
+
+            // 卡bin校验blur
+            $("#bankCardNo").blur(function(){
+                console.log("失去焦点了")
+                var _data={
+                    "sessionId": sessionId,
+                    "bankCardNo": $("#bankCardNo").val()
+                }
+                $.ajax({
+                    url: global.localUrl + "wallet/checkBankCardBin",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            layer.tips("银行卡号可用");
+                            bankId=re.data.bankId;
+                            
+                        }
+                        else{
+                            setTimeout(function(){
+                                window.location.reload();
+                            },2000);
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            })
+            // 提交/
+            $(".submitBtn").click(function(){
+                var _data={
+                    "sessionId": sessionId,
+                    "userUuid": userUuid,
+                     "bankId": bankId,
+                     "bankNumberNo": $("#bankCardNo").val(),
+                     "bankNumberMobile": $("#telNum").val(),
+                     // "bankCardName": $("#realName").val(),
+                     "smsCode": $("#telSns").val()
+                }
+                for(var e in _data){
+                    if(!_data[e]){
+                        layer.tips("请输入完整信息");
+                        return;
+                    }
+                }
+                $.ajax({
+                    url: global.localUrl + "wallet/saveUserBank",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            layer.tips("绑卡成功");
+                            setTimeout(function(){
+                                window.location.href=global.localUrl +"index.html";
+                            },2000);
+                        }
+                        else{
+
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            })
+
+
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

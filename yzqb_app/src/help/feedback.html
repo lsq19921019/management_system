@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>意见反馈</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+
+    <style type="text/css">
+        body{
+            background: #fff;
+        }
+        .feed_con{
+            background: rgb(246,246,246);
+            /*width: 100%;*/
+            height: 2.5rem;
+            padding: 0 .3rem;
+            position: relative;
+        }
+        .feed_tit{
+            font-size: .16rem;
+            color: rgb(65,65,65);
+            padding: .15rem 0 .03rem .1rem;
+        }
+        .feed_tit1{
+            padding: 0 0 .16rem 0;
+        }
+        .feed_text{
+            height: 1.78rem;
+            display: block;
+            width: 93%;
+            padding: .08rem .1rem;
+            font-size: 0.14rem;
+        }
+        .feed_count{
+            position: absolute;
+            bottom: .23rem;
+            right: .44rem;
+            color: #c0c3ca;
+            font-size: .12rem;
+        }
+        .feed_image{
+            padding: .2rem .4rem 0;
+        }
+        .feed_image_item{
+            width: .6rem;
+            height: .6rem;
+        }
+/*        .login_out{
+            width: 3rem;
+            height: .49rem;
+            display: block;
+            position: absolute;
+            bottom: .5rem;
+            left: 50%;
+            margin-left: -1.5rem;
+            
+        }*/
+        .photo_wap {
+            float: left;
+            box-sizing: border-box;
+            position: relative;
+            height: 0.6rem;
+            width: 0.6rem;
+            border-radius: .04rem;
+            margin-right: .15rem;
+        }
+        .photo {
+            position: relative;
+            border-radius: .04rem;
+            width: 0.6rem;
+            height: 0.6rem;
+            background: #fff;
+            overflow: hidden;
+            /*border: .03rem solid #ff554e;*/
+        }
+        .photo.btn_add_photo{
+            border: none;
+        }
+
+        .photo .photo_img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .photo .photo_upload {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .2);
+            z-index: 3;
+        }
+
+        .photo .photo_upload .photo_upload_progress {
+            position: absolute;
+            width: 80%;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+
+        .photo .photo_upload .photo_upload_cancel {
+            position: absolute;
+            top: .03rem;
+            right: .03rem;
+            width: .15rem;
+            height: .15rem;
+            text-align: center;
+            background: url(../images/feed_del.png) no-repeat;
+            background-size: 100% 100%;
+
+        }
+
+        .photo .photo_upload_bar {
+            width: 100%;
+            height: 2px;
+            border-radius: 1px;
+        }
+
+        .photo .photo_upload_bar > i {
+            display: block;
+            width: 0;
+            height: 100%;
+            background: #ff6a00;
+            -webkit-transition: width .6s 0s ease-out;
+            transition: width .6s 0s ease-out;
+        }
+
+        .photo .photo_upload_txt {
+            padding-top: .08rem;
+            font-size: .08rem;
+            color: #fff;
+        }
+        .submitBtn {
+            position:inherit;
+            bottom:inherit;
+            left:inherit;
+            margin:auto;
+            margin-top:.8rem;
+            width: 2.9rem;
+            height: .45rem;
+            line-height: .45rem;
+            font-size: .18rem;
+            text-align: center;
+            letter-spacing: .02rem;
+            color: white;
+            border-radius: .225rem;
+            background-color: #EF0600;
+            box-shadow: 0 .05rem .05rem rgb(214,193,192);
+        }
+    </style>
+</head>
+<body>
+    <div class="layer_load">
+      <div class="layer_mask"></div>
+      <div class="layer_load_icon iconfont icon-loading"></div>
+    </div>
+
+    <div class="view">
+        <div class="feed_con">
+            <div class="feed_tit">意见内容：</div>
+            <textarea class="feed_text" id="feedText" autofocus required="" placeholder="请输入要反馈的信息…" maxlength="100"></textarea>
+            <div class="feed_count"><span id="feedCount">0</span>/100</div>
+        </div>
+
+        <div class="feed_image">
+            <div class="feed_tit feed_tit1">上传图片：<span style="font-size: .12rem;color:rgb(133,133,133);">不超过3张</span></div>
+            <div class="photos">
+              <div class="photo_wap">
+                  <div class="photo btn_add_photo" id="btnAddPhoto">
+                    <img class="feed_image_item" src="../images/feed_add.png">
+                </div>
+                <input type="file" accept="image/*" class="upload" id="flContractPhoto" data-name="Contract" />
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="submitBtn" id="feedSubBtn">提交</div>
+        <!-- <img class="login_out" id="feedSubBtn" src="../images/feed_subbtn.png"> -->
+    </div>
+
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/upload.js?rev=@@hash"></script>
+    <script src="../js/help/feedback.js?rev=@@hash"></script>
+</body>
+</html>

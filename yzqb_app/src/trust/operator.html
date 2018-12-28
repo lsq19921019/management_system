@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>手机运营商</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+            background-color: white;
+        }
+        .cells {
+            margin-top: .2rem;
+        }
+        .cells_title {
+            text-align: center;
+            width: 2rem;
+            margin: 0 auto;
+            padding: .12rem .2rem;
+            font-size: .12rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .12rem;
+            height: .2rem;
+            line-height: .2rem;
+            padding-left: .05rem;
+            color: red;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+        
+        .operatorContent {
+            width: 100%;
+            height: 1.5rem;
+            padding: .2rem 0;
+            background: #f9f9f9;
+            
+        }
+        .txt {
+			text-align: left;
+        }
+        .confirmBtn {
+            position: static;
+            display: block;
+            width: 3rem;
+            height: .49rem;
+            margin: 0 auto;
+            background-color: rgb(249,182,179);
+        }
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .2rem .4rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+	
+	<div class="cells">
+        <div class="cell">
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" id="txtName" maxlength="20" />
+            </div>
+        </div>
+        <div class="cell">
+            <div class="cell_cn">
+                <input type="password" class="txt" placeholder="请输入服务密码" id="passwordName" maxlength="20" />
+                <input type="text" class="txt hide" placeholder="请输入服务密码" id="passwordText" maxlength="20" />
+            </div>
+            <div class="cell_ft">
+                <img src="../images/eye.png" alt="">
+            </div>
+        </div>
+	</div>
+    <div class="operatorContent">
+        <div class="tip">
+            <i><img src="../images/noBingo.png" alt=""></i><span>同意《用户使用协议》</span>
+        </div>
+        <div class="submitBtn confirmBtn"> 确认 </div>
+        <div class="cells_title">
+            <span>忘记运营商服务密码？</span><a href="">点这里</a>
+        </div>
+    </div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer){       
+        	$("body").height(document.documentElement.clientHeight);
+            var sessionId =userUtil.sid();
+            $(".tip i").click(function(){
+                if($(".tip i img").attr('src')=="../images/bingo.png"){
+                    $(".tip i img").attr('src',"../images/noBingo.png");
+                    $(".confirmBtn").css({"background-color":"rgb(249,182,179)"});
+                    $(".confirmBtn").off("click");
+                }else {
+                    $(".tip i img").attr('src',"../images/bingo.png");
+                    $(".confirmBtn").css({"background-color":"rgb(255,85,78)"});
+                    $(".confirmBtn").click(function(){
+                        var _data={
+                            "sessionId": sessionId
+                        };
+                        $.ajax({
+                            url: global.localUrl + "web/credit/addMoxieCompletion",
+                            type: "post",
+                            data: JSON.stringify(_data),
+                            contentType: 'application/json;charset=utf-8',
+                            success: function (re) {
+                                if (1 == re.code) {
+                                    layer.tips("认证成功");
+                                    setTimeout(function(){
+                                        window.location.href=global.localUrl +"trust/identification.html";
+                                    },2000);
+                                }
+                                else{
+
+                                    layer.tips(re.message);
+                                }
+                            },
+                            error: function () {
+                                layer.tips(global.netError);
+                            }
+                        });
+                    })
+
+                }
+            })
+
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

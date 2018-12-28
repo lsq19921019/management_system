@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>极速卡</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            position: relative;
+            /*background-color: white;*/
+        }
+        .cells {
+            margin-top: .1rem;
+        }
+        .cells_title {
+            text-align: center;
+            width: 2rem;
+            margin: 0 auto;
+            padding: .12rem .2rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .12rem;
+            height: .2rem;
+            line-height: .2rem;
+            padding-left: .05rem;
+            color: red;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+        .cell_hd {
+            font-size: .14rem;
+        }
+        .cardBanner {
+            width: 100%;
+            height: 1.72rem;
+            background: url('../images/cardBanner.png') no-repeat;
+            background-size: 100% 100%;
+            overflow: hidden;
+        }
+        .cardBanner img {
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+        }
+        .cardBanner>div {
+            height: .3rem;
+            margin-top: .6rem;
+            float: left;
+            padding: 0;
+            color: white;
+        }
+        .cardBanner .titleLeft {
+            width: 1.6rem;
+            margin-left: .4rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: .16rem;
+        }
+        .cardBanner .titleRight {
+            width: 1rem;
+            text-align: right;
+            float: right;
+            margin-right: .4rem;
+            font-weight: 700;
+            font-size: .16rem;
+        }
+        .cardBanner>span {
+            display: block;
+            height: .3rem;
+            float: left;
+            padding: 0;
+            font-size: .3rem;
+            color: white;
+        }
+        .cardBanner .titleContentLeft {
+            margin-left: .4rem;
+            height: .3rem;
+        }        
+        .cardBanner .titleContentRight {
+            height: .3rem;
+            float: right;
+            text-align: right;
+            margin-right: .4rem;
+        }
+        .cell_cn {
+            text-align: right;
+            font-size: .12rem;
+            color: gray;
+        }
+        .cell_hd a {
+            display: inline-block;
+            color: rgb(229,192,149);
+            font-size: .12rem;
+        }
+
+        .operatorContent {
+            width: 100%;
+            /*height: 1.3rem;*/
+            background: #f9f9f9;
+            position: absolute;
+            bottom: .5rem;
+        }
+        .txt {
+            text-align: left;
+        }
+        .confirmBtn {
+            position: static;
+            display: block;
+            width: 2.95rem;
+            height: .45rem;
+            margin: 0 auto;
+            background-color: rgb(249,182,179);
+        }
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .1rem .4rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem 0.02rem 0rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+
+        //进度条
+        ul.lanren{
+            margin: .4rem auto;
+            height: 1rem;
+        }
+        .scale_panel{
+            color:#999;
+            position:absolute;
+            line-height: .18rem;
+            top:.2rem;
+        }
+        .scale>span{
+            background-color: rgb(255,85,78);
+            width:30px;
+            height:30px;
+            position:absolute;
+            left:-2px;top:-10px;
+            cursor:pointer;
+            border-radius: 50%;
+            font-size: .2rem;
+        }
+        .scale{
+            background-color: #eee;
+            border-left: .01rem #83BBD9 solid; 
+            width: 2rem;
+            height: .1rem; 
+            position: relative; 
+            border-radius: .15rem; 
+        }
+        .scale>div{ 
+            background-repeat: repeat-x; 
+            background-color: rgb(253,152,91); /*进度条颜色*/
+            width: 0px; 
+            position: absolute; 
+            height: .1rem; 
+            width: 0; left: 0; bottom: 0; 
+            border-radius: .2rem;
+        }
+        .lanren>li{
+            margin-left: 3.50px;
+            position:relative;
+            list-style:none;
+            font-size: 30px;
+        }
+        #title{
+            position: absolute;
+            top: 40px;
+            left: 30px;
+        }
+        
+
+        .layer_dialog_box .layer_dialog_ft {
+            margin: .2rem auto;
+        }
+        .layer_dialog_box .layer_btn {
+            border-radius: .05rem;
+            background-color: rgb(255,85,78);
+            color: white;
+            width: 200px;
+        }
+        .layer_dialog_box .layer_dialog_cn {
+            /*height: 1.6rem;*/
+            padding: 0rem .38rem;
+            
+        }
+        #lastConfirm .layer_dialog_cn {
+            line-height: .3rem;
+            height: .6rem;
+            text-align: center;
+        }
+
+
+        #lastConfirm .layer_dialog_cn a{
+            font-size: .25rem;
+            color: rgb(255,85,78);
+        }
+        .layer_dialog_box .layer_dialog_title {
+            font-weight: 700;
+        }
+        .layer_dialog_box .layer_dialog_cn .lanrenTitle {
+            height: .16rem;
+            width: 100%;
+            text-align: left;
+        }
+        .layer_dialog_cn .lanrenTitle span {
+            display: block;
+            float: right;
+            height: .3rem;
+            line-height: .3rem;
+            width: .6rem;
+            text-align: right;
+        }
+        .lanrenTitleValue {
+            height: .3rem;
+            line-height: .3rem;
+            width: 100%;
+            text-align: left; 
+            margin-top: .4rem;
+        }
+        .lanrenTitleValue a {
+            display: block;
+            float: left;
+            width: 1rem;
+            text-align: left;
+        }
+        .lanrenTitleValue span {
+            display: block;
+            float: right;
+            width: 1rem;
+            text-align: right;
+        }
+        .lanrenContent {
+            height: .7rem;
+            text-align: left;
+            padding: .1rem 0;
+        }
+        .cell_cn span {
+            display: block;
+            float: right;
+            width: .44rem;
+            height: .28rem;
+            line-height: .3rem;
+            font-size: .14rem;
+            color: white;
+            text-align: center;
+            border-radius: .05rem;
+            background-color:rgb(229,192,149);
+        }
+        .tip a {
+            color: rgb(253,93,85);
+        }
+
+
+        .layer_dialog_box {
+            padding: .1rem 0;
+        }
+        .layer_btn {
+            display: block;
+            position: relative;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            text-align: center;
+            letter-spacing: 1px;
+            color: #353535;
+            width: 1rem;
+            border-radius: .1rem;
+            background-color: #eee;
+            /*margin: 0rem .2rem;*/
+
+        }
+
+            .layer_btn.layer_btn_primary {
+                background-color: rgb(255,85,78);
+                color: white;
+            }
+
+            .layer_btn + .layer_btn:after {
+                content: " ";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 1px;
+                height: 100%;
+                /*border-left: 1px solid #E4E4E4;*/
+                color: #E4E4E4;
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+                -webkit-transform: scaleX(.5);
+                transform: scaleX(.5);
+            }
+        .layer_dialog .layer_dialog_ft {
+            position: relative;
+            line-height: .42rem;
+            font-size: .17rem;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            background-color: white;
+        }
+
+            .layer_dialog .layer_dialog_ft::after {
+                content: " ";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 1px;
+                border-top: solid 0 white;
+                color: #E4E4E4;
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+                -webkit-transform: scaleY(.5);
+                transform: scaleY(.5);
+            }
+        .layer_dialog_title {
+            font-weight: 700;
+        }
+
+        .cells_content {
+            display: none;
+        }
+        .disOn {
+            display: block;
+        }
+        #bar>div {
+            left: -.05rem;
+        }
+        .layer_dialog .layer_dialog_hd:after {
+            border-top: 0px solid #E4E4E4
+        }
+        .cells:before {
+            border-top: 0px solid #E4E4E4;
+        }
+        .cellLine:before {
+            border: 0 solid white;
+        }
+        .cells:after {
+            border: 0 solid white;
+        }
+        .getMoneyWay {
+            font-size: .16rem;
+            margin-top: .02rem;
+        }
+        .getMoneyWay a {
+            font-size: .16rem;
+        }
+
+        .confirm .dengerBtn {
+            width: .8rem;
+            margin: 0 .1rem;
+            height: .3rem;
+            line-height: .3rem;
+            text-align: center;
+            float: left;
+            background-color: rgb(255,85,78);
+            border-radius: .05rem;
+            font-size: .14rem;
+            color: white;
+        }
+        .confirm .resetValue {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="cardBanner">
+        <!-- <img src="../images/cardBanner.png" alt=""> -->
+        <div class="titleLeft">借款金额</div>
+        <div class="titleRight">借款期限</div>
+        <span class="titleContentLeft"></span>
+        <span class="titleContentRight"></span>
+    </div>
+    <div class="cells">
+        <div class="cell cellLine">
+            <label class="cell_hd">利息：</label>
+            <div class="cell_cn">
+                
+            </div>
+        </div>       
+        <div class="cell">
+            <label class="cell_hd">到期应还：</label>
+            <div class="cell_cn">
+                
+            </div>
+        </div>
+    </div>    
+    <div class="cells">
+        <div class="cell cellLine">
+            <label class="cell_hd getMoneyWay">到账方式：<a>（推荐）</a></label>
+<!--             <div class="cell_cn">
+                <span>修改</span>
+            </div> -->
+        </div>
+        <div class="cell">
+            <label class="cell_hd" id="cashValue">现金：</label>
+            <div class="cell_cn">
+                现金直接汇入您的银行卡
+            </div>
+        </div>        
+        <div class="cell">
+            <label class="cell_hd" id="gameCode">游戏币：</label>
+            <div class="cell_cn">
+                游戏币直接转入您的游戏币账户
+            </div>
+        </div>
+    </div>
+    <div class="operatorContent">
+        <div class="tip">
+            <i><img src="../images/bingo.png" alt=""></i><span>我已阅读并同意<a href="../help/loanprotocol.html">《借款协议》</a></span>
+        </div>
+        <div class="submitBtn confirmBtn">开始申请</div>
+    </div>
+
+    <div class='layer_dialog alert'>
+        <div class='layer_mask'></div>
+        <div class='layer_dialog_box'>
+            <div class='layer_dialog_hd'>
+                <span class='layer_dialog_title'></span>
+                <i class='layer_btn_close icon-close' style='display:none'></i>
+            </div>
+            <div class='layer_dialog_cn'>
+                <div class="lanrenTitle">
+                     现金<span>游戏币</span>
+                </div>
+                <!-- 可拖拽进度条 -->
+                <ul class="lanren">
+                    <li>
+                        <span id="title" style="display: none">0</span>
+                        <div class="scale_panel">
+                            <div class="scale" id="bar">
+                                <div></div>
+                                <span id="btn"></span>
+                            </div>
+                        </div>
+                    </li>
+                </ul> 
+
+                <div class="lanrenTitleValue">
+                     <a></a><span></span>
+                </div>
+
+                <div class="lanrenContent">
+                    游戏币将直接充值到您的游戏账户中，剩余现金汇入您绑定的银行卡中。当天提交，当天审核，实时到账。
+                </div>
+            </div>
+            <div class='layer_dialog_ft'>
+                <a class='layer_btn layer_btn_primary'></a>
+            </div>
+        </div>
+    </div>
+
+     <div class='layer_dialog confirm' id="lastConfirm">
+        <div class='layer_mask'></div>
+        <div class='layer_dialog_box'>
+            <div class='layer_dialog_hd'>
+                <span class='layer_dialog_title'>提示</span>
+                <i class='layer_btn_close icon-close' style='display:none'></i>
+            </div>
+            <div class='layer_dialog_cn'>
+
+            </div>
+            <div class='layer_dialog_ft'>
+                <!-- <a class='layer_btn'>返回</a> -->
+                <a class='layer_btn layer_btn_primary submitBtns last_btn_primary'>我知道了</a>
+                <div class="submitBtns dengerBtn">确认</div> 
+                <div class="resetValue dengerBtn">重新选择</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer){       
+        	$("body").height(document.documentElement.clientHeight);
+            var cashRate,
+            borrowValue,
+            maxCashRate,
+            sessionId=userUtil.sid(),
+            productId,
+            gameRechargeRate;
+
+            $(".tip i").click(function(){
+                if($(".tip i img").attr('src')=="../images/bingo.png"){
+                    $(".tip i img").attr('src',"../images/noBingo.png");
+                    $(".confirmBtn").css({"background-color":"rgb(249,182,179)"});
+                    $(".confirmBtn").off("click");
+                }else {
+                    $(".tip i img").attr('src',"../images/bingo.png");
+                    $(".confirmBtn").css({"background-color":"rgb(255,85,78)"});
+
+                }
+            })
+            $(".confirmBtn").css({"background-color":"rgb(255,85,78)"});
+            $(".confirmBtn").click(function(){
+                if(cashRate<.5){
+                    $(".last_btn_primary").css({"display":"none"});
+                    $(".dengerBtn").css({"display":"block"});
+                    $(".confirm .layer_dialog_cn").html("您只能收到 <a>"+(Math.ceil(cashRate*borrowValue))+"元</a><br>请确认是否选择无误");
+                    $(".confirm").addClass("on");
+                }else {
+                    $(".dengerBtn").css({"display":"none"});
+                    $(".last_btn_primary").css({"display":"block"}); 
+                    $(".confirm .layer_dialog_cn").html("到账现金为 <a>"+(Math.ceil(cashRate*borrowValue))+" </a>元<br>游戏币个数为 <a>"+(borrowValue-Math.ceil(cashRate*borrowValue))+"</a> 个");
+                    $(".confirm").addClass("on");       
+                }
+
+            })
+            // 进度条代码
+            var scale = function (btn,bar,title){
+                this.btn=document.getElementById(btn);
+                this.bar=document.getElementById(bar);
+                this.title=document.getElementById(title);
+                this.step=this.bar.getElementsByTagName("div")[0];
+                this.init();
+            };
+            scale.prototype={
+                init:function (){
+                    var f=this,g=document,b=window,m=Math;
+                    f.btn.ontouchstart=function (e){
+                        var x=(e||b.event).touches[0].clientX;
+                        var l=this.offsetLeft;
+                        var max=f.bar.offsetWidth-this.offsetWidth;
+
+                        f.btn.ontouchmove=function (e){
+                            var thisX=(e||b.event).touches[0].clientX;
+                            var to=m.min(max,m.max(-10,l+(thisX-x)));
+                            if(to>140){to=140}   
+                            f.btn.style.left=to+'px';
+                            f.ondrag(m.round(m.max(0,to/max)*100),to);
+                            b.getSelection ? b.getSelection().removeAllRanges() : g.selection.empty();
+                        };
+                        g.ontouchend=new Function('this.onmousemove=null');
+                    };
+                },
+                ondrag:function (pos,x){
+                    // 超过80%不能滑动
+                    if(x>150){x=150}   
+                    this.step.style.width=(Math.max(0,x)+10)+'px';
+                    this.title.innerHTML=pos+'%';
+                    cashRate=(Math.ceil(pos/5))*5/100;
+
+                    if(cashRate>=maxCashRate){cashRate=maxCashRate}
+                        
+                    $("#cashValue").text("现金："+Math.ceil(cashRate*borrowValue)+"元");
+                    $("#gameCode").text("游戏币："+(borrowValue-Math.ceil(cashRate*borrowValue))+"个");
+                    $(".lanrenTitleValue a").text(Math.ceil(cashRate*borrowValue)+"元");
+                    $(".lanrenTitleValue span").text((borrowValue-Math.ceil(cashRate*borrowValue))+"个");
+                }
+            }
+            new scale('btn','bar','title');
+
+            function cardAlert(obj) {
+                var conf = {
+                    title: "提 示",
+                    content: "",
+                    btnText: "确 定",
+                    btnEvent: function () { }
+                };
+                if (typeof obj == "string") { obj = { content: obj } };
+                $.extend(conf, obj);
+                $(".alert").addClass("on");
+                $(".alert .layer_dialog_title").text(conf.title);
+                // $(".alert .layer_dialog_cn").html(conf.content);
+                $(".alert .layer_btn").text(conf.btnText).off("click").on("click", function () { conf.btnEvent(); close(); });
+                $(".alert .layer_btn_close").off("click").on("click", function () { conf.btnEvent(); close(); });
+
+                function close() {
+                    $(".alert").removeClass("on");
+                }
+            };
+
+            // 修改收款比例
+            $(".cell_cn span ").click(function(){
+                var obj = {
+                    title: "请选择充值比例",
+                    content: "",
+                    btnText: "我知道了",
+                    btnEvent: function () {
+
+                    }
+                };
+                cardAlert(obj);
+
+            })
+
+            //获取极速卡信息
+
+            var productLevel;
+            if(global.query){
+                productLevel=global.query["productLevel"]
+            }
+            $.ajax({
+                url: global.localUrl + "wallet/system/initProduct",
+                type: "post",
+                data: JSON.stringify({"sessionId": sessionId}),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    if (1 == re.code) {
+                        // var _data=re.data[0];
+                        // if(_data.productLevel==1){
+                        //     if(productLevel==1){
+                        //         _data=re.data[0];
+                        //      }else if(productLevel==2){
+                        //         _data=re.data[1];
+                        //      }
+                        // }else if(_data.productLevel==2){
+                        //     if(productLevel==1){
+                        //         _data=re.data[1];
+                        //      }else if(productLevel==2){
+                        //         _data=re.data[0];
+                        //      }   
+                        // }
+                        var _data=re.data;
+                        _data.forEach(function(e){
+                            if(productLevel==e["productLevel"]){
+                                _data=e;
+                            }
+                        })
+                        gameRechargeRate=_data.gameRechargeRateMin;
+                        maxCashRate=1-_data.gameRechargeRateMin;
+                        cashRate=1-_data.gameRechargeRateMin;
+                        borrowValue=_data.borrowingAmount;
+                        productId=_data.productId;
+
+                        //滑动条进度设置
+                        // $("#btn").css({"left":cashRate*170});
+                        // $("#bar>div").width(cashRate*170+20);
+                        // $(".lanrenTitleValue a").text(Math.ceil(cashRate*borrowValue)+"元");
+                        // $(".lanrenTitleValue span").text((borrowValue-Math.ceil(cashRate*borrowValue))+"个");
+
+                        $(".titleContentLeft").text("￥"+_data.borrowingAmount+"元");
+                        $(".titleContentRight").text(_data.borrowingTerm+"天");
+                        $(".cell_cn").eq(0).text(_data.interest+"元");
+                        $(".cell_cn").eq(1).text(_data.repaymentAmount+"元");
+                        $("#cashValue").text("现金："+(1-_data.gameRechargeRateMin)*_data.borrowingAmount+"元");
+                        $("#gameCode").text("游戏币："+_data.gameRechargeRateMin*_data.borrowingAmount+"个");
+                    }else{
+                        layer.tips(re.message);
+                    }
+                },
+                error: function () {
+                    layer.tips(global.netError);
+                }
+            });
+
+          // 浏览器判断
+          var browserObj = function () {
+              var u = navigator.userAgent;
+              return {
+                  trident: u.indexOf('Trident') > -1, //IE内核
+                  presto: u.indexOf('Presto') > -1, //opera内核
+                  webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                  gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+                  mobile: u.indexOf('Mobile') > -1, //是否为移动终端
+                  ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                  android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端
+                  iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                  iPad: u.indexOf('iPad') > -1, //是否iPad
+                  webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                  weixin: u.indexOf('MicroMessenger') > -1, //是否微信
+                  qq: u.indexOf("QQBrowser") > -1, //是否QQ浏览器
+                  mobile_qq: u.indexOf("MQQBrowser") > -1, //是否是手机QQ浏览器
+                  uc: u.indexOf("UCBrowser") > -1, //是否是uc浏览器
+                  baidu: u.indexOf("Baidu") > -1, //是否是百度浏览器
+                  firefox: u.indexOf("Firefox") > -1, //是否是火狐浏览器
+                  lieBao: u.indexOf("LieBao") > -1, //是否是猎豹浏览器
+                  sogou: u.indexOf("SogouMobile") > -1, //是否是搜狗手机浏览器
+                  bjhb:u.indexOf("BJHB") > -1
+
+              };
+          };
+          var browser = browserObj();
+
+            //confirm确认
+            
+
+            // $(".confirm .layer_btn").eq(0).off("click").on("click", function () {  close(); });
+            $(".confirm .submitBtns").off("click").on("click", function () {
+                
+                    $.ajax({
+                        url: global.localUrl + "wallet/orders/init",
+                        type: "post",
+                        data: JSON.stringify({
+                            "sessionId": sessionId,
+                            "productId": productId,
+                            "gameRechargeRate": (1-cashRate).toFixed(2)
+                        }),
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (re) {
+                            if (1 == re.code) {
+                                if(browser.bjhb){
+                                    localStorage.setItem("orderNo",re.data.orderNo);
+                                    jsBridge.getUserInfo({"sessionId":sessionId,"orderNo": re.data.orderNo});
+                                }else {
+                                    layer.tips("申请成功，请进行信息审核");
+                                    setTimeout(function(){
+                                        window.location.href=global.localUrl +"trust/identification.html";
+                                    },2000);
+                                }
+                            }else{
+                                layer.tips(re.message);
+                                setTimeout(function(){
+                                    window.location.reload();
+                                },2000);
+                            }
+                        },
+                        error: function () {
+                            layer.tips(global.netError);
+                        }
+                    });  
+                close(); 
+            });
+            $(".confirm .layer_btn_close").off("click").on("click", function () {  close(); });
+            $(".resetValue").off("click").on("click", function () {  close(); });
+            function close() {
+                $(".confirm").removeClass("on");
+            }
+
+
+            //app交互
+            var jsBridge = (function () {   
+
+                function connectWebViewJavascriptBridge(callback) {
+                    if (window.WebViewJavascriptBridge) {
+                        callback(WebViewJavascriptBridge);
+                    } else {
+                        document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                            callback(WebViewJavascriptBridge);
+                        }, false)
+                    }
+                }
+                connectWebViewJavascriptBridge(function (WebViewJavascriptBridge) {
+                    WebViewJavascriptBridge.init(function (message, responseCallback) {
+
+                    });
+                    WebViewJavascriptBridge.registerHandler("phoneLimit", function(data, responseCallback) {
+                        layer.tips("申请成功，请进行信息审核");
+                        setTimeout(function(){
+                            window.location.href=global.localUrl +"trust/identification.html";
+                        },2000);
+                    });
+
+
+                    fn && fn();
+
+                })
+                return {
+                    init: function (fn) {
+                        connectWebViewJavascriptBridge(function (WebViewJavascriptBridge) {
+                            WebViewJavascriptBridge.init(function (message, responseCallback) {
+
+                            });
+
+                            fn && fn();
+
+                        })
+                    },
+                    copyWechat: function (obj) {
+                        WebViewJavascriptBridge.callHandler('copyWechat', { pageID: obj.pageID }, function (response) { });
+                    },
+                    saveQR: function (obj) {
+                        WebViewJavascriptBridge.callHandler('saveQR', { pageID: obj.pageID }, function (response) { });
+                    },
+                    showAppPage: function (obj) {
+                        WebViewJavascriptBridge.callHandler('showAppPage', { pageID: obj.pageID }, function (response) { });
+                    },
+                    jumpTo: function (obj) {
+                        WebViewJavascriptBridge.callHandler('jumpTo', {}, function (response) { });
+                    },
+                    showWebPage: function (obj) {
+                    WebViewJavascriptBridge.callHandler('showWebPage', { title: obj.title, pageUrl: obj.pageUrl }, function (response) { });
+                    },
+                    getSid: function (callback) {
+                        WebViewJavascriptBridge.callHandler('getSid', {}, function (response) { callback(response); });
+                    },       
+                    getContacts: function (callback) {
+                        WebViewJavascriptBridge.callHandler('getContacts', {}, function (response) { callback(response); });
+                    },
+                      getAppVersion: function (callback) {
+                          WebViewJavascriptBridge.callHandler('getAppVersion', {}, function (response) { callback(response); });
+                      },
+                      getUserInfo: function (obj) {
+                          WebViewJavascriptBridge.callHandler('getUserInfo', {orderNo: obj.orderNo,sessionId: obj.sessionId}, function (response) { callback(response); });
+                      }
+                }
+            })();
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

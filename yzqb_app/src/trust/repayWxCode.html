@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>微信还款</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            background-color: white;
+            width: 3.75rem;
+            position: relative;
+        }
+        .repay_title{
+            background: rgb(246,246,246);
+            line-height: .44rem;
+            padding: 0 .4rem;
+        }
+        .repay_content{
+            width: 100%;
+            min-height: 3.5rem;
+            padding-top: .3rem;
+        }
+        .repay_tips{
+            font-size: .12rem;
+            text-align: center;
+            margin-bottom: 1.43rem;
+            margin-top: -.3rem;
+        }
+        .repay_code{
+            width: 70%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .btn{
+            margin: 0 .36rem;
+            background: rgb(255,85,78);
+            color: #fff;
+            box-shadow: 1px 2px 2px #e2e2e2;
+            line-height: .4rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load on">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div>
+        <div class="repay_title">
+            <div class="flex space">
+                <div>编号</div>
+                <div id="orderNo"></div>
+            </div>
+        </div>
+
+        <div class="">
+            <div class="repay_content"><img src="" id="qrCode" class="repay_code"></div>
+            <div class="repay_tips">点击<span class="active_color">保存</span>后，二维码将被保存到<span class="active_color">本地相册</span></div>
+        </div>
+        <div class="saveLocal btn hide" id="saveImg">一键保存</div>
+    </div>
+
+
+</body>
+    <!-- 脚本sd -->
+    <script src="../lib/zepto.min.js"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/upload.js?rev=@@hash"></script>
+    <script src="../js/clipboard.min.js"></script>
+    <script>
+        !function(global, layer, userUtil, dataUtil){
+
+            //判断APP还是普通浏览器
+            if(navigator.userAgent.indexOf("BJHB") > -1){   //app内
+                $('.saveLocal').removeClass('hide');
+            }
+
+            //初始化线下还款信息
+            function offlineRepay(){
+                var _data={
+                    sessionId: userUtil.sid(),
+                    orderNo: global.query['orderNo']
+                }
+                $.ajax({
+                    url: global.localUrl + "wallet//orders/getWechatRefundQrcode",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        layer.hideLoad();
+                        if (1 == re.code) {
+                            $('#orderNo').html(re.data.orderNo);
+                            // $("#qrCode").attr("src","http://image.yqguan.cn"+re.data.qrcode);   //测试
+                            $("#qrCode").attr("src","http://image.yaoqianguan.com"+re.data.qrcode);  //线上
+                            
+                            if(navigator.userAgent.indexOf("BJHB") > -1){   //app内
+                                $('#saveImg').on('click',function(){
+                
+                                    WebViewJavascriptBridge.callHandler('savePicture', {imgurl:$('#qrCode').attr('src')}, function (response) { callback(response);});
+                                });
+                            }
+                        }
+                        else{
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.hideLoad();
+                        layer.tips(global.netError);
+                    }
+                });
+            }
+
+            offlineRepay();
+
+        }(global, layer, userUtil, dataUtil)
+
+    </script>
+</html>

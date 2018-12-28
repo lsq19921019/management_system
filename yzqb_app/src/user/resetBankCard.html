@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>设置</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+
+    <style type="text/css">
+        .showCardBox {
+            width: 3rem;
+            margin: 0 auto;
+            position: relative;
+        }
+        .showCard img{
+            margin-top: .2rem;
+            display: block;
+            width: 100%;
+        }
+        .showCard span {
+            position: absolute;
+            bottom: .15rem;
+            right: .2rem;
+            font-size: .12rem;
+        }
+        .resetBankCardBtn {
+            width: 3rem;
+            position: absolute;
+            left: 50%;
+            bottom: .4rem;
+            margin-left: -1.5rem;
+        }
+        .resetBankCardBtn img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="showCardBox">
+        <div class="showCard">
+            <img src="" alt="">
+            <span></span>
+        </div>
+    </div>
+    <div class="resetBankCardBtn"><img src="../images/resetBankCardBtn.png" alt=""></div>
+
+</body>
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script type="text/javascript">
+        !function(global,userUtil,layer,dataUtil){
+            var sessionId=userUtil.sid();
+            if(sessionId){
+                //初始化银行卡信息
+                function onlineRepay(){
+                    var _data={
+                        "sessionId": sessionId
+                    }
+                    $.ajax({
+                        url: global.localUrl + "nw/users/userBankList",
+                        type: "post",
+                        data: JSON.stringify(_data),
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (re) {
+                            if (1 == re.code) {
+                                if(!re.data[0]){
+                                    layer.tips("未获取到绑定的银行卡信息");
+                                    setTimeout(function(){
+                                        window.location.href=global.localUrl +"index.html";
+                                    },2000);
+                                }else {
+                                    var imgSrc="../images/bank/"+re.data[0].bankCode+".png";
+                                    $(".showCard img").attr("src",imgSrc);
+                                    $(".showCard span").html(re.data[0].bankNumberNo);
+                                    $('.resetBankCardBtn').on('click',function(){
+                                        window.location.href=global.localUrl+"user/rebindCard.html";
+                                    })
+                                }
+                            }
+                            else{
+
+                                layer.tips(re.message);
+                            }
+                        },
+                        error: function () {
+                            layer.tips(global.netError);
+                        }
+                    });
+                }
+                onlineRepay();
+
+            }else {
+                window.location.href=global.localUrl+"user/login.html";
+            }
+        }(global,userUtil,layer,dataUtil)
+    </script>
+</html>

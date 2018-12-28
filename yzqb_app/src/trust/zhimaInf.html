@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>芝麻信用</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        .cells_title {
+            margin: 0;
+            padding: .12rem .2rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+            padding-left: .2rem;
+            font-weight: 700;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+
+        .txt {
+			text-align: left;
+        }
+
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+        #btnCode {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="cells_title">
+        <span>请选择接受校验码的手机号码</span>
+    </div>
+	
+	<div class="cells">
+        <div class="cell">
+            <label class="cell_hd">姓名：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" id="txtName" maxlength="20" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">身份证：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" id="txtName" maxlength="20" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">手机号：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" id="txtName" maxlength="20" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">验证码：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请填写验证码" id="txtName" maxlength="20" />
+            </div>
+<!--             <div class="cell_ft">
+                <div class="getCode">获取验证码</div>
+            </div> -->
+            <div class="cell_ft">
+                <a href="javascript:;" class="login_btn_code" id="btnCode">获取验证码</a>
+            </div>
+
+        </div>
+	</div>
+    <div class="cells_title">
+        <span>此手机为您的支付宝绑定手机号码</span>
+    </div>
+    <div class="submitBtn">完成</div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer){       
+        	$("body").height(document.documentElement.clientHeight);
+            var sessionId=userUtil.sid();
+
+            //  验证码
+            $("#btnCode").on("click", function () {
+                var $this = $(this);
+                if (!$this.hasClass("dis")) {
+                    $this.addClass("dis");
+                    var _data = {
+                        "sessionId": sessionId
+                    };
+                    $.ajax({
+                        url: global.localUrl + "web/credit/zhimaAuthH5",
+                        type: "post",
+                        data: JSON.stringify(_data),
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (re) {
+                            if (1 == re.code) {
+                                showWaitTips();
+                            }
+                            else{
+                                $this.removeClass("dis");
+                                layer.tips(re.message);
+                            }
+                        },
+                        error: function () {
+                            $this.removeClass("dis");
+                            layer.tips(global.netError);
+                        }
+                    });
+                }
+            });
+            
+            // 验证码倒计时
+            function showWaitTips() {
+                var $btnCode = $("#btnCode");
+                var s = 60;
+                $btnCode.text("已发送(" + s + ")").addClass("dis");
+                var sv = setInterval(function () {
+                    if (s > 1) {
+                        s--;
+                        $btnCode.text("已发送(" + s + ")");
+                    } else {
+                        $btnCode.text("重新获取").removeClass("dis");
+                        clearInterval(sv);
+                    }
+                }, 1000);
+            };
+
+            //完成
+            $(".submitBtn").click(function(){
+                var _data={
+                    "name":$(".cell_cn input").eq(0).value(),
+                    "cardId":$(".cell_cn input").eq(1).value(),
+                    "phoneNo":$(".cell_cn input").eq(2).value(),
+                    "snsCode":$(".cell_cn input").eq(3).value(),
+                    "sessionId": sessionId
+                };
+                $.ajax({
+                    url: global.localUrl + "web/credit/zhimaAuthResult",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            showWaitTips();
+                        }
+                        else{
+                            $this.removeClass("dis");
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        $this.removeClass("dis");
+                        layer.tips(global.netError);
+                    }
+                });
+            })
+
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

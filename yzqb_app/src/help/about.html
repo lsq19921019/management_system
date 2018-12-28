@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>关于我们</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+
+    <style type="text/css">
+        .view{
+            padding: .3rem .41rem 0;
+        }
+        .view p{
+            line-height: 1.5;
+        }
+        .about_bg{
+            width: 2.4rem;
+            height: 1.62rem;
+            position: fixed;
+            right: .15rem;
+            bottom: .4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="view">
+        <p><span class="app_name">柚子钱包</span>是一款移动在线小游戏平台，它与信贷平台合作提供消费分期服务，形成新的服务模式。</p>
+        <p>现成为<span class="app_name">柚子钱包</span>注册用户，即可充值获取游戏币进行疯狂刺激的小游戏体验。于此同时，可以调整充值到游戏帐户比例，获取直接到银行卡中的现金服务。</p>
+        <p>信贷平台依据用户信用数据为<span class="app_name">柚子钱包</span>提供数据支持及可靠的金融服务，促进金融发展。</p>
+
+        <img src="../images/about_bg.png" class="about_bg">
+    </div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script type="text/javascript">
+        !function(){
+            $('#loginOut').on('click',function(){
+                window.location.href="../index.html";
+            })
+        }()
+    </script>
+    <script>
+        $(document).ready(function(){
+            // setTimeout(function(){
+                if(localStorage.getItem('app_logo_info')){
+                    var app_logo_info = JSON.parse(localStorage.getItem('app_logo_info'));
+                    $('.app_name').html(app_logo_info.themeName);
+                }
+            // },500)
+        });
+    </script>
+</body>
+</html>

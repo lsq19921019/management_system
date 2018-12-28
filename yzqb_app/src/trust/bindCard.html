@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-page-mode" content="app"/>
+    <title>绑定银行卡</title>
+    <meta charset="utf-8"/>
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet"/>
+    <link href="../css/mobileSelect.css?rev=@@hash" rel="stylesheet"/>
+    <style>
+        body {  
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+
+        .cells_title {
+            margin: .15rem;
+            padding: 0;
+            font-size: .12rem;
+            height: .22rem;
+            color: rgb(68, 74, 89);
+        }
+
+        .cells_title span {
+            float: left;
+            display: block;
+            margin: .04rem 0;
+            height: .14rem;
+            line-height: .14rem;
+            border-left: 4px solid rgb(255, 85, 78);
+        }
+
+        .cells_title a {
+            /*display: block;*/
+            font-size: .12rem;
+            height: .22rem;
+            font-weight: 700;
+        }
+
+        .operatorContent {
+            width: 100%;
+            background: #f9f9f9;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0.2rem;
+        }
+
+        .txt {
+            text-align: right;
+        }
+
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .2rem .4rem;
+        }
+
+        .tip span {
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem;
+            float: left;
+        }
+
+        .tip i img {
+            width: 100%;
+        }
+
+        .cells_tips {
+            margin: 0.05rem .4rem;
+            font-size: .12rem;
+        }
+
+        .cells_tips a {
+            color: red;
+        }
+
+        select {
+            border: 0;
+            float: right;
+            width: 1.2rem;
+            height: .2rem;
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            background: url("../images/gogogo.png");
+            background-repeat: no-repeat;
+            background-size: 20% 100%;
+            background-position: 100% 0%;
+            /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+
+            padding: 0 .14rem;
+            padding-right: .3rem;
+            font-size: .14rem;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        select option {
+            width: 1.2rem;
+            height: .2rem;
+            font-size: .14rem;
+            background-color: white;
+        }
+
+        .cell_cn img {
+
+            width: .2rem;
+            height: .2rem;
+        }
+
+        #btnCode {
+            color: rgb(255, 85, 78);
+
+        }
+
+        .cell_cn ::-webkit-input-placeholder {
+            color: gray;
+            font-size: .14rem;
+            text-align: right;
+
+        }
+
+        #companyDetailAdress {
+            width: 100%;
+        }
+
+        .cell_cn {
+            color: gray;
+        }
+
+        #trigger2 span {
+            float: right;
+            line-height: .22rem;
+        }
+
+        #trigger2 img {
+            float: right;
+        }
+
+        #trigger2 {
+            text-align: right;
+        }
+        .submitBtn{
+            position:inherit;
+            bottom:0;
+            top:0;
+            margin:10px auto;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+<!-- 蒙版 -->
+<div class="layer_load">
+    <div class="layer_mask"></div>
+    <div class="layer_load_icon icon-loading"></div>
+</div>
+<div class="cells_title">
+    <span>&nbsp请务必确认绑定开户人为&nbsp<a></a>&nbsp的银行卡</span>
+</div>
+<div class="cells">
+    <div class="cell">
+        <label class="cell_hd">卡号：</label>
+        <div class="cell_cn">
+            <input type="text" class="txt" placeholder="请输入银行卡号" id="bankCardNo" maxlength="19"/>
+        </div>
+    </div>
+    <div class="cell">
+        <label class="cell_hd">选择开户行：</label>
+        <div id="trigger2" class="cell_cn">
+            <img src="../images/goForward.png" alt="">
+            <span>请选择开户行</span>
+        </div>
+    </div>
+    <div class="cell">
+        <label class="cell_hd">手机号：</label>
+        <div class="cell_cn">
+            <input type="text" class="txt" placeholder="请输入您在银行预留的手机号" id="telNum" maxlength="11"/>
+        </div>
+    </div>
+    <div class="cell">
+        <label class="cell_hd">短信验证码：</label>
+        <div class="cell_cn">
+            <input type="text" class="txt" placeholder="请输入" id="telSns" maxlength="6"/>
+        </div>
+
+        <div class="cell_ft">
+            <a href="javascript:;" class="login_btn_code" id="btnCode">获取验证码</a>
+        </div>
+
+    </div>
+</div>
+
+<!--     <div class="cells_title">
+        <a>银行预留手机号</a>
+    </div> -->
+
+<!-- <div class="operatorContent confirmBtn"> -->
+<div class="submitBtn">
+    提交
+</div>
+<!--         <div class="cells_tips">
+            <span>银行卡绑定失败</span><a href="">猛戳这里></a>
+        </div> -->
+<!-- </div> -->
+
+<!-- 脚本 -->
+<script src="../lib/zepto.min.js?rev=@@hash"></script>
+<script src="../lib/mobileSelect.js?rev=@@hash"></script>
+<script src="../js/main.js?rev=@@hash"></script>
+<script>
+
+    (function (global, userUtil, layer) {
+        var bankListArr = [];
+        var urlParams = location.search ? global.query : {};
+        var localH = localStorage.getItem("localH");
+        var sessionId = userUtil.sid(), userUuid = userUtil.userID(), bankId, bankCardName;
+        var orderNo = '';
+
+        var _data = {
+            "sessionId": sessionId
+        };
+        if (!localH) {
+            localH = localStorage.setItem("localH", document.documentElement.clientHeight);
+        }
+        if (location.search) {
+            userUtil.ajax({
+                url: global.localUrl + 'xjbk/authBank',
+                data: {
+                    user_name: global.query["user_name"],
+                    user_phone: global.query["user_phone"],
+                    user_idcard: global.query["user_idcard"]
+                },
+                success: function (auth) {
+                    sessionId = auth.data.sessionId;
+                    userUtil.mobile(auth.data.mobile)
+                    userUtil.sid(auth.data.sessionId)
+                    userUtil.userID(auth.data.userUuid)
+                    urlParams.uid=auth.data.userUuid;
+                    var sIdStr = userUtil.sid(), userUuid = userUtil.userID(), bankId, bankCardName;
+                    var sId = {
+                        "sessionId": sIdStr
+                    };
+                    if(auth.data.xjbkBankBindInfo){
+                        if (location.search) {
+                            urlParams.bank_code = auth.data.xjbkBankBindInfo.bank_code;
+                            urlParams.card_number = auth.data.xjbkBankBindInfo.card_number;
+                            urlParams.card_phone = auth.data.xjbkBankBindInfo.card_phone;
+                            urlParams.bind_state = '1';
+                            $.ajax({
+                                url: global.localUrl + "xjbk/H5Bank",
+                                type: "post",
+                                data: JSON.stringify(urlParams),
+                                contentType: 'application/json;charset=utf-8',
+                                success: function (bank) {
+                                    urlParams.call="BindCard.applyBindCard";
+                                    urlParams.uid=auth.data.userUuid;
+
+                                    $.ajax({
+                                        url: global.localUrl + "xjbk/H5BankState",
+                                        type: "post",
+                                        data:JSON.stringify(urlParams),
+                                        contentType: 'application/json;charset=utf-8',
+                                        success: function (bankState) {
+                                            
+                                            // if(window.location.href.indexOf('?')>-1){
+                                            //         window.location.href =bank.response.returnURL+'&bind_status=200&type=success';
+                                            //     }else{
+                                            //         window.location.href =bank.response.returnURL+'?bind_status=200&type=success';
+                                            //     }
+                                            // alert(bank.response.returnURL+'?bind_status=200&type=success');
+                                            // window.location.href =bank.response.returnURL+'?bind_status=200&type=success';
+                                            window.location.href =bank.response.returnURL;
+                                        },
+                                        error: function(){
+                                            
+                                            // if(window.location.href.indexOf('?')>-1){
+                                            //         window.location.href =bank.response.returnURL+'&bind_status=505&type=failure';
+                                            //     }else{
+                                            //         window.location.href =bank.response.returnURL+'?bind_status=505&type=failure';
+                                            //     }
+                                            // alert(bank.response.returnURL+'?bind_status=505&type=failure');
+                                                // window.location.href =bank.response.returnURL+'?bind_status=505&type=failure';
+                                                window.location.href =bank.response.returnURL;
+                                        }
+                                    })
+                                    // window.location.href =bank.response.returnURL;
+                                }
+                            })
+                        }
+                    }
+                    if (browser.HYQ) {
+                        function connectWebViewJavascriptBridge(callback) {
+                            if (window.WebViewJavascriptBridge) {
+                                callback(WebViewJavascriptBridge)
+                            } else {
+                                document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                                    callback(WebViewJavascriptBridge)
+                                }, false);
+                            }
+                        }
+
+                        connectWebViewJavascriptBridge(function (bridge) {
+                            // bridge.registerHandler('JS Echo', function(data, responseCallback) { console.log("JS Echo called with:", data) responseCallback(data) })
+                            bridge.callHandler('updateSession', {"sid": re.data.sessionId}, function responseCallback(responseData) {
+                            })
+                        })
+
+
+
+
+                    }
+                    // setTimeout(function () {
+                    //     location.href = location.href;
+                    // }, 1000);
+                    userUtil.ajax({
+                        url: global.localUrl + 'nw/users/userInfo',
+                        data: {},
+                        done: function (re) {
+                            $(".cells_title a").text(re.data.realName) //提示姓名
+                        }
+                    })
+                    getBankList(sId);
+                }
+            })
+
+        } else {
+            userUtil.ajax({
+                url: global.localUrl + 'nw/users/userInfo',
+                data: {},
+                done: function (re) {
+                    $(".cells_title a").text(re.data.realName) //提示姓名
+                }
+            })
+            getBankList();
+        }
+        $("body").height(Number(localH));
+
+
+        $(".tip i").click(function () {
+            if ($(".tip i img").attr('src') == "../images/bingo.png") {
+                $(".tip i img").attr('src', "../images/noBingo.png");
+                $(".confirmBtn img").attr('src', "../images/confirmBtn.png");
+                $(".confirmBtn").off("click");
+            } else {
+                $(".tip i img").attr('src', "../images/bingo.png");
+                $(".confirmBtn img").attr('src', "../images/checkInfBtn.png");
+                $(".confirmBtn").click(function () {
+
+                })
+            }
+        })
+
+
+        //  验证码
+        $("#btnCode").on("click", function () {
+            var $this = $(this);
+
+            function isPoneAvailable(str) {
+                var myreg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+                if (!myreg.test(str)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
+            if (!isPoneAvailable($("#telNum").val())) {
+                layer.tips("输入的手机号码不合法");
+                return;
+            }
+            // var _data={
+            //     "sessionId": sessionId,
+            //     "userUuid": userUuid,
+            //      "bankId": bankId,
+            //      "bankNumberNo": $("#bankCardNo").val(),
+            //      "mobileNumber": $("#telNum").val(),
+            //      "smsType": "BANKFIRST"
+            // }
+            var _data = {
+                "bankNumberNo": $("#bankCardNo").val(),
+                "sessionId": sessionId,
+                "mobileNumber": $("#telNum").val(),
+                "smsType": "BANKFIRST"
+            }
+            if (!$this.hasClass("dis")) {
+                $this.addClass("dis");
+                $.ajax({
+                    url: global.localUrl + "nw/users/huiju/bankCardSmsCode",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            showWaitTips();
+                            orderNo = re.data.orderNo;
+                        }
+                        else {
+                            $this.removeClass("dis");
+                            console.log(1,re.message);
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        $this.removeClass("dis");
+                        layer.tips(global.netError);
+                    }
+                });
+            }
+        });
+
+        // 验证码倒计时
+        function showWaitTips() {
+            var $btnCode = $("#btnCode");
+            var s = 60;
+            $btnCode.text("已发送(" + s + ")").addClass("dis");
+            var sv = setInterval(function () {
+                if (s > 1) {
+                    s--;
+                    $btnCode.text("已发送(" + s + ")");
+                } else {
+                    $btnCode.text("重新获取").removeClass("dis");
+                    clearInterval(sv);
+                }
+            }, 1000);
+        };
+
+        //银行卡列表获取
+        function getBankList(param) {
+            if(param) _data = param;
+            //debugger;
+            $.ajax({
+                url: global.localUrl + "nw/users/huiju/bankDefineList",
+                type: "post",
+                data: JSON.stringify(_data),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    if (1 == re.code) {
+                        var _datas = re.data;
+                        for (var e in _datas) {
+                            bankListArr.push(_datas[e].bankName)
+                        }
+                        var mobileSelect1 = new MobileSelect({
+                            trigger: '#trigger2',
+                            title: '请选择银行',
+                            wheels: [
+                                {data: bankListArr}
+                            ],
+                            position: [0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                            transitionEnd: function (indexArr, data) {
+
+                            },
+                            callback: function (indexArr, data) {
+                                inhabit = data;
+                            }
+                        });
+
+
+                    }
+                    else {
+                        console.log(2,re.message);
+                        layer.tips(re.message);
+                    }
+                },
+                error: function () {
+                    layer.tips(global.netError);
+                }
+            });
+        }
+
+        // 卡bin校验blur
+        // $("#bankCardNo").blur(function () {
+        //     var _data = {
+        //         "sessionId": sessionId,
+        //         "bankCardNo": $("#bankCardNo").val()
+        //     }
+        //     $.ajax({
+        //         url: global.localUrl + "nw/users/checkBankCardBin",
+        //         type: "post",
+        //         data: JSON.stringify(_data),
+        //         contentType: 'application/json;charset=utf-8',
+        //         success: function (re) {
+        //             if (1 == re.code) {
+        //                 layer.tips("银行卡号可用");
+        //                 bankId = re.data.bankId;
+        //                 console.log(re.data.bankName)
+        //                 $("#trigger2 span").text(re.data.bankName)
+        //                 // trigger2.locatePosition(0,0);
+        //             }
+        //             else {
+        //                 setTimeout(function () {
+        //                     window.location.reload();
+        //                 }, 2000);
+        //                 console.log(3,re.message);
+        //                 layer.tips(re.message);
+        //             }
+        //         },
+        //         error: function () {
+        //             layer.tips(global.netError);
+        //         }
+        //     });
+        // })
+        // 提交/
+        $(".submitBtn").click(function () {
+            var _data = {
+                "sessionId": sessionId,
+                "userUuid": userUuid,
+                // "bankId": bankId,
+                "bankNumberNo": $("#bankCardNo").val(),
+                "bankNumberMobile": $("#telNum").val(),
+                "bankCardName": $("#trigger2").text(),
+                "smsCode": $("#telSns").val(),
+                'orderNo':orderNo
+            }
+            // console.info(_data);
+            // for (var e in _data) {
+            //     if (!_data[e]) {
+            //         layer.tips("请输入完整信息");
+            //         return;
+            //     }
+            // }
+            layer.showLoad();
+
+            // urlParams["bank_code"] =  66666;
+            // return;
+            //alert(JSON.stringify(urlParams)+'!!!!!!');
+            // return;
+            $.ajax({
+                url: global.localUrl + "nw/users/huiju/saveUserBank",
+                type: "post",
+                data: JSON.stringify(_data),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    //debugger;
+                    if (1 == re.code) {
+                        layer.hideLoad();
+                        layer.tips("认证成功");
+                        // debugger;
+                        if ("50" == re.data.user_channel || "51" == re.data.user_channel || "80" == re.data.user_channel || "81" == re.data.user_channel) {
+                            if(JSON.stringify(urlParams)=='{}'){
+                                setTimeout(function () {
+                                    window.location.href = global.localUrl + "trust/setPassword.html";
+                                }, 2000);
+                            }else{
+                                urlParams.bank_code = re.data.bank_code;
+                                urlParams.card_number = re.data.card_number;
+                                urlParams.card_phone = re.data.card_phone;
+                                urlParams.bind_state = '1';
+                                //debugger;
+                                //console.info(5,urlParams);
+                                
+                                layer.showLoad();
+                                $.ajax({
+                                    url: global.localUrl + "xjbk/H5Bank",
+                                    type: "post",
+                                    data: JSON.stringify(urlParams),
+                                    contentType: 'application/json;charset=utf-8',
+                                    success: function (bank) {
+                                        urlParams.call="BindCard.applyBindCard";
+                                        urlParams.uid=userUuid;
+                                        $.ajax({
+                                            url: global.localUrl + "xjbk/H5BankState",
+                                            type: "post",
+                                            data:JSON.stringify(urlParams),
+                                            contentType: 'application/json;charset=utf-8',
+                                            success: function (bankState) {
+                                                layer.hideLoad();
+                                                // if(window.location.href.indexOf('?')>-1){
+                                                //     window.location.href =bank.response.returnURL+'&bind_status=200&type=success';
+                                                // }else{
+                                                //     window.location.href =bank.response.returnURL+'?bind_status=200&type=success';
+                                                // }
+                                                // alert(bank.response.returnURL+'?bind_status=200&type=success');
+                                                window.location.href =bank.response.returnURL;
+                                            },
+                                            error:function (){
+                                                layer.hideLoad();
+                                                // if(window.location.href.indexOf('?')>-1){
+                                                //     window.location.href =bank.response.returnURL+'&bind_status=505&type=failure';
+                                                // }else{
+                                                //     window.location.href =bank.response.returnURL+'?bind_status=505&type=failure';
+                                                // }
+                                                // alert(bank.response.returnURL+'?bind_status=505&type=failure');
+                                                window.location.href =bank.response.returnURL;
+                                            }
+                                        })
+                                        // window.location.href =bank.response.returnURL+'&bind_status=200';
+                                    }
+                                })
+                            }
+
+                        }else{
+                            setTimeout(function(){
+                                window.location.href=global.localUrl +"trust/identification.html";
+                            },800);
+                        }
+                    }
+                    else {
+                        layer.hideLoad();
+                        console.log(4,re.message);
+                        layer.tips(re.message);
+                    }
+                },
+                error: function (re) {
+                    layer.tips(global.netError);
+                    if ("50" == re.data.xjbkBankBindInfo.user_channel) {
+                        urlParams.bind_state='2';
+                        $.ajax({
+                            url: global.localUrl + "xjbk/H5Bank",
+                            type: "post",
+                            data:JSON.stringify(urlParams),
+                            contentType: 'application/json;charset=utf-8',
+                            success: function (re) {
+                                                // if(window.location.href.indexOf('?')>-1){
+                                                //      window.location.href =re.response.returnURL+'&bind_status=200&type=success';
+                                                // }else{
+                                                //     window.location.href =re.response.returnURL+'?bind_status=200&type=success';
+                                                // }
+                                                // alert(re.response.returnURL+'?bind_status=200&type=success');
+                                                // window.location.href =re.response.returnURL+'?bind_status=200&type=success';
+                                                window.location.href =re.response.returnURL;
+                            }
+                        })
+                    } else {
+                        setTimeout(function () {
+                            window.location.href = global.localUrl + "trust/setPassword.html";
+                        }, 2000);
+                    }
+
+                }
+            });
+        })
+
+
+    })(global, userUtil, layer)
+</script>
+</body>
+</html>

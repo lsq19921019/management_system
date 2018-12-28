@@ -1,11 +1,24 @@
-# management_system
-management_system
+# control.yaoqian.com
 
-# start project
+> A Vue.js project
+
+## Build Setup
+
+``` bash
+# 安装依赖
+npm install
+
+# 本地启动
 npm run dev
 
-# build project
+# 打包
 npm run build
 
-# install package
-npm install
+# 强制推送打包文件
+git add dist -f
+git commit -m '描述'
+git push origin master
+
+```
+
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

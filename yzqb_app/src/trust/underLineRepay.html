@@ -76,6 +76,24 @@
             margin: -.4rem 0rem 0 0;
             border-radius: .05rem;
         }
+        .repaymengtInf_ .repaymengtInfList_ {
+            line-height: .25rem;
+        }
+        .repaymengtInf_ .repaymengtInfList_:nth-child(2n+1) {
+            font-weight: 700;
+        }
+        .repaymengtInf_ a {
+            display: block;
+            width: .8rem;
+            text-align: center;
+            height: .3rem;
+            line-height: .3rem;
+            background-color: rgb(255,85,78);
+            float: right;
+            color: white;
+            margin: -.4rem 0rem 0 0;
+            border-radius: .05rem;
+        }
         .orderTips {
             background: #f9f9f9;
             font-size: .12rem;
@@ -236,6 +254,22 @@
             color: white;
         }
 
+        .repaymengtInfList_>div {
+            float: left;
+        }
+        .repaymengtInfList_ button {
+            display: inline-block;
+            float: right;
+            font-size: .12rem;
+            font-weight: 400;
+            margin: 0;
+            padding: 0 .1rem;
+            height: .25rem;
+            line-height: .25rem;
+            border-radius: .05rem;
+            background-color: rgb(251,94,68);
+            color: white;
+        }
         /*repayAlert1弹窗*/
         .alert11 {
             /*display: none;*/
@@ -377,38 +411,40 @@
     </div>
     <div class="repaymengtInf">
         <div class="repaymengtInfList">支付宝账号</div>
-        <!-- <div class="repaymengtInfList">开户行账号</div> -->
-        <div class="repaymengtInfList"><span class="zfbzh">zhouy@yzqb.onaliyun.com</span><div></div>
-        <!-- <div class="repaymengtInfList"><span class="zfbzh">6230580000188123702</span><div></div> -->
-            <button type="button" id="id_copy"
-                    data-clipboard-target=".zfbzh"
+        <div class="repaymengtInfList"><span class="zfbzh">414660824@qq.com</span><div>
+
+        </div><button type="button" id="id_copy" data-clipboard-target=".zfbzh" data-clipboard-action="copy">一键复制</button></div><div class="repaymengtInfList">支付宝名称<br><span style="font-weight:400"><span class="app_company_name">深圳恒雍科技有限公司</span></span></div></div>
+    
+    <div class="orderTips" style="color:red;">
+        <!-- 请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请先进行账号认证；如遇到谨防欺诈提醒，点击【取消】关闭即可。转账成功后上传转账截图提交申请 -->
+    <!-- 请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请先进行账号认证；如遇到谨防欺诈提醒，点击【取消】关闭即可。转账成功后上传转账截图提交申请， <a>查看示例</a> -->
+    *支付宝线下还款时，请在备注信息中填写还款人信息，以便系
+统快速为您结清订单！
+</div>
+    <div class="repaymengtInf_">
+        <!-- <div class="repaymengtInfList">支付宝账号</div> -->
+        <div class="repaymengtInfList_">还款人信息</div>
+        <!-- <div class="repaymengtInfList"><span class="zfbzh">zhouy@yzqb.onaliyun.com</span><div></div> -->
+        <div class="repaymengtInfList_"><p class="zfbzh_" style="width:60%;display:inline-block;">刘思奇  1331654864648</p><div></div>
+            <button type="button" id="id_copy_"
+                    data-clipboard-target=".zfbzh_"
                     data-clipboard-action="copy">
                     一键复制
             </button>
         </div>
-        <!-- <div class="repaymengtInfList">开户行</div> -->
-        <!-- <div class="repaymengtInfList"><span class="zfbzh">414660824@qq.com</span><div></div> -->
-        <!-- <div class="repaymengtInfList"><span class="zfbzh">平安银行深圳分行</span> -->
-        <!-- </div> -->
-        <!-- <div class="repaymengtInfList">收款人</div> -->
-        <!-- <div class="repaymengtInfList"><span class="zfbzh">414660824@qq.com</span><div></div> -->
-        <!-- <div class="repaymengtInfList"><span class="zfbzh">梁太龙</span> -->
-        <!-- </div> -->
-        <!-- <div class="repaymengtInfList">支付宝名称<br><span style="font-weight:normal;"><span class="app_company_name">深圳恒雍科技有限公司</span></span></div> -->
-        <div class="repaymengtInfList">支付宝名称<br><span style="font-weight:normal;"><span class="app_company_name">武汉市辛家智科技有限公司</span></span></div>
     </div>
     <div class="orderTips">
-            请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请先进行账号认证；如遇到谨防欺诈提醒，点击【取消】关闭即可。转账成功后上传转账截图提交申请
-        <!-- 请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请先进行账号认证；如遇到谨防欺诈提醒，点击【取消】关闭即可。转账成功后上传转账截图提交申请， <a>查看示例</a> -->
+            <!-- 请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请先进行账号认证；如遇到谨防欺诈提醒，点击【取消】关闭即可。转账成功后上传转账截图提交申请 -->
+        请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请先进行账号认证；如遇到谨防欺诈提醒，点击【取消】关闭即可。转账成功后上传转账截图提交申请， <a>查看示例</a>
         <!-- 请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请仔细核对账号信息；转账成功后上传转账截图提交申请。 -->
     </div>
     <div class="uploadPic">
         <div class="orderNum">
             <a>支付宝账号</a>
-            <i></i>
+            <!-- <i></i> -->
             <!-- <a>转账卡号</a> -->
+            <!-- <input type="text" id="alipayNo" placeholder="请输入还款使用的支付宝账号"> -->
             <input type="text" id="alipayNo" placeholder="请输入还款使用的支付宝账号">
-            <!-- <input type="text" id="alipayNo" placeholder="请输入转账银行卡号"> -->
         </div>
     
         <div class="feed_image">
@@ -630,7 +666,7 @@
                             $(".orderValue").eq(2).html(re.data.refundTime);
                             $(".repaymengtInfList").eq(3).html(re.data.sysChannelAccountResponse.alipayName);
                             $(".repaymengtInfList>div").html(re.data.sysChannelAccountResponse.alipayNo);
-
+                            $(".zfbzh_").html(re.data.realName+'  '+re.data.mobileNumber);
                         }
                         else{
 
@@ -675,6 +711,15 @@
             //一键复制
             $(".repaymengtInfList button").click(function(){
                 var clipboard = new ClipboardJS("#id_copy");
+                 layer.tips("复制成功")
+                clipboard.on("success",function (element) {//复制成功的回调
+                });
+                clipboard.on("error",function (element) {//复制失败的回调
+                })
+            })
+
+            $(".repaymengtInfList_ button").click(function(){
+                var clipboard = new ClipboardJS("#id_copy_");
                  layer.tips("复制成功")
                 clipboard.on("success",function (element) {//复制成功的回调
                 });

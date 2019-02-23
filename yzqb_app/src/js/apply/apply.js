@@ -1,7 +1,7 @@
 !function(global, layer, userUtil, dataUtil){
 	var ratess,amountss,orderNo="as";
 	var beheadInterest = '';
-	var amount="",trem="";
+	var amount="",amount_="",trem="";
 	var applyPurpus;
 	initProduct();
 	
@@ -192,7 +192,7 @@
 		// amount += ("<option value=\""+v.borrowingAmount+"\">"+v.borrowingAmount+"元</option>");
 		if(v.faceStatus){
 			amount += (
-				'<div class="sel_item_unlock select_option" name="sel_item_unlock" borrowingTerm="'+v.borrowingTerm+'" repaymentAmount="'+v.repaymentAmount+'" beheadInterest="'+v.beheadInterest+'" productId="'+v.productId+'" gameRechargeRateMin="'+v.gameRechargeRateMin+'" borrowingAmount="'+v.borrowingAmount+'" style="overflow:hidden;box-sizing: border-box;padding: 0 20px;line-height: 40px;height: 40px;color:#555555;">'+
+				'<div class="sel_item_unlock select_option" tag="select_option" name="sel_item_unlock" borrowingTerm="'+v.borrowingTerm+'" repaymentAmount="'+v.repaymentAmount+'" beheadInterest="'+v.beheadInterest+'" productId="'+v.productId+'" gameRechargeRateMin="'+v.gameRechargeRateMin+'" borrowingAmount="'+v.borrowingAmount+'" style="overflow:hidden;box-sizing: border-box;padding: 0 20px;line-height: 40px;height: 40px;color:#555555;">'+
 					'<div style="float:left;"><span class="borrow_money">'+v.borrowingAmount+'</span>元</div>'+
 					'<div style="float:right;position: relative;" class="img_container">'+
 					'</div>'+
@@ -200,8 +200,8 @@
 			);
 			tempAmoutList.push(v);
 		}else{
-			amount += (
-				'<div class="sel_item_lock select_option" style="overflow:hidden;box-sizing: border-box;padding: 0 20px;line-height: 40px;height: 40px;color:#CCCCCC;">'+
+			amount_ += (
+				'<div class="sel_item_lock select_option" tag="select_option" name="sel_item_lock" borrowingTerm="'+v.borrowingTerm+'" repaymentAmount="'+v.repaymentAmount+'" beheadInterest="'+v.beheadInterest+'" productId="'+v.productId+'" gameRechargeRateMin="'+v.gameRechargeRateMin+'" borrowingAmount="'+v.borrowingAmount+'" style="overflow:hidden;box-sizing: border-box;padding: 0 20px;line-height: 40px;height: 40px;color:#CCCCCC;">'+
 					'<div style="float:left;">'+v.borrowingAmount+'元</div>'+
 					'<div style="float:right;position: relative;">'+
 						'<img src="../images/apply/locked_icon.png" alt="" style="position: absolute;height:15px;top: 12px;left: -20px;">复借解锁' +
@@ -271,7 +271,8 @@
 	// $("#borrowingAmount").find('option')[tempMaxIndex].selected = true;
 	$("#sel_box_list").html('');
 	$(amount).appendTo("#sel_box_list");
-	$($("#sel_box_list").find('.select_option')[tempMaxIndex]).find('.img_container').html('<img src="../images/apply/selected_icon.png" alt="" style="position: absolute;height:15px;top: 12px;left: -20px;">');
+	$(amount_).appendTo("#sel_box_list");
+	$($("#sel_box_list").find('.select_option[productId="'+temp_selected.productId+'"]')[0]).find('.img_container').html('<img src="../images/apply/selected_icon.png" alt="" style="position: absolute;height:15px;top: 12px;left: -20px;">');
 	// $("#sel_box_list").find('.select_option')[1].find('.img_container').html('<img src="../images/apply/selected_icon.png" alt="" style="position: absolute;height:15px;top: 12px;left: -20px;">');
 
 
@@ -350,8 +351,7 @@
 				// $("#btnApply").attr("data-rate",re.data[tempMaxIndex].gameRechargeRateMin);
 				// alert(66666);
 
-
-
+				//解锁金额去重；
 				$('#sel_box_list').find('div[name=sel_item_unlock]').each(function(i,v){
 					
 					if($('#sel_box_list').find('div[name=sel_item_unlock][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]').length>1){
@@ -391,8 +391,47 @@
 					}
 				});
 				
+				//未解锁金额去重；
+				$('#sel_box_list').find('div[name=sel_item_lock]').each(function(i,v){
+					
+					if($('#sel_box_list').find('div[name=sel_item_lock][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]').length>1){
+						var rm_el = $($('#sel_box_list').find('div[name=sel_item_lock][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]')[0]);	
+						var show_el = $($('#sel_box_list').find('div[name=sel_item_lock][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]')[1]);				
 
+					
+						$('#sel_box_list').find('div[name=sel_item_lock][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]')[0].remove();
+						
+
+
+					}
+				});
 				
+				//交叉金额去重；
+				$('#sel_box_list').find('div[tag=select_option]').each(function(i,v){
+					if($('#sel_box_list').find('div[tag=select_option][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]').length>1){
+						var dom_status = $($('#sel_box_list').find('div[tag=select_option][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]')[1]).attr('name');
+						if(dom_status==='sel_item_lock'){
+							$('#sel_box_list').find('div[tag=select_option][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]')[1].remove();
+						}else{
+							$('#sel_box_list').find('div[tag=select_option][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]')[0].remove();
+						}
+					}
+				});
+				// var temp_element = '';
+				// $('#sel_box_list').find('div[tag=select_option]').each(function(i,v){
+				// 	if($(v).attr('borrowingAmount')==='1300.00'){
+				// 		temp_element = $(v).clone()[0];
+						
+				// 	}
+					// if($('#sel_box_list').find('div[tag=select_option][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]').length>1){
+					// 	var dom_status = $($('#sel_box_list').find('div[tag=select_option][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]')[1]).attr('name');
+					// 	if(dom_status==='sel_item_lock'){
+					// 		$('#sel_box_list').find('div[tag=select_option][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]')[1].remove();
+					// 	}else{
+					// 		$('#sel_box_list').find('div[tag=select_option][borrowingAmount="'+$(v).attr('borrowingAmount')+'"]')[0].remove();
+					// 	}
+					// }
+				// });
 
 
 			}

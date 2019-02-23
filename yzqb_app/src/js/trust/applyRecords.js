@@ -32,7 +32,7 @@
   //     var _data={"type": 1,"mobileNumber": mobileNumber};
       
   //     $.ajax({
-  //         url: global.localUrl+"/web/userDiversionMsg",
+  //         url: global.localUrl+"web/userDiversionMsg",
   //         type: "post",
   //         data: JSON.stringify(_data),
   //         contentType: 'application/json;charset=utf-8',
@@ -48,7 +48,7 @@
   
 	function getborrowingInfo(){
 		userUtil.ajax({
-			url: global.localUrl+ '/nw/orders/borrowingInfo',
+			url: global.localUrl+ 'nw/orders/borrowingInfo',
 			data:{},
 			done: function(re){
 				layer.hideLoad();

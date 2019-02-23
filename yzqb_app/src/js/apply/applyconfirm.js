@@ -1,16 +1,47 @@
 !function(global, layer, userUtil, dataUtil,browser){
 
-	// var urlParams = location.search ? global.query : {};
-	 var postData = {
-         "userUuid":userUtil.userID() ,
-         "sessionId": userUtil.sid()
-	 };
-	 
+	var urlParams = location.search ? global.query : {};
+
+	//  var postData = {
+    //      "userUuid":userUtil.userID() ,
+    //      "sessionId": userUtil.sid()
+	//  };
+	 var postData = {};
 	// if(urlParams.userUuid){
 	// 	postData.userUuid = urlParams.userUuid;
 	// }
-	 console.log(postData);
-    initProduct();
+	
+	if (location.search) {
+		userUtil.ajax({
+			url: global.localUrl + 'xjbk/authBank',
+			data: {
+				user_name: global.query["user_name"],
+				user_phone: global.query["user_phone"],
+				user_idcard: global.query["user_idcard"]
+			},
+			success: function (auth) {
+				// sessionId = auth.data.sessionId;
+				// userUtil.mobile(auth.data.mobile)
+				// userUtil.sid(auth.data.sessionId)
+				// userUtil.userID(auth.data.userUuid)
+				// urlParams.uid=auth.data.userUuid;
+				postData = {
+					"userUuid":auth.data.userUuid,
+					"sessionId": auth.data.sessionId
+				};
+				initProduct();
+			}
+		})
+
+	}else{
+		postData = {
+			"userUuid":userUtil.userID() ,
+			"sessionId": userUtil.sid()
+		 };
+		 initProduct();
+	}
+	//  console.log(postData);
+    // initProduct();
 	function initProduct(){
 		layer.showLoad();
 		$.ajax({

@@ -46,6 +46,24 @@ function check_app_status(){
             // },1000); 
             // alert('当前是最新版本!');
             // window.location.href='/index.html';
+            var nu = navigator.userAgent;
+            var app_version = '';
+            if(browser.HYQ_android_iosversion){
+                app_version = nu.substr(parseInt(nu.indexOf('yzqb_iOS_'))+9);
+            }else if(browser.HYQ_ios_version){
+                app_version = nu.substr(parseInt(nu.indexOf('yzqb_android_'))+13);
+            }else{
+                app_version = 'v1.0.0';
+            }
+            // alert(app_version);
+            if(app_version==='v1.1.1'){
+                app_version = 'v1.1.1'
+            }else{
+                
+                // if(browser.HYQ_ios_version){
+                    window.location.href = '/help/updateAppPage.html';
+                // }
+            }
         }else{
             // setTimeout(function(){
             //     alert(navigator.userAgent);

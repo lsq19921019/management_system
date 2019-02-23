@@ -221,7 +221,7 @@
     <script src="../js/main.js?rev=@@hash"></script>
     <script>
       !(function(global,userUtil,layer,dataUtil){   
-          
+          var temp_status = '';
 	$('.banner_to_detail').on('click',function(){
 		window.location.href = global.localUrl+'activity/toBorrowMoney.html';
 	});
@@ -232,7 +232,7 @@
         $("body").height(Number(localH));
       	//申请记录
       	getborrowingInfo();
-
+        
         var stateConf = {
             1: { text: "待提交", operateTxt: "继续提交" },
             2: { text: "审核中", operateTxt: "" },
@@ -244,6 +244,7 @@
             8: { text: "待还款", operateTxt: "一键还款" },
             9: { text: "已还款", operateTxt: "" },
             10: { text: "审核不通过", operateTxt: "" },
+            // 11: { text: "还款处理中", operateTxt: "" },
             11: { text: "还款处理中", operateTxt: "" },
             12: { text: "放款失败", operateTxt: "" },
         }
@@ -257,13 +258,18 @@
               var n=0;
       	      var dom='';
               $.each(re.data,function(k,v){
-                if(v.status == 5 || v.status == 8){    //有操作按钮
-                  dom+= ("<div class=\"recordContent\"><div class=\"recordList\">编号："+v.orderNo+"</div><div class=\"recordList\">申请金额："+v.borrowingAmount+"元</div><div class=\"recordList\">申请期限："+v.borrowingTerm+"</div><div class=\"recordList\">申请时间："+v.createTime+"</div><div class=\"recordList active_color\">"+v.orderRemark+"</div><div class=\"recordListBtnTop\">"+v.orderStatusDesc+"</div><div class=\"recordListBtnBottom\" data-uuid=\""+v.orderNo+"\" data-status=\""+v.status+"\">"+stateConf[v.status].operateTxt+"</div></div>");
+                if(v.status == 5 || v.status == 8|| v.status == 11){    //有操作按钮
+                    if(v.status == 11){
+
+dom+= ("<div class=\"recordContent\"><div class=\"recordList\">编号："+v.orderNo+"</div><div class=\"recordList\">申请金额："+v.borrowingAmount+"元</div><div class=\"recordList\">申请期限："+v.borrowingTerm+"</div><div class=\"recordList\">申请时间："+v.createTime+"</div><div class=\"recordList active_color\">"+v.orderRemark+"</div><div class=\"recordListBtnTop\">"+v.orderStatusDesc+"</div></div>");
+                    }else{
+
+dom+= ("<div class=\"recordContent\"><div class=\"recordList\">编号："+v.orderNo+"</div><div class=\"recordList\">申请金额："+v.borrowingAmount+"元</div><div class=\"recordList\">申请期限："+v.borrowingTerm+"</div><div class=\"recordList\">申请时间："+v.createTime+"</div><div class=\"recordList active_color\">"+v.orderRemark+"</div><div class=\"recordListBtnTop\">"+v.orderStatusDesc+"</div><div class=\"recordListBtnBottom\" data-uuid=\""+v.orderNo+"\" data-status=\""+v.status+"\">"+stateConf[v.status].operateTxt+"</div></div>");
+                    }
                   n++;
       					}
                 $("#borrowList").html(dom);
       				});
-
               if(n==0){
                 $("#borrowList").hide();
                 $(".noneOrder").css({"display":"block"});

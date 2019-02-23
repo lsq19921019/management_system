@@ -1,7 +1,3 @@
-# 描述
-  
-  现金贷项目移动端h5前端项目。基于zepto+gulp打包工具。
-
 ## Build Setup
 
 ``` bash

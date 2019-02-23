@@ -25,11 +25,17 @@
 <body style="height:100%;width:100%;">
     <div style="background:#000;opacity:0.4;height:100%;width:100%;position: absolute;"></div>
     <div style="width:80%;left:10%;padding-top: 100px;z-index: 10;position: absolute;">
-        <img id="to_update_btn" class="banner_to_detail" src="../images/alert_update.png" style="width:100%;" alt="">
+        <img id="to_update_btn" class="banner_to_detail" src="../images/alert_update_.png" style="width:100%;display: none;" alt="">
+        <div style="overflow:hidden;border-radius:5px;font-size:15px;">
+            <div style="text-align: center;background-color:#fff;color:#333;box-sizing:border-box;padding:10px 10px;padding-bottom: 0;">升级提示</div>
+            <div style="background-color:#fff;box-sizing:border-box;padding:.8rem .8rem;">增加支付宝线上还款方式，提升还款体验</div>
+            <div id="dowmload_btn" style="text-align: center;background-color:#fff;color:#333;box-sizing:border-box;padding:20px 20px;border-top: 1px solid #ccc;">确定</div>
+        </div>
     </div>
 </body>
 <script src="../lib/zepto.min.js?rev=@@hash"></script>
 <script>
+    // alert('增加支付宝线上还款方式，提升还款体验');
     function check_app_status(){
         // alert(6666);
         var browserObj = function () {
@@ -69,14 +75,44 @@
         //     } 
         // }
 
-
+            
         
+            // var nu = navigator.userAgent;
+            // var app_version = '';
+            // if(browser.HYQ_android_iosversion){
+            //     app_version = nu.substr(parseInt(nu.indexOf('yzqb_iOS_'))+9);
+            // }else if(browser.HYQ_ios_version){
+            //     app_version = nu.substr(parseInt(nu.indexOf('yzqb_android_'))+13);
+            // }else{
+            //     app_version = 'v1.0.0';
+            // }
+            // // alert(app_version);
+            // if(app_version==='v1.1.1'){
+            //     app_version = 'v1.1.1'
+            // }else{
+            //     if(browser.HYQ_ios_version){
+            //         window.location.href = '/help/updateAppPage.html';
+            //     }
+            // }
         if(browser.HYQ){
             if(browser.HYQ_ios_version||browser.HYQ_android_iosversion){
                 // setTimeout(function(){
                 //     alert(navigator.userAgent);
                 // },1000); 
                 // alert('当前是最新版本!');
+                if(browser.ios){
+                    // window.location.href="https://www.pgyer.com/PxA8";//测试
+                    // window.location.href="itms-services://?action=download-manifest&url=https://image.yzqianbao.com/MyDownload/ios.plist";//线上
+                    window.location.href="itms-services://?action=download-manifest&url=https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/ios.plist";//线上
+                    // window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/YZQB-ios.ipa';
+                    // window.location.href="itms-services://?action=download-manifest&url=http://test.image.yzqianbao.com/MyDownload/YaoQianGuan.ipa";//测试
+                }else{
+                    // window.location.href = global.localUrl + "hyq_test.apk";//测试   http://h5.yzqianbao.com/yzqb.apk
+                    // window.location.href = global.localUrl + "yzqb.apk";//线上
+                    // window.location.href = 'http://test.image.yzqianbao.com/MyDownload/youziqianbao-official-debug-v1.1.1-61.apk';
+                    // window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ad/youziqianbao-official-release-v1.0.0.apk';
+                    window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ad/youziqianbao-official-release.apk';//线上
+                }
             }else{
                 // setTimeout(function(){
                 //     alert(navigator.userAgent);
@@ -86,13 +122,16 @@
                     // window.location.href = 'http://h5.yzqianbao.com/help/downLoad.html';
                     if(browser.ios){
                         // window.location.href="https://www.pgyer.com/PxA8";//测试
-                        // window.location.href="itms-services://?action=download-manifest&url=https://image.yzqianbao.com/MyDownload/ios.plist";//线上
+                        // window.location.href="itms-services://?action=download-manifest&url=https://test.image.yzqianbao.com/MyDownload/ios.plist";//线上
                         window.location.href="itms-services://?action=download-manifest&url=https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/ios.plist";//线上
+                        // window.location.href="itms-services://?action=download-manifest&url=http://test.image.yzqianbao.com/MyDownload/YaoQianGuan.ipa";//测试
                         // window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ios/YZQB-ios.ipa';
                     }else{
                         // window.location.href = global.localUrl + "hyq_test.apk";//测试   http://h5.yzqianbao.com/yzqb.apk
                         // window.location.href = global.localUrl + "yzqb.apk";//线上
-                        window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ad/youziqianbao-official-release-v1.0.0.apk';
+                        // window.location.href = 'http://test.image.yzqianbao.com/MyDownload/youziqianbao-official-debug-v1.1.1-61.apk';//测试
+                        // window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ad/youziqianbao-official-release-v1.0.0.apk';
+                        window.location.href = 'https://yzqb-app.oss-cn-shenzhen.aliyuncs.com/yzqbapp/ad/youziqianbao-official-release.apk';
                     }
                 // },3000);
             }
@@ -122,7 +161,7 @@
         // }
     }
     $(document).ready(function(){
-        $('#to_update_btn').on('click',function(){
+        $('#dowmload_btn').on('click',function(){
             check_app_status();
         });
     });

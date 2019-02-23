@@ -86,13 +86,19 @@ gulp.task('build', function () {
 //     },
 //     logLevel: 'debug'
 // });
-const proxy = proxyMiddleware('/nw', {target: 'http://test.h5.yzqianbao.com', changeOrigin: true});
-const proxy1 = proxyMiddleware('/system', {target: 'http://test.h5.yzqianbao.com', changeOrigin: true});
+const origin_1 = 'http://192.168.2.215:9000';
+const origin_2 = 'http://test.h5.yzqianbao.com';
+const origin_3 = 'http://192.168.2.191:9000';
+
+const proxy = proxyMiddleware('/nw', {target: origin_2, changeOrigin: true});
+const proxy_ = proxyMiddleware('/web', {target: origin_2, changeOrigin: true});
+const proxy1 = proxyMiddleware('/system', {target: origin_2, changeOrigin: true});
+const proxy2 = proxyMiddleware('/xjbk', {target: origin_2, changeOrigin: true});
 gulp.task("server", function () {
     browserSync.init({
         server: {
             baseDir: baseDir,
-            middleware:[proxy,proxy1]
+            middleware:[proxy,proxy1,proxy2,proxy_]
         },
         port:8050
     });

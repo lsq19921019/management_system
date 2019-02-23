@@ -1,3 +1,6 @@
+# 描述
+  贷款超市移动端前端项目。基于vue-cli脚手架。
+
 # loan-markt
 
 > A Vue.js project

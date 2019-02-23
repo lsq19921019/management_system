@@ -1,3 +1,6 @@
+#描述
+  现金贷项目后台催收系统。基于elementUI+vue-cli脚手架。
+
 # manage.yaoqian.com
 
 > manage for yaoqian

@@ -20,7 +20,7 @@
                 imgCode : '',
                 imgCodeSrc : '',
                 apiPath : {                    
-                    imgCode : 'api/message/image_code'
+                    imgCode : '/api/message/image_code'
                 }
             }
         },

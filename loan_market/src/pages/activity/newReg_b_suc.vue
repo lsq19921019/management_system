@@ -8,7 +8,7 @@
         <div class="main_con">
             <div class="top">
                 <p class="p1">最高可借额度  (元)</p>
-                <div class="money">200,000</div>
+                <div class="money">200000</div>
                 <!-- <number-grow :value='200000'></number-grow> -->
                 <p class="p2">1000元借1天最低仅0.2元</p>
             </div>

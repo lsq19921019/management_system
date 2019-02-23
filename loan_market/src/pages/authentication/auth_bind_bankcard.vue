@@ -22,10 +22,19 @@
             :swipeTime="picker.swiperTime"
             @confirm="handlePicker0Confirm">
         </awesome-picker>
-        
-        <transition name="fade" >
-            <pop-com v-if="dialogConfig.isShow" :config="dialogConfig" v-on:parentSure="open" v-on:parentOff="clons"></pop-com>
-        </transition>      
+        <transition name="fade">
+            <div v-if='showVerifyBox' class="inp_yzm">
+                <div class="inp_box">
+                    <div class="inp_txt">请输入验证码&nbsp;&nbsp;&nbsp;
+                        <input class="inp_con" v-model="captcha" type="text" maxlength="6"/>
+                    </div>
+                    <div class="inp_btn">
+                        <div @click="hideVerifyBox" class="close">取消</div>
+                        <div @click="sendVerifyCodeFun" class="confirm">确认</div>
+                    </div>
+                </div>
+            </div>
+        </transition>          
     </div>
 </template>
 <script>
@@ -36,8 +45,10 @@ export default {
         name : 'bindCard',
     data(){
         return{
+            inputVerifyCode: '',
             phone:localStorage.getItem('_mobile'),
             uname:'',
+            realName:'',
             bankNo:'',
             selVal:'请选择',
             selCode:'',
@@ -46,18 +57,13 @@ export default {
                 anchor: [],
                 textTitle:'',
                 swiperTime:400,
-            },
-            dialogConfig : {
-                    btns : ['取消','确定'],
-                    isShow:false,
-                    showTitle : true,
-                    title : '温馨提示',
-                    isShow:false,
-                    content : '<span style="line-height:1.5">一旦实名认证通过，相关信息不允许修改，是否确认进行实名认证？</span>'
-                },   
+            },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
             value:'',
             bankList:[],
-            pfNo:this.$route.params.orderNo 
+            showVerifyBox:false,
+            orderNo:this.$route.params.orderNo,
+            pfNo:localStorage.getItem('pfNo'),
+            captcha:''
         }
     },
     components:{
@@ -70,6 +76,45 @@ export default {
     mounted(){
     },
     methods:{
+        hideVerifyBox(){
+            this.showVerifyBox = false;
+        },        
+        sendVerifyCodeFun(){
+            let _this = this;
+            if(!_this.captcha){
+                _this.$msg({content:'验证码不能为空!'});
+                return;
+            }
+            let data = {
+                userName: this.realName,
+                bankCode: this.selCode,
+                cardNo: this.bankNo,
+                bankName:this.selVal,
+                bindPhoneNo:this.phone,
+                pfNo:this.pfNo,
+                orderNo:this.orderNo,  
+                captcha:this.captcha,            
+            }
+            this.$ajax.post('/api/order/bindCard',_this.$qs.stringify(data),{
+                headers: _this.Base.initAjaxHeader(1,data)
+            })
+            .then(res=>{
+                if(res.data.result!=null){
+                    if(res.data.result.bind){
+                        this.$msg({content:'绑卡成功'});
+                        setTimeout(_=>{
+                            _this.$router.go(-1);
+                        },500);
+                    }else{
+                        this.$msg({content:res.data.result.tip});
+                    }
+                }else{
+                    this.$msg({content:res.data.msg});
+                }
+                this.showVerifyBox = false;
+                console.log(data);
+            });            
+        },
         openAlert(){
             this.dialogConfig.isShow = true;
         },
@@ -87,11 +132,13 @@ export default {
                 return;
             }
             let data = {
-                userName: this.uname,
+                userName: this.realName,
                 bankCode: this.selCode,
                 cardNo: this.bankNo,
+                bankName:this.selVal,
                 bindPhoneNo:this.phone,
                 pfNo:this.pfNo,
+                orderNo:this.orderNo,
                 // repayPeriods:'',
                 
                 captcha:'',
@@ -102,6 +149,18 @@ export default {
             })
             .then(res=>{
                 console.log(data);
+                if(res.data.result!=null){
+                    if(res.data.result.yzm){
+                        this.showVerifyBox = true
+                    }else{
+                        this.$msg({content:res.data.result.tip});
+                    }
+                }else{
+                    this.$msg({content:res.data.msg});
+                }      
+            },err=>{
+                console.log(err);
+                this.$msg({content:res.data.msg});
             });
         },
         getVal(){
@@ -118,13 +177,14 @@ export default {
                 .then(res=>{
                     if(res.data.status==='0'){
                         _this.uname = res.data.result.userName;
-                        _this.bankList = JSON.parse(res.data.result.bankJson);
+                        _this.realName = res.data.result.realName
+                        //_this.bankList = JSON.parse(res.data.result.bankJson);
+                        _this.bankList = res.data.result.bankJson;
                         let bankSelList = [];
                         _this.bankList.forEach((v,i)=>{
-                            bankSelList.push({value: v.bank_name, index:v.bank_code}); 
-                        })
-                        _this.picker.data = bankSelList;
-                        console.log(_this.bankList);
+                            bankSelList.push({value:v.bank_name,code:v.bank_code}); 
+                        })                        
+                        _this.picker.data=bankSelList;
                     }
                 });
         },
@@ -139,7 +199,7 @@ export default {
             let tempCode = '';
             v.forEach(element => {
                 tempValue += element.value;
-                tempCode += element.index;
+                tempCode += _this.picker.data[element.index].code;     
             });
             this.selVal = tempValue;
             this.selCode = tempCode;
@@ -148,8 +208,59 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-        .base_info{
-            background: #fff;
-            margin-top: 1.6rem;
+    .base_info{
+        background: #fff;
+        margin-top: 1.6rem;
+    }
+    .inp_yzm{
+        position:fixed;
+        top:0rem;
+        display:flex;
+        align-items:center;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        .inp_box{
+            text-align:center;
+            border:1px solid #ccc;
+            background:rgba(255,255,255,1);
+            width:5.3rem;margin:0 auto;
+            box-sizing:border-box;
+            border-radius:.2rem;
+            position:relative;
+            .inp_txt{
+                text-align:center;
+                padding:.5rem 0;
+                font-size:.3rem;
+                line-height:.6rem;
+                color:#2d2d2d;
+                .inp_con{
+                    border:1px solid #ccc;
+                    text-indent:.2rem;
+                    -webkit-appearance: none;
+                    width:2.18rem;
+                    height:.6rem;
+                    line-height:.6rem;
+                }
+            }
+            .inp_btn{
+                width:100%;
+                font-size:.34rem;
+                overflow:hidden;
+                border-top:1px solid #ccc;
+                line-height:.9rem;
+                .close{
+                    width:50%;
+                    float:left;
+                }
+                .confirm{
+                    width:50%;
+                    float:left;
+                    box-sizing:border-box;
+                    border-left:1px solid #ccc;
+                    color:#527bec;
+                }
+            }
         }
+    }
 </style>

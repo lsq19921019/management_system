@@ -89,7 +89,7 @@
             //backUrl：按钮名称； 
             openNewWindow(){
                 // alert(document.title+"===="+window.location.href);
-                this.Base.interactiveWithApp('openNewWindow',{backUrl:'回到快银',title:document.title,url:location.href, startColor:"#6A5CF6",endColor:"#8BE2F1",reload:true}).then(data=>{
+                this.Base.interactiveWithApp('openNewWindow',{backUrl:'回到人人贷款',title:document.title,url:location.href, startColor:"#6A5CF6",endColor:"#8BE2F1",reload:true}).then(data=>{
                     if(data == 'wap') {
                         //wap端逻辑
                         console.log('jumpToSharing','wap');

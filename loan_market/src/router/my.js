@@ -16,8 +16,9 @@ import customerCenter from '../pages/my/customerCenter';
 import service from '../pages/my/service';
 //认证信息
 import authInfor from '../pages/my/authInfor';
-import calendar from '../pages/my/calendar'
-
+import calendar from '../pages/my/calendar';
+//关注公众号
+import pubno from '../pages/my/pubno';
 export default [
     {
         path: '/my/:sourceCode?',
@@ -129,6 +130,14 @@ export default [
         component: calendar,
         meta : {
             title : '回款日历'
+        }
+    },
+    {   
+        path: '/pubno',
+        name: 'Pubno',
+        component: pubno,
+        meta: {
+            title : '关注公众号'
         }
     }
 ];

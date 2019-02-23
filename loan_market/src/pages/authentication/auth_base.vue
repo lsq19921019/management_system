@@ -37,8 +37,8 @@
                 dialogConfig : {
                     btns : ['取消','确定'],
                     showTitle : true,
-                    title : '温馨提示',
                     isShow:false,
+                    title : '温馨提示',
                     content : '<span style="line-height:1.5">一旦实名认证通过，相关信息不允许修改，是否确认进行实名认证？</span>'
                 },                
             }
@@ -105,14 +105,9 @@
                     headers: _this.Base.initAjaxHeader(1,{})
                 })
                 .then(res=>{
-                    let resData = res.data;         
+                    let resData = res.data;
                     if(resData.status == '0'){
                         this.$msg({content:"认证成功"})
-                        setTimeout(() => {
-                            this.$router.go(-1)
-                        }, 500);
-                    }else{
-                        this.$msg({content:resData.msg})
                         if(this.$route.query.type == 'set'){
                             setTimeout(() => {
                                 this.$router.push({ name : 'Set' });
@@ -122,6 +117,11 @@
                                 this.$router.go(-1)
                             }, 500);
                         }
+                    }else{
+                        this.$msg({content:resData.msg})
+                        setTimeout(() => {
+                            this.$router.go(-1)
+                        }, 500);                       
                     }
                 })                
             },

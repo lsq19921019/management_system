@@ -4,6 +4,7 @@ import login from '../pages/login';
 import iframe from '../pages/iframe';
 import loan from '../pages/main/loan';
 import platformDetail from '../pages/main/platform_detail';
+import platformDetail2 from '../pages/main/platform_detail2';
 import classification from '../pages/main/classification';
 import undertake from '../pages/undertake';
 import distribute from '../pages/main/distribute';
@@ -33,6 +34,13 @@ export default [
             title : ''
         }
     },{
+        path : '/platformDetail2/:id/:sourceCode?',
+        name : 'PlatformDetail2',
+        component : platformDetail2,
+        meta : {
+            title : ''
+        }
+    },{
         path: '/login/:sourceCode?',
         name : 'Login',
         component: login,
@@ -54,7 +62,7 @@ export default [
             title : '平台分类'
         }
     },{
-        path: '/undertake',
+        path: '/undertake/:type?',
         name : 'Undertake',
         component: undertake,
         meta : {

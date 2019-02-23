@@ -3,13 +3,18 @@ import test from '../pages/activity/test';
 import landing from '../pages/activity/landing';
 import newReg from '../pages/activity/newReg';
 import regSuc from '../pages/activity/newReg_suc';
-import newReg1 from '../pages/activity/newReg_a';
+import newRegA from '../pages/activity/newReg_a';
 import newRegSuca from '../pages/activity/newReg_a_suc';
 import newReg2 from '../pages/activity/newReg_b';
+import newRegB3 from '../pages/activity/newReg_b3';
+import newRegB4 from '../pages/activity/newReg_b4';
+import newRegB5 from '../pages/activity/newReg_b5';
 import newReg3 from '../pages/activity/newReg_c';
 import newReg4 from '../pages/activity/newReg_d';
 import newRegSucb from '../pages/activity/newReg_b_suc';
 import detailPagea from '../pages/activity/detailPage';
+import yzPage from '../pages/activity/yzPage';
+import yzPageSuc from '../pages/activity/yzPageSuc';
 
 export default [
     {
@@ -25,7 +30,7 @@ export default [
         name: 'Landing',      
         component: landing,
         meta : {
-            title : '快银-您的随身信用钱包'
+            title : '人人贷款-您的随身信用钱包'
         }
     },
     {
@@ -33,7 +38,7 @@ export default [
         name: 'Landing',      
         component: landing,
         meta : {
-            title : '快银-您的随身信用钱包'
+            title : '人人贷款-您的随身信用钱包'
         }
     },
     {
@@ -41,7 +46,7 @@ export default [
         name: 'newReg',
         component: newReg,
         meta: {
-            title: '快银-您的随身信用钱包'
+            title: '人人贷款-您的随身信用钱包'
         }
     },
     {
@@ -49,15 +54,7 @@ export default [
         name: 'regSuc',
         component: regSuc,
         meta: {
-            title: '快银-您的随身信用钱包'
-        }
-    },
-    {
-        path: '/newRegA/:sourceCode?',
-        name: 'newRegA',
-        component: newReg1,
-        meta: {
-            title: '快银-您的随身信用钱包'
+            title: '人人贷款-您的随身信用钱包'
         }
     },
     {
@@ -65,7 +62,15 @@ export default [
         name: 'newRegB',
         component: newReg2,
         meta: {
-            title: '快银-您的随身信用钱包'
+            title: '人人贷款-您的随身信用钱包'
+        }
+    },
+    {
+        path: '/newRegB2/:sourceCode?',
+        name: 'newRegB2',
+        component: newReg2,
+        meta: {
+            title: '人人贷款-您的随身信用钱包'
         }
     },
     {
@@ -73,7 +78,7 @@ export default [
         name: 'newRegC',
         component: newReg3,
         meta: {
-            title: '快银-您的随身信用钱包'
+            title: '人人贷款-您的随身信用钱包'
         }
     },
     {
@@ -81,17 +86,33 @@ export default [
         name: 'newRegD',
         component: newReg4,
         meta: {
-            title: '快银-您的随身信用钱包'
+            title: '人人贷款-您的随身信用钱包'
         }
     },
     {
-        path: '/newRegB2/:sourceCode?',
-        name: 'newRegB',
-        component: newReg2,
+        path: '/newRegB3/:sourceCode?',
+        name: 'newRegB3',
+        component: newRegB3,
         meta: {
-            title: '快银-您的随身信用钱包'
+            title: '人人贷款-您的随身信用钱包'
         }
     },
+    {
+        path: '/newRegB4/:sourceCode?',
+        name: 'newRegB4',
+        component: newRegB4,
+        meta: {
+            title: '人人贷款-您的随身信用钱包'
+        }
+    }, 
+    {
+        path: '/newRegB5/:sourceCode?',
+        name: 'newRegB5',
+        component: newRegB5,
+        meta: {
+            title: '人人贷款-您的随身信用钱包'
+        }
+    },        
     {
         path: '/detailPagea/:pfNo',
         name: 'DetailPagea',
@@ -101,11 +122,27 @@ export default [
         }
     },
     {
+        path: '/newRegA/:sourceCode?',
+        name: 'NewRegA',
+        component: newRegA,
+        meta :{
+            title: '人人贷款-您的随身信用钱包'
+        }
+    },
+    {
         path: '/newRegSuca',
         name: 'NewRegSuca',
         component: newRegSuca,
         meta :{
-            title: '快银-您的随身信用钱包'
+            title: '人人贷款-您的随身信用钱包'
+        }
+    },
+    {
+        path: '/yzPageSuc',
+        name: 'yzPageSuc',
+        component: yzPageSuc,
+        meta :{
+            title: '人人贷款-您的随身信用钱包'
         }
     },
     {
@@ -113,7 +150,15 @@ export default [
         name: 'NewRegSucb',
         component: newRegSucb,
         meta :{
-            title: '快银-您的随身信用钱包'
+            title: '人人贷款-您的随身信用钱包'
         }
+    },
+    {
+        path: '/yzPage',
+        name: 'yzPage',
+        component: yzPage,
+        meta :{
+            title: '人人贷款-您的随身信用钱包'
+        }        
     }
 ];

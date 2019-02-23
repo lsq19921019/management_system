@@ -5,7 +5,7 @@
             <a href="javascript:;" onclick="window.history.back();" class="goback"></a>
         </div>
         <p class="title">{{ detail.title }}</p>
-        <p class="time">{{ detail.time }}</p>
+        <p class="time">{{ detail.time || '' }}</p>
         <div class="content" v-html="detail.content"></div>
     </div>
 </template>
@@ -21,7 +21,8 @@
                     content : ''
                 },
                 apiPath : {
-                    detail : '/api/message/mail_detail'
+                    //detail : '/api/message/mail_detail',
+                    detail : '/api/sysNotice/detail',
                 },
                 id : this.$route.query.id,
             }
@@ -36,7 +37,7 @@
             getDetail() {
                 let _this = this;
                 let data = {
-                    mailId : _this.id
+                    id : _this.id
                 };
                 _this.$ajax.post(_this.apiPath.detail,_this.$qs.stringify(data),{
                     headers : _this.Base.initAjaxHeader(1,{})
@@ -45,7 +46,7 @@
                     if(res.status == 0) {
                         _this.detail.title = res.result.title;
                         _this.detail.content = res.result.content;
-                        _this.detail.time = res.result.time;
+                        _this.detail.time = res.result.createTimeDesc;
                     } else {
                         _this.$msg({ content : result.msg });
                     }

@@ -59,6 +59,7 @@
                 pageType : this.$route.params.class,
                 //接口地址
                 apiPath : {
+                    //zone : '/api/platform/zone/new'
                     zone : '/api/platform/zone'
                 },
                 //当前页码

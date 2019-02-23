@@ -8,11 +8,12 @@
         <loading v-if="isShowLoading" :text="'加载中...'"></loading>
         <keep-alive><tab-bar :navIndex="1"></tab-bar></keep-alive> 
         <div class="page_title">
-            <p>线上贷款</p>
+            <p>贷款</p>
         </div>
         <!-- 头部tabbar -->
         <nav>
             <ul>
+                <li @click="handlerScreen(3)" :class="{ cur : isShowScreenMoney }"><span>{{ tabText3 }}</span><span></span></li>
                 <li @click="handlerScreen(1)" :class="{ cur : isShowScreenRecommend }"><span>{{ tabText1 }}</span><span></span></li>
                 <li @click="handlerScreen(2)" :class="{ cur : isShowScreenType }"><span>{{ tabText2 }}</span><span></span></li>
             </ul>
@@ -36,12 +37,10 @@
         </div>
         <!-- 筛选条件遮罩 -->
         <transition name="fadein">
-            <div class="screen_bg pof" @click="offScreen($event)" v-show="isShowScreenRecommend || isShowScreenType">
+            <div class="screen_bg pof" @click="offScreen($event)" v-show="isShowScreenRecommend || isShowScreenType || isShowScreenMoney">
                 <!-- 推荐排序 -->
-                <div class="tjpx contain fs28" v-show="isShowScreenRecommend">
-                    <ul>
-                        <li v-for="(item,index) in screen.sortType" :key="index" :class="{ cur : sortType==index+1 }" @click="handlerRecommend(item)">{{ item.value }}</li>
-                    </ul>
+                <div class="dklx contain fs28" v-show="isShowScreenRecommend">
+                    <a v-for="(item,index) in screen.sortType" :key="index" :class="{ cur : sortType==index+1 }" @click="handlerRecommend(item)">{{ item.value }}</a>
                 </div>
                 <!-- 贷款类型 -->
                 <div class="dklx contain c fs28" v-show="isShowScreenType">
@@ -51,6 +50,10 @@
                     v-for="(item,index) in screen.loanType" 
                     :key="index" @click="handlerType(index+1)" 
                     :class="{ cur : loanType==item.value }">{{ item.value }}</a>
+                </div>
+                <!-- 金额范围 -->
+                <div class="dklx contain fs28" v-show="isShowScreenMoney">
+                    <a v-for="(item,index) in screen.monescope" :key="index" :class="{ cur : monescope==index+1 }" @click="handlerMoney(item)">{{ item.value }}</a>
                 </div>
             </div>
         </transition>
@@ -87,19 +90,24 @@
                 isShowScreenRecommend : false,
                 //是否显示类型筛选
                 isShowScreenType : false,
+                isShowScreenMoney: false,
                 //回传后端排序字段
                 sortType : '1',
                 //回传后端类型字段
                 loanType : '',
+                //回传后端类型字段
+                monescope:'',
                 //后端筛选条件
                 screen : {
                     loanType : [],  //类型
-                    sortType : []  //推荐
+                    sortType : [],  //推荐
+                    monescope:[]    //金额范围
                 },
                 tabText1 : '推荐排序',
                 tabText2 : '贷款类型',
+                tabText3 : '金额范围',
                 isLoading : false,
-                isShowListTips : false
+                isShowListTips : false,
             }
         },
         components : {
@@ -121,7 +129,8 @@
                 let data = {
                     pageNum : this.pageNum,
                     loanType: this.loanType,
-                    sortType: this.sortType
+                    sortType: this.sortType,
+                    amountType: this.monescope
                 };
                 if(arguments[0]) {
                    this.isShowGetMore = false;
@@ -141,6 +150,9 @@
                     } else {
                         // _this.$msg({ content : result.msg });                        
                     }
+                    //解决一个问题，ios返回莫名出现遮罩层
+                    window.scrollTo(0,1); 
+                    window.scrollTo(0,0); 
                     _this.isShowLoading = false;
                     _this.isLoading = false;
                });
@@ -148,7 +160,7 @@
             //获取查询条件
             getQueryKeys(_this) {
                 this.$ajax.post(this.apiPath.query_criteria,_this.$qs.stringify({
-                    pkeys : 'SYS_LOAN_TYPE,SYS_SORT_TYPE'
+                    pkeys : 'SYS_LOAN_TYPE,SYS_SORT_TYPE,SYS_LOAN_AMOUNT'
                 }),{
                     headers : _this.Base.initAjaxHeader(1,{})
                 }).then(res=>{
@@ -156,6 +168,7 @@
                     if(result.status == 0) {
                         _this.screen.loanType = result.result.SYS_LOAN_TYPE;
                         _this.screen.sortType = result.result.SYS_SORT_TYPE;
+                        _this.screen.monescope = result.result.SYS_LOAN_AMOUNT;
                     }
                 });
             },
@@ -164,10 +177,17 @@
                 if(type == 1) {
                      this.isShowScreenRecommend = true;
                      this.isShowScreenType = false;
+                     this.isShowScreenMoney = false;
                 }
                 if(type == 2) {
                     this.isShowScreenRecommend = false;
-                     this.isShowScreenType = true;
+                    this.isShowScreenMoney = false;
+                    this.isShowScreenType = true;
+                }
+                if(type == 3){
+                    this.isShowScreenMoney = true;
+                    this.isShowScreenRecommend = false;
+                    this.isShowScreenType = false;
                 }
             },
             //点击推荐排序列表项
@@ -194,6 +214,18 @@
                 this.isShowScreenType = false;  
                 this.getList(this);
             },
+            //点击金额范围列表项
+            handlerMoney(item) {
+                window.scrollTo(0,0);
+                this.isShowListTips = false;
+                this.listData = [];
+                this.pageNum = 1;
+                this.monescope = item.vkey;
+                this.tabText3 = item.value;
+                this.isShowLoading = true;
+                this.isShowScreenMoney = false;  
+                this.getList(this);
+            },            
             //不限
             noLimit() {
                 this.loanType = '';
@@ -209,6 +241,7 @@
                 if(e.target.className.indexOf('screen_bg') > -1) {
                     this.isShowScreenRecommend = false,
                     this.isShowScreenType = false;
+                    this.isShowScreenMoney = false;
                 }
             },
             //跳转平台详情页面
@@ -266,7 +299,7 @@
             ul{
                 li{
                     height:.48rem;
-                    width:49.5%;
+                    width:32.3%;
                     float:left;
                     display:flex;
                     align-items:center;
@@ -286,6 +319,9 @@
                 li:nth-child(1){
                     border-right:1px solid #e6e6e6;
                 }
+                li:nth-child(2){
+                    border-right:1px solid #e6e6e6;
+                }                
                 li.cur{
                     color:#507DEF;
                     span:nth-child(2){

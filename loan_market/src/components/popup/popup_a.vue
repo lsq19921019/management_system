@@ -6,7 +6,7 @@
     <div class="main">
         <div class="pop_con">
             <div class="pop_info">
-                <p class="p1">该功能需在APP内才能使用</p>
+                <p class="p1">该功能需在最新APP内才能使用</p>
                 <p class="p2">立即下载，获得最新平台动态，提高贷款成功率。</p>
                 <button @click="toDown">前去下载</button>
             </div>

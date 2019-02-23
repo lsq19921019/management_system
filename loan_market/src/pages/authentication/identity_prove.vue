@@ -46,7 +46,7 @@
                     <img ref='faceCheck' src="../../assets/prove/prove1.png" alt="">
                 </div>
                 <div class="bom_info">请按照要求进行人脸识别</div>
-            </div>                               
+            </div>
         </div>
         <!-- <div class="pdb">
             <btn-com btnval='保存'></btn-com>
@@ -211,15 +211,9 @@
                         }).then(res=>{
                             _this.isShowLoading=false;
                             _this.$msg({content:'验证成功'});
-                            if(this.$route.query.type == 4){
-                                setTimeout(_=>{
-                                    _this.$router.push({name:'AuthIdentity',query:{type:3}});
-                                },500);
-                            }else{
-                                setTimeout(_=>{
-                                    _this.$router.push({name:'AuthIdentity'});
-                                },500);                                
-                            }
+                            setTimeout(_=>{
+                                _this.$router.go(-1);
+                            },500);
                         });
                     }
                 });
@@ -313,7 +307,7 @@
                         headers: _this_.Base.initAjaxHeader(1,data)
                     }).then(res=>{
                         // let Orientation = _this_.Orientation;
-                        // if(Orientation != "" && Orientation != 1){   
+                        // if(Orientation != "" && Orientation != 1){
                         //     switch(Orientation){  
                         //         case 6://需要顺时针（向左）90度旋转  
                         //             console.log('需要顺时针（向左）90度旋转');  

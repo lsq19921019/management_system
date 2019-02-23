@@ -287,13 +287,13 @@
         },
         created() {
             this.radius = this.Base.calcPx(1.1)/2;
-            this.circleWidth = this.Base.calcPx(0.1); 
+            this.circleWidth = this.Base.calcPx(0.1);
         },
         mounted() {
             //初始化文本框长度&文本框输入动态改变长度
             this.getDetail(this); 
             this.handlerInput('ipt1').handlerInput('ipt2'); 
-            localStorage.setItem('pfNo',this.platformNo);        
+            localStorage.setItem('pfNo',this.platformNo);
         },
         methods : {
             close(){
@@ -383,10 +383,11 @@
                 this.incompetenceConfig.isZhfy = false;
             },
             //去认证
-            goAuth(li) {                
+            goAuth(li) {              
                 let linkConfig = [
                     ['BASIC_VERIFY' , 'AuthBase' ] ,  //基础信息
-                    ['IDCARD_INFO' , 'IdentityProve' ] ,  //身份认证(身份证上传页面)
+                    //['IDCARD_INFO' , 'IdentityProve' ] ,  //身份认证(身份证上传页面)
+                    ['IDCARD_INFO' , 'newIdentity' ] ,  //身份认证(身份证上传页面)
                     ['CONTACT_INFO' , 'AuthContact' ] ,  //联系人认证
                     ['ADD_CREDITCARD' , 'AuthAddCard' ] ,  //添加信用卡
                     ['ADD_WORKINFO' , 'AuthAddWork' ] ,  //添加工作信息
@@ -409,12 +410,13 @@
                     //已认证的跳转认证完成页面
                     if(li.hasVerify) {
                         this.$router.push({ name : 'AuthSuccess' });
-                    } else {                                             
+                    } else {
+                        localStorage.setItem("code",li.code||'')                          
                         //如果第三方可以回跳回来
                         if(li.apiType == 'backUrl') {
                             //location.href = `${li.url}${location.href}&themeColor=527BEC`;
                             let o = {
-                                url : `${li.url}${location.origin}/undertake&themeColor=527BEC`,
+                                url : `${li.url}${location.origin}/undertake/${li.codeType}&themeColor=527BEC`,
                                 title : li.name,
                                 startColor:"#6A5CF6",
                                 endColor:"#8BE2F1",
@@ -449,8 +451,8 @@
                     }                    
                 } else {
                     for(let i in linkConfig) {
-                        if(li.code == linkConfig[i][0]) {                            
-                            //
+                        if(li.code == linkConfig[i][0]) {  
+                            console.log(li)   
                             //进行联系人认证获取通讯录
                             if(li.code == 'CONTACT_INFO') {
                                 if(this.Base.getClientType().type=='wap'){
@@ -468,8 +470,27 @@
                                     }
                                 });
                             }
+                            //身份认证/qianjinjin
+                            // if(li.code == 'IDCARD_INFO'&&li.hasVerify == false) {
+                            //     if(this.Base.getClientType().type=='wap'){
+                            //         this.isShowPopa = true;
+                            //         return false;
+                            //     }
+                            //     this.Base.interactiveWithApp('getCertifyInfo',{
+                            //         token : localStorage.getItem('_token'),
+                            //         certifyInfo : ['smsInfo']
+                            //     }).then(data=>{
+                            //         if(data == 'wap') {
+                            //             console.log('getCertifyInfo','wap');
+                            //         } else {
+                            //             console.log('getCertifyInfo',data);
+                            //         }                                                                       
+                            //         this.$router.push({ name : linkConfig[i][1] });
+                            //     });
+                            // }                            
                             //进行身份证认证获取短信权限
                             if(li.code == 'IDCARD_INFO') {
+                                console.log(linkConfig[i][1]);
                                 this.Base.interactiveWithApp('getCertifyInfo',{
                                     token : localStorage.getItem('_token'),
                                     certifyInfo : ['smsInfo']
@@ -478,15 +499,13 @@
                                         console.log('getCertifyInfo','wap');
                                     } else {
                                         console.log('getCertifyInfo',data);
-                                    }
+                                    } 
                                 });
                             }
                             if(li.hasVerify) {
                                 if(li.code == 'CONTACT_INFO' || li.code == 'OTHER_INFO_VERIFY') {
                                     this.$router.push({ name : linkConfig[i][1] });
-                                }else if(li.code == 'IDCARD_INFO'){
-                                    this.$router.push({ name : 'AuthIdentity',query:{type:3}});
-                                } else {
+                                }else {
                                     this.$router.push({ name : 'AuthSuccess' });
                                 }
                             }else {                                
@@ -662,7 +681,7 @@
                         _this.calcFee(); 
                         _this.initIptWidth();
                         _this.showAuthPopup(_this.detail.userAccept);
-                        _this.handlerFirstPush(); 
+                        _this.handlerFirstPush();
                         _this.isShowPage = true;
                         if(_this.detail.platformBaseInfo.pass == 3 && param == 'click') {
                             _this.$router.push({
@@ -763,7 +782,7 @@
                         span:nth-child(2){
                             opacity:.6;   
                         }
-                    }
+                    } 
                     div:nth-child(2){
                         width:1.2rem;
                     }

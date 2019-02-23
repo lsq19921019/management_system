@@ -15,7 +15,6 @@
         <div class="banner" ref="banner">
             <swiper v-if="bannerList.length > 1 && isShowSwiper" :options="swiperOption" ref="mySwiper">
                 <swiper-slide v-for="(img,index) in bannerList" :key="index"><img :src="img.imgUrl" alt="" @click="bannerLink(img)"></swiper-slide>
-                <!-- <swiper-slide v-for="(img,index) in bannerList" :key="index"><a :href="img.url"><img :src="img.imgUrl" alt=""></a></swiper-slide> -->
                 <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
         </div>
@@ -51,6 +50,7 @@
                 </div>
             </div>   
         </div> 
+        <!-- <router-link to='/platformDetail2/LDJQ2019012201' style="color:green">测试</router-link> -->
         <!-- 列表数据 -->
         <div class="list">
             <div class="title"><span ref='test'>热门推荐</span><span @click="toLoan">更多</span>
@@ -62,10 +62,7 @@
                 <more-loading  v-if="pageNum <= totalPage && listData.length != 0"></more-loading> 
                 <span v-if="isShowListTips" class="fc2 fs28">没有更多了</span>
             </div> -->
-        </div>
-        <transition name="fade" >
-            <pop-com v-if="dialogConfig.isShow" :config="dialogConfig" v-on:parentSure="open" v-on:parentOff="clons"></pop-com>
-        </transition>        
+        </div>       
     </div>
 </template>
 
@@ -82,11 +79,12 @@
                     //列表
                     list : '/api/platform/list',
                     //首页列表
+                    //index : '/api/platform/index/new',
                     index : '/api/platform/index',
                     //个人中心
                     user : '/api/user/index',
                     //banner pv/uv 统计接口
-                    bannerPv : '/api//platform/bannerPv'
+                    bannerPv : '/api/platform/bannerPv'
                 },
                 //是否显示加载中组件
                 isShowLoading : true,
@@ -136,27 +134,30 @@
             }
         },
         components : {
-            tabBar, platformItem, swiper, swiperSlide,popCom
+            tabBar, platformItem, swiper, swiperSlide, popCom
         },
         mounted() {
             // window.addEventListener('scroll', this.scrollBottom); 
             let sourceCode = this.$route.params.sourceCode;
             if(sourceCode == 'ios_qianjinjin') {
                 localStorage.setItem('sourceCode_qianjinjin',sourceCode);
-            }                   
+            } else if(sourceCode == 'ios_renrendai'){
+                localStorage.setItem('sourceCode_renrendai',sourceCode);
+            }                  
         },
         computed : {
             swiper() {
                 return this.$refs.mySwiper.swiper
             }
         },
-        created() {
-            
+        created() {       
+            // document.body.scrollTop = 200+'px';
+            // console.log(111);
         },
         beforeMount() {         
             this.getList();
             //通过token获取用户默认信息
-            if(localStorage.getItem('_token')) {                                      
+            if(localStorage.getItem('_token')) {                                     
                 this.Base.interactiveWithApp('getCertifyInfo',{
                     token : localStorage.getItem('_token'),
                     certifyInfo : ['locationInfo','deviceInfo','allInstallAppInfo']
@@ -170,8 +171,6 @@
             }
         },
         methods : {
-            clons(){},
-            open(){},
             //滚动底部方法
             scrollBottom() {
                 var sTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -226,6 +225,9 @@
                     }
                     _this.isShowLoading = false;
                     _this.isLoading = false;
+                    //解决一个问题，ios返回莫名出现遮罩层
+                    window.scrollTo(0,1); 
+                    window.scrollTo(0,0); 
                });
             },
             //跳转平台详情页面
@@ -240,11 +242,11 @@
             bannerHref(url) {
                 if(url.length > 0) {
                     this.Base.interactiveWithApp('openNewWindow',{
-                        url : url, title : '快银', startColor:"#6A5CF6",endColor:"#8BE2F1"
+                        url : url, title : '人人贷款', startColor:"#6A5CF6",endColor:"#8BE2F1",backUrl:'回到人人贷款'
                     }).then(data=>{
                         if(data == 'wap') {
                             console.log('openNewWindow','wap');
-                            this.Base.setIframePageInfo(this,{ url : url, title : '快银' });
+                            this.Base.setIframePageInfo(this,{ url : url, title : '人人贷款' });
                         } else {
                             console.log('openNewWindow',data);
                         }

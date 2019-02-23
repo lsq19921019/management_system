@@ -33,6 +33,8 @@ import authSuccess from '../pages/authentication/auth_success';
 import authAuthing from '../pages/authentication/auth_authing';
 //绑卡
 import authBindBankCard from '../pages/authentication/auth_bind_bankcard';
+//身份证验证
+import newIdentity from '../pages/authentication/auth_new_identity';
 // auth_photo_infor
 export default [
     {
@@ -159,7 +161,7 @@ export default [
     },
     {
         path: '/auth/photoInfor',
-        name: 'PhotoInfor',      
+        name: 'PhotoInfor',
         component: photoInfor,
         meta : {    
             title : '照片资料'
@@ -187,6 +189,14 @@ export default [
         component: authBindBankCard,
         meta : {    
             title : '绑卡'
+        }
+    },
+    {
+        path: '/auth/newIdentity',
+        name: 'newIdentity',      
+        component: newIdentity,
+        meta : {    
+            title : '身份证验证'
         }
     }
 ];

@@ -15,7 +15,8 @@
         data() {
             return {
                 apiPath : {
-                    agreement : '/api/help/detail'
+                    //agreement : '/api/help/detail'
+                    agreement: '/api/sysTerm/detail'
                 },
                 agreement : '',
                 // agreementType : this.$route.query.type
@@ -43,12 +44,12 @@
             },
             getAgreement() {
                 let _this = this;
-                let data = { moduleType : 2 };
+                let data = { position : 2 };
                 _this.$ajax.post(_this.apiPath.agreement,_this.$qs.stringify(data),{
                     headers : _this.Base.initAjaxHeader(0,data)
                 }).then(res=>{
                     if(res.data.status == 0) {
-                        _this.agreement = res.data.result.general;
+                        _this.agreement = res.data.result.content;
                     }
                 });
             }

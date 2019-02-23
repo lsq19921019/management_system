@@ -662,7 +662,7 @@
                     borrowUsage:_this.Base.getVkey(_this.isStr(_this.sel_Use),_this.ADD_LOAN_USE),   //借款用途
                     incomeType:_this.Base.getVkey(_this.isStr(_this.sel_income),_this.ADD_REVENUE_SOURCE),    //收入来源
                     workType:_this.selType, //工作类型
-                    industry:_this.Base.getVkey(_this.isStr(_this.sel_guild),_this.ADD_BUSINESS_TYPE),   //行业类型
+                    tradeType:_this.Base.getVkey(_this.isStr(_this.sel_guild),_this.ADD_BUSINESS_TYPE),   //行业类型
                     maritalStatus:_this.Base.getVkey(_this.isStr(_this.sel_marriage),_this.ADD_MARRIAGE),   //婚姻状况
                     homeProvince:_this.sel_area.split(',')[0],    //家-省
                     homeCity:_this.sel_area.split(',')[1],    //家-市
@@ -730,7 +730,7 @@
                             businessType:_this.Base.getVkey(_this.isStr(_this.sel_manage),_this.ADD_COMPANY_TYPE),   //经营类型
                             hasBusinessLicense:_this.Base.getVkey(_this.isStr(_this.sel_islicense),_this.ADD_OWN_IS_LICENSE), //是否办理执照
                             businessLife:_this.Base.getVkey(_this.isStr(_this.sel_lerm),_this.ADD_OWN_MANAGE_LIFE_TIME), //经营年限
-                            monthRevenue:_this.inp_sumincome||''         
+                            monthRevenue:_this.inp_sumincome||''
                         }                                           
                         break;
                     case 'workType4':   //学生
@@ -848,7 +848,7 @@
                             _this.sel_Use = _this.Base.getValue(resData.result.borrowUsage,_this.ADD_LOAN_USE)||'请选择';   //借款用途
                             _this.sel_income =_this.Base.getValue(resData.result.incomeType,_this.ADD_REVENUE_SOURCE)||'请选择';  //收入来源
                             //
-                            _this.sel_guild = _this.Base.getValue(resData.result.industry,_this.ADD_BUSINESS_TYPE)||'请选择';   //行业类型
+                            _this.sel_guild = _this.Base.getValue(resData.result.tradeType,_this.ADD_BUSINESS_TYPE)||'请选择';   //行业类型
                             //
                             _this.sel_work = this.getWorkType(resData.result.workType)||'请选择';   //工作类型
                             //

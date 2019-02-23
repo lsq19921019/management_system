@@ -1,6 +1,6 @@
 <!--
     create : 刘思奇 2018-08-08
-    desc : 快银-认证模块-添加工作信息
+    desc : 人人贷款-认证模块-添加工作信息
 -->
 <template>
     <div class="page">

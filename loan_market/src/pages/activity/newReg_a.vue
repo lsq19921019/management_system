@@ -4,7 +4,9 @@
 -->
 <template>
     <div class="main">
-        <div class="bg_img"></div>
+        <div class="bg_img">
+            <img src="../../assets/activity/rrdk_logo.png" alt="" style="width:1.44rem;height:0.37rem;position: relative;left: .22rem;top: .22rem;">
+        </div>
         <div class="main_con">
             <div class="t1">
                 <div class="phone_box">
@@ -16,7 +18,8 @@
                     <input class="password_txt" v-model="code" type="tel" maxlength="6" placeholder="验证码" @focus="inpFoc" @blur="inpBlur">
                     <span class="v_code" :disabled="codeBtnStauts" @click="handlerCode">{{ codeBtnText }}</span>
                 </div>
-                <a href="javascript:;" class="reg_btn" @click="login">看看我能借多少</a>
+                <a href="javascript:;" class="reg_btn" @click="handlerLogin">看看我能借多少</a>
+                <div class="tips tac">注册即表示已同意<router-link :to="{ name : 'Agreement' }">《服务协议》</router-link></div>
                 <p class="info">借款额度因个人情况资质而定</p>
                 <div class="list_ico">
                     <div class="ico_item">
@@ -41,34 +44,40 @@
             </div>
         </div>
         <!-- 图形验证码 -->
-        <img-code v-if="isShowImgCode" @hideImgCode="hideImgCode" @getCode="getCode" :mobile="mobile" @getImgCode="getImgCode"></img-code>
+        <img-code v-if="isShowImgCode" @hideImgCode="hideImgCode" @getCode="handlerGetCode" :mobile="mobile" @getImgCode="getImgCode"></img-code>
     </div>
 </template>
 
 <script>
     import DES3 from '../../../static/3DES.js';
     import imgCode from '../../components/module/imgCode.vue';
+    import { initData, login, getCode, getSendNum } from './register.js';
     export default {
         name : 'Login',
         data() {
-            return {
-                t2Height:1,
-                isShowLoading : false,
-                apiPath : {
-                    register : '/api/user/register',
-                    msgCode : '/api/message/sms_code',
-                    sendNum : '/api/message/image_code_frequency'
-                },
-                mobile : localStorage.getItem('_mobile')?localStorage.getItem('_mobile'):'',
-                code : '',
-                codeBtnStauts : false,
-                codeBtnText : '获取验证码',
-                isShowImgCode : false,
-                //获取的子组件图形验证码
-                imgCode : '',
-                //从app获取注册渠道码
-                sourceCode : this.$route.params.sourceCode ? this.$route.params.sourceCode : ''
-            }
+            return Object.assign(initData(this),{
+                t2Height : 1,
+                mobile : localStorage.getItem('_mobile')?localStorage.getItem('_mobile'):''
+            });
+            // return {                
+            //     isShowLoading : false,
+            //     apiPath : {
+            //         register : '/api/user/register',
+            //         msgCode : '/api/message/sms_code',
+            //         sendNum : '/api/message/image_code_frequency'
+            //     },
+            //     codeBtnStauts : false,
+            //     codeBtnText : '获取验证码',
+            //     code : '',                
+            //     isShowImgCode : false,
+            //     //获取的子组件图形验证码
+            //     imgCode : '',
+            //     //从app获取注册渠道码
+            //     sourceCode : this.$route.params.sourceCode ? this.$route.params.sourceCode : '',
+
+            //     t2Height:1,
+            //     mobile : localStorage.getItem('_mobile')?localStorage.getItem('_mobile'):'',
+            // }
         },
         components : {
             imgCode
@@ -90,8 +99,42 @@
             },
             inpBlur(){
                 this.t2Height = 1;
-            },            
+            },
             //登录
+            handlerLogin() {
+                login(this);
+            },
+            //获取验证码
+            handlerGetCode() {
+                getCode(this);
+            },
+            //获取验证码发送次数
+            handlerSendNum() {
+                return getSendNum(this);
+            }, 
+            //登录成功执行函数
+            handlerSuccess(result) {
+                localStorage.setItem('_token',result.result.token);
+                localStorage.setItem('_mobile',this.mobile);                         
+                localStorage.removeItem('pfNo');
+                //登录成功后获取用户信息
+                this.Base.interactiveWithApp('getCertifyInfo',{
+                    token : result.result.token,
+                    certifyInfo : ['locationInfo','deviceInfo','allInstallAppInfo']
+                }).then(data=>{
+                    if(this.$route.query.type == '1'){
+                        this.$router.push({ name : 'Index' });
+                    }else{
+                        this.$router.push({ name : 'NewRegSuca' });
+                    }                           
+                    if(data == 'wap') {
+                        console.log('getCertifyInfo','wap');
+                    } else {
+                        console.log('getCertifyInfo',data);
+                    }
+                });
+            },           
+            //登录-废弃
             login() {
                let regs = this.Base.regs;
                if(this.mobile.length < 1) {
@@ -159,8 +202,8 @@
                     }
                     _this.isShowLoading = false;
                });
-           },
-           //获取验证码
+            },
+           //获取验证码-废弃
            getCode() {
                let _this = this;
                let data = {
@@ -193,7 +236,7 @@
                     }
                });
            },
-           //获取发送验证码次数
+           //获取发送验证码次数-废弃
            getSendNum() {
                 let _this = this;                
                 return new Promise((resolve,reject)=>{
@@ -226,9 +269,9 @@
            //promise
            handlerCode() {
                let _this = this;
-               this.getSendNum().then(data=>{
+               this.handlerSendNum().then(data=>{
                    if(!data) {
-                       _this.getCode();
+                       _this.handlerGetCode();
                    } else {
                        _this.isShowImgCode = true;
                    }
@@ -239,7 +282,7 @@
            //获取子组件验证码
            getImgCode(data) {
                this.imgCode = data;
-               this.getCode();
+               this.handlerGetCode();
            },
            //从app获取sourceCode
            getResiterInfo() {
@@ -372,6 +415,15 @@
                     margin-top: .13rem; 
                }
            } 
+        }
+        .tips{
+            font-size:.24rem;
+            color:#999;
+            width: 6.3rem;
+            margin: 0 auto .2rem;
+            a{
+                color:#527BEC;
+            }
         }
     }
 }

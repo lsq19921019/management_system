@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "clipboard": "^2.0.4",
     "exif-js": "^2.3.0",
+    "mobile-detect": "^1.4.3",
     "qs": "^6.5.2",
     "svg-progress-bar": "^0.1.17",
     "vant": "^1.3.8",

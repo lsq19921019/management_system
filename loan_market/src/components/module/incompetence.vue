@@ -32,6 +32,19 @@
             <div @click="off('goback')"><btn :btnval="'知道了'" :width="'100%'"></btn></div>
         </div>
         <!-- 还款说明 -->
+        <!-- <div class="hksm" v-if="incompetenceConfig.isHksm">
+            <div class="title">还款说明</div>
+            <div class="list fc2">
+                <ul>
+                    <li v-for="(item,index) in hksmData" :key="index">
+                        <span>{{ item.voKey || '' }}</span>
+                        {{ item.voValue|| '' }}
+                    </li>
+                </ul>
+            </div>
+            <div @click="off"><btn :btnval="'知道了'" :width="'100%'"></btn></div>
+        </div> -->
+        <!-- 还款说明 -->
         <div class="hksm" v-if="incompetenceConfig.isHksm">
             <div class="title">还款说明</div>
             <div class="list fc2">
@@ -91,10 +104,12 @@
                 apiPath : {
                     index : '/api/platform/index',
                     hksm : '',  //还款说明
-                    union_login : '/api/union/login'
+                    union_login : '/api/union/login',
+                    getHksm : '/api/enhance/produces/detaildesc',
                 },
                 hrefing : false,
                 listData : [],
+                hksmData:[{'voKey':'','voValue':''}],
                 platformNo : this.$route.params.id
                 // hksm : {
                 //     type : '还款方式字段',
@@ -117,7 +132,8 @@
                     }
                 }
             },
-            hksm : {},
+            pfno:'',
+            hksm : {},            
             status : ''
         },
         components : {
@@ -125,6 +141,8 @@
         },
         created() {
             this.getList();
+            this.getHksm();
+            console.log()
         },
         methods : {
             off(param) {
@@ -133,6 +151,22 @@
                 } else {
                     this.$emit('offIncompetence');
                 }
+            },
+            //获取还款说明接口
+            getHksm(){
+                let _this = this;
+                let data = {
+                    platformNo:this.pfno||''
+                };
+                this.$ajax.post(this.apiPath.getHksm,_this.$qs.stringify(data),{
+                    headers: _this.Base.initAjaxHeader(0,data)
+                })
+                .then(res=>{
+                    let resData = res.data;
+                    if(resData.status == '0'){
+                        _this.hksmData = resData.result.list;
+                    }
+                })
             },
             //获取列表
             getList() {
@@ -223,7 +257,6 @@
                                 _this.$router.push({ name : 'OrderDetail', params : { orderNo : orderNo } }); 
                             //否则跳转平台详情
                             } else {
-                                debugger;
                                 _this.$router.push({ name : 'PlatformDetail', params : { id : item.platformNo } });
                             }
                             
@@ -231,7 +264,7 @@
                             //跳转第三方页面
                             //this.Base.setIframePageInfo(this,{ url : productURL, title : platformName });
                             this.Base.interactiveWithApp('openNewWindow',{
-                                url : res.result.url, title : platformName, startColor:"#6A5CF6",endColor:"#8BE2F1",backUrl:'回到快银'
+                                url : res.result.url, title : platformName, startColor:"#6A5CF6",endColor:"#8BE2F1",backUrl:'回到人人贷款'
                             }).then(data=>{
                                 if(data == 'wap') {
                                     console.log('openNewWindow','wap');

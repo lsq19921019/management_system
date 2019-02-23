@@ -10,8 +10,10 @@
                 {{renderData.statusTxet}}<img src="../../../assets/my_arrow.png" alt="" style="height:.22rem;width:0.12rem;padding:.07rem 0;padding-left:.16rem">
             </div>
         </div>
-        <div class="oh row_middle" :class="{bob:renderData.is_check_fail}" @click="toDetail(renderData.orderNo)">
-            <div class="fll borrow_amount"><p>{{renderData.borrowAmount}}</p></div>
+        <!-- 显示还款进度 -->
+        <div class="show_period" v-if="renderData.showPeriod == 1">{{ renderData.repayPeriod }}</div>
+        <div class="row_middle" :class="{bob:renderData.is_check_fail}" @click="toDetail(renderData.orderNo)">
+            <div class="fll borrow_amount"><p :class=" {'lh' : renderData.showPeriod == 1} ">{{renderData.borrowAmount}}</p></div>
             <div class="flr cgrey borrow_time"><p>{{renderData.time}}</p></div>
         </div>
         <div class="oh row_bottom" v-if="renderData.is_check_fail">
@@ -95,7 +97,12 @@ export default {
                     }
                 }
                 .row_middle{
-                    padding: .10rem 0;
+                    padding: .1rem 0 .2rem 0;
+                    .lh{
+                        position:relative;
+                        top:-.25rem;
+                        z-index:5;
+                    }
                 }
                 .bob{
                     border-bottom: 1px solid #f5f5f5;
@@ -116,6 +123,11 @@ export default {
                         width: 1.5rem;
                         text-align: center;
                     }
+                }
+                .show_period{
+                    text-align:right;
+                    color:#A8AAB2;
+                    font-size:.24rem;
                 }
             }
             

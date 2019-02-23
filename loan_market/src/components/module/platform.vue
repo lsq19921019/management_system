@@ -15,16 +15,16 @@
                 </dl>
                 <div class="detail fs24 fc2">
                     <div>
-                        <p><span class="num">{{ item.minimumAmount +'-'+ item.maximumAmount }}</span></p>
+                        <p><span class="num">{{ item.minimumAmount==item.maximumAmount ? item.minimumAmount : item.minimumAmount +'-'+ item.maximumAmount }}</span></p>
                         <p>额度(元)</p>
                     </div>
                     <div>
-                        <p>期限：<span class="fc1">{{ item.minimumPeriod +'-'+ item.maximumPeriod }}天</span></p>
+                        <p>期限：<span class="fc1">{{ item.minimumPeriod == item.maximumPeriod ? item.minimumPeriod : item.minimumPeriod +'-'+ item.maximumPeriod }}天</span></p>
                         <p>日利率：<span class="fc1">{{ item.interestrate }}%</span></p>
                     </div>
                 </div>
                 <div class="progress poa">
-                    <!-- <progress-bar :value="item.applyRate" 
+                    <!-- <progress-bar :value="item.applyRate"
                     :options="{
                         pathColors: ['#507DEF','#CCCED6'],
                         radius:radius,
@@ -215,7 +215,7 @@
                             //跳转第三方页面
                             //this.Base.setIframePageInfo(this,{ url : productURL, title : platformName });
                             this.Base.interactiveWithApp('openNewWindow',{
-                                url : res.result.url, title : platformName, startColor:"#6A5CF6",endColor:"#8BE2F1",backUrl:'回到快银'
+                                url : res.result.url, title : platformName, startColor:"#6A5CF6",endColor:"#8BE2F1",backUrl:'回到人人贷款'
                             }).then(data=>{
                                 if(data == 'wap') {
                                     console.log('openNewWindow','wap');

@@ -23,7 +23,7 @@
                     <div class="ico_item">
                         <img src="../../assets/activity/icon_3.png" alt="">
                         <p class="p1">产品多样</p>
-                        <p class="p2">多重选择通过率高</p>                        
+                        <p class="p2">多重选择通过率高</p>
                     </div>
                 </div>
             </div>

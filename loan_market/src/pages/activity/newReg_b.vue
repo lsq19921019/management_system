@@ -8,9 +8,9 @@
         <div class="main_con">
             <div class="top">
                 <p class="p1">最高可借额度  (元)</p>
-                <div class="money">200,000</div>
+                <div class="money">200000</div>
                 <!-- <number-grow :value='200000'></number-grow> -->
-                <p class="p2">1000元借1天最低仅0.2元</p>
+                <p class="p2">根据审核结果不同放款额度及放款时间不同</p>
             </div>
             <div class="t1">
                 <div class="phone_box">
@@ -20,14 +20,15 @@
                     <input class="password_txt" v-model="code" type="tel" maxlength="6" placeholder="请输入验证码" @focus="inpFoc" @blur="inpBlur">
                     <span class="v_code" :disabled="codeBtnStauts" @click="handlerCode">{{ codeBtnText }}</span>
                 </div>
-                <a href="javascript:;" class="reg_btn" @click="login">查看我的额度</a>
+                <a href="javascript:;" class="reg_btn" @click="handlerLogin">查看我的额度</a>
+                <div class="tips tac">注册即表示已同意<router-link :to="{ name : 'Agreement' }">《服务协议》</router-link></div>
                 <div class="tips">
-                    具体放款额度，以平台实际审核为准<br>{{ companyName }}<span v-if="isShowIcp">&nbsp;&nbsp;粤ICP备17096796号-1</span>
+                    {{ companyName }}<span v-if="isShowIcp">&nbsp;&nbsp;粤ICP备17096796号-1</span>
                 </div>
             </div>
         </div>
         <!-- 图形验证码 -->
-        <img-code v-if="isShowImgCode" @hideImgCode="hideImgCode" @getCode="getCode" :mobile="mobile" @getImgCode="getImgCode"></img-code>
+        <img-code v-if="isShowImgCode" @hideImgCode="hideImgCode" @getCode="handlerGetCode" :mobile="mobile" @getImgCode="getImgCode"></img-code>
         <div class="t2" :style="'height:'+t2Height+'rem;'">
 
         </div>        
@@ -38,31 +39,40 @@
     import DES3 from '../../../static/3DES.js';
     import imgCode from '../../components/module/imgCode.vue';
     import numberGrow from '../../components/list/number.vue';
+    import { initData, login, getCode, getSendNum } from './register.js';
     export default {
         name : 'Login',
         data() {
-            return {
-                isShowLoading : false,
-                t2Height:1,
-                apiPath : {
-                    register : '/api/user/register',
-                    msgCode : '/api/message/sms_code',
-                    sendNum : '/api/message/image_code_frequency'
-                },
-                mobile : localStorage.getItem('_mobile')?localStorage.getItem('_mobile'):'',
-                code : '',
-                codeBtnStauts : false,
-                codeBtnText : '获取验证码',
-                isShowImgCode : false,
-                //获取的子组件图形验证码
-                imgCode : '',
-                //从app获取注册渠道码
-                sourceCode : this.$route.params.sourceCode ? this.$route.params.sourceCode : '',
+            return Object.assign(initData(this),{
+                companyName : '深圳微融信息科技有限公司',
                 //页面路由
                 fullPath : this.$router.history.current.fullPath,
-                companyName : '深圳微融信息科技有限公司',
-                isShowIcp : true
-            }
+                t2Height:1,
+                isShowIcp : true,
+                mobile : localStorage.getItem('_mobile')?localStorage.getItem('_mobile'):'',
+            });
+            // return {
+            //     isShowLoading : false,
+            //     t2Height:1,
+            //     apiPath : {
+            //         register : '/api/user/register',
+            //         msgCode : '/api/message/sms_code',
+            //         sendNum : '/api/message/image_code_frequency'
+            //     },
+            //     mobile : localStorage.getItem('_mobile')?localStorage.getItem('_mobile'):'',
+            //     code : '',
+            //     codeBtnStauts : false,
+            //     codeBtnText : '获取验证码',
+            //     isShowImgCode : false,
+            //     //获取的子组件图形验证码
+            //     imgCode : '',
+            //     //从app获取注册渠道码
+            //     sourceCode : this.$route.params.sourceCode ? this.$route.params.sourceCode : '',
+            //     //页面路由
+            //     fullPath : this.$router.history.current.fullPath,
+            //     companyName : '深圳微融信息科技有限公司',
+            //     isShowIcp : true
+            // }
         },
         beforeCreate () {
             document.querySelector('body').setAttribute('style', 'background-color:#ffffff')
@@ -88,6 +98,41 @@
             },
             inpBlur(){
                 this.t2Height = 1;
+            },
+            //登录
+            handlerLogin() {
+                login(this);
+            },
+            //获取验证码
+            handlerGetCode() {
+                getCode(this);
+            },
+            //获取验证码发送次数
+            handlerSendNum() {
+                return getSendNum(this);
+            },
+            //登录成功执行函数
+            handlerSuccess(result) {
+                //登录成功
+                localStorage.setItem('_token',result.result.token);
+                localStorage.setItem('_mobile',this.mobile);                         
+                localStorage.removeItem('pfNo');
+                //登录成功后获取用户信息
+                this.Base.interactiveWithApp('getCertifyInfo',{
+                    token : result.result.token,
+                    certifyInfo : ['locationInfo','deviceInfo','allInstallAppInfo']
+                }).then(data=>{
+                    if(this.$route.query.type == '1'){
+                        this.$router.push({ name : 'Index' });
+                    }else{
+                        this.$router.push({ name : 'NewRegSucb' });
+                    }
+                    if(data == 'wap') {
+                        console.log('getCertifyInfo','wap');
+                    } else {
+                        console.log('getCertifyInfo',data);
+                    }
+                });
             },
             //登录
             login() {
@@ -224,7 +269,7 @@
            //promise
            handlerCode() {
                let _this = this;
-               this.getSendNum().then(data=>{
+               this.handlerSendNum().then(data=>{
                    if(!data) {
                        _this.getCode();
                    } else {
@@ -237,7 +282,7 @@
            //获取子组件验证码
            getImgCode(data) {
                this.imgCode = data;
-               this.getCode();
+               this.handlerGetCode();
            },
            //从app获取sourceCode
            getResiterInfo() {
@@ -286,7 +331,7 @@
                 font-size:.28rem;
                 font-weight:500;
                 color:rgba(136,136,136,1);
-                margin-top: .33rem             
+                margin-top: .33rem;            
             }
         }
     }
@@ -361,6 +406,13 @@
             text-align:center;
             padding-top:.5rem;
             color:#666;
+        }
+        .tips{
+            font-size:.24rem;
+            color:#999;
+            a{
+                color:#527BEC;
+            }
         }
     }
 }

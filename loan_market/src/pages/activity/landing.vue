@@ -27,7 +27,7 @@
                     </li>
                 </ul>
                 <div class="agreement">注册代表同意<a href="/agreement?type=2">《服务协议》</a></div>
-                <div class="btn_get"><button @click="login" :class="{ dsb : true, hl : code.length==6&&mobile.length==11 }" :disabled="code.length<6||mobile.length<11"></button></div>
+                <div class="btn_get"><button @click="handlerLogin" :class="{ dsb : true, hl : code.length==6&&mobile.length==11 }" :disabled="code.length<6||mobile.length<11"></button></div>
             </div>
         </div>
         <div class="advantage">
@@ -39,38 +39,45 @@
         </div>
 
         <!-- 图形验证码 -->
-        <img-code v-if="isShowImgCode" @hideImgCode="hideImgCode" @getCode="getCode" :mobile="mobile" @getImgCode="getImgCode"></img-code>
+        <img-code v-if="isShowImgCode" @hideImgCode="hideImgCode" @getCode="handlerGetCode" :mobile="mobile" @getImgCode="getImgCode"></img-code>
     </div>
 </template>
 
 <script>
     import DES3 from '../../../static/3DES.js';
     import imgCode from '../../components/module/imgCode.vue';
+    import { initData, login, getCode, getSendNum } from './register.js';
     export default {
         name : 'Landing',
         data() {
-            return {
-                isShowLoading : false,
-                apiPath : {
-                    register : '/api/user/register',
-                    msgCode : '/api/message/sms_code',
-                    sendNum : '/api/message/image_code_frequency'
-                },
+            // return {
+            //     isShowLoading : false,
+            //     apiPath : {
+            //         register : '/api/user/register',
+            //         msgCode : '/api/message/sms_code',
+            //         sendNum : '/api/message/image_code_frequency'
+            //     },
+            //     isLogin : false,
+            //     codeBtnStauts : false,
+            //     codeBtnText : '获取验证码',
+            //     mobile : '',
+            //     code : '',
+            //     isShowImgCode : false,
+            //     //获取的子组件图形验证码
+            //     imgCode : '',
+            //     //注册来源
+            //     sourceCode : this.$route.params.sourceCode ? this.$route.params.sourceCode : '',
+            //     //页面路由
+            //     fullPath : this.$router.history.current.fullPath,
+            //     //公司名称
+            //     companyName : '深圳微融信息科技有限公司',
+            // }
+            return Object.assign(initData(this),{
+                companyName : '深圳微融信息科技有限公司',
                 isLogin : false,
-                codeBtnStauts : false,
-                codeBtnText : '获取验证码',
-                mobile : '',
-                code : '',
-                isShowImgCode : false,
-                //获取的子组件图形验证码
-                imgCode : '',
-                //注册来源
-                sourceCode : this.$route.params.sourceCode ? this.$route.params.sourceCode : '',
                 //页面路由
                 fullPath : this.$router.history.current.fullPath,
-                //公司名称
-                companyName : '深圳微融信息科技有限公司',
-            }
+            });
         },
         created() {
             this.Base.getSys();
@@ -80,6 +87,26 @@
         },
         methods: {
             //登录
+            handlerLogin() {
+                login(this);
+            },
+            //获取验证码
+            handlerGetCode() {
+                getCode(this);
+            },
+            //获取验证码发送次数
+            handlerSendNum() {
+                return getSendNum(this);
+            },
+            //登录成功执行函数
+            handlerSuccess(result) {                
+                this.isShowLoading = true;
+                setTimeout(_=>{
+                    this.isShowLoading = false;
+                    this.isLogin = true;
+                },1200);
+            },
+            //登录-废弃
             login() {
                let regs = this.Base.regs;
                if(this.mobile.length < 1) {
@@ -114,7 +141,6 @@
                 }).then(res=>{
                     let result = res.data;
                     if(result.status == 0) {
-                        debugger;
                         //登录成功
                         _this.$msg({ content : '登录成功' });
                         _this.isShowLoading = true;
@@ -128,7 +154,7 @@
                     _this.isShowLoading = false;
                });
             },
-            //获取验证码
+            //获取验证码-废弃
             getCode() {
                let regs = this.Base.regs;
                if(this.mobile.length < 1) {
@@ -168,7 +194,7 @@
                     }
                });
             },
-            //获取发送验证码次数
+            //获取发送验证码次数-废弃
             getSendNum() {
                 let _this = this;                
                 return new Promise((resolve,reject)=>{
@@ -206,9 +232,9 @@
             //promise
             handlerCode() {
                 let _this = this;
-                this.getSendNum().then(data=>{
+                this.handlerSendNum().then(data=>{
                     if(!data) {
-                        _this.getCode();
+                        _this.handlerGetCode();
                     } else {
                         _this.isShowImgCode = true;
                     }
@@ -219,12 +245,13 @@
             //获取子组件验证码
             getImgCode(data) {
                 this.imgCode = data;
-                this.getCode();
+                this.handlerGetCode();
             },
             //隐藏图形验证码弹出框
             hideImgCode() {
                 this.isShowImgCode = false;
             },
+            
         },
         //gf
         components : {

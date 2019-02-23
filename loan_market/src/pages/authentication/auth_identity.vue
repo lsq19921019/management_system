@@ -13,6 +13,7 @@
             <ul>
                 <item-li name='身份证验证' v-if="certStatus==1" val="已验证" type='1'></item-li>
                 <item-li name='身份证验证' v-else val="点此进行验证" type='3' @click.native='toYz'></item-li>
+                <!-- <item-li name='身份证验证' val="点此进行验证" type='3' @click.native='toYz'></item-li> -->
                 <item-li name='姓名' :val='username' type='1'></item-li>
                 <item-li name='身份证号码' :val='cardid' type='1'></item-li>
                 <item-li name='学历' :val='selVal' type='3' @click.native="showPicker(0)"></item-li>                
@@ -120,11 +121,12 @@
             },
             //跳转身份证认证
             toYz(){
-                if(this.Base.getClientType().type=='wap'){
-                    this.isShowPopa = true;
-                    return false;
-                }
-                this.$router.push({name:'IdentityProve',query:{type:4}});
+                // if(this.Base.getClientType().type=='wap'){
+                //     this.isShowPopa = true;
+                //     return false;
+                // }
+                // this.$router.push({name:'IdentityProve',query:{type:4}});
+                this.$router.push({name:'newIdentity'});
             },
             showPicker (nub) {
                 if(nub == 1){

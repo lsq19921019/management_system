@@ -11,7 +11,8 @@
                 </dl>
             </div>
             <div class="icos c">
-                <router-link class="fl" :to="{name : 'Service'}">在线咨询</router-link>
+                <!-- <router-link class="fl" :to="{name : 'Service'}">在线咨询</router-link> -->
+                <router-link class="fl" :to="{name : 'Pubno'}">关注公众号</router-link>
                 <a href="tel:0755-26604482" class="fr">客服热线</a>
             </div>
             <div class="time tac">

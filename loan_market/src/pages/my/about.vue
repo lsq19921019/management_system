@@ -10,7 +10,7 @@
                 <p>Product introduction</p>
             </div>
             <div class="content">
-                快银致力于为金融用户提供全方位、多服务的借款信息获取服务，业务涵盖极速贷款、小额贷款、大额贷款、信用卡等借贷服务，并根据个人资料、借款需求与贷款产品智能精准匹配，综合比较推荐额度高、放款快、费率低的贷款产品，打造最快速、最简单的一站式借款信息获取平台。
+                人人贷款致力于为金融用户提供全方位、多服务的借款信息获取服务，业务涵盖极速贷款、小额贷款、大额贷款、信用卡等借贷服务，并根据个人资料、借款需求与贷款产品智能精准匹配，综合比较推荐额度高、放款快、费率低的贷款产品，打造最快速、最简单的一站式借款信息获取平台。
             </div> -->
         </div>
         <!-- <div class="floor">
@@ -35,7 +35,8 @@
         data() {
             return {
                 apiPath : {
-                    detail : '/api/help/detail'
+                    //detail : '/api/help/detail'
+                    detail: '/api/sysTerm/detail'
                 },
                 strHtml : ''
             }
@@ -46,12 +47,12 @@
         methods : {
             getDetail() {
                 let _this = this;
-                this.$ajax.post(this.apiPath.detail,_this.$qs.stringify({ moduleType : 1 }),{
+                this.$ajax.post(this.apiPath.detail,_this.$qs.stringify({ position : 1 }),{
                     headers: _this.Base.initAjaxHeader(0,{})
                 }).then(rs=>{
                     let res = rs.data;
                     if(res.status == 0) {
-                        _this.strHtml = res.result.general;
+                        _this.strHtml = res.result.content;
                     } else {
                         _this.$msg({ content : res.msg });
                     }

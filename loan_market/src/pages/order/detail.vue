@@ -5,6 +5,7 @@
             <a href="javascript:;" onclick="window.history.back();" class="goback"></a>
             <!-- <a href="javascript:;" @click="returnPage()" class="goback"></a> -->
         </div> 
+        <loading v-if="isShowLoading" :text="'加载中...'"></loading>
         <div class="page_container_top">
             <div class="status_info_box">
                 <div style="float:left">
@@ -34,6 +35,10 @@
             <div v-if="pageData.borrrowDealine" style="overflow:hidden;padding:.15rem .1rem;">
                 <div style="float:left;color:#bbb;">借款期限</div>
                 <div style="float:right;">{{pageData.borrrowDealine}}</div>
+            </div>
+            <div v-if="pageData.borrrowDealine && pageData.totalPeriods != null" style="overflow:hidden;padding:.15rem .1rem;">
+                <div style="float:left;color:#bbb;">还款期数</div>
+                <div style="float:right;">第{{pageData.currentPeriods}}期（共{{pageData.totalPeriods}}期）</div>
             </div>
             <div v-if="pageData.applyTime" style="overflow:hidden;padding:.15rem .1rem;">
                 <div style="float:left;color:#bbb;">申请日期</div>
@@ -90,11 +95,13 @@
             <div class="account_total">
                 <p>总计  ¥{{pageData.countAmount}}</p>
             </div>
-            <div class="pay_money_btn" @click="openWin()" v-if="pageData.tabText">
+            <div class="pay_money_btn" @click="toNextPage(pageData.tabText)" v-if="pageData.tabText">
                 {{pageData.tabText}}
             </div>
         </div>
-        
+        <div class="downBtn" v-if="false">
+            <button>下载APP</button>
+        </div>
         <transition name="fade">
             <div v-if='showVerifyBox' style="position:fixed;top:0rem;display:flex;align-items:center;width:100%;height:100%;background:rgba(0,0,0,0.5);">
                 <div style="text-align:center;border:1px solid #ccc;background:rgba(255,255,255,1);width:5.3rem;margin:0 auto;box-sizing:border-box;border-radius:.2rem;position:relative;">
@@ -106,9 +113,12 @@
                 </div>
             </div>
         </transition>
-        <transition name="fade" >
-            <pop-com v-if="dialogConfig.isShow" :config="dialogConfig" v-on:parentSure="showVerifyBoxFun" v-on:parentOff="closeWin"></pop-com>
-        </transition>      
+        <transition name="fade">
+            <pop-com v-if="dialogConfig.isShow" :config="dialogConfig" v-on:parentSure="showVerifyBoxFun('hk')" v-on:parentOff="closeWin"></pop-com>
+        </transition>
+        <transition name="fade">
+            <pop-com v-if="dialogConfig1.isShow" :config="dialogConfig1" v-on:parentSure="showVerifyBoxFun('bk')" v-on:parentOff="closeWin"></pop-com>
+        </transition>
     </div>
 </template>
 <script>
@@ -131,6 +141,7 @@ import { setTimeout } from 'timers';
                 pageData:'',
                 //列表数据
                 listData : [],
+                isShowLoading : true,
                 //当前页
                 pageNum : 1,
                 //总页数
@@ -149,7 +160,15 @@ import { setTimeout } from 'timers';
                     title : '提示',
                     isShow:false,
                     content : '<span style="line-height:1.5">一旦实名认证通过，相关信息不允许修改，是否确认进行实名认证？</span>'
-                },   
+                },
+                dialogConfig1 : {
+                    btns : ['取消','确定'],
+                    isShow:false,
+                    showTitle : true,
+                    title : '提示',
+                    isShow:false,
+                    content : '<span style="line-height:1.5">一旦实名认证通过，相关信息不允许修改，是否确认进行实名认证？</span>'
+                },    
                 showVerifyBox:false,
                 platformLogeImg:'',
                 imgBack:{
@@ -168,7 +187,6 @@ import { setTimeout } from 'timers';
             this.getList();
             if(this.$route.query.offAppTitle) {
                 this.Base.interactiveWithApp('finishWindow',{
-
                 }).then(data=>{
                     if(data == 'wap') {
                         console.log('finishWindow','wap');
@@ -191,18 +209,11 @@ import { setTimeout } from 'timers';
                     return;
                 }
                 let data = {
-                            // userName: _this.uname,
-                            // bankCode: _this.selCode,
-                            // cardNo: _this.bankNo,
-                            // bindPhoneNo:_this.phone,
                             pfNo:_this.pfNo,
-                            // repayPeriods:'',
-                            // captcha:'',
                             repayPeriods:[],
                             repayType:'0',
                             orderSn:_this.orderNo,
                             verifyCode:_this.inputVerifyCode,
-                            // verifyCode:'',
                         };
                         this.$ajax.post('/api/order/confirmRepay',_this.$qs.stringify(data),{
                             headers: _this.Base.initAjaxHeader(1,data)
@@ -215,64 +226,43 @@ import { setTimeout } from 'timers';
                                 },500);
                             }else{
                                 _this.$msg({content:res.data.msg});
-                                // setTimeout(()=>{
-                                //     location.reload();
-                                // },500);
                             }
-                            // alert(JSON.stringify(res));
-                            // if(res.data.result.needVerifyCode){
-                            //     this.showVerifyBox = true;
-                            // }else if(res.data.result.resultStatus){
-                            //     _this.$msg({content:res.data.result.resultMsg});
-                            //     setTimeout(()=>{
-                            //         location.reload();
-                            //     },500);
-                            // }else{
-                            //     _this.$msg({content:res.data.result.resultMsg});
-                            //     setTimeout(()=>{
-                            //         location.reload();
-                            //     },500);
-                            // }
-                            // console.log(data);
                         });
             },
-            showVerifyBoxFun(){
-                let _this = this;
-                this.showVerifyBox = true;
-                this.closeWin();
-                let data = {
-                            // userName: _this.uname,
-                            // bankCode: _this.selCode,
-                            // cardNo: _this.bankNo,
-                            // bindPhoneNo:_this.phone,
-                            pfNo:_this.pfNo,
-                            // repayPeriods:'',
-                            // captcha:'',
-                            repayPeriods:[],
-                            repayType:'1',
-                            orderSn:_this.orderNo,
-                            verifyCode:_this.inputVerifyCode,
-                            // verifyCode:'',
-                        };
-                        this.$ajax.post('/api/order/confirmRepay',_this.$qs.stringify(data),{
-                            headers: _this.Base.initAjaxHeader(1,data)
-                        })
-                        .then(res=>{
-                            if(res.data.result.needVerifyCode){
-                                this.showVerifyBox = true;
-                            }else if(res.data.result.resultStatus){
-                                _this.$msg({content:res.data.result.resultMsg});
-                                setTimeout(()=>{
-                                    location.reload();
-                                },500);
-                            }else{
-                                _this.$msg({content:res.data.result.resultMsg});
-                                setTimeout(()=>{
-                                    location.reload();
-                                },500);
-                            }
-                            // console.log(data);
-                        });
+            showVerifyBoxFun(type){
+                if(type=='hk'){
+                    let _this = this;
+                    this.showVerifyBox = true;
+                    this.closeWin();
+                    let data = {
+                                pfNo:_this.pfNo,
+                                repayPeriods:[],
+                                repayType:'1',
+                                orderSn:_this.orderNo,
+                                verifyCode:_this.inputVerifyCode,
+                                // verifyCode:'',
+                            };
+                            this.$ajax.post('/api/order/confirmRepay',_this.$qs.stringify(data),{
+                                headers: _this.Base.initAjaxHeader(1,data)
+                            })
+                            .then(res=>{
+                                if(res.data.result.needVerifyCode){
+                                    this.showVerifyBox = true;
+                                }else if(res.data.result.resultStatus){
+                                    _this.$msg({content:res.data.result.resultMsg});
+                                    setTimeout(()=>{
+                                        location.reload();
+                                    },500);
+                                }else{
+                                    _this.$msg({content:res.data.result.resultMsg});
+                                    setTimeout(()=>{
+                                        location.reload();
+                                    },500);
+                                }
+                            });
+                }else if(type == 'bk'){
+                    this.$router.push({name:'bindCard',params:{orderNo:this.orderNo}});
+                }
             },
             openWin(){
                 let _this = this;
@@ -290,25 +280,26 @@ import { setTimeout } from 'timers';
                     _this.dialogConfig.isShow = true;
                 }
             },
+            openBindCard(){
+                let _this = this;
+                _this.dialogConfig1.title = '绑卡提示';
+                _this.dialogConfig1.showTitle = true;
+                _this.dialogConfig1.btns = ['取消','确定'];
+                _this.dialogConfig1.content = '<span style="line-height:1.5">绑卡审核需要一定时间，一有结果我们就会反馈给您，请耐心等待。</span>';
+                _this.dialogConfig1.isShow = true;
+            },
             closeWin(){
+                this.dialogConfig1.isShow = false;
                 this.dialogConfig.isShow = false;
             },
             //还款
             payMoney(){
-                // if(this.inputVerifyCode == ''){
-                //     this.$msg({content:"请输入验证码"})
-                //     return false
-                // }
                 let _this = this;
                  _this.dialogConfig.isShow = false;
                 if(_this.pageData.supportRepayImity){
-                    // alert(document.title+"===="+window.location.href);
                     if(_this.pageData.redirectH5){
                         _this.dialogConfig.isShow = false;
-                        // window.location.href = _this.pageData.tabClickUrl+location.href;
-                        // _this.openNewWindow(_this.pageData.tabClickUrl);
                         let config = {
-                            // title: _this.pageData.tabText,
                             url : encodeURI(_this.pageData.tabClickUrl+location.href),
                             title : '订单详情',
                             startColor:"#6A5CF6",
@@ -318,46 +309,16 @@ import { setTimeout } from 'timers';
                             if(data == 'wap') {
                                 //wap端逻辑
                                 _this.Base.setIframePageInfo(_this,{url : encodeURI(_this.pageData.tabClickUrl+location.href),title : '订单详情'});
-                                // console.log('jumpToSharing','wap');
                             } else {
-                                // console.log('jumpToSharing',data);
                             }
                         }); 
-                        // openNewWindow('立即还款',pageData.tabClickUrl+'?backUrl="'+location.href+'"&themeColor="527BEC"');
                     }else{
-                        // _this.dialogConfig.isShow = false;
-                        // // window.location.href = _this.pageData.tabClickUrl;
-                        
-                        // let config = {
-                        //     title: _this.pageData.tabText,
-                        //     url : '/auth/bindCard/'+_this.orderNo,
-                        //     title : '订单详情',
-                        //     startColor:"#6A5CF6",
-                        //     endColor:"#8BE2F1"
-                        // };
-                        // this.Base.interactiveWithApp('openNewWindow',config).then(data=>{
-                        //     if(data == 'wap') {
-                        //         //wap端逻辑
-                        //         _this.Base.setIframePageInfo(_this,config);
-                        //         console.log('jumpToSharing','wap');
-                        //     } else {
-                        //         console.log('jumpToSharing',data);
-                        //     }
-                        // }); 
-                        // _this.openNewWindow('/auth/bindCard/'+_this.orderNo);
                         let data = {
-                            // userName: _this.uname,
-                            // bankCode: _this.selCode,
-                            // cardNo: _this.bankNo,
-                            // bindPhoneNo:_this.phone,
                             pfNo:_this.pfNo,
-                            // repayPeriods:'',
-                            // captcha:'',
                             repayPeriods:[],
                             repayType:'1',
                             orderSn:_this.orderNo,
                             verifyCode:_this.inputVerifyCode,
-                            // verifyCode:'',
                         };
                         this.$ajax.post('/api/order/confirmRepay',_this.$qs.stringify(data),{
                             headers: _this.Base.initAjaxHeader(1,data)
@@ -376,9 +337,7 @@ import { setTimeout } from 'timers';
                                     location.reload();
                                 },500);
                             }
-                            // console.log(data);
                         });
-                        // _this.$router.push({name:'bindCard',path:'/auth/bindCard/',params:{orderNo:_this.orderNo}});
                     }
                 }else{
                     closeWin()
@@ -409,19 +368,29 @@ import { setTimeout } from 'timers';
             toNextPage(type){
                 let _this = this;                
                 let distributePage = location.origin + '/distribute/bindCard';
-                if(_this.pageData.tabText == '确认用款'){
+                if(_this.pageData.tabText == '去确认'){
                     distributePage = location.origin + '/distribute/auth'
+                }
+                if(_this.pageData.tabText == '去签约'){
+                    distributePage = location.origin + '/distribute/sign'
+                    console.log(distributePage)
+                }
+                if(_this.pageData.tabText == '立即还款'){
+                    distributePage = location.origin + '/distribute/repay'
+                }
+                if(_this.pageData.tabText == '下载APP'){
+                    console.log('下载APP')
                 }
                 console.log(`即将跳转${_this.pageData.tabText }：${distributePage}`);
                 let config = {
                     title:_this.pageData.tabText,
-                    url:encodeURI(_this.pageData.tabClickUrl+distributePage).replace('%0D%0A', ""), 
+                    url:encodeURI(_this.pageData.tabClickUrl+distributePage).replace('%0D%0A', ""),
                     startColor:"#6A5CF6",
                     endColor:"#8BE2F1",
                     reload : true
-                };
+                };                
                         // window.location.href = '/auth/bindCard/'+_this.orderNo;
-                        // return;
+                        // return;                 
                 if(_this.pageData.redirectH5){
                     localStorage.setItem('distributeConfigPath',location.pathname);
                     this.Base.interactiveWithApp('openNewWindow',config).then(data=>{
@@ -444,8 +413,15 @@ import { setTimeout } from 'timers';
                         // window.location.href = '/auth/other';
                         _this.$router.push({ name : 'PlatformDetail', params : { id : _this.pageData.pfNo } });
                     }else if(_this.pageData.tabText==='去绑卡'){
-                        _this.$router.push({name:'bindCard',params:{orderNo:_this.orderNo}});
-                        // window.location.href = '/auth/bindCard/'+_this.orderNo
+                        this.openBindCard();
+                        //_this.$router.push({name:'bindCard',params:{orderNo:_this.orderNo}});
+                        // window.location.href = '/auth/bindCard/'+_this.orderNo Distribute
+                    }else if(_this.pageData.tabText==='去签约'){
+                        _this.$router.push({path: '/distribute/sign'});
+                    }else if(_this.pageData.tabText==='立即还款'){
+                        _this.openWin();
+                    }else{
+                        _this.$router.push({name: 'Loan'});
                     }
                 }
             },
@@ -453,15 +429,13 @@ import { setTimeout } from 'timers';
                 
                 // window.location.href = urlProto;
                 let _this = this;
-                let config = {backUrl:'回到快银',title:urlName,url:urlProto, startColor:"#6A5CF6",endColor:"#8BE2F1",reload:true};
+                let config = {backUrl:'回到人人贷款',title:urlName,url:urlProto, startColor:"#6A5CF6",endColor:"#8BE2F1",reload:true};
                 this.Base.interactiveWithApp('openNewWindow',config).then(data=>{
                     if(data == 'wap') {
-                        //wap端逻辑
-                        
+                        //wap端逻辑                       
                         _this.Base.setIframePageInfo(_this,config);
                         console.log('jumpToSharing','wap');
                     } else {
-                        // alert('刷新！');
                         console.log('jumpToSharing',data);
                     }
                 });
@@ -503,6 +477,7 @@ import { setTimeout } from 'timers';
                 try{
                     _this.processList.forEach((v,i)=>{
                         if((i===(_this.processList.length-1))&&(v.showColor)){
+                            console.log(v[i])
                             _this.processList[i].active = true;
                             throw 'done';
                         }else if(!v.showColor){ 
@@ -543,27 +518,41 @@ import { setTimeout } from 'timers';
                 }
                 let _this = this;
                 this.$ajax.post('/api/order/detial',this.$qs.stringify(data),{headers: this.Base.initAjaxHeader(1,data)}).then(res=>{
-                    _this.processList =  res.data.result.showOrderSquence;
-                    _this.pageData = res.data.result;
-                    _this.pfNo = res.data.result.pfNo;
-                    _this.imgBack.backgroundImage = 'url('+_this.pageData.platformLogeImg+')';
-                    if(_this.processList){
-                        _this.resetProcessList();
+                    if(res.data.status == '0'){
+                        _this.processList =  res.data.result.showOrderSquence;
+                        _this.pageData = res.data.result;
+                        _this.pfNo = res.data.result.pfNo;
+                        _this.imgBack.backgroundImage = 'url('+_this.pageData.platformLogeImg+')';   
+                        _this.isShowLoading = false;
+                        localStorage.setItem('pfNo',res.data.result.pfNo)
+                        if(_this.processList){
+                            _this.resetProcessList();
+                        }
+                    }else{
+                        this.$msg({content:res.data.msg})
                     }
                 });
             },
-            // backgroundImage(){
-
-            //     return{
-            //         backgroundImage: url(this.platformLogeImg)
-            //     }
-            // }
         }
     }
 
 </script>
 
 <style lang="scss" scoped>
+    .downBtn{
+        position: fixed;
+        bottom: 0;
+        width: 100%;     
+        button{
+            font-size:.34rem;
+            font-weight:500;
+            color:rgba(255,255,255,1);
+            line-height:.16rem;
+            width:100%;
+            height:.98rem;
+            background:rgba(82,123,236,1);               
+        }
+    }
     .page_container_top{
         padding:.2rem;background-color:#fff;
         margin-top: 1.4rem;

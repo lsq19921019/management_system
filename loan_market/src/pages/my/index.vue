@@ -45,10 +45,14 @@
                         <dt><img src="../../assets/my/my_dqr_icon.png" alt=""><span v-if="iconNum4 != 0">{{ iconNum4 }}</span></dt>
                         <dd>待确认</dd>
                     </dl>
-                    <dl @click="linkOrder('OrderList',9)">
+                    <dl @click="linkOrder('OrderList',8)">
+                        <dt><img src="../../assets/my/my_dhk_icon.png" alt=""><span v-if="iconNum7 != 0">{{ iconNum7 }}</span></dt>
+                        <dd>待还款</dd>
+                    </dl>                    
+                    <!-- <dl @click="linkOrder('OrderList',9)">
                         <dt><img src="../../assets/my/my_shsb_icon.png" alt=""><span v-if="iconNum5 != 0">{{ iconNum5 }}</span></dt>
                         <dd>审核失败</dd>
-                    </dl>
+                    </dl> -->
                 </div>
                 <div class="ul">
                     <ul>
@@ -132,6 +136,7 @@
                 iconNum3 : 0,  //待绑卡
                 iconNum4 : 0,  //待确认
                 iconNum5 : 0,  //审核失败
+                iconNum7 : 0,   //待还款
                 popoutConfig : {
                     btns : ['取消','确定'],
                     content : '',
@@ -170,6 +175,7 @@
                         _this.iconNum3 = result.result.iconNum3;
                         _this.iconNum4 = result.result.iconNum4;
                         _this.iconNum5 = result.result.iconNum5;
+                        _this.iconNum7 = result.result.iconNum7;
                     } else if(result.status == -9) {
                         _this.isAuth = false;
                         _this.isLogin = true;
@@ -255,6 +261,7 @@
 
 <style lang="scss" scoped>
     .my{
+        padding-bottom:1.2rem;
         .page_title{            
             .my_msg{
                 width:.6rem;

@@ -84,6 +84,10 @@
             bindCode(type){
                 let _this = this;
                 let regs = this.Base.regs;
+                if(_this.selValueSalaryDate=='请选择银行'||!_this.selValueSalaryDate){
+                    this.$msg({content : '请选择银行'})
+                    return false
+                }                
                 if(!_this.bankNo){
                     this.$msg({content : '请输入信用卡号'})
                     return false
@@ -102,7 +106,7 @@
                 }
                 let data = {
                     type:9,
-                    callphone:_this.codephone              
+                    callphone:localStorage.getItem("_mobile")
                 };
                 _this.$ajax.post('/api/message/sms_code',_this.$qs.stringify(data),{
                     headers: _this.Base.initAjaxHeader(1,{})

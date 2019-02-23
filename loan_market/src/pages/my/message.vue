@@ -9,9 +9,9 @@
         <!-- 站内信列表 -->
         <div class="list" v-if="msgList.length > 0">
             <ul>
-                <li v-for="(item,index) in msgList" :key="index" @click="goDetail(item.mailId)">
-                    <div class="title"><span>{{ item.title }}</span><span v-if="item.status == 1"><img src="../../assets/my/ico_wd.png" alt=""></span></div>
-                    <div class="time">{{ item.time }}</div>
+                <li v-for="(item,index) in msgList" :key="index" @click="goDetail(item.id)">
+                    <div class="title"><span>{{ item.title }}</span><span v-if="item.status == false"><img src="../../assets/my/ico_wd.png" alt=""></span></div>
+                    <div class="time">{{ item.releaseTimeDesc }}</div>
                 </li>
             </ul>
             <div class="getMore tac">
@@ -36,7 +36,8 @@
                 pageNum : 1,
                 isShowListTips : false,
                 apiPath : {
-                    msgList : '/api/message/mail_list'
+                    msgList : '/api/message/mail_list',
+                    notList : '/api/sysNotice/list'
                 },
                 isLoading : false,
             }
@@ -45,7 +46,8 @@
             noMore
         },
         created() {
-            this.getList();
+            //this.getList();
+            this.getListNotice();
         },
         mounted() {
             window.addEventListener('scroll', this.scrollBottom);  
@@ -82,13 +84,40 @@
                     _this.isLoading = false;
                 });
             },
+            //获取平台公告列表
+            getListNotice() {
+                if(!localStorage.getItem('_token')) {
+                    //return this.Base.setSourceUrl();
+                    return this.$router.push({ name : 'Login' });
+                } 
+                let _this = this;
+                let data = {
+                    pageNum : _this.pageNum
+                };
+                _this.$ajax.post(_this.apiPath.notList,_this.$qs.stringify(data),{
+                    headers : _this.Base.initAjaxHeader(1,{})
+                }).then(rs=>{
+                    let res = rs.data;
+                    if(res.status == 0) {
+                        _this.msgList = [..._this.msgList,...res.result.list];  
+                        _this.totalPage = res.result.pageEntity.totalPage; 
+                        _this.pageNum += 1;                 
+                    } else if(res.status == -100) {
+                        _this.$router.push({ name : 'Login' });
+                    } else {
+                        _this.msgList = [];
+                    }
+                    _this.isShowLoading = false;
+                    _this.isLoading = false;
+                });
+            },            
             //滚动底部方法
             scrollBottom() {
                 var sTop = document.documentElement.scrollTop || document.body.scrollTop;
                 if(this.pageNum <= this.totalPage) {
                     if ((window.screen.height + sTop) >= (document.body.clientHeight) && !this.isLoading) {
                         this.isLoading = true;
-                        this.getList();
+                        this.getListNotice();
                     }
                 } else {
                     this.isShowListTips = true;

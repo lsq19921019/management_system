@@ -16,7 +16,7 @@
                     <input class="password_txt" v-model="code" type="tel" maxlength="6" placeholder="验证码" @focus="inpFoc" @blur="inpBlur">
                     <span class="v_code" :disabled="codeBtnStauts" @click="handlerCode">{{ codeBtnText }}</span>
                 </div>
-                <a href="javascript:;" class="reg_btn" @click="login">看看我能借多少</a>
+                <a href="javascript:;" class="reg_btn" @click="handlerLogin">看看我能借多少</a>
                 <p class="info">借款额度因个人情况资质而定</p>
                 <div class="list_ico">
                     <div class="ico_item">
@@ -42,34 +42,39 @@
             </div>
         </div>
         <!-- 图形验证码 -->
-        <img-code v-if="isShowImgCode" @hideImgCode="hideImgCode" @getCode="getCode" :mobile="mobile" @getImgCode="getImgCode"></img-code>
+        <img-code v-if="isShowImgCode" @hideImgCode="hideImgCode" @getCode="handlerGetCode" :mobile="mobile" @getImgCode="getImgCode"></img-code>
     </div>
 </template>
 
 <script>
     import DES3 from '../../../static/3DES.js';
     import imgCode from '../../components/module/imgCode.vue';
+    import { initData, login, getCode, getSendNum } from './register.js';
     export default {
         name : 'Login',
         data() {
-            return {
+            return Object.assign(initData(this),{
                 t2Height:1,
-                isShowLoading : false,
-                apiPath : {
-                    register : '/api/user/register',
-                    msgCode : '/api/message/sms_code',
-                    sendNum : '/api/message/image_code_frequency'
-                },
                 mobile : localStorage.getItem('_mobile')?localStorage.getItem('_mobile'):'',
-                code : '',
-                codeBtnStauts : false,
-                codeBtnText : '获取验证码',
-                isShowImgCode : false,
-                //获取的子组件图形验证码
-                imgCode : '',
-                //从app获取注册渠道码
-                sourceCode : this.$route.params.sourceCode ? this.$route.params.sourceCode : ''
-            }
+            });
+            // return {
+            //     t2Height:1,
+            //     isShowLoading : false,
+            //     apiPath : {
+            //         register : '/api/user/register',
+            //         msgCode : '/api/message/sms_code',
+            //         sendNum : '/api/message/image_code_frequency'
+            //     },
+            //     mobile : localStorage.getItem('_mobile')?localStorage.getItem('_mobile'):'',
+            //     code : '',
+            //     codeBtnStauts : false,
+            //     codeBtnText : '获取验证码',
+            //     isShowImgCode : false,
+            //     //获取的子组件图形验证码
+            //     imgCode : '',
+            //     //从app获取注册渠道码
+            //     sourceCode : this.$route.params.sourceCode ? this.$route.params.sourceCode : ''
+            // }
         },
         components : {
             imgCode
@@ -91,133 +96,40 @@
             },
             inpBlur(){
                 this.t2Height = 1;
-            },            
+            }, 
+            
             //登录
-            login() {
-               let regs = this.Base.regs;
-               if(this.mobile.length < 1) {
-                   this.$msg({ content : '请输入手机号' });
-                   return;
-               } else if(!regs.mobile.test(this.mobile)) {
-                   this.$msg({ content : '请输入正确的手机号' });
-                   return;
-               }
-               if(this.code.length < 1) {
-                   this.$msg({ content : '请输入手机验证码' });
-                   return;
-               } else if(!regs.msgCode.test(this.code)) {
-                   this.$msg({ content : '请输入正确的手机验证码' });
-                   return;
-               }
-               //前端校验通过
-               let _this = this;
-               _this.isShowLoading = true;
-               let data = {
-                   cellphone : this.mobile,
-                   code : this.code
-               };
-               let register = DES3.encrypt(_this.Base.desKey, JSON.stringify(data));
-               this.$ajax.post(this.apiPath.register,_this.$qs.stringify({
-                   register : register,
-                   sourceCode : _this.sourceCode,
-                   clientType : 3
-               }),{
-                    headers: _this.Base.initAjaxHeader(0,{
-                        register : register,
-                        sourceCode : _this.sourceCode
-                    })
-                }).then(res=>{
-                    let result = res.data;
-                    if(result.status == 0) {
-                        //alert('注册成功：'+_this.sourceCode);                        
-                        localStorage.setItem('_token',result.result.token);
-                        localStorage.setItem('_mobile',_this.mobile);                         
-                        localStorage.removeItem('pfNo');
-                        //登录成功后获取用户信息
-                        _this.Base.interactiveWithApp('getCertifyInfo',{
-                            token : result.result.token,
-                            certifyInfo : ['locationInfo','deviceInfo','allInstallAppInfo']
-                        }).then(data=>{
-                            if(this.$route.query.type == '1'){
-                                this.$router.push({ name : 'Index' });
-                            }else{
-                                this.$router.push({ name : 'NewRegSuca' });
-                            }                           
-                            if(data == 'wap') {
-                                console.log('getCertifyInfo','wap');
-                            } else {
-                                console.log('getCertifyInfo',data);
-                            }
-                        });
-                        //登录完页面回退    
-                        // if(window.history.length > 1) {
-                        //     window.history.back(); 
-                        // } else {
-                        //     this.$router.push({ name : 'regSuc' });
-                        // }                
+            handlerLogin() {
+                login(this);
+            },
+            //获取验证码
+            handlerGetCode() {
+                getCode(this);
+            },
+            //获取验证码发送次数
+            handlerSendNum() {
+                return getSendNum(this);
+            },
+            //登录成功执行函数
+            handlerSuccess(result) {
+                localStorage.setItem('_token',result.result.token);
+                localStorage.setItem('_mobile',this.mobile);
+                localStorage.removeItem('pfNo');
+                //登录成功后获取用户信息
+                this.Base.interactiveWithApp('getCertifyInfo',{
+                    token : result.result.token,
+                    certifyInfo : ['locationInfo','deviceInfo','allInstallAppInfo']
+                }).then(data=>{
+                    if(this.$route.query.type == '1'){
+                        this.$router.push({ name : 'Index' });
+                    }else{
+                        this.$router.push({ name : 'NewRegSucb' });
+                    }
+                    if(data == 'wap') {
+                        console.log('getCertifyInfo','wap');
                     } else {
-                        _this.$msg({ content : result.msg });
+                        console.log('getCertifyInfo',data);
                     }
-                    _this.isShowLoading = false;
-               });
-           },
-           //获取验证码
-           getCode() {
-               let _this = this;
-               let data = {
-                   type : '1',
-                   cellphone : this.mobile,
-                   imgCode : _this.imgCode
-               };
-               //校验通过发送验证码
-               this.$ajax.post(this.apiPath.msgCode,_this.$qs.stringify(data),{
-                    headers: _this.Base.initAjaxHeader(0,data)
-                }).then(res=>{
-                    let result = res.data;
-                    let t = 60;
-                    if(result.status == 0) {  
-                        _this.$msg({ content : result.msg });
-                        _this.sendNum = result.result;
-                        _this.codeBtnStauts = true;
-                        _this.isShowImgCode = false;
-                        let st = setInterval(_=>{
-                            if(t > 1) {
-                                this.codeBtnText = `${--t}秒`;
-                            } else {
-                                clearInterval(st);
-                                this.codeBtnText = '重新发送';
-                                this.codeBtnStauts = false;
-                            } 
-                        },1000);
-                    } else {
-                        _this.$msg({ content : result.msg });
-                    }
-               });
-           },
-           //获取发送验证码次数
-           getSendNum() {
-                let _this = this;                
-                return new Promise((resolve,reject)=>{
-                    let regs = _this.Base.regs;
-                    if(_this.mobile.length < 1) {
-                        // _this.$msg({ content : '请输入手机号' });
-                        return reject('请输入手机号');
-                    } else if(!regs.mobile.test(_this.mobile)) {
-                        // _this.$msg({ content : '请输入正确的手机号' });
-                        return reject('请输入正确的手机号');
-                    }
-                    let data = {
-                        type : '1',
-                        cellphone : _this.mobile
-                    };
-                    _this.$ajax.post(_this.apiPath.sendNum,_this.$qs.stringify(data),{
-                        headers : _this.Base.initAjaxHeader(0,data)
-                    }).then(rs=>{
-                        let res = rs.data;
-                        if(res.status == 0) {
-                            resolve(res.result);
-                        }
-                    });
                 });
             },
            //隐藏图形验证码弹出框
@@ -227,9 +139,9 @@
            //promise
            handlerCode() {
                let _this = this;
-               this.getSendNum().then(data=>{
+               this.handlerSendNum().then(data=>{
                    if(!data) {
-                       _this.getCode();
+                       _this.handlerGetCode();
                    } else {
                        _this.isShowImgCode = true;
                    }
@@ -240,7 +152,7 @@
            //获取子组件验证码
            getImgCode(data) {
                this.imgCode = data;
-               this.getCode();
+               this.handlerGetCode();
            },
            //从app获取sourceCode
            getResiterInfo() {

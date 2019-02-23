@@ -27,18 +27,18 @@
                 title : '',
                 content : '',
                 clientVersion : '1.0',
-
+                sourceCode : this.$route.params.sourceCode ? this.$route.params.sourceCode : ''
             }
         },
         created() {
-            
+            this.getResiterInfo();
         },
         mounted() {
             this.title = localStorage.getItem('feedbackTitle') ? localStorage.getItem('feedbackTitle') : '';
             this.content = localStorage.getItem('feedbackContent') ? localStorage.getItem('feedbackContent') : '';
         },
         methods : {
-            send() {
+            send() {                           
                 let _this = this;
                 let title = this.title;
                 let content = this.content;
@@ -65,7 +65,7 @@
                 _this.$ajax.post(_this.apiPath.feedback,_this.$qs.stringify(data),{
                     headers : _this.Base.initAjaxHeader(1,data)
                 }).then(res=>{
-                    if(res.data.status == 0) {
+                    if(res.data.status == 0) {                      
                         localStorage.removeItem('feedbackTitle');
                         localStorage.removeItem('feedbackContent');
                         _this.$msg({ content : '提交成功' });
@@ -84,6 +84,20 @@
                 if(e.target.nodeName == 'INPUT') key = 'feedbackTitle';
                 localStorage.setItem(key,e.target.value);
             }
+        },
+        //从app获取sourceCode
+        getResiterInfo() {
+            let _this = this;
+            _this.Base.interactiveWithApp('getCertifyInfo',{
+                token : localStorage.getItem("_token"),
+                certifyInfo : ['deviceInfo']
+            }).then(data=>{
+                if(data == 'wap') {
+                    console.log('getCertifyInfo','wap');
+                } else {
+                    console.log('getCertifyInfo',data);
+                }
+            });
         }
     }
 </script>

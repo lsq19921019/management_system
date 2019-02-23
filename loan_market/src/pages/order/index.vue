@@ -11,7 +11,8 @@
                 <div class="tab_item" :class="{tab_active:tab_status===2}" @click="switchTab(2)">待审核</div>
                 <div class="tab_item" :class="{tab_active:tab_status===3}" @click="switchTab(3)">待绑卡</div>
                 <div class="tab_item" :class="{tab_active:tab_status===4}" @click="switchTab(4)">待确认</div>
-                <div class="tab_item" :class="{tab_active:tab_status===9}" @click="switchTab(9)">审核失败</div>
+                <div class="tab_item" :class="{tab_active:tab_status===8}" @click="switchTab(8)">待还款</div>
+                <!-- <div class="tab_item" :class="{tab_active:tab_status===9}" @click="switchTab(9)">审核失败</div> -->
              </div>
         </div>
         <div class="no_order_container" v-if="show_no_order">

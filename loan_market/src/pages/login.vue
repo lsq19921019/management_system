@@ -96,7 +96,7 @@
                this.$ajax.post(this.apiPath.register,_this.$qs.stringify({
                    register : register,
                    sourceCode : _this.sourceCode,
-                   clientType : 3
+                   clientType : 3,
                }),{
                     headers: _this.Base.initAjaxHeader(0,{
                         register : register,
@@ -229,6 +229,9 @@
                         if(data.result.channelId) {
                             _this.sourceCode = data.result.channelId;
                         }
+                        if(localStorage.getItem('sourceCode_renrendai') == 'ios_renrendai') {
+                            _this.sourceCode = 'ios_renrendai';
+                        }
                         //alert(_this.sourceCode);
                     }
                 });
@@ -250,8 +253,8 @@
         background-size:100% 4.48rem;
         margin-top:1.3rem;
         .logo{
-            width:1.34rem;
-            height:2.18rem;
+            width:3.18rem;
+            height:.85rem;
             margin:auto;
             padding-top:.72rem;
         }

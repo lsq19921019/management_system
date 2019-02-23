@@ -56,10 +56,10 @@
             {{getChannelName(scope.row.channel)}}
           </template>
         </el-table-column>
-        <el-table-column inline-template label="操作" width="100">
-          <div>
-            <el-button size="small" @click="check(row)">查看</el-button>
-          </div>
+        <el-table-column label="操作" width="100">
+          <template slot-scope="scope">
+            <el-button size="small" @click="check(scope.row)">查看</el-button>
+          </template>
         </el-table-column>
       </el-table>
 
@@ -136,7 +136,8 @@
         this.bindGrid()
       },
       check(row){
-        location.href='/UserDetail?&uuid='+row.uuid;
+        // location.href='/UserDetail?&uuid='+row.uuid;
+        window.open('/#/UserDetail?&uuid='+row.uuid);
       },
       pageSizeChange(val) {
         this.pageSize = val;

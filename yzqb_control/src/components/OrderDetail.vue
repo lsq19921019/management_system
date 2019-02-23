@@ -277,6 +277,7 @@
             </template>
           </el-table-column>
           <el-table-column prop="totalRepayment" label="应还款总金额(元)"></el-table-column>
+          <el-table-column prop="surplusMoney" label="剩余应还"></el-table-column>
           <el-table-column prop="amountApply" label="本金(元)"></el-table-column>
           <el-table-column prop="gameRechargeAmount" label="游戏币(元)"></el-table-column>
           <el-table-column prop="interest" label="利息"></el-table-column>
@@ -302,8 +303,10 @@
     <!--还款信息模块-->
     <template>
       <el-row>
-        <h1 class="one-title">还款信息 </h1>
-        <h3 style="margin: 10px;">线下还款提交历史:</h3>
+        <h1 class="one-title">还款信息 </h1>   <div style="overflow:hidden;">
+        <h3 style="margin: 10px;float:left">线下还款提交历史:</h3>
+        <h3 v-if="showOperator" style="margin: 10px;float:right;border-bottom:1px solid;" @click="openMsg()">订单已手动结清</h3>
+        </div>
 
         <el-table :data="orderHandleList" v-loading="orderHandleListLoading">
           <el-table-column prop="id" label="序号" width="80">
@@ -339,7 +342,7 @@
         </el-table>
 
 
-        <h3 style="margin: 10px ;">资金流水记录:</h3>
+        <!-- <h3 style="margin: 10px ;">资金流水记录:</h3>
 
         <el-table :data="repayOrderList" v-loading="repayOrderListLoading">
           <el-table-column prop="orderNo" label="订单编号"></el-table-column>
@@ -352,7 +355,23 @@
           <el-table-column prop="payChannelType" label="还款方式">
             <template slot-scope="scope">{{formatRepayType(scope.row.payChannelType)}}</template>
           </el-table-column>
+        </el-table> -->
+
+        <h3 style="margin: 10px ;">还款流水记录：</h3>
+
+        <el-table :data="repayOnlineOrderList" v-loading="repayOrderOnlineListLoading">
+          <el-table-column prop="shopOrderNo" label="订单编号"></el-table-column>
+          <el-table-column prop="realAmount" label="实还金额"></el-table-column>
+          <el-table-column prop="waiverAmount" label="减免金额"></el-table-column>
+          <el-table-column prop="refundTime" label="还款时间">
+            <template slot-scope="scope">{{formatUnixTime(scope.row.refundTime)}}</template>
+          </el-table-column>
+          <el-table-column prop="userUuid" label="用户uuid"></el-table-column>
+          <el-table-column prop="repayType" label="还款方式">
+            <template slot-scope="scope">{{formatRepayOnlineType(scope.row.repayType)}}</template>
+          </el-table-column>
         </el-table>
+
       </el-row>
 
       <div class="divid-line"></div>
@@ -529,6 +548,18 @@
 
 
     </template>
+    <el-dialog title="手动结清记录：" v-model="ManualSetOrderDialogVisible" size="tiny">
+      
+      <div>
+        操作人：{{operatorInfo.operator}}
+      </div>
+      <div>
+        操作时间：{{formatUnixTime(operatorInfo.operTime)}}
+      </div>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="ManualSetOrderDialogVisible = false">关闭</el-button>
+      </div>
+    </el-dialog>
 
   </section>
 </template>
@@ -548,6 +579,15 @@
         return time.getTime() <= Date.now();
       }
       return {
+ ManualSetOrderDialogVisible:false,
+        showOperator:false,
+        operatorInfo:{},
+
+
+
+
+        repayOnlineOrderList:[],
+        repayOrderOnlineListLoading:false,
         refundReasonData: [],  //审核记录数据
         refundReasonLoading: false,
         refundName: '',   //审核记录姓名
@@ -733,6 +773,40 @@
           channel = '微信';
         }
         return channel;
+      },
+      formatRepayOnlineType(data){
+        let str = "";
+        if(data == 1){
+          str = "放款";
+        }
+        if(data == 2){
+          str = "还款";
+        }
+        if(data == 3){
+          str = "秒扣";
+        }
+        if(data == 4){
+          str = "测试订单还款";
+        }
+        if(data == 5){
+          str = "测试订单放款";
+        }
+        if(data == 6){
+          str = "直接代扣";
+        }
+        if(data == 7){
+          str = "支付宝线上还款";
+        }
+        if(data == 8){
+          str = "人工结单";
+        }
+        if(data == 9){
+          str = "线上还款";
+        }
+        if(data == 10){
+          str = "线下还款";
+        }
+        return str;
       },
       formatRepayType(data){
         let str = "";
@@ -1251,6 +1325,37 @@
         // window.open('/#/OrderDetail?seen=true&userUuid='+row.userUuid+
         //   '&uuid='+row.uuid);
         //window.location.reload()
+      },
+      getRepayOnlineList(){
+        this.repayOrderOnlineListLoading = true;
+        this.$http.post('/manage/queryOrderCapitalFlow', {uuid:this.uuid}).then(response => {
+            this.repayOrderOnlineListLoading = false;
+          if (1 == response.body.code) {
+            if(response.body.data){
+              this.repayOnlineOrderList = response.body.data;
+            }
+          }
+        }, response => {
+          this.repayOrderOnlineListLoading = false
+        });
+      },
+      
+            getOrderDetailOperator(){
+        
+        this.$http.post('/manage/queryOrderOperator', {uuid:this.uuid}).then(response => {
+          if (1 == response.body.code) {
+            // console.log(response.body.data);
+            this.operatorInfo = response.body.data;
+            if(this.operatorInfo.operator){
+              this.showOperator = true;
+            }
+          }
+        }).catch((e) =>{
+
+        });
+      },
+      openMsg(){
+        this.ManualSetOrderDialogVisible = true;
       }
     },
     mounted: function () {
@@ -1276,6 +1381,8 @@
       this.getFlagByDicItem();//通讯录字典
       this.getHandleHistoryList();//用户线下还款信息
       this.getRepayOrderList(); //获取用户资金流水
+      this.getRepayOnlineList();
+      this.getOrderDetailOperator();//订单操作人信息；
     }
   }
 </script>

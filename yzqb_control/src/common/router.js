@@ -224,6 +224,10 @@ const routes = [{
     name:'交易流水',
     path:'/payRecordList',
     component:resolve => require(['../pages/data/payRecordList.vue'],resolve),
+  },{
+    name:'手动结清订单',
+    path:'/ManualSetOrder',
+    component:resolve => require(['../pages/order/ManualSetOrder.vue'],resolve),
   },
   /*{
     name:'现金白卡审核配置',

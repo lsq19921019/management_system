@@ -1,3 +1,7 @@
+# 描述
+  
+  现金贷项目后台管理系统。基于elementUI+vue-cli脚手架。
+
 # control.yaoqian.com
 
 > A Vue.js project

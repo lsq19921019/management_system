@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>提现管理</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="stylesheet" href="css/account.less">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./lib/js/jquery-3.3.1.min.js"></script>
+    <script src="./lib/js/mod.js"></script>
+    <script src="./lib/js/js.cookie.min.js"></script>
+</head>
+<body>
+
+    <link rel="import" href="tpl/header.html?__inline">
+
+    <div class="main-section clear-fix">
+        <link rel="import" href="tpl/accountMenu.html?__inline">
+        <script>
+            $(function () {
+                $(".account-menu .withdraw-link").addClass('active');
+            })
+        </script>
+        <div class="withdraw-content">
+            <h5>提现管理</h5>
+            <div class="main-content">
+                <div class="withdraw-header un-selectable clear-fix">
+                    <a class="main-tab">银行卡</a>
+                    <a href="./withdrawRecord.html" class="right-tab">提现记录</a>
+                    <a href="./withdraw.html" class="right-tab right-line">提现申请</a>
+                </div>
+                <div class="withdraw-body">
+                    <div class="bank-card">
+                        <div class="card-name clear-fix">
+                            <img src="img/notice_icon3.png">
+                            <span class="name">招商银行</span>
+                            <span class="state">当前使用</span>
+                            <span class="line"></span>
+                        </div>
+                        <p class="card-id">**** **** **** 2405</p>
+                        <div class="card-operate">
+                            <a>申请解绑</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="import" href="tpl/footer.html?__inline">
+</body>
+</html>

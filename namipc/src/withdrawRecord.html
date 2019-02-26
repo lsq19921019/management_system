@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>提现管理</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="stylesheet" href="css/account.less">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./lib/js/jquery-3.3.1.min.js"></script>
+    <script src="./lib/js/handlebars-4.0.11.min.js"></script>
+    <script src="./lib/js/mod.js"></script>
+    <script src="./lib/js/js.cookie.min.js"></script>
+</head>
+<body>
+
+    <link rel="import" href="tpl/header.html?__inline">
+
+    <div class="main-section clear-fix">
+        <link rel="import" href="tpl/accountMenu.html?__inline">
+        <script>
+            $(function () {
+                $(".account-menu .withdraw-link").addClass('active');
+            })
+        </script>
+        <div class="withdraw-content">
+            <h5>提现管理</h5>
+            <div class="main-content">
+                <div class="withdraw-header un-selectable clear-fix">
+                    <a class="main-tab">资金明细</a>
+                    <a href="./withdraw.html" class="right-tab right-line">提现申请</a>
+                </div>
+                <div class="withdraw-body">
+                    <div class="search-option">
+                        <div class="withdraw-img">
+                            <img src="img/withicon.png" alt="">
+                        </div>
+                        <p class="withing">正在提现：<span class="withing-txt">0</span>元</p>
+                        <span class="with-mark">1-3个工作日内到账</span>
+                    </div>
+                    <div class="table-list">
+                        <table>
+                            <thead>
+                                <td>交易时间</td>
+                                <td>交易类型</td>
+                                <td>金额</td>
+                                <td>余额</td>
+                            </thead>
+                            <tbody class="banklist-hbs">
+
+                            </tbody>
+                        </table>
+                        <div class="null-tips">
+                            <img src="./img/nothing.png">
+                        </div>
+                    </div>
+                    <div class="page-list">                   
+                        <a class="prev" data-page="prev">上一页</a>
+                        <span class="cur-page">1/1</span>
+                        <a class="next" data-page="next">下一页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="banklist-template" type="text/x-handlebars-template">
+        {{#each banklist}}
+        <tr>
+            <td>{{time}}</td>
+            <td>{{type}}</td>
+            <td class="{{isNub freetype}}">{{amount}}</td>
+            <td>{{balance}}</td>
+        </tr>
+        {{/each}}
+    </script>
+    <link rel="import" href="tpl/footer.html?__inline">
+    <script src="./js/withdraw.js?__inline"></script>
+</body>
+</html>

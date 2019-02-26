@@ -1,0 +1,176 @@
+/**
+ * @file 工具集
+ * @param {Function} require require方法,可以引用其他的模块
+ * @param {Object} exports 导出对象的引用
+ * @param {Object} module 当前模块对象
+ */
+var tools = {
+    loginCheck: function () {
+        var token = Cookies.get('token') || '';
+        // 去掉站位空白块，为了菜单渲染的时候结构更稳当
+        $('header .none-li').hide();
+        if (token) {
+            // 已登录
+            $('header .login-wrap').hide();
+            $('header .logout-li').show();
+            $('header .account-wrap').show();
+        } else {
+            $('header .account-wrap').hide();
+            $('header .logout-li').hide();
+            $('header .login-wrap').show();
+        }
+    },
+    apiUrl: function () {
+        var httpProtocol = location.protocol === 'https:' ? 'https://' : 'http://';
+        var apiUrl = {
+            // data: httpProtocol + 'act-touzijiaoshou.com'
+            data: httpProtocol + 'pcapi.namilicai.com/mobile'
+        };
+        if (location.port) {
+            // 开发环境有端口号
+            apiUrl = {
+                // data: httpProtocol + '120.78.128.160:8181'
+                data: httpProtocol + 'pcapi.namilicai.com/mobile'
+            };
+        }
+
+        return apiUrl;
+    },
+    getUrlParam: function (param) {
+        var stringRule = new RegExp('(\\?|#|&)' + param + '=([^&#]*)(&|#|$)');
+        var getValue = location.href.match(stringRule);
+        return getValue ? getValue[2] : '';
+    },
+    /**
+     * 封装一下ajax请求
+     *
+     * @param  {string} url 接口地址
+     * @param  {Object} data  传给后端的参数数据
+     * @param  {string} type 接口请求类型
+     * @param  {Object} header 传给后端补充的header数据
+     *
+     * @return {Object}  返回ajax对象
+     * */
+    fetchAjax: function (url, data, type, header) {
+        var headerData = {
+            'clientType': '3',
+            'token': Cookies.get('token') || '',
+            'timestamp': Date.now(),
+            'clientVersion': '1.0.0'
+        };
+
+        return $.ajax({
+            url: url,
+            type: type || 'post',
+            headers: $.extend(headerData, header),
+            beforeSend: function(xhr){
+                xhr.withCredentials = true;
+            },
+            data: data
+        });
+    },
+    renderTpl: function(domNode, tplNode, data) {
+        // Helper，首项加上active类名
+        Handlebars.registerHelper("isActive",function(index) {
+            return index == 0 ? 'first active' : '';
+        });
+
+        // Helper，1 有 2无
+        Handlebars.registerHelper("isHave",function(value) {
+            return (value == 1) ? '有' : (value == 2 ? '无' : value);
+        });
+        // isDay
+        Handlebars.registerHelper("isDay",function(value) {
+            return (value == 0) ? '天' : (value == 2 ? '月' : '');
+        });
+        // Helper，返回排名名次，前三展示图片
+        Handlebars.registerHelper("isTop3",function(rank) {
+            if (rank == 1) {
+                return '<div class="img img-1"></div>';
+            } else if (rank == 2) {
+                return '<div class="img img-2"></div>';
+            } else if (rank == 3) {
+                return '<div class="img img-3"></div>';
+            } else {
+                return rank;
+            }
+        });
+        //回单详情
+        Handlebars.registerHelper("isStatus",function(status,item){
+            if(status=='审核通过'){
+                return "<a class='btn'>查看</a>";
+            }else if(status=='已提交'){
+                return '<a class="btn">查看</a>';
+            }else if(status=='审核失败'){
+                return '<a class="reject">删除</a>';
+            }else{
+                return "<a class='btn'>查看</a>";
+            }
+        });
+        //判断样式
+        Handlebars.registerHelper("isSty",function(status){
+            if(status=='审核通过'){
+                return 'green-c';
+            }else if(status=='审核失败'){
+                return 'red-c';
+            }else{
+                return '';
+            }
+        });
+        //
+        Handlebars.registerHelper("isNub",function(status){
+            if(status=='2'){
+                return 'red-c'
+            }else if(status=='1'){
+                return 'green-c'
+            }else{
+                return ''
+            }
+        });
+        //
+        Handlebars.registerHelper("dsh",function(res){
+            if(res=='0.00'){
+                return '正在审核'
+            }else{
+                return res
+            }
+        });
+        //整数
+        Handlebars.registerHelper("parInt",function(status){
+            return parseInt(status)
+        })
+        var source   = tplNode.html();
+        var template = Handlebars.compile(source);
+        var html = template(data);
+        domNode.html(html);
+    },
+    // 提示弹窗
+    tipsAlert: function (text, time) {
+        var time = time || 1500;
+        var $tipsBox = $('#tips-box');
+        $tipsBox.find('.text').html(text);
+        $tipsBox.fadeIn();
+        setTimeout(function () {
+            $tipsBox.fadeOut();
+        }, time);
+    },
+    // 分页点击
+    pageClick: function ($page, callback) {
+        $page.on('click', 'a', function (e) {
+            var pageNum = 1;
+            var getCurrentPage = $page.find('.cur-page').text().split('/')[0] * 1;
+            var getType = $(this).attr('data-page');
+            if (getType === 'first') {
+                pageNum = 1;
+            } else if (getType === 'prev') {
+                pageNum = getCurrentPage - 1 > 0 ? getCurrentPage - 1 : 1;
+            } else if (getType === 'next') {
+                pageNum = getCurrentPage + 1;
+            } else if (getType === 'end') {
+                pageNum = $page.attr('data-totalPage');
+            }
+            callback(pageNum * 1);
+        });
+    },
+};
+module.exports = tools;

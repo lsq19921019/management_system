@@ -1,0 +1,286 @@
+@import "main";
+.main-section {
+    width: 1200px;
+    margin: 20px auto;
+    background-color: #F3f3f3;
+.about-menu {
+    float: left;
+    background-color: #fff;
+    width: 228px;
+    a {
+      display: block;
+      font-size: 16px;
+      color: #333;
+      text-align: center;
+      padding: 18px 0;
+      border-bottom: 1px solid #E0E0E0;
+      &:hover{
+        color:  #406EC8;
+      }
+      &.active {
+        color:  #406EC8;
+        border-bottom: 3px solid #406EC8;
+      }
+      &.about-us {
+        .img {
+          width: 28px;
+          height: 26px;
+          position: relative;
+          top: 5px;
+          background: url("../img/about-us.png") center no-repeat;
+        }
+        &:hover,
+        &.active {
+         .img {
+            background: url("../img/about-us2.png") center no-repeat;
+          }
+        }
+      }
+      &.about-notice {
+        .img {
+          width: 27px;
+          height: 29px;
+          position: relative;
+          top: 9px;
+          background: url("../img/notice-link.png") center no-repeat;
+        }
+        &:hover,
+        &.active {
+          .img {
+            background: url("../img/notice-link2.png") center no-repeat;
+          }
+        }
+      }
+      &.serve-link {
+        .img {
+          width: 22px;
+          height: 26px;
+          position: relative;
+          top: 7px;
+          background: url("../img/serve-link.png") center no-repeat;
+        }
+        &:hover,
+        &.active {
+          .img {
+            background: url("../img/serve-link2.png") center no-repeat;
+          }
+        }
+      }
+      &.relation-link {
+        .img {
+          width: 22px;
+          height: 30px;
+          position: relative;
+          top: 7px;
+          background: url("../img/relation-link.png") center no-repeat;
+        }
+        &:hover,
+        &.active {
+          .img {
+            background: url("../img/relation-link2.png") center no-repeat;
+          }
+        }
+      }
+      .img {
+        display: inline-block;
+        *zoom: 1;
+        *display: inline;
+        margin-right: 12px;
+        background-size: cover;
+      }
+    }
+  }
+  .about-content {
+    float: right;
+    background-color: #FFF;
+    width: 955px;
+    margin-bottom: 20px;
+    min-height: 550px;
+    .about-bg{
+        height: 160px;
+    }
+    .about-info{
+        padding: 56px 64px 100px 64px;
+        .about-info-tit{
+            display: flex;
+            align-items: center;
+            .mark{
+                background-color: #FF7E13;
+                width: 3px;
+                height: 18px;
+
+            }
+            .about-txt{
+                margin-left: 14px;
+                font-size: 20px;
+                color: #333333;
+                letter-spacing: 0.28px;
+            }
+        }
+        
+        .about-con{
+            font-size: 16px;
+            color: #333333;
+            letter-spacing: 0.25px;
+            text-align: justify;
+            line-height: 29px;
+            margin-top: 26px;
+        }
+    }
+  }
+  // 平台公告
+  .platform-desc {
+    padding: 30px 35px 100px 35px;
+    .notice-item {
+      display: block;
+      padding: 0 8px;
+      border-bottom: 1px dashed #E0E0E0;
+      font-size: 16px;
+      .title {
+        float: left;
+        color: #444;
+        padding: 15px 0;
+      }
+      .time {
+        float: right;
+        color: #a7a7ac;
+        padding: 15px 0;
+      }
+    }
+  }
+  // 联系我们
+  .contact-desc {
+    padding: 48px;
+    color: #333;
+    h5 {
+      font-size: 20px;
+      padding-left: 12px;
+      border-left: 2px solid #FF6724;
+      margin-bottom: 40px;
+    }
+    .contact-list {
+      width: 865px;
+      margin: 0 auto;
+      .contact-item {
+        width: 33.3%;
+        float: left;
+        text-align: center;
+        color: #333;
+        img {
+          width: 78px;
+          height: 78px;
+          margin: 10px auto;
+        }
+        .title {
+          font-size: 20px;
+          font-weight: 700;
+        }
+        .phone,
+        .email {
+          font-size: 16px;
+          a {
+            color: #333;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+    .contact-info {
+      width: 820px;
+      margin: 0 auto;
+      .info-desc {
+        width: 100%;
+        .desc {
+          float: left;
+          width: 550px;
+          padding-bottom: 10px;
+          margin-bottom: 30px;
+          p {
+            color: #333;
+            font-size: 16px;
+            margin-top: 10px;
+            &.title {
+              font-size: 22px;
+              font-weight: 700;
+            }
+            a {
+              color: #333;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+
+      }
+      .wechat {
+        float: left;
+        margin-left: 70px;
+        img {
+          width: 120px;
+          height: 120px;
+        }
+        .text {
+          color: #333;
+          font-size: 16px;
+          text-align: center;
+        }
+      }
+      .map {
+        width: 100%;
+      }
+    }
+  }
+  .notice-desc {
+    padding: 10px 50px 30px 50px;
+    .notice-header {
+      color: #5d5d5d;
+      position: relative;
+      text-align: center;
+      border-bottom: 1px solid #E0E0E0;
+      h5 {
+        font-size: 22px;
+        font-weight: 700;
+        padding: 25px 0;
+      }
+      .back-btn {
+        position: absolute;
+        left: 10px;
+        color: #888;
+        font-size: 16px;
+        font-weight: 700;
+        top: 28px;
+      }
+      .time {
+        position: absolute;
+        width: 120px;
+        left: 50%;
+        margin-left: -60px;
+        background-color: #fff;
+        top: 68px;
+        font-size: 14px;
+        color: #bbb;
+      }
+    }
+    .notice-body {
+      margin: 30px auto;
+      color: #888;
+      font-size: 16px;
+      p {
+        margin-top: 10px;
+        line-height: 1.8;
+      }
+      .content {
+        text-indent: 1em;
+      }
+      .sign-name,
+      .sign-time {
+        text-align: right;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+.fixed-bottom {position: fixed;bottom: 0;width:100%;}

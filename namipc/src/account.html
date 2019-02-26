@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>账户中心</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="stylesheet" href="css/account.less">
+    <link rel="stylesheet" href="./lib/css/pikaday.css">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./lib/js/jquery-3.3.1.min.js"></script>
+    <script src="./lib/js/handlebars-4.0.11.min.js"></script>
+    <script src="./lib/js/mod.js"></script>
+    <script src="./lib/js/js.cookie.min.js"></script>
+    <script src="./lib/js/moment.min.js"></script>
+    <script src="./lib/js/pikaday.js"></script>
+</head>
+<body>
+
+    <link rel="import" href="tpl/header.html?__inline">
+
+    <div class="main-section clear-fix">
+        <link rel="import" href="tpl/accountMenu.html?__inline">
+        <script>
+            $(function () {
+                $(".account-menu .account-link").addClass('active');
+            })
+        </script>
+        <div class="account-content" id="account-content">
+            <div class="withdraw-info clear-fix">
+                 <div class="all-money">
+                     <p class="text">纳米理财 账户余额</p>
+                     <span class="money">0.00</span>
+                     <span class="unit">元</span>
+                 </div>
+                 <div class="money-info platform-count">
+                    <div class="money-info-item">
+                        <p class="item-tit">纳米理财 累计收益</p>
+                        <span class="my-money nub">0</span><span class="unit">元</span>
+                    </div>
+                    <div class="money-info-item">
+                        <p class="item-tit">纳米理财 今日收益</p>
+                        <span class="day-money nub">0</span><span class="unit">元</span>
+                    </div>
+                    <div class="money-info-item">
+                        <p class="item-tit">等待审核的回单数</p>
+                        <span class="wait-money nub">0</span><span class="unit">笔</span>
+                    </div>
+                 </div>
+            </div>
+            <div class="withdraw">
+                <!-- withdraw.html -->
+                <a class="withdraw-btn">提现</a>
+                <a class="check" href="./withdrawRecord.html">查看资金明细 >></a>
+
+                <b class="inviteCodeBox"> 
+                    我的邀请码：<input type="text"   id="foo"  class="inviteCode"   /><b class="copy-btn" id="copy-btn" data-clipboard-action="copy"  data-clipboard-target="#foo">复制</b>
+                  <div class=" copy-success hide">复制成功</div>  
+                  <!--  -->
+                  <!-- hide -->
+                </b>
+            </div>
+            <div class="quick-entry">
+                <p class="entry-tit">提交投资回单快捷入口</p>
+                <div class="entry-info">
+                    <div class="receipt-img">
+                        <img src="img/receipt-icon.png" alt="">
+                    </div>
+                    <div class="parent">
+                        <select class="platform-list-hbs">
+                            <script id="platform-list-template" type="text/x-handlebars-template">
+                                {{#each platformList}}
+                                    <option value="{{pfno}}">{{pfname}}</option>
+                                {{/each}}
+                            </script>
+                        </select>
+                    </div>
+                    <a class="entry-btn clear-fix">提交投资回单</a>
+                    <div class="entry-txt">
+                        <span>预计约<span class="hour">24小时</span>返利到账</span>
+                    </div>
+                </div>
+            </div>
+            <div class="record ">
+                <p class="record-tit">回单记录</p>
+                <div class="table-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>提交时间</td>
+                                <td>投资平台</td>
+                                <td>标的名称</td>
+                                <td>注册手机号</td>
+                                <!-- <td>投资时间</td> -->
+                                <td>投资金额</td>
+                                <td>当前状态</td>
+                                <td>返利金额</td>
+                                <td>备注</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody class="declare-record-table-hbs">
+
+                        </tbody>
+                    </table>
+                    <div class="null-tips">
+                        <img src="./img/nothing.png">
+                    </div>
+                </div>
+                <div class="page-list">                   
+                    <a class="prev" data-page="prev">上一页</a>
+                    <span class="cur-page">1/1</span>
+                    <a class="next" data-page="next">下一页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fillreceipt">
+        <div class="close"><img src="img/close.png" alt=""></div>
+        <div class="fill-con">
+            <p class="fill-tit1">填写回单说明</p>
+            <p class="fill-tit2">每次投资完，我们根据您填写的回单给您结算返利，回单必填信息： 注册手机号码、投资期限、投资日期、验证码</p>
+            <div class="line"></div>
+             <div class="fill">
+                
+                <div class="fill-item clear-fix" >
+                    <p class="fill-name">活动平台认证姓名：</p>
+                    <input class="name" type="text" placeholder="请输入活动平台认证姓名" name="name">
+                </div>
+                <div class="fill-item clear-fix" >
+                    <p class="fill-name">实际投资金额：</p>
+                    <input class="money" type="text" placeholder="请准确填写金额" onkeyup="value=value.replace(/[^\d]/g,'')">
+                </div>
+
+                
+                 <div class="fill-item clear-fix">
+                    <p class="fill-name">注册手机号码：</p>
+                    <input class="user-phone" type="text" placeholder="请仔细核对您的号码" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="11">
+                    <span class="fill-mark"></span>
+                    <!-- 活动平台的注册手机号 -->
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">投资日期：</p>
+                    <input type="text" class="time" id="datePicker-time" placeholder="请选择投标时间">
+                </div>
+                
+                <div class="fill-item clear-fix">
+                    <div class="yzm">
+                        <p class="fill-name">图形验证码：</p>
+                        <input class="code" type="text" placeholder="输入验证码" style="width: 150px" maxlength="4">
+                        <img class="img-code" src="img/logo.png" alt="">
+                    </div>
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">标的名称：</p>
+                    <select class="item-list-hbs">
+                    </select>
+                </div>
+                <div class="fill-item clear-fix phoneCode">
+                   <input class="phoneCodeInput" type="text" placeholder="输入短信验证码">
+                   <b class="sendCode ">发送验证码</b>
+                </div>
+            </div>
+             <div class="line"></div>
+            <div class="btn"><a class="submit">提交</a></div>
+        </div>
+    </div>
+    <div class="fillreceipt-check">
+        <div class="close"><img src="img/close.png" alt=""></div>
+        <div class="fill-con">
+            <p class="fill-tit1">查看回单说明</p>
+            <p class="fill-tit2">每次投资完，我们根据您填写的回单给您结算返利，回单必填信息： 注册手机号码、投资期限、投资日期、验证码</p>
+            <div class="line"></div>
+            <div class="fill">
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">实际投资金额：</p>
+                    <input class="money" type="text" placeholder="投资金额" onkeyup="value=value.replace(/[^\d]/g,'')">
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">注册手机号码：</p>
+                    <input class="user-phone" type="text" placeholder="手机号码" onkeyup="value=value.replace(/[^\d]/g,'')">
+                    <span class="fill-mark">活动平台的注册手机号</span>
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">投资日期：</p>
+                    <input type="text" class="time" id="datePicker-time" placeholder="投标时间">
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">注册平台用户名：</p>
+                    <input class="name" type="text" placeholder="平台用户名">
+                    <span class="fill-mark">活动平台用户名，非纳米理财用户名</span>
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">标的名称：</p>
+                    <input class="bdmc" placeholder="标的名称">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hint">
+        <div class="wbd">
+            <img src="img/wbd-icon.png" alt="">
+        </div>
+        <i class="close"></i>
+        <div class="hint-txt">
+            <p class="p1">您还<span class="imp">未绑定</span>返利的收款银行账户</p>
+            <p class="p2">每次返利都会到这张卡上哦~</p>
+        </div>
+        <div class="hint-btn">
+            <a class="zbbd">暂不绑定</a>
+            <a class="qqbd" href="./safe.html">前去绑定</a>
+        </div>
+    </div>
+    <div id="cover"></div>
+
+    <script id="item-list-template" type="text/x-handlebars-template">
+        {{#each itemList}}
+        <option value="{{id}}">{{borrowTitle}}</option>
+        {{/each}}
+    </script>
+    <!-- <td>{{investTime}}</td> -->
+    <script id="declare-record-table-template" type="text/x-handlebars-template">
+        {{#each investRecordList}}
+        <tr>
+            <td>{{createTime}}</td>
+            <td>{{platformName}}</td>
+            <td>{{projectName}}</td>
+            <td>{{phone}}</td>
+            <td>{{investAmount}}</td>
+            <td class="{{isSty status}}">{{status}}</td>
+            <td>{{rebate}}</td>
+            <td>{{remark}}</td>
+            <td data-id="{{investId}}">{{{isStatus status}}}</td>
+        </tr>
+        {{/each}}
+    </script>
+
+    <link rel="import" href="tpl/footer.html?__inline">
+    <link rel="import" href="tpl/tipsAlert.html?__inline">
+    <script src="js/account.js"></script>
+</body>
+</html>

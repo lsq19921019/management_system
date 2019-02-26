@@ -1,0 +1,75 @@
+<footer>
+    <div class="footer-content clear-fix">
+        <div class="about-list">
+            <h5 class="title">关于纳米</h5>
+            <a href="/about/about.html">关于我们</a>
+            <a href="/about/serverlist.html">服务条款</a>
+            <a href="../noviceGuide/accountFun.html">常见问题</a>
+        </div>
+        <span class="line"></span>
+        <div class="help-list">
+            <h5 class="title">联系我们</h5>
+            <div style="margin-bottom: 10px">商务合作</div>
+            <div style="margin-bottom: 10px">商务联系QQ：995709862</div>
+            <div style="margin-bottom: 10px">客服热线: 0755-26924103</div>
+            <div>邮箱：namilicai@qq.com</div>
+        </div>
+        <div class="follow-list">
+            <h5 class="title">关注我们</h5>
+            <div class="clear-fix">
+                <div class="wechat1">
+                    <img src="/img/qr_code_c3ceb78.png">
+                    <p>微信公众号</p>
+                </div>
+            </div>
+        </div>
+        <span class="line"></span>
+        <div class="phone-list">
+            <h5 class="title">纳米理财</h5>
+            <p>服务时间：9:00-22:00(双休、节假日除外)</p>
+            <p>温馨提示：投资有风险 理财需谨慎</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <P>Copyright Reserved 2017-2018@纳米理财   粤ICP备17096796号-3   深圳微融信息科技有限公司</P>
+    </div>
+</footer>
+<script> 
+        var getPhone = Cookies.get('phone')
+        if(getPhone){
+            var setPhone = getPhone.substring(0,3)+'****'+getPhone.substring(7,11);
+            $("#js-nav-account").find(".myacc").text(setPhone)
+        }
+</script>
+<script>
+    $(function () {
+        var $header = $('header');
+        var tools = require('mod/tools');
+        var apiUrl = tools.apiUrl();
+
+        // 登录状态检查
+        tools.loginCheck();
+        // 退出登录
+        $header.find('.logout-btn').on('click', function () {
+            tools.fetchAjax(apiUrl.data + '/user/logout').done(function (ret) {
+                if (ret.status === '0' || ret.status === 0) {
+                    // 清除token
+                    Cookies.remove('token');
+                    // 更新菜单栏状态
+                    tools.loginCheck();
+                    // 跳转首页
+                    location.href = '/';
+                };
+            });
+        });
+    })
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119393430-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119393430-1');
+</script>

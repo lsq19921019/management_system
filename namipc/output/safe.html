@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>安全认证</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" href="/css/account_632fb6f.css" />
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="header-center clear-fix">
+            <div class="header-left">
+                <span class="call-phone contact-item"><i class="icon-phone"></i>客服电话：0755-26924103</span>
+                <span id="qq" class="contact-item">
+                        <i class="icon-qq"></i>
+                        <em class="show-qq">
+                            <span class="arrow"></span>
+                            <p>客服QQ</p>
+                            <p><a href="javascript:;" target="_blank">1473939194</a></p>
+                        </em>
+                    </span>
+                <span id="wechat" class="contact-item">
+                        <i class="icon-wechat"></i>
+                        <em class="show-wechat">
+                            <span class="arrow"></span>
+                            <p>客服微信</p>
+                            <p><a href="javascript:;" target="_blank">namilicai666</a></p>
+                        </em>
+                    </span>
+            </div>
+            <div class="header-right">
+                <ul>
+                    <li><a href="/noviceGuide/accountFun.html">帮助中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="bottom-center clear-fix">
+            <a href="/"><img class="logo" src="/img/logo_938161f.png"></a>
+            <div class="nav-list">
+                <ul>
+                    <li id="js-nav-index"><a href="/">首页</a></li>
+                    <li id="js-nav-plat"><a href="/plat.html">首投返利</a></li>
+                    <li id="js-nav-super"><a href="/super.html">复投返利</a></li>
+                    <li id="js-nav-newbie"><a href="/guide.html">新手引导</a></li>
+                    <li class="none-li">&nbsp;</li>
+                    <li class="login-wrap">
+                        <a href="/login.html" class="login-btn login-register">登录</a>
+                        <a class="login-btn login-register">/</a>
+                        <a href="/register.html" class="register-btn login-register">注册</a>
+                    </li>
+                    <li id="js-nav-account" class="account-wrap clear-fix">                        
+                        <a class="myacc" href="/account.html"></a>
+                        <a class="logout-btn">&nbsp;&nbsp;&nbsp;退出</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="main-section clear-fix">
+        <div class="account-menu">
+    <ul>
+        <li><a href="/account.html" class="account-link"><div class="img"></div>账户总览</a></li>
+        <li><a href="/withdraw.html" class="withdraw-link"><div class="img"></div>提现管理</a></li>
+        <li><a href="/safe.html" class="safe-link"><div class="img"></div>安全认证</a></li>
+    </ul>
+</div>
+        <div class="safe-content" id="safe-content">
+            <h5>安全认证</h5>
+            <div class="main-content">
+                <div class="safe-item-content">
+                    <div class="safe-item clear-fix update-login-pass">
+                        <img class="img-icon" src="/img/icon_safe_password_0c286ef.png">
+                        <span class="label">登录密码</span>
+                        <span class="desc">安全性高的密码可以使用账号更安全</span>
+                        <img class="state-mark" src="/img/icon_true_00ebfb9.png">
+                        <span class="state">已设置</span>
+                        <span class="name"></span>
+                        <a class="update-btn" data-label="update-password">立即修改</a>
+                    </div>
+                    <div class="safe-item clear-fix bindbank">
+                        <img class="img-icon" src="/img/bankicon_ad0e802.png">
+                        <span class="label">绑定银行卡</span>
+                        <span class="desc">填写银行卡账号,用于返现</span>
+                        <img class="state-mark" src="/img/icon_true_00ebfb9.png">
+                        <span class="state">未设置</span>
+                        <span class="name"></span>
+                        <a class="update-btn" data-label="bank-card">立即修改</a>
+                    </div>
+                    <div class="safe-item clear-fix update-deal-pass">
+                        <img class="img-icon" src="/img/icon_safe_password_0c286ef.png">
+                        <span class="label">交易密码</span>
+                        <span class="desc">安全性高的密码可以使用账号更安全</span>
+                        <img class="state-mark" src="/img/icon_true_00ebfb9.png">
+                        <span class="state">已填写</span>
+                        <span class="name"></span>
+                        <a class="update-btn" data-label="update-pay-password">立即修改</a>
+                    </div>
+                </div>
+                <div class="update-content update-password">
+                    <div class="header clear-fix">
+                        <a class="back-btn un-selectable">返回</a>
+                        <h2 class="update-label">修改登录密码</h2>
+                    </div>
+                    <div class="input-item">
+                        <span class="label">原密码</span>
+                        <input type="password" class="input-name old-psw" placeholder="请输入您的原密码" maxlength="20">
+                    </div>
+                    <div class="input-item">
+                        <span class="label">新密码</span>
+                        <input type="password" class="input-name new-psw" placeholder="请输入您的新密码"  maxlength="20">
+                    </div>
+                    <div class="input-item">
+                        <span class="label">确认新密码</span>
+                        <input type="password" class="input-name new-psw-again" placeholder="请再次输入您的新密码"  maxlength="20">
+                    </div>
+                    <div class="btn-item clear-fix">
+                        <a class="cancel">取消</a>
+                        <a class="confirm">确认</a>
+                    </div>
+                </div>
+                <div class="update-content update-pay-password update-pay-passwords">
+                    <div class="header clear-fix">
+                        <a class="back-btn un-selectable">返回</a>
+                        <h2 class="update-label" id="title-set">修改交易密码</h2>
+                    </div>
+                    <div class="pass-list updata-pas-box">
+                        <div class="pass-item clear-fix ">
+                            <label>手机号码</label>
+                            <b class="pass-phone">***********</b>
+                        </div>
+                        <div class="pass-item clear-fix bank-img">
+                            <label>图形验证码</label>
+                            <input class="input-name code-input" placeholder="验证码" maxlength="4">
+                            <img class="img-code" src="/img/logo_938161f.png">
+                            <i></i>
+                        </div>
+                        <div class="pass-item clear-fix getcode">
+                            <label>手机验证码</label>
+                            <input class="input-name phoneyzm" placeholder="手机验证码"  maxlength="6">
+                            <a class="get-sms-code">获取验证码</a>
+                            <i></i>
+                        </div>
+                        <div class="pass-item clear-fix">
+                            <label>密码</label>
+                            <input type="password" class="input-name new-password" placeholder="密码长度为6-20个字符" maxlength="20">
+                            <i></i>
+                        </div>
+                        <div class="pass-item clear-fix">
+                            <label>确认密码</label>
+                            <input type="password" class="input-name password-again" placeholder="请重新输入密码" maxlength="20">
+                            <i></i>
+                        </div>
+                        <!-- <div class="tips-register">交易密码提示</div> -->
+                        <div class="btn-item clear-fix">
+                            <label>&nbsp;</label>
+                            <a class="confirm clear-fix" style="display: inline-block;">确认</a>
+                        </div>      
+                    </div>           
+                </div>
+                <div class="update-content bank-card">
+                    <div class="header clear-fix">
+                        <a class="back-btn un-selectable">返回</a>
+                        <h2 class="update-label">银行卡绑定</h2>
+                    </div>
+                    <div class="bank-list clear-fix">
+                        <div class="bank-item clear-fix">
+                            <span class="laber">开户人姓名</span>
+                            <input class="name" placeholder="开户人姓名">
+                            <i></i>
+                        </div>
+                        <div class="bank-item clear-fix">
+                            <span class="laber">开户银行</span>
+                            <select class="khyh">
+                                <option value="">请选择</option>
+                            </select>
+                            <i></i>
+                        </div>
+                        <div class="bank-item clear-fix">
+                            <span class="laber">支行名称</span>
+                            <input class="zhmc" placeholder="支行名称">
+                            <i></i>
+                        </div>
+                        <div class="bank-item clear-fix">
+                            <span class="laber">银行卡号</span>
+                            <input class="yhkh" placeholder="请输入银行卡号" maxlength="19">
+                            <i></i>
+                        </div>
+                         <div class="bank-item clear-fix getcode">
+                            <span class="laber">注册手机号</span>
+                            <b class="phone"></b>
+                        </div>
+                        <div class="bank-item clear-fix bank-img">
+                            <span class="laber">图形验证码</span>
+                            <input class="code-input " placeholder="请输入图形验证码" maxlength="4">
+                            <img class="img-code" src="/img/logo_938161f.png">
+                            <i></i>
+                        </div>
+                       
+                        <div class="bank-item clear-fix">
+                            <span class="laber">手机验证码</span>
+                            <input class="sjyzm phoneyzm" placeholder="请输入手机验证码">
+                            <a class="get-sms-code">获取验证码</a>
+                            <i></i>
+                        </div>
+                        <div class="bank-item clear-fix">
+                            <span class="laber">&nbsp;</span>
+                            <a class="con-btn">确定</a>
+                        </div>
+                        <!-- <div class="tips-register">绑定银行卡提示</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+    <div class="footer-content clear-fix">
+        <div class="about-list">
+            <h5 class="title">关于纳米</h5>
+            <a href="/about/about.html">关于我们</a>
+            <a href="/about/serverlist.html">服务条款</a>
+            <a href="../noviceGuide/accountFun.html">常见问题</a>
+        </div>
+        <span class="line"></span>
+        <div class="help-list">
+            <h5 class="title">联系我们</h5>
+            <div style="margin-bottom: 10px">商务合作</div>
+            <div style="margin-bottom: 10px">商务联系QQ：995709862</div>
+            <div style="margin-bottom: 10px">客服热线: 0755-26924103</div>
+            <div>邮箱：namilicai@qq.com</div>
+        </div>
+        <div class="follow-list">
+            <h5 class="title">关注我们</h5>
+            <div class="clear-fix">
+                <div class="wechat1">
+                    <img src="/img/qr_code_c3ceb78.png">
+                    <p>微信公众号</p>
+                </div>
+            </div>
+        </div>
+        <span class="line"></span>
+        <div class="phone-list">
+            <h5 class="title">纳米理财</h5>
+            <p>服务时间：9:00-22:00(双休、节假日除外)</p>
+            <p>温馨提示：投资有风险 理财需谨慎</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <P>Copyright Reserved 2017-2018@纳米理财   粤ICP备17096796号-3   深圳微融信息科技有限公司</P>
+    </div>
+</footer>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <div id="tips-box">    <div class="tips-alert">        <p class="text">操作成功</p>    </div></div>
+
+
+
+<script src="/lib/js/mod.js"></script>
+<script type="text/javascript" src="/mod/tools.js"></script>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="/lib/js/3DES.js"></script>
+<script src="/lib/js/js.cookie.min.js"></script>
+<script async>
+        $(function(){
+            function footerPosition(){
+                $("footer").removeClass("fixed-bottom");
+                var contentHeight = document.body.scrollHeight,//网页正文全文高度
+                    winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏
+                if(!(contentHeight > winHeight)){
+                    //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
+                    $("footer").addClass("fixed-bottom");
+                } else {
+                    $("footer").removeClass("fixed-bottom");
+                }
+            }
+            footerPosition();
+            $(window).resize(footerPosition);
+        });
+      
+
+!function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.growingio.com/2.1/gio.js","gio");
+    gio('init','925f29df8cb78e52', {});
+    gio('send');
+
+
+            $(function () {
+                $(".account-menu .safe-link").addClass('active');
+            })
+        
+ 
+        var getPhone = Cookies.get('phone')
+        if(getPhone){
+            var setPhone = getPhone.substring(0,3)+'****'+getPhone.substring(7,11);
+            $("#js-nav-account").find(".myacc").text(setPhone)
+        }
+
+
+    $(function () {
+        var $header = $('header');
+        var tools = require('mod/tools');
+        var apiUrl = tools.apiUrl();
+
+        // 登录状态检查
+        tools.loginCheck();
+        // 退出登录
+        $header.find('.logout-btn').on('click', function () {
+            tools.fetchAjax(apiUrl.data + '/user/logout').done(function (ret) {
+                if (ret.status === '0' || ret.status === 0) {
+                    // 清除token
+                    Cookies.remove('token');
+                    // 更新菜单栏状态
+                    tools.loginCheck();
+                    // 跳转首页
+                    location.href = '/';
+                };
+            });
+        });
+    })
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119393430-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119393430-1');
+</script>
+<script src="/js/account_035a7fa.js"></script>
+</body>
+</html>

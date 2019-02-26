@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>资金安全</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="stylesheet" href="../css/about.less">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <script src="../lib/js/jquery-3.3.1.min.js"></script>
+    <script src="../lib/js/handlebars-4.0.11.min.js"></script>
+    <script src="../lib/js/mod.js"></script>
+    <script src="../lib/js/js.cookie.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            function footerPosition(){
+                $("footer").removeClass("fixed-bottom");
+                var contentHeight = document.body.scrollHeight,//网页正文全文高度
+                    winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏
+                if(!(contentHeight > winHeight)){
+                    //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
+                    $("footer").addClass("fixed-bottom");
+                } else {
+                    $("footer").removeClass("fixed-bottom");
+                }
+            }
+            footerPosition();
+            $(window).resize(footerPosition);
+        });
+      </script>
+</head>
+<body>
+
+    <link rel="import" href="../tpl/header.html?__inline">
+    <script>
+        $(function () {
+            $("#js-nav-newbie").addClass('nav-cur');
+        })
+    </script>
+    <div class="nav-section section-div">
+        <p>您的位置：<a href="/">首页</a><span> &gt; 新手引导</span></p>
+    </div>
+    <div class="main-section clear-fix">
+        <link rel="stylesheet" href="../css/guide.less">
+        <link rel="import" href="tpl/guideMenu.html?__inline">
+        <script>
+            $(function () {
+                $(".guide-menu .safe-link").addClass('active');
+            })
+        </script>
+        <div class="about-content" id="about-content">
+            <div class="acc-tit">资金安全</div>
+            <div class="platform-desc">
+                <script id="plat-notice-template" type="text/x-handlebars-template">
+                    {{#each iconList}}
+                    <a class="notice-item clear-fix" href="../noviceGuide/securityDeta.html?id={{helpId}}">
+                        <p class="title">{{title}}</p>
+                    </a>
+                    {{/each}}
+                </script>
+            </div>
+        </div>
+    </div>
+    <script src="../js/security.js"></script>
+    <link rel="import" href="../tpl/footer.html?__inline">
+</body>
+</html>

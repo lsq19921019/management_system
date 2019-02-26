@@ -1,0 +1,132 @@
+/* reset style */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+em,
+img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+html {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 100px; /* 1rem = 100px */
+}
+
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 85px !important;
+  }
+}
+@media screen and (min-width: 375px){
+  html {
+    font-size: 100px !important;
+  }
+}
+
+body {
+  font: 0.14rem/1.25 "MicroSoft YaHei", Roboto, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 100%;
+  margin:0;
+}
+
+.clear-fix:after {
+  visibility: hidden;
+  display: block;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+* html .clear-fix {
+  zoom: 1;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selectable {
+  -webkit-touch-callout: default;
+  -webkit-user-select: auto;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.un-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.box-shadow(@value) {
+  -webkit-box-shadow: @value;
+  -moz-box-shadow: @value;
+  box-shadow: @value;
+}
+
+.input-placeholder-color(@color) {
+  input::-webkit-input-placeholder {
+    color: @color;
+  }
+  input:-moz-placeholder {
+    color: @color;
+  }
+  input::-moz-placeholder {
+    color: @color;
+  }
+  input:-ms-input-placeholder {
+    color: @color;
+  }
+}
+
+.hide{
+  display:none
+}
+

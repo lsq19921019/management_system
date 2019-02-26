@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>投资申报</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="stylesheet" href="css/account.less">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./lib/js/jquery-3.3.1.min.js"></script>
+    <script src="./lib/js/mod.js"></script>
+    <script src="./lib/js/js.cookie.min.js"></script>
+</head>
+<body>
+
+    <link rel="import" href="tpl/header.html?__inline">
+
+    <div class="main-section clear-fix">
+        <link rel="import" href="tpl/accountMenu.html?__inline">
+        <script>
+            $(function () {
+                $(".account-menu .declare-link").addClass('active');
+            })
+        </script>
+        <div class="declare-content" id="declare-content">
+            <h5>投资申报</h5>
+            <div class="main-content">
+                <div class="declare-header clear-fix un-selectable">
+                    <a class="declare-tab active" data-label="invest-declare">投资申报</a>
+                    <a class="record-tab"  data-label="invest-record">投资记录</a>
+                </div>
+                <div class="declare-body invest-declare">
+                    <div class="center-content">
+                        <div class="input-item clear-fix">
+                            <span class="label">投资平台</span>
+                            <input placeholder="投资平台">
+                        </div>
+                        <div class="input-item clear-fix">
+                            <span class="label">平台用户名</span>
+                            <input placeholder="投资平台">
+                        </div>
+                        <div class="input-item clear-fix">
+                            <span class="label">平台手机号</span>
+                            <input placeholder="请输入手机号">
+                        </div>
+                        <div class="input-item clear-fix">
+                            <span class="label">标的名称</span>
+                            <input placeholder="标的名称">
+                        </div>
+                        <div class="input-item clear-fix">
+                            <span class="label">投资金额</span>
+                            <input placeholder="">
+                        </div>
+                        <div class="input-item clear-fix">
+                            <span class="label">投标时间</span>
+                            <input placeholder="">
+                        </div>
+                        <div class="input-item clear-fix">
+                            <span class="label">验证码</span>
+                            <a class="get-code">获取验证码</a>
+                            <input class="code" placeholder="">
+                        </div>
+                        <div class="input-item clear-fix">
+                            <span class="label">加息劵</span>
+                            <input placeholder="加息劵">
+                        </div>
+                        <div class="input-item clear-fix">
+                            <a class="submit-btn">提交</a>
+                        </div>
+                        <p class="title">温馨提示</p>
+                        <p>1、当您在推荐的网站投资成功后，再行添加申报。</p>
+                        <p>2、申报规则：请您确保您填写的都是真实信息，方便我公司为您核实，信息有误，会导致申报失败。</p>
+                    </div>
+                </div>
+                <div class="declare-body invest-record">
+                    <div class="record-content">
+                        <div class="search-option">
+                            <div class="option-item clear-fix un-selectable">
+                                <span class="label">申请状态：</span>
+                                <span class="option active">不限</span>
+                                <span class="option">已提交</span>
+                                <span class="option">审核通过</span>
+                                <span class="option">审核失败</span>
+                            </div>
+                            <div class="option-item clear-fix">
+                                <span class="label">交易平台：</span>
+                                <input type="text" class="" placeholder="请输入平台名称">
+                                <p>热门平台：<span>红岭创投</span></p>
+                            </div>
+                        </div>
+                        <div class="table-list">
+                            <table>
+                                <thead>
+                                <td>标的名称</td>
+                                <td>投资金额</td>
+                                <td>投资时间</td>
+                                <td>申报时间</td>
+                                <td>状态</td>
+                                <td>备注</td>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>名称名称名称</td>
+                                    <td>100000</td>
+                                    <td>2018.9.7</td>
+                                    <td>提现中</td>
+                                    <td>提现中</td>
+                                    <td>备注</td>
+                                </tr>
+                                <tr class="last">
+                                    <td>名称名称名称</td>
+                                    <td>100000</td>
+                                    <td>2018.9.7</td>
+                                    <td>提现中</td>
+                                    <td>提现中</td>
+                                    <td>备注</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="import" href="tpl/footer.html?__inline">
+    <script src="js/account.js"></script>
+
+
+</body>
+</html>

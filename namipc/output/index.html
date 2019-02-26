@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>纳米理财</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" href="/css/index_12bb27a.css" />
+    <link rel="stylesheet" href="/lib/css/rangeslider.css" />
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="header-center clear-fix">
+            <div class="header-left">
+                <span class="call-phone contact-item"><i class="icon-phone"></i>客服电话：0755-26924103</span>
+                <span id="qq" class="contact-item">
+                        <i class="icon-qq"></i>
+                        <em class="show-qq">
+                            <span class="arrow"></span>
+                            <p>客服QQ</p>
+                            <p><a href="javascript:;" target="_blank">1473939194</a></p>
+                        </em>
+                    </span>
+                <span id="wechat" class="contact-item">
+                        <i class="icon-wechat"></i>
+                        <em class="show-wechat">
+                            <span class="arrow"></span>
+                            <p>客服微信</p>
+                            <p><a href="javascript:;" target="_blank">namilicai666</a></p>
+                        </em>
+                    </span>
+            </div>
+            <div class="header-right">
+                <ul>
+                    <li><a href="/noviceGuide/accountFun.html">帮助中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="bottom-center clear-fix">
+            <a href="/"><img class="logo" src="/img/logo_938161f.png"></a>
+            <div class="nav-list">
+                <ul>
+                    <li id="js-nav-index"><a href="/">首页</a></li>
+                    <li id="js-nav-plat"><a href="/plat.html">首投返利</a></li>
+                    <li id="js-nav-super"><a href="/super.html">复投返利</a></li>
+                    <li id="js-nav-newbie"><a href="/guide.html">新手引导</a></li>
+                    <li class="none-li">&nbsp;</li>
+                    <li class="login-wrap">
+                        <a href="/login.html" class="login-btn login-register">登录</a>
+                        <a class="login-btn login-register">/</a>
+                        <a href="/register.html" class="register-btn login-register">注册</a>
+                    </li>
+                    <li id="js-nav-account" class="account-wrap clear-fix">                        
+                        <a class="myacc" href="/account.html"></a>
+                        <a class="logout-btn">&nbsp;&nbsp;&nbsp;退出</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+    <!--<link rel="import" href="tpl/hbs/banner.html?__inline">-->
+    <div class="banner">
+        <script id="banner-template" type="text/x-handlebars-template">
+            <ul class="banner_box">
+                {{#each bannerList}}
+                <li><a href="{{bannerURL}}" target="_blank" style="background:url({{imageURL}}) center no-repeat"></a></li>
+                {{/each}}
+            </ul>
+        </script>
+    </div>
+    <div class="logged-wz">
+        <div class="login-fast">
+            <p>加入纳米赚取超额收益 </p>
+            <div class="login-img"></div>
+            <a href="/login.html">立即登录</a>
+        </div>
+    </div>
+    <div class="logged-wz">
+        <div class="logged">
+            <p>您还有<span class="nub">0</span>笔投资等待返利</p>
+            <div class="logged-img"></div>
+            <a href="./account.html">个人中心</a>
+        </div>
+    </div>
+    <div class="notice">
+        <div class="notice-section section-div">
+                <div class="notice-info">
+                    <div class="more">
+                        <div class="notice_active" id="breakingnews2">
+                            <span class="notice-img"></span>
+                            <ul>
+
+                            </ul>
+                        </div>
+                        <a class="bigger" href="about/platformNotice.html">更多 <img class="b-more"></a>
+                    </div>
+                    <div class="invest">
+                        <div>
+                            <span>累计总投资金额</span></br>
+                            <span id="money1" class="money invest-money">0.00</span>
+                            <span class="units">元</span>
+                        </div>
+                        <span class="line"></span>
+                        <div>
+                            <span>为投资人多赚</span></br>
+                            <span id="money2" class="money profit-money">0.00</span>
+                            <span class="units">万</span>
+                        </div>
+                        <span class="line"></span>
+                        <div>
+                            <span>累计注册人数</span></br>
+                            <span id="money3" class="money register-money">0.00</span>
+                            <span class="units">人</span>
+                        </div>
+                        <span class="line"></span>
+                        <div>
+                            <span>已合作平台</span></br>
+                            <span id="money4" class="money sccumulative-money">0</span>
+                            <span class="units">家</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="notice-product clear-fix">
+                    <div class="notice-item clear-fix">
+                        <img src="/img/flzg_895897f.png">
+                        <div class="content">
+                            <p class="title">返利高</p>
+                            <p class="text">筛选全网返利最高的理财平台，帮您赚取超额收益</p>
+                        </div>
+                    </div>
+                    <div class="notice-item clear-fix">
+                        <img src="/img/zjaq_805cfc3.png">
+                        <div class="content">
+                            <p class="title">甄选严</p>
+                            <p class="text">甄选优质互金平台，降低投资风险，安全赚取理财收益</p>
+                        </div>
+                    </div>
+                    <div class="notice-item clear-fix">
+                        <img src="/img/jkdz_d60409d.png">
+                        <div class="content">
+                            <p class="title">到账快</p>
+                            <p class="text">交易完成，返利收益24小时到达账户</p>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+    </div>
+    <!-- 首投 -->
+    <div class="recommend-section plat-section section-div clear-fix">
+        <div class="stzq"></div>
+        <div class="recommend-plat">
+
+        </div>
+    </div>
+    <!-- 复投 -->
+    <div class="recommend-section plat-section section-div clear-fix">
+        <div class="ftzq"></div>
+        <div class="recommend-super">
+
+        </div>
+    </div>
+
+    <div style="background: #fff;">
+        <div class="partner-section section-div">
+            <div class="clear-fix partner-tit">
+                <h3 class="section-title">合作伙伴</h3>
+                <span class="line"></span>
+                <span class="partner-tit-txt">甄选一流安全、可靠理财平台</span>
+            </div>       
+            <ul class="partner-list clear-fix">
+                <div class="partner-hbs">
+                    <script id="partner-template" type="text/x-handlebars-template">
+                        {{#each cooperationList}}
+                        <li>
+                            <a href="{{url}}" target="_blank" title="{{pfname}}">
+                                <img src="{{logo}}" alt="{{pfname}}">
+                            </a>
+                        </li>
+                        {{/each}}
+                    </script>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <script id="notice-info-template" type="text/x-handlebars-template">
+        {{#each noticeList}}
+        <li>
+            <span class="text"><a href="/about/notice.html?id={{id}}" title="{{titile}}">{{titile}}</a></span>
+            <span class="bigger-time">{{dateTime}}</span>
+        </li>
+        {{/each}}
+    </script>
+    <script id="recommend-plat-template" type="text/x-handlebars-template">
+        {{#each projectList_st}}
+            <div class="recommend-item">
+                <div class="st-ico"></div>
+                <div class=" item-img">
+                    <div class="item-logo">
+                        <a href="/platdetail.html?id={{id}}&&pfNo={{pfNo}}">
+                            <img src="{{logoUrl}}">
+                        </a>
+                    </div>
+                    <span class="item-txt" title="{{borrowTitle}}">{{borrowTitle}}</span>
+                </div>
+                <div class="info clear-fix">
+                    <div class="platform">
+                        <p class="text">平台年化</p>
+                        <p class="val">{{annualrate}}%</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">纳米加息</p>
+                        <p class="val">{{deviceValue}}%</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">综合年化</p>
+                        <p class="val-o">{{zhnh}}<i>%</i></p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">投资期限</p>
+                        <p class="val">{{deadline}}
+                        {{#if objectType}}
+                            {{#compare objectType 2}}
+                            月
+                                {{else}}
+                            天
+                            {{/compare}}
+                        {{/if}}
+                    </p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">起投金额</p>
+                        <p class="val">{{mintenderedsum}}</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">投资限额</p>
+                        <p class="val">{{maxtenderedsum}}</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">万元返现</p>
+                        <p class="val-o">{{zgkd}}</p>
+                    </div>
+                </div>
+                <a href="/platdetail.html?id={{id}}&&pfNo={{pfNo}}" class="now-allin">立即投资</a>
+            </div>
+        {{/each}}
+    </script>
+    <script id="recommend-super-template" type="text/x-handlebars-template">
+        {{#each projectList_ft}}
+            <div class="recommend-item">
+                <div class="ft-ico"></div>
+                <div class="item-img">
+                    <div class="item-logo">
+                        <a href="/platdetail.html?id={{id}}&&pfNo={{pfNo}}">
+                            <img src="{{logoUrl}}">
+                        </a>
+                    </div>
+                    <span class="item-txt" title="{{borrowTitle}}">{{borrowTitle}}</span>
+                </div>
+                <div class="info clear-fix">
+                    <div class="platform">
+                        <p class="text">平台年化</p>
+                        <p class="val">{{annualrate}}%</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">纳米加息</p>
+                        <p class="val">{{deviceValue}}%</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">综合年化</p>
+                        <p class="val-o">{{zhnh}}<i>%</i></p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">投资期限</p>
+                        <p class="val">{{deadline}} 
+                            {{#if objectType}}
+                            {{#compares objectType 2}}
+                            月
+                                {{else}}
+                            天
+                            {{/compares}}
+                        {{/if}}</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">起投金额</p>
+                        <p class="val">{{mintenderedsum}}</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">投资限额</p>
+                        <p class="val">{{maxtenderedsum}}</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">万元返现</p>
+                        <p class="val-o">{{zgkd}}</p>
+                    </div>
+                </div>
+                <a href="/platdetail.html?id={{id}}&&pfNo={{pfNo}}" class="now-allin">立即投资</a>
+            </div>
+        {{/each}}
+    </script>
+    <footer>
+    <div class="footer-content clear-fix">
+        <div class="about-list">
+            <h5 class="title">关于纳米</h5>
+            <a href="/about/about.html">关于我们</a>
+            <a href="/about/serverlist.html">服务条款</a>
+            <a href="../noviceGuide/accountFun.html">常见问题</a>
+        </div>
+        <span class="line"></span>
+        <div class="help-list">
+            <h5 class="title">联系我们</h5>
+            <div style="margin-bottom: 10px">商务合作</div>
+            <div style="margin-bottom: 10px">商务联系QQ：995709862</div>
+            <div style="margin-bottom: 10px">客服热线: 0755-26924103</div>
+            <div>邮箱：namilicai@qq.com</div>
+        </div>
+        <div class="follow-list">
+            <h5 class="title">关注我们</h5>
+            <div class="clear-fix">
+                <div class="wechat1">
+                    <img src="/img/qr_code_c3ceb78.png">
+                    <p>微信公众号</p>
+                </div>
+            </div>
+        </div>
+        <span class="line"></span>
+        <div class="phone-list">
+            <h5 class="title">纳米理财</h5>
+            <p>服务时间：9:00-22:00(双休、节假日除外)</p>
+            <p>温馨提示：投资有风险 理财需谨慎</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <P>Copyright Reserved 2017-2018@纳米理财   粤ICP备17096796号-3   深圳微融信息科技有限公司</P>
+    </div>
+</footer>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<script src="/lib/js/mod.js"></script>
+<script type="text/javascript" src="/mod/tools.js"></script>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="/lib/js/countUp.js"></script>
+<script src="/lib/js/handlebars-4.0.11.min.js"></script>
+<script src="/lib/js/rangeslider.min.js"></script>
+<script src="/lib/js/js.cookie.min.js"></script>
+<script async>
+!function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.growingio.com/2.1/gio.js","gio");
+    gio('init','925f29df8cb78e52', {});
+    gio('send');
+
+
+        $(function () {
+            $("#js-nav-index").addClass('nav-cur');
+        })
+    
+ 
+        var getPhone = Cookies.get('phone')
+        if(getPhone){
+            var setPhone = getPhone.substring(0,3)+'****'+getPhone.substring(7,11);
+            $("#js-nav-account").find(".myacc").text(setPhone)
+        }
+
+
+    $(function () {
+        var $header = $('header');
+        var tools = require('mod/tools');
+        var apiUrl = tools.apiUrl();
+
+        // 登录状态检查
+        tools.loginCheck();
+        // 退出登录
+        $header.find('.logout-btn').on('click', function () {
+            tools.fetchAjax(apiUrl.data + '/user/logout').done(function (ret) {
+                if (ret.status === '0' || ret.status === 0) {
+                    // 清除token
+                    Cookies.remove('token');
+                    // 更新菜单栏状态
+                    tools.loginCheck();
+                    // 跳转首页
+                    location.href = '/';
+                };
+            });
+        });
+    })
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119393430-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119393430-1');
+</script>
+<script src="/js/banner_cb2282c.js"></script>
+<script src="/js/index_b3cf8eb.js"></script>
+</body>
+</html>

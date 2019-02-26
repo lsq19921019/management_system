@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>账户中心</title>
+    <meta name="keywords" content="投资教授">
+    <meta name="description" content="投资教授">
+    <link rel="stylesheet" href="css/about.less">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <script src="./lib/js/jquery-3.3.1.min.js"></script>
+    <script src="./lib/js/mod.js"></script>
+    <script src="./lib/js/js.cookie.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            function footerPosition(){
+                $("footer").removeClass("fixed-bottom");
+                var contentHeight = document.body.scrollHeight,//网页正文全文高度
+                    winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏
+                if(!(contentHeight > winHeight)){
+                    //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
+                    $("footer").addClass("fixed-bottom");
+                } else {
+                    $("footer").removeClass("fixed-bottom");
+                }
+            }
+            footerPosition();
+            $(window).resize(footerPosition);
+        });
+      </script>
+</head>
+<body>
+
+    <link rel="import" href="../tpl/header.html?__inline">
+    <div class="main-section clear-fix">
+        <div class="main-section clear-fix">
+            <link rel="import" href="../tpl/aboutMenu.html?__inline">
+            <script>
+                $(function () {
+                    $(".about-menu .about-us").addClass('active');
+                })
+            </script>
+            <div class="about-content" id="account-content">
+                <div class="about-bg">
+                    <img src="../img/about-bg.png" alt="">
+                </div>
+                <div class="about-info">
+                    <div class="about-info-tit">
+                        <span class="mark"></span>
+                        <span class="about-txt">纳米理财介绍</span>
+                    </div>
+                    <div class="about-con">
+                        纳米理财（www.namilicai.com）隶属于深圳微融信息科技有限公司。纳米理财是一家专注于金融产品推荐与服务的金融信息服务平台，致力于为投资人提供互联网理财服务，基于网贷平台给用户的正常回报之上，叠加了二次甚至多次返利，使得用户的投资收益率最大化。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="import" href="../tpl/footer.html?__inline">
+</body>
+</html>

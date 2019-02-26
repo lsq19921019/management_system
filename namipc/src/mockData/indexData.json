@@ -1,0 +1,119 @@
+{
+  "error": "操作成功!",
+  "msg": "操作成功!",
+  "result": {
+    "bannerList": [{
+      "bannerURL": "https://www.namilicai.com/mobile/web/invite_friend",
+      "imageURL": "http://www.namilicai.com/htfile/20170828190442611.png",
+      "isShare": "1"
+    },{
+      "bannerURL": "https://www.namilicai.com/mobile/web/invite_friend",
+      "imageURL": "http://www.caiqi.com/upload/image/30/2018-04-28/2018042814154453.jpg",
+      "isShare": "1"
+    }],
+    "helpList": [{
+      "clientType": 0,
+      "content": "纳米理财上线啦",
+      "createTime": 1497798469000,
+      "general": "纳米理财",
+      "id": 267,
+      "moduleId": 0,
+      "moduleType": 0,
+      "title": "纳米理财上线啦",
+      "type": 0
+    }],
+    "iconList": [{
+      "iconImgURL": "http://www.namilicai.com/htfile/20170828190614958.png",
+      "iconProtocol": "I04",
+      "iconText": "邀请好友",
+      "iconURL": "http://www.namilicai.com/web/invite_friend"
+    }, {
+      "iconImgURL": "http://www.namilicai.com/htfile/20170828190606184.png",
+      "iconProtocol": "I02",
+      "iconText": "积分兑换",
+      "iconURL": ""
+    }, {
+      "iconImgURL": "http://www.namilicai.com/htfile/20170828190530859.png",
+      "iconProtocol": "I01",
+      "iconText": "加息券",
+      "iconURL": ""
+    }, {
+      "iconImgURL": "http://www.namilicai.com/htfile/20170828190518753.png",
+      "iconProtocol": "I03",
+      "iconText": "每日签到",
+      "iconURL": "多大的"
+    }],
+    "iconStatistics": {
+      "register": "1544565",
+      "profit": "555",
+      "invest": "4444444",
+      "sccumulative": "4587854"
+    },
+    "projectList_ft": [{
+      "annualrate": 16,
+      "borrowId": "9622",
+      "borrowTitle": "信贷通B-1804193",
+      "deadline": 6,
+      "deviceValue": "1",
+      "hasinvestamount": 200000,
+      "id": 4883431,
+      "immediateInvestment": "55555",
+      "immediateRegistration": "444",
+      "investmentStrategy": "88888",
+      "logoUrl": "http://test.gumilicai.com:80/manage/statics/manage_images/20170810175231788.jpg",
+      "objectAmount": 200000,
+      "objectRange": "1",
+      "objectStatus": "3",
+      "objectType": "4",
+      "pfName": "你我贷",
+      "pfNo": "HPD",
+      "schedule": 0,
+      "sort": "1",
+      "tagDesc": "上市系",
+      "type": "1"
+    }],
+    "projectList_st": [{
+      "annualrate": 15,
+      "borrowId": "13861",
+      "borrowTitle": "THD0925007",
+      "deadline": 23,
+      "deviceValue": "1",
+      "hasinvestamount": 195000,
+      "id": 483190,
+      "immediateInvestment": "55555",
+      "immediateRegistration": "444",
+      "investmentStrategy": "88888",
+      "logoUrl": "http://test.gumilicai.com:80/manage/statics/manage_images/20170822151655039.png",
+      "objectAmount": 200000,
+      "objectRange": "0",
+      "objectStatus": "3",
+      "objectType": "1",
+      "pfName": "百金贷",
+      "pfNo": "GMLC_000004",
+      "schedule": 2,
+      "sort": "1",
+      "tagDesc": "上市系",
+      "type": "1"
+    }],
+    "banklist":[{
+      "ABOC":"农业银行",
+      "BKCH":"中国银行",
+      "CIBK":"中信银行",
+      "EVER":"光大银行",
+      "FJIB":"兴业银行",
+      "GDBK":"广发银行",
+      "HXBK":"华夏银行",
+      "ICBK":"工商银行",
+      "GDBS":"民生银行",
+      "PCBC":"建设银行",
+      "PSBC":"邮政储蓄",
+      "SZDB":"平安银行",
+      "SPDB":"浦发银行",
+      "BJCN":"北京银行",
+      "CMBC":"招商银行",
+      "COMM":"交通银行",
+      "CBXM":"厦门银行"
+    }]
+  },
+  "status": "0"
+}

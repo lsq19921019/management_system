@@ -1,0 +1,417 @@
+@import "reset";
+@yellow-color: #ff6724;
+
+/* main style */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f3f3f3;
+  color: #666;
+  font-family: "PingFangSC", "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+header {
+  width: 100%;
+  min-width: 1200px;
+  letter-spacing: 0.25px;
+  .header-top {
+    position: fixed;
+    width: 100%;
+    height: 35px;
+    z-index: 9999;
+    background: #151D35;
+    color: #fff;
+    //border-bottom: solid 1px #eee;
+
+    .header-center {
+      width: 1200px;
+      margin: 0 auto;
+      font-size: 12px;
+      line-height: 35px;
+
+      .header-left {
+        float: left;
+        .contact-item {
+          float: left;
+          display: block;
+          position: relative;
+          height: 35px;
+          margin-left: 10px;
+        }
+        .call-phone {
+          float: left;
+          display: block;
+          position: relative;
+          height: 35px;
+        }
+        i {
+          display: inline-block;
+          *zoom: 1;
+          *display: inline;
+          position: relative;
+        }
+        .icon-phone {
+          width: 20px;
+          height: 20px;
+          margin-right: 11px;
+          top: 5px;
+          background: url("../img/icon_call.png") center no-repeat;
+          background-size: contain;
+        }
+        .icon-qq {
+          width: 14px;
+          height: 15px;
+          margin-left: 13px;
+          top: 3px;
+          background: url("../img/icon_qq_white.png") center no-repeat;
+          background-size: contain;
+        }
+        .icon-wechat {
+          width: 17px;
+          height: 13px;
+          margin-left: 15px;
+          top: 3px;
+          background: url("../img/icon_wechat_white.png") center no-repeat;
+          background-size: contain;
+        }
+
+        .show-qq,
+        .show-wechat {
+          display: none;
+          font-style: normal;
+          width: 148px;
+          height: 60px;
+          background: #fff;
+          border: 1px solid #ccc;
+          .border-radius(8px);
+          //box-shadow: 0 0 3px #ccc;
+          text-align: center;
+          padding: 20px 0 0 0;
+          position: absolute;
+          cursor: default;
+          left: -60px;
+          top: 34px;
+          z-index: 99;
+          .arrow {
+            display: inline-block;
+            content: '';
+            vertical-align: middle;
+            border: 7px solid transparent;
+            border-bottom-color: #fff;
+            border-top: 0;
+            position: absolute;
+            z-index: 9;
+            margin: 2.5% 4%;
+            top: -11px;
+            right: 55px;
+          }
+          p {
+            height: 23px;
+            line-height: 23px;
+            color: #444;
+            a {
+              color: #444;
+            }
+          }
+        }
+
+        #qq {
+          cursor: pointer;
+          &:hover {
+            .show-qq {
+              display: block;
+            }
+          }
+        }
+
+        #wechat {
+          cursor: pointer;
+          &:hover {
+            .show-wechat {
+              display: block;
+            }
+          }
+        }
+      }
+
+      .header-right {
+        float: right;
+        ul {
+          li {
+            float: left;
+            //border-right: solid 1px #4a4a4a;
+            //padding: 0px 22px;
+            position: relative;
+            &:last-child {
+              border-right: none;
+            }
+            &.logout-li {
+              display: none;
+            }
+            a {
+              display: block;
+              color: #fff;
+              text-decoration: none;
+              &.sign-link {
+                color: #FF6724;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .header-bottom {
+    height: 90px;
+    background: #fff;
+    padding-top: 35px;
+    .bottom-center {
+      width: 1200px;
+      margin: 0 auto;
+      font-size: 16px;
+      color: #333;
+      line-height: 88px;
+      a {
+        display: block;
+        float: left;
+        position: relative;
+      }
+      .logo {
+        float: left;
+        margin-top: 20px;
+      }
+      .nav-list {
+        float: right;
+        margin-bottom: -1px;
+        ul {
+          li {
+            float: left;
+            position: relative;
+            padding-left:60px;
+            font-weight: bold;
+            a {
+              color: #333;
+              &:hover {
+                color: #ff6724;
+              }
+            }
+            &.nav-cur {
+              a {
+                color: #ff6724;
+                border-bottom: 3px solid #ff6724;
+                line-height: 87px;
+              }
+            }
+            &.none-li {
+              width: 100px;
+            }
+            &.login-wrap {
+              display: none;
+              font-weight: 400;
+            }
+            &.account-wrap {
+              font-size: 12px;
+              color: #333333;
+              letter-spacing: 0.25px;
+              font-weight: 400;
+              display: none;
+              img {
+                width: 45px;
+                height: 45px;
+                display: block;
+                float: left;
+                margin-right: 6px;
+                position: relative;
+                top: 20px;
+              }
+            }
+          }
+        }
+        .login-register {
+          background-color: #fff;
+          line-height: 1;
+          padding: 5px;
+          position: relative;
+          top: 31px;
+          color:#406EC8;
+          &.login-btn {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+          }
+          &.register-btn {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-left: none;
+          }
+          &:hover {
+            color: #fff;
+            color: #ff6724;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav-section {
+  width: 1200px;
+  margin: 0 auto;
+  p {
+    font-size: 14px;
+    color: #8C8C8C;
+    margin: 23px 0 16px 0;
+    a {
+      color:#8C8C8C;
+    }
+  }
+}
+
+footer {
+  width: 100%;
+  min-width: 1200px;
+  background-color:  #151D35;
+  .footer-content {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 35px 0;
+    font-size: 14px;
+    color: #AAB8CA;
+    .line{
+      background: #AAB8CA;
+      width: 1px;
+      height: 134px;
+      display: block;
+      float: left;
+      margin-top: 2em;
+      border: none;
+    }
+    a {
+      display: block;
+      color: #AAB8CA;
+      margin-top: 18px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .title {
+      font-size: 20px;
+      color: #AAB8CA;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+    .about-list {
+      float: left;
+      margin: 0 65px 0 0px;
+    }
+    .help-list {
+      float: left;
+      margin: 0 65px;
+      width: 250px;
+    }
+    .follow-list {
+      float: left;
+      margin: 0 79px 0 0px;
+      width: 180px;
+      .wechat1,
+      .wechat2 {
+        float: left;
+        width: 120px;
+        margin-right: 60px;
+        img {
+          width: 120px;
+          height: 120px;
+          display: block;
+        }
+        p {
+          margin-top: 12px;
+          text-align: center;
+        }
+      }
+    }
+    .phone-list {
+      float: right;
+      text-align: right;
+      .phone {
+        font-size: 36px;
+        font-weight: 400;
+      }
+      p {
+        margin-bottom: 18px;
+      }
+    }
+  }
+  .copyright {
+    width: 100%;
+    background-color: #10172D;
+    text-align: center;
+    padding: 20px 0;
+    p {
+      font-size: 16px;
+      color: #AAB8CA;
+      margin: 5px 0;
+    }
+  }
+}
+
+// 提示弹窗
+#tips-box {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  top: 38%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  .tips-alert {
+    min-width: 22%;
+    width: 22%;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    .border-radius(3px);
+    font-size: 14px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.618);
+    padding: 22px 18px;
+  }
+}
+
+// 分页样式
+.page-list {
+  margin: 0 auto;
+  padding: 50px 0;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  .all,
+  .cur-page {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    margin: 0 8px;
+    height: 28px;
+    line-height: 28px;
+  }
+  a {
+    .un-selectable();
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    margin: 0 8px;
+    color: #FB9947;
+    width: 60px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #FB9947;
+    .border-radius(3px);
+    cursor: pointer;
+    &:hover {
+      color: #fff;
+      background-color: #FB9947;
+    }
+  }
+}

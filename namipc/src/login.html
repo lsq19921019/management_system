@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>登录</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="stylesheet" href="css/login.less">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./lib/js/jquery-3.3.1.min.js"></script>
+    <script src="./lib/js/mod.js"></script>
+    <script src="./lib/js/3DES.js"></script>
+    <script src="./lib/js/js.cookie.min.js"></script>
+</head>
+<body>
+
+    <link rel="import" href="tpl/header.html?__inline">
+
+    <div class="main-section">
+        <div class="main-content">
+            <div class="login-box">
+                <h5 class="title">用户登录</h5>
+                <input type="tel" maxlength="11" class="phone" placeholder="请输入您的手机号码">
+                <p class="tips-phone">请输入正确的手机号</p>
+                <input type="password" class="password" placeholder="请输入您的登录密码">
+                <p class="tips-psw">请输入密码</p>
+                <a href="./retrievePassword.html" class="get-psw">忘记密码？</a>
+                <a class="login-btn">立即登录</a>
+                <p class="tips-login">登录提示</p>
+                <p class="register-link">马上开始赚钱，<a href="./register.html">立即注册</a></p>
+            </div>
+        </div>
+    </div>
+
+    <link rel="import" href="tpl/footer.html?__inline">
+
+    <script src="js/login.js"></script>
+
+</body>
+</html>

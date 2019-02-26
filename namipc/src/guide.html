@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>纳米理财-新手引导</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="stylesheet" href="css/guide.less">
+    <link rel="stylesheet" href="./lib/css/rangeslider.css">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./lib/js/jquery-3.3.1.min.js"></script>
+    <script src="./lib/js/handlebars-4.0.11.min.js"></script>
+    <script src="./lib/js/rangeslider.min.js"></script>
+    <script src="./lib/js/mod.js"></script>
+    <script src="./lib/js/js.cookie.min.js"></script>
+</head>
+<body class="plat-page">
+
+    <link rel="import" href="tpl/header.html?__inline">
+    <script>
+        $(function () {
+            $("#js-nav-newbie").addClass('nav-cur');
+        })
+    </script>
+
+    <div class="nav-section section-div">
+        <p>您的位置：<a href="/">首页</a><span> &gt; 新手引导</span></p>
+    </div>
+    <div class="main-section clear-fix">
+        <div class="main-section clear-fix">
+            <link rel="import" href="tpl/guideMenu.html?__inline">
+            <script>
+                $(function () {
+                    $(".guide-menu .guide-link").addClass('active');
+                })
+            </script>
+            <div class="guide-content">
+                <p class="guide-tit">新手入门</p>
+                <div class="sign-body clear-fix">
+                    <div class="sign-item">
+                        <div class="line">
+                            <span class="point"></span>
+                        </div>
+                        <div class="text">
+                            <span class="nub clear-fix">1</span>
+                            <div class="nub-txt">
+                                <p>注册登陆</p>
+                                <p class="p1"><span class="imp">纳米理财</span>账号</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sign-item">
+                        <div class="line">
+                            <span class="point"></span>
+                        </div>
+                        <div class="text">
+                            <span class="nub clear-fix">2</span>
+                            <div class="nub-txt">
+                                <p>选择平台</p>
+                                <p class="p1">点击<span class="imp">“直达链接”</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sign-item">
+                        <div class="line">
+                            <span class="point"></span>
+                        </div>
+                        <div class="text">
+                            <span class="nub clear-fix">3</span>
+                            <div class="nub-txt">
+                                <p>注册投资账号</p>
+                                <p class="p1">回本平台<span class="imp">提交回单</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sign-item">
+                        <div class="line">
+                            <span class="point"></span>
+                        </div>
+                        <div class="text">
+                            <span class="nub clear-fix">4</span>
+                            <div class="nub-txt">
+                                <p>等待数据审核通过</p>
+                                <p class="p1">等待银行卡<span class="imp">到账</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-list">
+                    <div class="step-item">
+                        <div class="step-img clear-fix">
+                            <img src="img/step1.png" alt="">
+                        </div>
+                        <div class="step-right">
+                            <div><img src="img/1.png" alt=""></div>
+                            <p class="step-right-tit">注册纳米理财</p>
+                            <p class="step-right-info">请使用常用手机号注册账户，凭手机可找回密码</p>
+                            <div class="step-right-con">打开纳米理财官网，
+                                首页点击右上角<span class="mark">“注册”</span>简单填写信息
+                                30秒完成注册
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-img clear-fix">
+                            <img src="img/step2.png" alt="">
+                        </div>
+                        <div class="step-right">
+                            <div><img src="img/2.png" alt=""></div>
+                            <p class="step-right-tit">投资拿返利</p>
+                            <p class="step-right-info">登陆即刻理财账户，选择要投资的平台并提啊转注册并投资</p>
+                            <div class="step-right-con">选择您要投资的平台，进入项目详情页，点击“即刻理财直达链接”跳转至合作的投资平台，需要立即注册一个新的投资平台账户（如果已有则需要重新注册），否则无法获得返利
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-z"></div>
+                    <div class="step-item">
+                        <div class="step-img clear-fix">
+                            <img src="img/step3.png" alt="">
+                        </div>
+                        <div class="step-right">
+                            <div><img src="img/3.png" alt=""></div>
+                            <p class="step-right-tit">填写投资信息的回单</p>
+                            <p class="step-right-info">完成投资后，请在项目详情页填写回单信息</p>
+                            <div class="step-right-con">绑定您本人的收款支付宝，一般情况下，24小时内可收到返利金额
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-img clear-fix">
+                            <img src="img/step4.png" alt="">
+                        </div>
+                        <div class="step-right">
+                            <div><img src="img/4.png" alt=""></div>
+                            <p class="step-right-tit">等待数据审核通过</p>
+                            <p class="step-right-info">等待审核通过，等待银行卡到账</p>
+                            <div class="step-right-con">请等待审核，一般1个工作日内到账
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sug-tit">
+                    <p class="p1">我们建议您</p>
+                    <p class="p2">分散投资</p>
+                    <p class="p3">来提高抗风险能力</p>
+                    <img class="p-img" src="img/fstz.png" alt="">
+                    <div class="sug-con">
+                            “鸡蛋不要放在同一个篮子里”是投资理念中最基本的原则，
+                            我们建议合理控制每个投资平台的基金分配，风险评分低的平台尽量减仓，将自己的资金投放于不同的平台，降低风险的集中爆发
+                    </div>
+                    <a class="sug-btn" href="./login.html">加入纳米理财</a>
+                    <p class="sug-bom">纳米理财<span class="mark">盈在收益</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="import" href="tpl/footer.html?__inline">
+
+</body>
+</html>

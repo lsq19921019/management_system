@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>纳米理财</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="stylesheet" href="css/index.less">
+    <link rel="stylesheet" href="./lib/css/rangeslider.css">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./lib/js/jquery-3.3.1.min.js"></script>
+    <script src="./lib/js/countUp.js"></script>
+    <script src="./lib/js/handlebars-4.0.11.min.js"></script>
+    <script src="./lib/js/rangeslider.min.js"></script>
+    <script src="./lib/js/mod.js"></script>
+    <script src="./lib/js/js.cookie.min.js"></script>
+</head>
+<body>
+    <link rel="import" href="tpl/header.html?__inline">
+    <script>
+        $(function () {
+            $("#js-nav-index").addClass('nav-cur');
+        })
+    </script>
+    <!--<link rel="import" href="tpl/hbs/banner.html?__inline">-->
+    <div class="banner">
+        <script id="banner-template" type="text/x-handlebars-template">
+            <ul class="banner_box">
+                {{#each bannerList}}
+                <li><a href="{{bannerURL}}" target="_blank" style="background:url({{imageURL}}) center no-repeat"></a></li>
+                {{/each}}
+            </ul>
+        </script>
+    </div>
+    <div class="logged-wz">
+        <div class="login-fast">
+            <p>加入纳米赚取超额收益 </p>
+            <div class="login-img"></div>
+            <a href="/login.html">立即登录</a>
+        </div>
+    </div>
+    <div class="logged-wz">
+        <div class="logged">
+            <p>您还有<span class="nub">0</span>笔投资等待返利</p>
+            <div class="logged-img"></div>
+            <a href="./account.html">个人中心</a>
+        </div>
+    </div>
+    <div class="notice">
+        <div class="notice-section section-div">
+                <div class="notice-info">
+                    <div class="more">
+                        <div class="notice_active" id="breakingnews2">
+                            <span class="notice-img"></span>
+                            <ul>
+
+                            </ul>
+                        </div>
+                        <a class="bigger" href="about/platformNotice.html">更多 <img class="b-more"></a>
+                    </div>
+                    <div class="invest">
+                        <div>
+                            <span>累计总投资金额</span></br>
+                            <span id="money1" class="money invest-money">0.00</span>
+                            <span class="units">元</span>
+                        </div>
+                        <span class="line"></span>
+                        <div>
+                            <span>为投资人多赚</span></br>
+                            <span id="money2" class="money profit-money">0.00</span>
+                            <span class="units">万</span>
+                        </div>
+                        <span class="line"></span>
+                        <div>
+                            <span>累计注册人数</span></br>
+                            <span id="money3" class="money register-money">0.00</span>
+                            <span class="units">人</span>
+                        </div>
+                        <span class="line"></span>
+                        <div>
+                            <span>已合作平台</span></br>
+                            <span id="money4" class="money sccumulative-money">0</span>
+                            <span class="units">家</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="notice-product clear-fix">
+                    <div class="notice-item clear-fix">
+                        <img src="img/flzg.png">
+                        <div class="content">
+                            <p class="title">返利高</p>
+                            <p class="text">筛选全网返利最高的理财平台，帮您赚取超额收益</p>
+                        </div>
+                    </div>
+                    <div class="notice-item clear-fix">
+                        <img src="img/zjaq.png">
+                        <div class="content">
+                            <p class="title">甄选严</p>
+                            <p class="text">甄选优质互金平台，降低投资风险，安全赚取理财收益</p>
+                        </div>
+                    </div>
+                    <div class="notice-item clear-fix">
+                        <img src="img/jkdz.png">
+                        <div class="content">
+                            <p class="title">到账快</p>
+                            <p class="text">交易完成，返利收益24小时到达账户</p>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+    </div>
+    <!-- 首投 -->
+    <div class="recommend-section plat-section section-div clear-fix">
+        <div class="stzq"></div>
+        <div class="recommend-plat">
+
+        </div>
+    </div>
+    <!-- 复投 -->
+    <div class="recommend-section plat-section section-div clear-fix">
+        <div class="ftzq"></div>
+        <div class="recommend-super">
+
+        </div>
+    </div>
+
+    <div style="background: #fff;">
+        <div class="partner-section section-div">
+            <div class="clear-fix partner-tit">
+                <h3 class="section-title">合作伙伴</h3>
+                <span class="line"></span>
+                <span class="partner-tit-txt">甄选一流安全、可靠理财平台</span>
+            </div>       
+            <ul class="partner-list clear-fix">
+                <div class="partner-hbs">
+                    <script id="partner-template" type="text/x-handlebars-template">
+                        {{#each cooperationList}}
+                        <li>
+                            <a href="{{url}}" target="_blank" title="{{pfname}}">
+                                <img src="{{logo}}" alt="{{pfname}}">
+                            </a>
+                        </li>
+                        {{/each}}
+                    </script>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <script id="notice-info-template" type="text/x-handlebars-template">
+        {{#each noticeList}}
+        <li>
+            <span class="text"><a href="/about/notice.html?id={{id}}" title="{{titile}}">{{titile}}</a></span>
+            <span class="bigger-time">{{dateTime}}</span>
+        </li>
+        {{/each}}
+    </script>
+    <script id="recommend-plat-template" type="text/x-handlebars-template">
+        {{#each projectList_st}}
+            <div class="recommend-item">
+                <div class="item-img">
+                    <div class="item-logo">
+                        <a href="/platdetail.html?id={{id}}&&pfNo={{pfNo}}">
+                            <img src="{{logoUrl}}">
+                        </a>
+                    </div>
+                    <span class="item-txt" title="{{borrowTitle}}">{{borrowTitle}}</span>
+                </div>
+                <div class="info clear-fix">
+                    <div class="platform">
+                        <p class="text">平台年化</p>
+                        <p class="val">{{annualrate}}%</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">纳米加息</p>
+                        <p class="val">{{deviceValue}}%</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">综合年化</p>
+                        <p class="val-o">{{zhnh}}<i>%</i></p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">投资期限</p>
+                        <p class="val">{{deadline}}天</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">起投金额</p>
+                        <p class="val">{{mintenderedsum}}</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">投资限额</p>
+                        <p class="val">{{maxtenderedsum}}</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">万元返现</p>
+                        <p class="val-o">{{zgkd}}</p>
+                    </div>
+                </div>
+                <a href="/platdetail.html?id={{id}}&&pfNo={{pfNo}}" class="now-allin">立即投资</a>
+            </div>
+        {{/each}}
+    </script>
+    <script id="recommend-super-template" type="text/x-handlebars-template">
+        {{#each projectList_ft}}
+            <div class="recommend-item">
+                <div class="ft-ico"></div>
+                <div class="item-img">
+                    <div class="item-logo">
+                        <a href="/platdetail.html?id={{id}}&&pfNo={{pfNo}}">
+                            <img src="{{logoUrl}}">
+                        </a>
+                    </div>
+                    <span class="item-txt" title="{{borrowTitle}}">{{borrowTitle}}</span>
+                </div>
+                <div class="info clear-fix">
+                    <div class="platform">
+                        <p class="text">平台年化</p>
+                        <p class="val">{{annualrate}}%</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">纳米加息</p>
+                        <p class="val">{{deviceValue}}%</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">综合年化</p>
+                        <p class="val-o">{{zhnh}}<i>%</i></p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">投资期限</p>
+                        <p class="val">{{deadline}}天</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">起投金额</p>
+                        <p class="val">{{mintenderedsum}}</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">投资限额</p>
+                        <p class="val">{{maxtenderedsum}}</p>
+                    </div>
+                    <div class="platform">
+                        <p class="text">万元返现</p>
+                        <p class="val-o">{{zgkd}}</p>
+                    </div>
+                </div>
+                <a href="/platdetail.html?id={{id}}&&pfNo={{pfNo}}" class="now-allin">立即投资</a>
+            </div>
+        {{/each}}
+    </script>
+    <link rel="import" href="tpl/footer.html?__inline">
+    <script src="js/banner.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+</html>

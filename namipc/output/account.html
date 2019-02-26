@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>账户中心</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" href="/css/account_632fb6f.css" />
+    <link rel="stylesheet" href="/lib/css/pikaday.css" />
+</head>
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="header-center clear-fix">
+            <div class="header-left">
+                <span class="call-phone contact-item"><i class="icon-phone"></i>客服电话：0755-26924103</span>
+                <span id="qq" class="contact-item">
+                        <i class="icon-qq"></i>
+                        <em class="show-qq">
+                            <span class="arrow"></span>
+                            <p>客服QQ</p>
+                            <p><a href="javascript:;" target="_blank">1473939194</a></p>
+                        </em>
+                    </span>
+                <span id="wechat" class="contact-item">
+                        <i class="icon-wechat"></i>
+                        <em class="show-wechat">
+                            <span class="arrow"></span>
+                            <p>客服微信</p>
+                            <p><a href="javascript:;" target="_blank">namilicai666</a></p>
+                        </em>
+                    </span>
+            </div>
+            <div class="header-right">
+                <ul>
+                    <li><a href="/noviceGuide/accountFun.html">帮助中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="bottom-center clear-fix">
+            <a href="/"><img class="logo" src="/img/logo_938161f.png"></a>
+            <div class="nav-list">
+                <ul>
+                    <li id="js-nav-index"><a href="/">首页</a></li>
+                    <li id="js-nav-plat"><a href="/plat.html">首投返利</a></li>
+                    <li id="js-nav-super"><a href="/super.html">复投返利</a></li>
+                    <li id="js-nav-newbie"><a href="/guide.html">新手引导</a></li>
+                    <li class="none-li">&nbsp;</li>
+                    <li class="login-wrap">
+                        <a href="/login.html" class="login-btn login-register">登录</a>
+                        <a class="login-btn login-register">/</a>
+                        <a href="/register.html" class="register-btn login-register">注册</a>
+                    </li>
+                    <li id="js-nav-account" class="account-wrap clear-fix">                        
+                        <a class="myacc" href="/account.html"></a>
+                        <a class="logout-btn">&nbsp;&nbsp;&nbsp;退出</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="main-section clear-fix">
+        <div class="account-menu">
+    <ul>
+        <li><a href="/account.html" class="account-link"><div class="img"></div>账户总览</a></li>
+        <li><a href="/withdraw.html" class="withdraw-link"><div class="img"></div>提现管理</a></li>
+        <li><a href="/safe.html" class="safe-link"><div class="img"></div>安全认证</a></li>
+    </ul>
+</div>
+        <div class="account-content" id="account-content">
+            <div class="withdraw-info clear-fix">
+                 <div class="all-money">
+                     <p class="text">纳米理财 账户余额</p>
+                     <span class="money">0.00</span>
+                     <span class="unit">元</span>
+                 </div>
+                 <div class="money-info platform-count">
+                    <div class="money-info-item">
+                        <p class="item-tit">纳米理财 累计收益</p>
+                        <span class="my-money nub">0</span><span class="unit">元</span>
+                    </div>
+                    <div class="money-info-item">
+                        <p class="item-tit">纳米理财 今日收益</p>
+                        <span class="day-money nub">0</span><span class="unit">元</span>
+                    </div>
+                    <div class="money-info-item">
+                        <p class="item-tit">等待审核的回单数</p>
+                        <span class="wait-money nub">0</span><span class="unit">笔</span>
+                    </div>
+                 </div>
+            </div>
+            <div class="withdraw">
+                <!-- withdraw.html -->
+                <a class="withdraw-btn">提现</a>
+                <a class="check" href="./withdrawRecord.html">查看资金明细 >></a>
+
+                <b class="inviteCodeBox"> 
+                    我的邀请码：<a href="activity/invite/invite.html">
+                        <b id="foo"  class="inviteCode"  ></b>
+                        <!-- <input type="text"   id="foo"  class="inviteCode"   /> -->
+                    </a>
+                    <!-- <b class="copy-btn" id="copy-btn" data-clipboard-action="copy"  data-clipboard-target="#foo">复制</b> -->
+                  <!-- <div class=" copy-success hide">复制成功</div>   -->
+                </b>
+            </div>
+            <div class="quick-entry">
+                <p class="entry-tit">提交投资回单快捷入口</p>
+                <div class="entry-info">
+                    <div class="receipt-img">
+                        <img src="/img/receipt-icon_7752b20.png" alt="">
+                    </div>
+                    <div class="parent">
+                        <select class="platform-list-hbs">
+                            <script id="platform-list-template" type="text/x-handlebars-template">
+                                {{#each platformList}}
+                                    <option value="{{pfno}}">{{pfname}}</option>
+                                {{/each}}
+                            </script>
+                        </select>
+                    </div>
+                    <a class="entry-btn clear-fix">提交投资回单</a>
+                    <div class="entry-txt">
+                        <span>预计约<span class="hour">24小时</span>返利到账</span>
+                    </div>
+                </div>
+            </div>
+            <div class="record ">
+                <p class="record-tit">回单记录</p>
+                <div class="table-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>提交时间</td>
+                                <td>投资平台</td>
+                                <td>标的名称</td>
+                                <td>注册手机号</td>
+                                <!-- <td>投资时间</td> -->
+                                <td>投资金额</td>
+                                <td>当前状态</td>
+                                <td>返利金额</td>
+                                <td>备注</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody class="declare-record-table-hbs">
+
+                        </tbody>
+                    </table>
+                    <div class="null-tips">
+                        <img src="/img/nothing_91a77eb.png">
+                    </div>
+                </div>
+                <div class="page-list">                   
+                    <a class="prev" data-page="prev">上一页</a>
+                    <span class="cur-page">1/1</span>
+                    <a class="next" data-page="next">下一页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fillreceipt">
+        <div class="close"><img src="/img/close_b9c2f84.png" alt=""></div>
+        <div class="fill-con">
+            <p class="fill-tit1">填写回单说明</p>
+            <p class="fill-tit2">每次投资完，我们根据您填写的回单给您结算返利，回单必填信息： 注册手机号码、投资期限、投资日期、验证码</p>
+            <div class="line"></div>
+             <div class="fill">
+                
+                <div class="fill-item clear-fix" >
+                    <p class="fill-name">活动平台认证姓名：</p>
+                    <input class="name" type="text" placeholder="请输入活动平台认证姓名" name="name">
+                </div>
+                <div class="fill-item clear-fix" >
+                    <p class="fill-name">实际投资金额：</p>
+                    <input class="money" type="text" placeholder="请准确填写金额" onkeyup="value=value.replace(/[^\d]/g,'')">
+                </div>
+
+                
+                 <div class="fill-item clear-fix">
+                    <p class="fill-name">注册手机号码：</p>
+                    <input class="user-phone" type="text" placeholder="请仔细核对您的号码" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="11">
+                    <span class="fill-mark"></span>
+                    <!-- 活动平台的注册手机号 -->
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">投资日期：</p>
+                    <input type="text" class="time" id="datePicker-time" placeholder="请选择投标时间">
+                </div>
+                
+                <div class="fill-item clear-fix">
+                    <div class="yzm">
+                        <p class="fill-name">图形验证码：</p>
+                        <input class="code" type="text" placeholder="输入验证码" style="width: 150px" maxlength="4">
+                        <img class="img-code" src="/img/logo_938161f.png" alt="">
+                    </div>
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">标的名称：</p>
+                    <select class="item-list-hbs">
+                    </select>
+                </div>
+                <div class="fill-item clear-fix phoneCode">
+                   <input class="phoneCodeInput" type="text" placeholder="输入短信验证码">
+                   <b class="sendCode ">获取验证码</b>
+                </div>
+            </div>
+             <div class="line"></div>
+            <div class="btn"><a class="submit">提交</a></div>
+        </div>
+    </div>
+    <div class="fillreceipt-check">
+        <div class="close"><img src="/img/close_b9c2f84.png" alt=""></div>
+        <div class="fill-con">
+            <p class="fill-tit1">查看回单说明</p>
+            <p class="fill-tit2">每次投资完，我们根据您填写的回单给您结算返利，回单必填信息： 注册手机号码、投资期限、投资日期、验证码</p>
+            <div class="line"></div>
+            <div class="fill">
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">实际投资金额：</p>
+                    <input class="money" type="text" placeholder="投资金额" onkeyup="value=value.replace(/[^\d]/g,'')">
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">注册手机号码：</p>
+                    <input class="user-phone" type="text" placeholder="手机号码" onkeyup="value=value.replace(/[^\d]/g,'')">
+                    <span class="fill-mark">活动平台的注册手机号</span>
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">投资日期：</p>
+                    <input type="text" class="time" id="datePicker-time" placeholder="投标时间">
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">注册平台用户名：</p>
+                    <input class="name" type="text" placeholder="平台用户名">
+                    <span class="fill-mark">活动平台用户名，非纳米理财用户名</span>
+                </div>
+                <div class="fill-item clear-fix">
+                    <p class="fill-name">标的名称：</p>
+                    <input class="bdmc" placeholder="标的名称">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hint">
+        <div class="wbd">
+            <img src="/img/wbd-icon_2d0529f.png" alt="">
+        </div>
+        <i class="close"></i>
+        <div class="hint-txt">
+            <p class="p1">您还<span class="imp">未绑定</span>返利的收款银行账户</p>
+            <p class="p2">每次返利都会到这张卡上哦~</p>
+        </div>
+        <div class="hint-btn">
+            <a class="zbbd">暂不绑定</a>
+            <a class="qqbd" href="./safe.html">前去绑定</a>
+        </div>
+    </div>
+    <div id="cover"></div>
+
+    <script id="item-list-template" type="text/x-handlebars-template">
+        {{#each itemList}}
+        <option value="{{id}}">{{borrowTitle}}</option>
+        {{/each}}
+    </script>
+    <!-- <td>{{investTime}}</td> -->
+    <!-- dsh -->
+    <script id="declare-record-table-template" type="text/x-handlebars-template">
+        {{#each investRecordList}}
+        <tr>
+            <td>{{createTime}}</td>
+            <td>{{platformName}}</td>
+            <td>{{projectName}}</td>
+            <td>{{phone}}</td>
+            <td>{{investAmount}}</td>
+            <td class="{{isSty status}}">{{status}}</td>
+            <td>{{ rebate}}</td>
+            <td>{{remark}}</td>
+            <td data-id="{{investId}}">{{{isStatus status}}}</td>
+        </tr>
+        {{/each}}
+    </script>
+
+    <footer>
+    <div class="footer-content clear-fix">
+        <div class="about-list">
+            <h5 class="title">关于纳米</h5>
+            <a href="/about/about.html">关于我们</a>
+            <a href="/about/serverlist.html">服务条款</a>
+            <a href="../noviceGuide/accountFun.html">常见问题</a>
+        </div>
+        <span class="line"></span>
+        <div class="help-list">
+            <h5 class="title">联系我们</h5>
+            <div style="margin-bottom: 10px">商务合作</div>
+            <div style="margin-bottom: 10px">商务联系QQ：995709862</div>
+            <div style="margin-bottom: 10px">客服热线: 0755-26924103</div>
+            <div>邮箱：namilicai@qq.com</div>
+        </div>
+        <div class="follow-list">
+            <h5 class="title">关注我们</h5>
+            <div class="clear-fix">
+                <div class="wechat1">
+                    <img src="/img/qr_code_c3ceb78.png">
+                    <p>微信公众号</p>
+                </div>
+            </div>
+        </div>
+        <span class="line"></span>
+        <div class="phone-list">
+            <h5 class="title">纳米理财</h5>
+            <p>服务时间：9:00-22:00(双休、节假日除外)</p>
+            <p>温馨提示：投资有风险 理财需谨慎</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <P>Copyright Reserved 2017-2018@纳米理财   粤ICP备17096796号-3   深圳微融信息科技有限公司</P>
+    </div>
+</footer>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+    <div id="tips-box">    <div class="tips-alert">        <p class="text">操作成功</p>    </div></div>
+
+<script src="/lib/js/mod.js"></script>
+<script type="text/javascript" src="/mod/tools.js"></script>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="/lib/js/handlebars-4.0.11.min.js"></script>
+<script src="/lib/js/js.cookie.min.js"></script>
+<script src="/lib/js/moment.min.js"></script>
+<script src="/lib/js/pikaday.js"></script>
+<script async>
+!function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.growingio.com/2.1/gio.js","gio");
+    gio('init','925f29df8cb78e52', {});
+    gio('send');
+
+
+            $(function () {
+                $(".account-menu .account-link").addClass('active');
+            })
+        
+ 
+        var getPhone = Cookies.get('phone')
+        if(getPhone){
+            var setPhone = getPhone.substring(0,3)+'****'+getPhone.substring(7,11);
+            $("#js-nav-account").find(".myacc").text(setPhone)
+        }
+
+
+    $(function () {
+        var $header = $('header');
+        var tools = require('mod/tools');
+        var apiUrl = tools.apiUrl();
+
+        // 登录状态检查
+        tools.loginCheck();
+        // 退出登录
+        $header.find('.logout-btn').on('click', function () {
+            tools.fetchAjax(apiUrl.data + '/user/logout').done(function (ret) {
+                if (ret.status === '0' || ret.status === 0) {
+                    // 清除token
+                    Cookies.remove('token');
+                    // 更新菜单栏状态
+                    tools.loginCheck();
+                    // 跳转首页
+                    location.href = '/';
+                };
+            });
+        });
+    })
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119393430-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119393430-1');
+</script>
+<script src="/js/account_035a7fa.js"></script>
+</body>
+</html>

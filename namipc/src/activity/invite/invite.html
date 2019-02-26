@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="../../css/index.less">
+	<link rel="stylesheet" href="./src/css/activity.css">
+	<script src="../../lib/js/jquery-3.3.1.min.js"></script>
+	<script src="../../lib/js/js.cookie.min.js"></script>
+	<script src="../../lib/js/mod.js"></script>
+	<script src="../../js/index.js"></script>
+</head>
+<body>
+	<link rel="import" href="../../tpl/header.html?__inline">
+	<div class="container-bg">
+		<div class="container">
+			<img src="./src/img/section-1-title.png" alt="" class="img-center title-box">
+			<ul class="items-bg clears">
+				<li><div class="first-div" id="registerUser">--</div><div class="second-div">受邀人数</div><p>（仅注册）</p></li>
+				<li><div class="first-div" id="registerAndInvest">--</div><div class="second-div">有效受邀人数</div><p>（投资并提交申请）</p></li>
+				<li><div class="first-div" id="earnAmount">--</div><div class="second-div" style="padding-top: 15px">累计获得赏金(元)</div></li>
+			</ul>
+			<div class="invite-box">
+				<section class="invite-section">
+					<div class="clears">
+						<span>邀请链接：</span>
+						<input type="text" class="text-input" id="invite-link" readonly="true">
+						<div class="copy-btn " data-clipboard-action="copy"  data-clipboard-target="#invite-link"  id="copy-btn"></div>
+						<b class="copy-info hide copy-success">复制成功</b>
+					</div>
+					<p><i class="icon-min-list">1</i>好友只能通过<b class="pinkred">您的推荐链接</b>注册纳米，您才能获利</p>
+					<p><i class="icon-min-list">2</i>同一自然人仅能被成功邀请一次，以手机号为判断依据</p>
+				</section>
+			</div>
+			<img src="./src/img/section-2-title.png" alt="" class="img-center title-box">
+			<img src="./src/img/data-item.png" alt="" class="img-center margin-b">
+			<img src="./src/img/section-3-title.png" alt="" class="img-center title-box">
+			<div class="rule-bg">
+				<ul>
+					<li><i class="Lists">1</i>参与活动标的不区分平台，纳米理财平台对接所有标的均参与活动；</li>
+					<li><i class="Lists">2</i>新用户受邀后投资，提交审核通过后，即视为邀请成功，新用户仅限未在纳米理财注册过的用户；</li>
+					<li><i class="Lists">3</i>平台有权取消及撤回恶意刷取奖励的用户；</li>
+					<li><i class="Lists">4</i>如发现刷奖励，回访被邀请用户电话无人接听、被邀请用户不知情等情况，则将不予结算邀请奖励；</li>
+					<li><i class="Lists">5</i>仅限在纳米理财平台提交有效投资回单的用户获得邀请奖励；</li>
+					<li><i class="Lists">6</i>活动日期自7月1日开始，结束日期待定，所有纳米理财用户皆可参与；</li>
+					<li><i class="Lists">7</i>本活动最终解释权在法律允许范围内归纳米理财所有。</li>
+				</ul>
+			</div>
+			<!-- <div class="footer-box">
+				Copyright Reserved 2017-2018@纳米理财 粤ICP备17096796号-3 深圳微融信息科技有限公司
+			</div> -->
+		</div>
+	</div>
+	<link rel="import" href="../../tpl/footer.html?__inline">
+</body>
+<script>
+	(function(){
+		var tools = require('../mod/tools');
+		var apiUrl = tools.apiUrl();
+		tools.fetchAjax(apiUrl.data + '/activity/invite_friend').done(function (ret) {
+			var rets= ret.result;
+			if(ret.status && ret.status == '0'){
+				$("#invite-link").val(rets.inviteFriendUrl);
+				$("#registerUser").text(rets.registerUser);
+				$("#registerAndInvest").text(rets.registerAndInvest);
+				$("#earnAmount").text(rets.earnAmount);
+			}else if(ret.status && ret.status == '0006'){
+				location.href ="/login.html"
+			}else{
+				return alert(ret.msg),!1;
+			}
+		});
+		var clipboard = new ClipboardJS('.copy-btn');
+		clipboard.on('success', function(e) {
+		    $(".copy-success").removeClass('hide');
+		    setTimeout(function(){
+		         $(".copy-success").addClass('hide');
+		    },1500)
+		});
+		$("#copy-btn").on('click',function(){
+			$(this).toggleClass('active')
+		})
+	})();
+</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>投资记录</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="stylesheet" href="css/account.less">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./lib/js/jquery-3.3.1.min.js"></script>
+    <script src="./lib/js/mod.js"></script>
+    <script src="./lib/js/js.cookie.min.js"></script>
+</head>
+<body>
+
+    <link rel="import" href="tpl/header.html?__inline">
+
+    <div class="main-section clear-fix">
+        <link rel="import" href="tpl/accountMenu.html?__inline">
+        <script>
+            $(function () {
+                $(".account-menu .record-link").addClass('active');
+            })
+        </script>
+        <div class="invest-content">
+            <h5>投资记录</h5>
+            <div class="main-content">
+                <div class="invest-body">
+                    <div class="search-option">
+                        <div class="option-item clear-fix">
+                            <span class="label">起止时间：</span>
+                            <input type="text" class="datepicker">
+                            <input type="text" class="datepicker">
+                            <a class="search-btn more-search">高级查询</a>
+                            <a class="search-btn">查询</a>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <table>
+                            <thead>
+                                <td>平台</td>
+                                <td>标的名称</td>
+                                <td>投资金额</td>
+                                <td>投资期限</td>
+                                <td>投资时间</td>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>名称名称名称</td>
+                                    <td>100000</td>
+                                    <td>2018.9.7</td>
+                                    <td>提现中</td>
+                                    <td>备注</td>
+                                </tr>
+                                <tr class="last">
+                                    <td>名称名称名称</td>
+                                    <td>100000</td>
+                                    <td>2018.9.7</td>
+                                    <td>提现中</td>
+                                    <td>备注</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="import" href="tpl/footer.html?__inline">
+</body>
+</html>

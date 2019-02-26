@@ -1,0 +1,134 @@
+@import "reset";
+
+// recommend-item
+.recommend-item {
+  width: 1200px;
+  height: 158px;
+  background: #FFFFFF;
+  margin-top: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  &:hover{
+    box-shadow: 0 0 10px 0 rgba(194,194,194,0.50);
+  }
+  .st-ico{
+    width: 24px;
+    height: 42px;
+    position: absolute;
+    display: block;
+    background-image: url('img/st-ico.png');
+    background-size: cover;
+    left: 10px;
+    top: 0px;
+  }
+  .ft-ico{
+    width: 24px;
+    height: 42px;
+    position: absolute;
+    display: block;
+    background-image: url('img/ft-ico1.png');
+    background-size: cover;
+    left: 10px;
+    top: 0px;
+  }
+  .item-img{
+    height: 75px;
+    margin-left: 40px;
+    border-right: 1px solid #DFDFDF;
+    padding-right: 40px;
+    padding-top: 10px;
+    max-width: 150px;
+    min-width: 150px;
+    .item-logo{
+      height: 32px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .item-txt{
+      font-size: 16px;
+      color: #333333;
+      letter-spacing: 0.35px;
+      margin-top: 12px;
+      text-align: center;
+      display: block;
+    }
+  }
+  .info{
+    display: flex;
+    min-width: 790px;
+    max-width: 790px;
+    justify-content: space-between;
+    .platform{
+      padding-left:40px;
+      text-align: center;
+      .text{
+        font-size: 14px;
+        color: #888888;
+        letter-spacing: 0.4px;
+      }
+      .val{
+        font-size: 20px;
+        color: #333333;
+        letter-spacing: 0.58px;
+        margin-top: 12px;
+      }
+      .val-o{
+        font-size: 24px;
+        color: #FF7E13;
+        letter-spacing: 0.58px;
+        margin-top: 10px;
+        i{
+          font-size: 12px;
+          color: #FF7E13;
+          letter-spacing: 0.58px;
+          text-align: right;
+          line-height: 33px;
+        }
+      }
+    }
+  }
+  .now-allin{
+    border: 1px solid #406EC8;
+    border-radius: 3px;
+    width: 122px;
+    height: 36px;
+    font-size: 16px;
+    color: #406EC8;
+    letter-spacing: 0.46px;
+    position: absolute;
+    right: 2.8%;
+    top: 52px;
+    bottom: 52px;
+    text-align: center;
+    line-height: 36px;
+    &:hover{
+      background: #406EC8;
+      color: #FFFFFF;
+    }
+  }
+}
+
+// reset range slider style
+.range-slider-input {
+  .rangeslider {
+    background: #EBEBEB;
+    position: relative;
+    box-shadow: none;
+    height: 6px;
+    .rangeslider__fill {
+      background: #92BCFF;
+      box-shadow: none;
+    }
+    .rangeslider__handle {
+      top: -6px;
+      width: 18px;
+      height: 18px;
+      background: #92BCFF;
+      box-shadow: 0 0 4px 0 #92BCFF;
+      border: none;
+    }
+  }
+}

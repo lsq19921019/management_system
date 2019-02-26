@@ -1,0 +1,29 @@
+{
+  "name": "nami-web",
+  "version": "1.0.0",
+  "description": "nami",
+  "time": "2018/5/9",
+  "main": "src/index.html",
+  "scripts": {
+    "server": "fis3 server start -p 7890",
+    "dev": "fis3 release dev -cwLr ./src",
+    "online": "fis3 release online -cr ./src -d ./output/",
+    "rm": "rm -rf ./output && rm -f ./output.zip",
+    "zip": "zip -r output.zip ./output/*",
+    "start": "npm run server && npm run dev",
+    "build": "npm run rm && npm run online && npm run zip",
+    "build-win": "npm run online"
+  },
+  "keywords": [
+    "tzjs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fis3": "~3.4.0",
+    "fis-parser-less": "~0.1.3",
+    "fis-optimizer-htmlmin": "~0.1.2",
+    "fis3-hook-module": "~1.2.2",
+    "fis3-postpackager-loader": "2.1.10"
+  }
+}

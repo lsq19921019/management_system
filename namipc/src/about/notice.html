@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>平台公告</title>
+    <meta name="keywords" content="纳米理财">
+    <meta name="description" content="纳米理财">
+    <link rel="stylesheet" href="../css/about.less">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <script src="../lib/js/jquery-3.3.1.min.js"></script>
+    <script src="../lib/js/handlebars-4.0.11.min.js"></script>
+    <script src="../lib/js/mod.js"></script>
+    <script src="../lib/js/js.cookie.min.js"></script>
+</head>
+<body>
+
+    <link rel="import" href="../tpl/header.html?__inline">
+    <script>
+        $(function () {
+            $(".about-menu .about-notice").addClass('active');
+        })
+    </script>
+    <div class="main-section clear-fix">
+        <link rel="import" href="../tpl/aboutMenu.html?__inline">
+        <div class="about-content" id="about-content">
+            <img src="../img/ptgg-bg.png">
+            <div class="notice-desc">
+                <div class="notice-header">
+                    <h5>标题</h5>
+                    <a href="/about/platformNotice.html" class="back-btn">&lt; 返回</a>
+                    <p class="time">23点36分</p>
+                </div>
+                <div class="notice-body">
+                    <p class="name">尊敬的投资教授用户：</p>
+                    <p class="content">内容</p>
+                    <p class="sign-name">纳米理财运营团队</p>
+                    <p class="sign-time">时间</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/notice.js"></script>
+    <link rel="import" href="../tpl/footer.html?__inline">
+</body>
+</html>

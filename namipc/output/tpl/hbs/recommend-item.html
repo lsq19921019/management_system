@@ -1,0 +1,47 @@
+<div class="recommend-box">
+    <script id="recommend-box-template" type="text/x-handlebars-template">
+        {{#each recommendList}}
+        <div class="recommend-item">
+            <div class="item-img">
+                <div class="item-logo">
+                    <a href="/platdetail.html?id={{projectId}}&&pfNo={{platformNo}}">
+                        <img src="{{platformIconURL}}">
+                    </a>
+                </div>
+                <span class="item-txt" title="{{title}}">{{title}}</span>
+            </div>
+            <div class="info clear-fix">
+                <div class="platform">
+                    <p class="text">平台年化</p>
+                    <p class="val">{{annualrate}}<i>%</i></p>
+                </div>
+                <div class="platform">
+                    <p class="text">纳米加息</p>
+                    <p class="val">{{jxYield}}<i>%</i></p>
+                </div>
+                <div class="platform">
+                    <p class="text">综合年化</p>
+                    <p class="val-o">{{zhnh}}<i>%</i></p>
+                </div>
+                <div class="platform">
+                    <p class="text">投资期限</p>
+                    <p class="val">{{deadline}}</p>
+                </div>
+                <div class="platform">
+                    <p class="text">起投金额</p>
+                    <p class="val">{{parInt mintenderedsum}}</p>
+                </div>
+                <div class="platform">
+                    <p class="text">投资限额</p>
+                    <p class="val">{{parInt maxtenderedsum}}</p>
+                </div>
+                <div class="platform">
+                    <p class="text">万元返现</p>
+                    <p class="val-o">{{zgkd}}</p>
+                </div>
+            </div>
+            <a href="/platdetail.html?id={{projectId}}&&pfNo={{platformNo}}" class="now-allin">立即投资</a>
+        </div>
+        {{/each}}
+    </script>
+</div>

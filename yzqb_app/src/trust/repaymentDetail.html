@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>还款详情</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        .cells_title {
+            margin: 0;
+            padding: .12rem .4rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+            font-weight: 700;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+
+        .operatorContent {
+            width: 100%;
+            background: #f9f9f9;
+            overflow: hidden;
+
+        }
+        .txt {
+			text-align: right;
+        }
+
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .2rem .4rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+        .cells_tips {
+            margin: 0rem .4rem;
+            border-top: solid .01rem #eee;
+            font-size: .12rem;
+            height: .4rem;
+            line-height: .4rem;
+        }
+
+        .submitBtn {
+            position: static;
+            margin: 0 .425rem;
+            box-shadow: 0 0rem 0rem rgb(214,193,192)
+        }
+        .cells_line {
+            height: .1rem;
+            width: 100%;
+        }
+        .repaymentContent {
+            width: 2.95;
+            background-color: white;
+            padding: .1rem .4rem;
+            position: relative;
+            height: 1.3rem;
+        }
+        .repayTop1 {
+            height: .3rem;
+            line-height: .3rem;
+            font-size: .14rem;
+            text-align: center;
+        }        
+        .repayTop2 {
+            height: .3rem;
+            line-height: .3rem;
+            font-size: .25rem;
+            text-align: center;
+            margin: .1rem 0;
+        }
+        .repayTop3 {
+            height: .3rem;
+            line-height: .2rem;
+            height: .4rem;
+            font-size: .12rem;
+            text-align: center;
+        }
+        .cell_hd {
+            font-size: .14rem;
+        }
+        .cells {
+            margin-bottom: .1rem;
+        }
+        .cell_Icon {
+            float: right;
+            border: solid .01rem red;
+            width: .14rem;
+            height: .14rem;
+            border-radius: .077rem;
+        }
+        .cell_Icon i {
+            float: right;
+            background-color: red;
+            margin: .035rem;
+            width: .07rem;
+            height: .07rem;
+            border-radius: .037rem;
+        }
+        .pullIcon {
+            width: 3.35rem;
+            height: .2rem;
+            padding: .2rem;
+        }
+        .pullIcon img {
+            display: block;
+            margin: 0 auto;
+            width: .15rem;
+            height: .15rem;
+        }
+        .cells_tips a {
+            color: red;
+        }
+        .pwd-box{  
+            margin: 0rem auto;
+            width: 103%;  
+            padding-left: 6px;  
+            position: relative;  
+            border: 1px solid #9f9fa0;  
+ 
+            over-flow: hidden;
+            height: .4rem;
+        }  
+        .pwd-box input[type="tel"]{  
+            width: 100%;  
+            height: 45px;  
+            color: transparent;  
+            position: absolute;  
+            top: 0;  
+            left: 0;  
+            border: none;  
+            font-size: 18px;  
+            opacity: 0;  
+            z-index: 1;  
+            letter-spacing: 35px;  
+        }  
+        .pwd-box input[type="tel_"]{  
+            width: 100%;  
+            height: 45px;  
+            color: transparent;  
+            position: absolute;  
+            top: 0;  
+            left: 0;  
+            border: none;  
+            font-size: 18px;  
+            opacity: 0;  
+            z-index: 1;  
+            letter-spacing: 35px;  
+        }  
+        .fake-box input{  
+            width: .31rem;  
+            height: .4rem;  
+            border: none;  
+            border-right: 1px solid #e5e5e5;  
+            text-align: center;  
+            font-size: 30px;  
+        }  
+        .fake-box input:nth-last-child(1){  
+            border:none;  
+        }
+        .layer_dialog_box {
+            padding: .1rem 0;
+        }
+        .layer_btn {
+            display: block;
+            position: relative;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            text-align: center;
+            letter-spacing: 1px;
+            color: #353535;
+            width: 1rem;
+            border-radius: .1rem;
+            background-color: #eee;
+            margin: 0rem .2rem;
+
+        }
+        .layer_btn_ {
+            display: block;
+            position: relative;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            text-align: center;
+            letter-spacing: 1px;
+            color: #353535;
+            width: 1rem;
+            border-radius: .1rem;
+            background-color: #eee;
+            margin: 0rem .2rem;
+
+        }
+        ._layer_btn_ {
+            display: block;
+            position: relative;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            text-align: center;
+            letter-spacing: 1px;
+            color: #353535;
+            width: 1rem;
+            border-radius: .1rem;
+            background-color: #eee;
+            margin: 0rem .2rem;
+
+        }
+
+            .layer_btn.layer_btn_primary {
+                background-color: rgb(255,85,78);
+                color: white;
+            }
+
+            .layer_btn_.layer_btn_primary_ {
+                background-color: rgb(255,85,78);
+                color: white;
+            }
+            ._layer_btn_._layer_btn_primary_ {
+                background-color: rgb(255,85,78);
+                color: white;
+            }
+
+            .layer_btn + .layer_btn:after {
+                content: " ";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 1px;
+                height: 100%;
+                border-left: 0px solid white;
+                color: #E4E4E4;
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+                -webkit-transform: scaleX(.5);
+                transform: scaleX(.5);
+            }
+            .layer_btn_ + .layer_btn_:after {
+                content: " ";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 1px;
+                height: 100%;
+                border-left: 0px solid white;
+                color: #E4E4E4;
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+                -webkit-transform: scaleX(.5);
+                transform: scaleX(.5);
+            }
+            ._layer_btn_ + ._layer_btn_:after {
+                content: " ";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 1px;
+                height: 100%;
+                border-left: 0px solid white;
+                color: #E4E4E4;
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+                -webkit-transform: scaleX(.5);
+                transform: scaleX(.5);
+            }
+        .layer_dialog .layer_dialog_ft {
+            position: relative;
+            line-height: .42rem;
+            font-size: .17rem;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            background-color: white;
+        }
+
+            .layer_dialog .layer_dialog_ft::after {
+                content: " ";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 1px;
+                border-top: 0px solid white;
+                color: #E4E4E4;
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+                -webkit-transform: scaleY(.5);
+                transform: scaleY(.5);
+            }
+        .layer_dialog_title {
+            font-weight: 700;
+        }
+
+        .cells_content {
+            display: none;
+
+        }
+        .disOn {
+            display: block;
+        }
+        .zhifucellline {
+            content: " ";
+            position: absolute;
+            left: .4rem;
+            top: 0;
+            width: 2.95rem;
+            height: 1px;
+            border-top: 1px solid #E4E4E4;
+            color: #E4E4E4;
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+            -webkit-transform: scaleY(.5);
+            transform: scaleY(.5);
+            z-index: 33;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="repaymentContent">
+        <div class="repayTop1"></div>
+        <div class="repayTop2"></div>
+        <div class="repayTop3">您发起还款申请后，我们会实时扣款，请确保您的银行卡余额充足，多次扣款失败可能会导致您还款失败。
+        </div>
+    </div>
+
+    <div class="cells">
+        <div class="cell">
+            <label class="cell_hd">编号：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" readonly="" maxlength="20" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">本金：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" readonly="" maxlength="20" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">利息：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" readonly="" maxlength="20" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">还款方式：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="一次性还款付息" readonly="" maxlength="20" />
+            </div>
+        </div>
+    </div>
+
+    <div class="cells">
+        <div class="cell">
+            <label class="cell_hd">还款账户</label>
+            <div class="cell_cn">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd getBankName">银行卡还款</label>
+            <div class="cell_cn">
+                <div class="cell_Icon"><i></i></div>
+            </div>
+        </div>
+        <div class="cells_content">
+            <div class="zhifucellline"></div>
+            <div class="cell" style="display:none;">
+                <label class="cell_hd">微信还款</label>
+                <div class="cell_cn">
+                    <div class="cell_Icon"></div>
+                </div>
+            </div>
+            <div class="cell zhifucell" style="display:none;">
+                <label class="cell_hd">支付宝还款</label>
+                <div class="cell_cn">
+                    <div class="cell_Icon"></div>
+                </div>
+            </div>
+            <div class="cell" style="display:none;">
+                <label class="cell_hd zhifu_offline">支付宝线下还款</label>
+                <div class="cell_cn">
+                    <div class="cell_Icon"></div>
+                </div>
+            </div>
+
+            <div class="cell">
+                <label class="cell_hd zhifu_online">支付宝线上还款</label>
+                <div class="cell_cn">
+                    <div class="cell_Icon"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pullIcon">
+            <img src="../images/pullIcon.png" alt="">
+        </div>
+    </div>
+    <div class="operatorContent confirmBtn">
+        <div class="submitBtn">
+            提交
+        </div>
+        <div class="cells_tips">
+            <span>如多次还款失败？</span><a>请点击</a>
+        </div>
+    </div>
+    <div class='layer_dialog confirm'>
+        <div class='layer_mask'></div>
+        <div class='layer_dialog_box'>
+            <div class='layer_dialog_hd'>
+                <span class='layer_dialog_title'>交易密码</span>
+                <i class='layer_btn_close icon-close' style='display:none'></i>
+            </div>
+            <div class='layer_dialog_cn'>
+                <div class="pwd-box">
+                    <input type="tel" maxlength="6" class="pwd-input" id="pwd-input">  
+                    <div class="fake-box">  
+                        <input id="J_pwd_first" type="password" readonly="">  
+                        <input type="password" readonly="">  
+                        <input type="password" readonly="">  
+                        <input type="password" readonly="">  
+                        <input type="password" readonly="">  
+                        <input type="password" readonly="">  
+                    </div>  
+                </div>
+            </div>
+            <div class='layer_dialog_ft'>
+                <a class='layer_btn'>取消</a>
+                <a class='layer_btn layer_btn_primary'>确认</a>
+            </div>
+        </div>
+    </div>
+
+    <div class='layer_dialog confirm_'>
+            <div class='layer_mask'></div>
+            <div class='layer_dialog_box'>
+                <div class='layer_dialog_hd'>
+                    <span class='layer_dialog_title'>还款金额</span>
+                    <i class='layer_btn_close_ icon-close' style='display:none'></i>
+                </div>
+                <div class='layer_dialog_cn'>
+                    <div class="pwd-box">
+                        <input type="text" maxlength="10" class="pwd-input_" style="width: 100%;font-size: .2rem;height: .2rem;padding: .1rem 0;" value="" onkeyup="value=value.replace(/\.\d{2,}$/,value.substr(value.indexOf('.'),3))" id="pwd-input_">  
+                    </div>
+                    <div class="pwd-input_info_" style="color:red;height: 20px;"></div>
+                </div>
+                <div class='layer_dialog_ft'>
+                    <a class='layer_btn_'>取消</a>
+                    <a class='layer_btn_ layer_btn_primary_'>确认</a>
+                </div>
+            </div>
+        </div>
+
+        <div class='layer_dialog _confirm_'>
+            <div class='layer_mask'></div>
+            <div class='layer_dialog_box'>
+                <div class='layer_dialog_hd'>
+                    <span class='layer_dialog_title'>是否支付成功？</span>
+                    <i class='layer_btn_close_ icon-close' style='display:none'></i>
+                </div>
+                <div class='layer_dialog_ft'>
+                    <a class='_layer_btn_'>取消</a>
+                    <a class='_layer_btn_ _layer_btn_primary_'>确认</a>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer,dataUtil){       
+    //         var browserObj = function () {
+    //     var u = navigator.userAgent;
+    //     return {
+    //         trident: u.indexOf('Trident') > -1, //IE内核
+    //         presto: u.indexOf('Presto') > -1, //opera内核
+    //         webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+    //         gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+    //         mobile: u.indexOf('Mobile') > -1, //是否为移动终端
+    //         ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+    //         android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端
+    //         iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+    //         iPad: u.indexOf('iPad') > -1, //是否iPad
+    //         webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+    //         weixin: u.indexOf('MicroMessenger') > -1, //是否微信
+    //         qq: u.indexOf("QQBrowser") > -1, //是否QQ浏览器
+    //         mobile_qq: u.indexOf("MQQBrowser") > -1, //是否是手机QQ浏览器
+    //         uc: u.indexOf("UCBrowser") > -1, //是否是uc浏览器
+    //         baidu: u.indexOf("Baidu") > -1, //是否是百度浏览器
+    //         firefox: u.indexOf("Firefox") > -1, //是否是火狐浏览器
+    //         lieBao: u.indexOf("LieBao") > -1, //是否是猎豹浏览器
+    //         sogou: u.indexOf("SogouMobile") > -1, //是否是搜狗手机浏览器
+    //         HYQ:u.indexOf("HYQ") > -1,
+    //         HYQ_ios_version:((u.indexOf('yzqb_android_')>-1)),
+    //         HYQ_android_iosversion:((u.indexOf('yzqb_iOS_')>-1)),
+    //         total_info:u
+    //     };
+    // };
+    // var browser = browserObj();
+    // var isBridgeInit = false;
+
+
+    // if(browser.HYQ_ios_version){
+    //     $('.zhifu_offline').hide();
+    //     $('.zhifu_online').show();
+    // }else if(browser.HYQ_ios_version){
+    //     $('.zhifu_online').hide();
+    //     $('.zhifu_offline').show();
+    // }
+            var onlineBank=1;
+            var remain_amount = '';
+            var sessionId =userUtil.sid();
+            var orderNo;
+            $('#pwd-input_').val('');
+            
+            $('#pwd-input_').attr('value','');
+            if(global.query){
+                orderNo=global.query['orderNo'];
+            }
+
+                // $.ajax({
+                //     url: global.localUrl + "nw/orders/onlineRefund",
+                //     type: "post",
+                //     data: JSON.stringify({"sessionId": sessionId,
+                //     "orderNo": orderNo}),
+                //     contentType: 'application/json;charset=utf-8',
+                //     success: function (re) {
+                //         if (1 == re.code) {
+                //             layer.tips("还款成功");
+                //             setTimeout(function(){
+                //                 window.location.href=global.localUrl +"index.html";
+                //             },2000);
+                //         }
+                //         else{
+                //             setTimeout(function(){
+                //                 // window.location.reload();
+                //             },2000);
+                //             layer.tips(re.message);
+                //         }
+                //     },
+                //     error: function () {
+                //         layer.tips(global.netError);
+                //     }
+                // });
+        	$("body").height(document.documentElement.clientHeight);
+            $(".submitBtn").click(function(){
+                
+                var _data={
+                    "sessionId": sessionId,
+                    "orderNo": orderNo,
+                };
+		        layer.showLoad();
+                $.ajax({
+                    url: global.localUrl + "xjbk/orders/query/untreated",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+				                layer.hideLoad();
+                        if (1 === re.code&&re.data.untreated===1) {
+                            layer.tips('您有还款在处理中，请十分钟后再试');
+                            return;
+                        }else{
+                                if(onlineBank==1){           //银行卡
+                                    $(".confirm").addClass("on");
+                                    //弹出默认获取焦点
+                                    $('#J_pwd_first').focus();
+                                }else if(onlineBank==2){    //微信还款
+                                    window.location.href= "./underLineRepay.html?orderNo="+orderNo;
+                                    // window.location.href = "./repayWxCode.html?orderNo="+orderNo;
+                                }else if(onlineBank == 3){    //线上支付宝  //线下支付宝还款
+                                    // window.location.href = "./repayCodeImg.html?orderNo="+orderNo;
+                                    // window.location.href= "./underLineRepay.html?orderNo="+orderNo;
+                                    $(".confirm_").addClass("on");
+                                    //弹出默认获取焦点
+                                    $('#pwd-input_').focus();
+                                }else if(onlineBank == 4){   //线下支付宝还款
+                                    window.location.href= "./underLineRepay.html?orderNo="+orderNo;
+                                }else if(onlineBank == 5){
+                                    onlineRepay();
+                                    $('#pwd-input_').attr('value',remain_amount);
+                                    $('#pwd-input_').val(remain_amount);
+                                    $(".confirm_").addClass("on");
+                                    //弹出默认获取焦点
+                                    $('#pwd-input_').focus();
+                                    $('.pwd-input_info_').html('');
+                                }
+                        }
+                    },
+                    error: function () {
+				        layer.hideLoad();
+                        layer.tips(global.netError);
+                    }
+                });
+                
+            })
+            var $input = $(".fake-box input");  
+            $("#pwd-input").on("input", function() {
+                var pwd = $(this).val().trim();  
+                for (var i = 0, len = pwd.length; i < len; i++) {  
+                    $input.eq("" + i + "").val(pwd[i]);  
+                }  
+                $input.each(function() {  
+                    var index = $(this).index();  
+                    if (index >= len) {  
+                        $(this).val("");  
+                    }  
+                });  
+                if (len == 6) {
+                    //执行其他操作  
+                }  
+            });     
+                 
+            $("#pwd-input_").on("input", function() {
+                // alert(6666);
+                var this_ = this;
+                if(!$(this_).val()){
+                    $('.pwd-input_info_').html('');
+                }
+                // var reg_=/^\d+(\.\d{3})?$/;
+                if(parseFloat($(this_).val())<100){
+                    $(".confirm_ .layer_btn_").eq(1).attr('read','unread');
+                }else if(parseFloat($(this_).val())>=100){
+                    $(".confirm_ .layer_btn_").eq(1).attr('read','read');
+                }
+            });
+            $(".confirm_ .layer_btn_").off("click").on("click", function () {close(); });
+            $(".confirm_ .layer_btn_").eq(1).off("click").on("click", function () {
+                // var _data={
+                //     "sessionId": '46cd20a705844367ba078044d3453342',
+                //     "orderNo": '011901101859431040',
+                //     "amount": '0.01'
+                // }
+                // alert($(".confirm_ .layer_btn_").eq(1).attr('read'));
+                // return;
+                
+                
+                
+                
+                
+                var reg=/^\d+(\.\d{0,2})?$/;
+                if(!$('#pwd-input_').val()){
+                    $('.pwd-input_info_').html('请填写金额');
+                    // layer.tips("请填写金额");
+                    return;
+                }
+                if(!reg.test($('#pwd-input_').val())){
+                    $('.pwd-input_info_').html('请输入数字,小数点后最多输入两位');
+                    // layer.tips("输入金额格式:请输入数字,小数点后最多输入两位");
+                    return;
+                }
+
+                
+                
+                
+                
+                // if($(".confirm_ .layer_btn_").eq(1).attr('read')==='unread'&&parseFloat($('#pwd-input_').val())<1){
+                //     layer.tips("还款金额必须大于100");
+                //     return;
+                // }
+                // if($(".confirm_ .layer_btn_").eq(1).attr('read')==='read'&&parseFloat($('#pwd-input_').val())>parseFloat(remain_amount)){
+                //     layer.tips("输入金额超出应还款金额");
+                //     return;
+                // }
+                // if(parseFloat($('#pwd-input_').val())>parseFloat(remain_amount)){
+                //     layer.tips("输入金额超出应还款金额");
+                //     return;
+                // }
+                // var _data={
+                //     "sessionId": sessionId,
+                //     "orderNo": orderNo,
+                //     "amount": $('#pwd-input_').val()
+                // }
+
+
+
+
+
+                
+                
+                
+                var _data={
+                    "sessionId": sessionId,
+                    "orderNo": orderNo,
+                    "amount": $('#pwd-input_').val()
+                }
+
+
+// var _data={
+  
+//   "amount": 1,
+//   "orderNo": "011901141015369321",
+//   "sessionId": "b9c60e74da54476ba5aef232cad15880"
+// };
+
+
+
+
+                
+                // alert(JSON.stringify(_data));
+
+                // window.location = '';
+                // layer_load
+                
+		        layer.showLoad();
+                $.ajax({
+                    url: global.localUrl + "xjbk/orders/repay",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+				        layer.hideLoad();
+                        if (1 == re.code) {
+                            layer.tips("还款处理中");
+                            // setTimeout(function(){
+                            //     window.location.href=global.localUrl +"index.html";
+                            // },2000);
+                            // console.log(re.data.rcResult.indexOf(''));
+                            // return;
+                            
+                            onlineRepay();
+                            setTimeout(function(){
+                                sessionStorage.setItem('showAlert','showAlert');
+                                $("._confirm_").addClass("on");
+                                $('body').append(re.data.rcResult); 
+                            },800);
+                            close();
+                        }
+                        else{
+                            // setTimeout(function(){
+                            //     window.location.reload();
+                            // },2000);
+                            
+                            // layer.tips(re.message);
+                            $('.pwd-input_info_').html(re.message);
+                        }
+                    },
+                    error: function () {
+				        layer.hideLoad();
+                        layer.tips(global.netError);
+                    }
+                });
+            });
+            $(".confirm .layer_btn").off("click").on("click", function () {close(); });
+            $(".confirm .layer_btn").eq(1).off("click").on("click", function () {
+                var _data={
+                    "sessionId": sessionId,
+                    "orderNo": orderNo,
+                    "payPassword": $(".fake-box input").eq(0).val()+$(".fake-box input").eq(1).val()+$(".fake-box input").eq(2).val()+$(".fake-box input").eq(3).val()+$(".fake-box input").eq(4).val()+$(".fake-box input").eq(5).val()
+                }
+
+                $.ajax({
+                    url: global.localUrl + "nw/orders/onlineRefund",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            layer.tips("还款处理中");
+                            setTimeout(function(){
+                                window.location.href=global.localUrl +"index.html";
+                            },2000);
+                        }
+                        else{
+                            setTimeout(function(){
+                                window.location.reload();
+                            },2000);
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+                close();
+            });
+            $(".confirm .layer_btn_close").off("click").on("click", function () {close(); });
+
+            $(".confirm_ .layer_btn_close_").off("click").on("click", function () {close(); });
+            $("._confirm_ ._layer_btn_").on("click", function () {
+                sessionStorage.removeItem('showAlert');
+                window.history.back(-1);
+                // window.location = global.localUrl+'/trust/applyRecord.html';
+            });
+            function close() {
+                $(".confirm,.confirm_").removeClass("on");
+            }
+
+            $(".pullIcon").click(function(){
+                if($(".cells_content").hasClass("disOn")){
+                    $(".cells_content").removeClass("disOn");
+
+                    $(".pullIcon img").attr({"src":"../images/pullIcon.png"})
+                }else{
+                    $(".cells_content").addClass("disOn");
+                    $(".pullIcon img").attr({"src":"../images/pullUp.png"})
+                }
+            })
+            $(".cell_Icon").eq(0).click(function(){
+                $(".cell_Icon").eq(2).html("");
+                $(".cell_Icon").eq(1).html("");
+                $(".cell_Icon").eq(3).html("");
+                $(".cell_Icon").eq(0).html("<i></i>");
+                $(".cell_Icon").eq(4).html("");
+                onlineBank=1;
+            })
+            $(".cell_Icon").eq(1).click(function(){
+                $(".cell_Icon").eq(0).html("");
+                $(".cell_Icon").eq(1).html("<i></i>");
+                $(".cell_Icon").eq(2).html("");
+                $(".cell_Icon").eq(3).html("");
+                $(".cell_Icon").eq(4).html("");
+                onlineBank=2;
+            })
+            $(".cell_Icon").eq(2).click(function(){
+                $(".cell_Icon").eq(0).html("");
+                $(".cell_Icon").eq(1).html("");
+                $(".cell_Icon").eq(2).html("<i></i>");
+                $(".cell_Icon").eq(3).html("");
+                $(".cell_Icon").eq(4).html("");
+                onlineBank=3;
+            })
+            $(".cell_Icon").eq(3).click(function(){
+                $(".cell_Icon").eq(0).html("");
+                $(".cell_Icon").eq(1).html("");
+                $(".cell_Icon").eq(2).html("");
+                $(".cell_Icon").eq(3).html("<i></i>");
+                $(".cell_Icon").eq(4).html("");
+                onlineBank=4;
+            })
+            $(".cell_Icon").eq(4).click(function(){
+                $(".cell_Icon").eq(0).html("");
+                $(".cell_Icon").eq(1).html("");
+                $(".cell_Icon").eq(2).html("");
+                $(".cell_Icon").eq(3).html("");
+                $(".cell_Icon").eq(4).html("<i></i>");
+                onlineBank=5;
+            })
+                // var _data={
+                //     "sessionId": sessionId,
+                //     "orderNo": localStorage.getItem("orderNo"),
+                //     "payPassword": $(".fake-box input").eq(0).val()+$(".fake-box input").eq(1).val()+$(".fake-box input").eq(2).val()+$(".fake-box input").eq(3).val()+$(".fake-box input").eq(4).val()+$(".fake-box input").eq(5).val()
+                // }
+            //初始化线上还款信息
+            function onlineRepay(){
+
+                var _data={
+                    "sessionId": sessionId,
+                    "orderNo": orderNo
+                }
+                // var _data={
+                //     "sessionId": '46cd20a705844367ba078044d3453342',
+                //     "orderNo": '011901101859431040',
+                // }
+                $.ajax({
+                    url: global.localUrl + "nw/orders/onlineRefundApply",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            // layer.tips("认证成功");
+                            // setTimeout(function(){
+                            //     window.location.href=global.localUrl +"trust/identification.html";
+                            // },2000);
+                            var paymentChannelName;
+                            for(var i=0;i<re.data.sysPaymentChannelResponseList.length;i++){
+                                if(re.data.sysPaymentChannelResponseList[i].type==1){
+                                    paymentChannelName=re.data.sysPaymentChannelResponseList[i].paymentChannelName;
+                                }
+                            }
+                            $(".repayTop1").html(re.data.refundTime+"应还款（元）");
+                            $(".repayTop2").html(re.data.refundAmount);
+                            $(".cell_cn input").eq(0).val(re.data.orderNo);
+                            $(".cell_cn input").eq(1).val(re.data.applyAmount+"元");
+                            $(".cell_cn input").eq(2).val(re.data.interest+"元");
+                            $(".cell_hd").eq(5).html(paymentChannelName);
+                        }
+                        else{
+
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+
+
+                $.ajax({
+                    url: global.localUrl + "xjbk/orders/paid/amount",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            // layer.tips("认证成功");
+                            // setTimeout(function(){
+                            //     window.location.href=global.localUrl +"trust/identification.html";
+                            // },2000);
+                            // alert(JSON.stringify(re));
+                            remain_amount = re.data.amount;
+                            $('#pwd-input_').attr('value',re.data.amount);
+                            $('#pwd-input_').val(re.data.amount);
+                            // if(parseFloat(re.data.amount)<100){
+                            //     $('#pwd-input_').attr('readonly','');
+                            // }
+                            $('#pwd-input_').removeAttr('readonly');
+                            $('#pwd-input_').css('color','#333');
+                            if(re.data.amount<=1){
+                                $('#pwd-input_').attr('readonly','');
+                                $('#pwd-input_').css('color','#ccc');
+                            }
+                        }
+                        else{
+
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+
+
+            }
+            onlineRepay();
+
+            if(sessionStorage.getItem('showAlert')){
+                $("._confirm_").addClass("on");
+            }
+            
+            $(".cells_tips a").click(function(){
+                // sessionStorage.removeItem('showAlert')
+                window.location.href=global.localUrl +"trust/underLineRepay.html?orderNo="+orderNo;
+            })
+
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

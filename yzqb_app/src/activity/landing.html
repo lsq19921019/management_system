@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>柚子钱包</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        *{
+            margin:0;padding:0;
+        }
+        img{
+            width:100%;
+            display:block;
+        }
+        input{
+            border:none;
+            background:none;
+        }
+        .register .top{
+            height:2rem;
+            background:url(../images/activity/bg1.png) top center no-repeat;
+            background-size:100% 2rem;
+        }
+        .register .bto{
+            height:1.7rem;
+            background:url(../images/activity/bg2.png) top center no-repeat;
+            background-size:100% 1.7rem;
+        }
+        .form{
+            width:2.65rem;
+            margin:auto;
+            padding-top:.18rem;            
+        }
+        .form_li{
+            margin-top:.17rem;
+            height:.45rem;
+            border:1px solid #c5b6db;
+            border-radius:.23rem;
+            color:#a98bd6;
+        }
+        .form_li input{
+            font-size:.13rem;
+            color:#a98bd6;
+            height:.3rem;
+            line-height:.3rem;
+            margin-top:.07rem;
+            margin-left:.18rem;
+        }
+        .form_img_code{
+            position:relative;
+            width:1.6rem;
+            height:.45rem;
+            border:1px solid #c5b6db;
+            border-radius:.23rem;
+        }
+        .form_img_code a{
+            display:block;
+            position:absolute;
+            width:.8rem;
+            height:.25rem;
+            top:.1rem;
+            right:-1rem;
+        }
+        .form_img_code button{
+            width:.97rem;
+            height:.45rem;
+            font-size:.12rem;
+            color:#fff;
+            text-align:center;
+            position:absolute;
+            top:0;
+            right:-1.05rem;
+            background:#8146f2; 
+            border-radius:.225rem;
+        }
+        .form .tips{
+            color:#a98bd6;
+            position:relative;
+            font-size:.09rem;
+            line-height:.17rem;
+            padding:.05rem 0 0 .35rem;
+            margin-top:.05rem;
+        }
+        .form .tips a{
+            color:#ffa912;
+        }
+        .form .tips .ico{
+            position:absolute;
+            left:.17rem;
+            top:.05rem;
+            display:block;
+            width:.14rem;
+            height:.14rem;
+            background:url(../images/activity/normal.png) top center no-repeat;
+            background-size:.14rem .14rem;
+        }
+        .form .tips span.ico_selected{
+            background:url(../images/activity/selected.png) top center no-repeat;
+            background-size:.14rem .14rem;
+        }
+        .login_btn{
+            margin-top:.2rem;
+        }
+        .dsn{
+            display:none;
+        }
+        .down_app{
+            position:relative;
+        }
+        .isoBtn{
+            display:block;
+            width:2.87rem;
+            height:.5rem;
+            position:absolute;
+            left:50%;
+            margin-left:-1.43rem;
+            top:3rem;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="register_wrap">
+        <div class="banner">
+            <div><img src="../images/activity/banner1.png"></div>
+            <div><img src="../images/activity/banner2.png"></div>
+        </div>
+        <div class="register">
+            <div class="top">
+                <div class="form">                   
+                    <div class="form_mobile form_li">
+                        <input type="tel" maxlength="11" name="" id="txtMobile" placeholder="请输入您的手机号">
+                    </div>
+                    <div class="form_img_code form_li">
+                        <input type="tel" maxlength="4" id="txtImgCode" placeholder="请输入图形验证码">
+                        <a href="javascript:;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" id="btnImgCode"></a>
+                    </div>
+                    <div class="form_img_code form_li">
+                        <input type="tel" maxlength="6" id="txtCode" placeholder="请输入短信验证码">
+                        <button id="btnCode">获取验证码</button>
+                    </div>
+                    <div class="tips">
+                        <span class="ico ico_selected"></span> 我已阅读并同意《<a href="../help/serviceprotocol.html">注册协议</a>》及《<a href="../help/serviceprotocol.html">服务协议</a>》
+                    </div>
+                    <input type="hidden" id="hdImgCodeID" value="" />
+                    <a class="login_btn" href="JavaScript:;" id="loginBtn"><img class="login_btn" src="../images/activity/btn.png"></a>
+                </div>
+            </div>
+            <div class="bto"></div>
+        </div>
+    </div>
+    <div class="down_app dsn">
+        <a href="javascript:;" class="isoBtn"></a>
+            <img src="../images/activity/d1.jpg" alt="">
+            <img src="../images/activity/d2.jpg" alt="">
+            <img src="../images/activity/d3.jpg" alt="">
+            <img src="../images/activity/d4.jpg" alt="">
+    </div>
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/activity/landing.js?rev=@@hash"></script>
+    <script>
+        $(document).ready(function(){
+            // setTimeout(function(){
+                if(localStorage.getItem('app_logo_info')){
+                    var app_logo_info = JSON.parse(localStorage.getItem('app_logo_info'));
+                    $('title').html(app_logo_info.themeName);
+                }
+            // },500)
+        });
+    </script>
+</body>
+</html>

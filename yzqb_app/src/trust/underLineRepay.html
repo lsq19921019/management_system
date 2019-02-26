@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>支付宝线下还款</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            background-color: white;
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        .confirmBtn {
+            position: absolute; 
+            margin-top: .6rem;
+            overflow: hidden;
+            width: 2.95rem;
+        }
+        .submitBtn {
+             position: static; 
+            margin: 0;
+        }
+        .layer_dialog {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 500px;
+            margin: 0;
+            padding: 0;
+        }
+        body>div {
+            /*height: .6rem;*/
+            line-height: .2rem;
+            padding: .15rem .4rem;
+            /*overflow: hidden;*/
+        }
+        .orderContent .orderTitle {
+            width: 1rem;
+            height: .2rem;
+            line-height: .2rem;
+            font-size: .14rem;
+            float: left;
+        }
+        .orderContent .orderValue {
+            width: 1.6rem;
+            height: .2rem;
+            line-height: .2rem;
+            font-size: .14rem;
+            float: right;
+            text-align: right;
+        }
+        .repaymengtInf .repaymengtInfList {
+            line-height: .25rem;
+        }
+        .repaymengtInf .repaymengtInfList:nth-child(2n+1) {
+            font-weight: 700;
+        }
+        .repaymengtInf a {
+            display: block;
+            width: .8rem;
+            text-align: center;
+            height: .3rem;
+            line-height: .3rem;
+            background-color: rgb(255,85,78);
+            float: right;
+            color: white;
+            margin: -.4rem 0rem 0 0;
+            border-radius: .05rem;
+        }
+        .repaymengtInf_ .repaymengtInfList_ {
+            line-height: .25rem;
+        }
+        .repaymengtInf_ .repaymengtInfList_:nth-child(2n+1) {
+            font-weight: 700;
+        }
+        .repaymengtInf_ a {
+            display: block;
+            width: .8rem;
+            text-align: center;
+            height: .3rem;
+            line-height: .3rem;
+            background-color: rgb(255,85,78);
+            float: right;
+            color: white;
+            margin: -.4rem 0rem 0 0;
+            border-radius: .05rem;
+        }
+        .orderTips {
+            background: #f9f9f9;
+            font-size: .12rem;
+        }
+        .orderTipsLine {
+            background: #f9f9f9;
+            height: .2rem;
+            padding: 0;
+        }
+        .orderTips a {
+            color: rgb(251,94,68)
+        }
+        .orderNum {
+            height: .4rem;
+            line-height: .4rem;
+            border-bottom: solid .01rem #eee;
+        }
+        .orderNum a {
+            display: block;
+            float: left;
+            width: .8rem;
+        }
+        .orderNum i {
+            display: block;
+            float: left;
+            width: .15rem;
+            margin: .125rem 0;
+            height: .15rem;
+            /*background-color: red;*/
+            background-image: url("../images/tips_q.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        .orderNum i img {
+            width: 100%;
+        }
+        .orderNum input {
+            width: 1.8rem;
+            height: .2rem;
+            line-height: .2rem;
+            font-size: .14rem;
+            padding: .1rem;
+            float: right;
+        }
+        .picTitle {
+            margin: .15rem 0;
+        }
+
+        .photo_wap {
+            float: left;
+            box-sizing: border-box;
+            position: relative;
+            height: 0.6rem;
+            width: 0.6rem;
+            border-radius: .04rem;
+            margin-right: .15rem;
+        }
+        .photo {
+            position: relative;
+            border-radius: .04rem;
+            width: 0.6rem;
+            height: 0.6rem;
+            background: #fff;
+            overflow: hidden;
+            /*border: .03rem solid #ff554e;*/
+        }
+        .photo img {
+
+        }
+        .photo.btn_add_photo{
+            border: none;
+        }
+
+        .photo .feed_image_item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .photo .photo_img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .photo .photo_upload {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .2);
+            z-index: 3;
+        }
+
+        .photo .photo_upload .photo_upload_progress {
+            position: absolute;
+            width: 80%;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+
+        .photo .photo_upload .photo_upload_cancel {
+            position: absolute;
+            top: .03rem;
+            right: .03rem;
+            width: .15rem;
+            height: .15rem;
+            text-align: center;
+            background: url(../images/feed_del.png) no-repeat;
+            background-size: 100% 100%;
+
+        }
+
+        .photo .photo_upload_bar {
+            width: 100%;
+            height: 2px;
+            border-radius: 1px;
+        }
+
+        .photo .photo_upload_bar > i {
+            display: block;
+            width: 0;
+            height: 100%;
+            background: #ff6a00;
+            -webkit-transition: width .6s 0s ease-out;
+            transition: width .6s 0s ease-out;
+        }
+
+        .photo .photo_upload_txt {
+            padding-top: .08rem;
+            font-size: .08rem;
+            color: #fff;
+        }
+        .orderContent,.orderTips,.repaymengtInf{
+            overflow: hidden;
+        }
+        .repaymengtInfList>div {
+            float: left;
+        }
+        .repaymengtInfList button {
+            display: inline-block;
+            float: right;
+            font-size: .12rem;
+            font-weight: 400;
+            margin: 0;
+            padding: 0 .1rem;
+            height: .25rem;
+            line-height: .25rem;
+            border-radius: .05rem;
+            background-color: rgb(251,94,68);
+            color: white;
+        }
+
+        .repaymengtInfList_>div {
+            float: left;
+        }
+        .repaymengtInfList_ button {
+            display: inline-block;
+            float: right;
+            font-size: .12rem;
+            font-weight: 400;
+            margin: 0;
+            padding: 0 .1rem;
+            height: .25rem;
+            line-height: .25rem;
+            border-radius: .05rem;
+            background-color: rgb(251,94,68);
+            color: white;
+        }
+        /*repayAlert1弹窗*/
+        .alert11 {
+            /*display: none;*/
+        }
+        .repayAlert1 {
+            background-repeat: no-repeat;
+            background-image: url("../images/underline_repay_1.png");
+            background-size: 80% auto;
+            background-position: center center;
+            background-color: #fff;
+            border-radius: 5px;
+            height: 3.9rem;
+            width: 2.95rem;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            margin-left: -1.5rem;
+            margin-top: -3.6rem;
+            z-index: 33;
+        }
+        .repayAlert1 img {
+            display: block;
+            position: absolute;
+            bottom: .3rem;
+            left: .4rem;
+            width: 2.2rem;
+        }
+        .alert1List1 {
+            position: absolute;
+            top: .1rem;
+            left: .2rem;
+            width: 2.2rem;
+            padding: .2rem;
+        }        
+        .alert1List2 {
+            position: absolute;
+            top: .6rem;
+            left: .2rem;
+            width: 2.2rem;
+            padding: .2rem;
+            font-weight: 700;
+        }        
+        .alert1List3 {
+            position: absolute;
+            bottom: .5rem;
+            left: .2rem;
+            width: 2.2rem;
+            padding: .2rem;
+        }
+        .alert1List3 a {
+            color: rgb(255,86,78);
+        }
+
+        /*repayAlert2弹窗*/
+        .alert22 {
+            display: none;
+        }
+        .repayAlert2 {
+            background-repeat: no-repeat;
+            background-image: url("../images/underline_repay_2.png");
+            background-size: 80% auto;
+            background-position: center center;
+            background-color: #fff;
+            border-radius: 5px;
+            height: 4.5rem;
+            width: 2.95rem;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            margin-left: -1.5rem;
+            margin-top: -4.4rem;
+            z-index: 30;
+        }
+        .repayAlert2 img {
+            display: block;
+            position: absolute;
+            bottom: .3rem;
+            left: .4rem;
+            width: 2.2rem;
+        }
+        .alert2List1 {
+            position: absolute;
+            top: .1rem;
+            left: .2rem;
+            width: 2.2rem;
+            padding: .2rem;
+        }        
+        .alert2List2 {
+            position: absolute;
+            top: .6rem;
+            left: .2rem;
+            width: 2.2rem;
+            padding: .2rem;
+            font-weight: 700;
+        }        
+        .alert2List3 {
+            position: absolute;
+            bottom: .5rem;
+            left: .2rem;
+            width: 2.2rem;
+            padding: .2rem;
+            text-align: center;
+        }
+        .alert2List4 {
+            position: absolute;
+            bottom: .6rem;
+            left: .2rem;
+            width: 2.2rem;
+            padding: .2rem;
+            text-align: center;
+        }
+        .repayAlert2 a {
+            color: rgb(255,86,78);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+
+
+    <div class="orderContent">
+        <div class="orderList">
+            <div class="orderTitle">编号</div>
+            <div class="orderValue"></div>
+        </div>
+        <div class="orderList">
+            <div class="orderTitle">应还款金额</div>
+            <div class="orderValue"></div>
+        </div>
+        <div class="orderList">
+            <div class="orderTitle">应还款日期</div>
+            <div class="orderValue"></div>
+        </div>
+    </div>
+    
+    <div class="orderTipsLine">
+        
+    </div>
+    <div class="repaymengtInf">
+        <div class="repaymengtInfList">支付宝账号</div>
+        <div class="repaymengtInfList"><span class="zfbzh">414660824@qq.com</span><div>
+
+        </div><button type="button" id="id_copy" data-clipboard-target=".zfbzh" data-clipboard-action="copy">一键复制</button></div><div class="repaymengtInfList">支付宝名称<br><span style="font-weight:400"><span class="app_company_name">深圳恒雍科技有限公司</span></span></div></div>
+    
+    <div class="orderTips" style="color:red;">
+        <!-- 请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请先进行账号认证；如遇到谨防欺诈提醒，点击【取消】关闭即可。转账成功后上传转账截图提交申请 -->
+    <!-- 请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请先进行账号认证；如遇到谨防欺诈提醒，点击【取消】关闭即可。转账成功后上传转账截图提交申请， <a>查看示例</a> -->
+    *支付宝线下还款时，请在备注信息中填写还款人信息，以便系
+统快速为您结清订单！
+</div>
+    <div class="repaymengtInf_">
+        <!-- <div class="repaymengtInfList">支付宝账号</div> -->
+        <div class="repaymengtInfList_">还款人信息</div>
+        <!-- <div class="repaymengtInfList"><span class="zfbzh">zhouy@yzqb.onaliyun.com</span><div></div> -->
+        <div class="repaymengtInfList_"><p class="zfbzh_" style="width:60%;display:inline-block;">刘思奇  1331654864648</p><div></div>
+            <button type="button" id="id_copy_"
+                    data-clipboard-target=".zfbzh_"
+                    data-clipboard-action="copy">
+                    一键复制
+            </button>
+        </div>
+    </div>
+    <div class="orderTips">
+            <!-- 请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请先进行账号认证；如遇到谨防欺诈提醒，点击【取消】关闭即可。转账成功后上传转账截图提交申请 -->
+        请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请先进行账号认证；如遇到谨防欺诈提醒，点击【取消】关闭即可。转账成功后上传转账截图提交申请， <a>查看示例</a>
+        <!-- 请按账单金额给上述账号转账，并备注您的姓名和注册手机号。为避免转入其它账号，转账时请仔细核对账号信息；转账成功后上传转账截图提交申请。 -->
+    </div>
+    <div class="uploadPic">
+        <div class="orderNum">
+            <a>支付宝账号</a>
+            <!-- <i></i> -->
+            <!-- <a>转账卡号</a> -->
+            <!-- <input type="text" id="alipayNo" placeholder="请输入还款使用的支付宝账号"> -->
+            <input type="text" id="alipayNo" placeholder="请输入还款使用的支付宝账号">
+        </div>
+    
+        <div class="feed_image">
+            <div class="feed_tit feed_tit1">上传图片：<span style="font-size: .12rem;color:rgb(133,133,133);">不超过3张</span>
+            </div>
+            <div class="photos">
+                <div class="photo_wap">
+                    <div class="photo btn_add_photo" id="btnAddPhoto">
+                        <img class="feed_image_item" src="../images/feed_add.png">
+                    </div>
+                    <input type="file" accept="image/*" class="upload" id="flContractPhoto" data-name="Contract" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="confirmBtn">
+        <div class="submitBtn">
+            提交
+        </div>
+    </div>
+
+    <!-- <div class="alert11">
+        <div class='layer_mask'></div>
+        <div class="repayAlert1">
+            <div class="alert1List1">线下支付宝转账可能会遇到以下几种情况，请按照指引操作</div>
+            <div class="alert1List2">1、对方账号认证</div>
+            <div class="alert1List3">请补全账号信息，输入“深圳”两字，并点击确认！</div>
+            <img src="../images/ikown.png" alt="" style="display:none;">
+            <div class="iknow_btn1" style="text-align:center;line-height: 50px;color:#3C95F0;border-top: 1px solid #ccc;position: absolute;bottom: 0;left: 0;width: 100%;">
+                我知道了
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="alert22">
+        <div class='layer_mask'></div>
+        <div class="repayAlert2">
+            <div class="alert2List1">线下支付宝转账，可能会遇到以下几种情况，请按照指引操作。</div>
+            <div class="alert2List2">1、风险提示</div>
+            <div class="alert2List3">点击【确认转账】，即可进行转账！</div> -->
+            <!-- <div class="alert2List4">点击<a>【取消】</a>，方可转账</div> -->
+            <!-- <img src="../images/ikown.png" alt="" style="display:none;">
+            <div class="iknow_btn2" style="text-align:center;line-height: 50px;color:#3C95F0;border-top: 1px solid #ccc;position: absolute;bottom: 0;left: 0;width: 100%;">
+                我知道了
+            </div>
+        </div>
+    </div> -->
+
+</body>
+    <!-- 脚本sd -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/upload.js?rev=@@hash"></script>
+    <script src="../js/clipboard.min.js"></script>
+    <script>
+        !function(global, layer, userUtil, dataUtil){
+            $("body").height(document.documentElement.clientHeight);
+            var sessionId =userUtil.sid();
+            var orderNo;
+            if(global.query){
+                orderNo=global.query['orderNo'];
+            }
+            // 上传图片
+            !function () {
+                new PicUpLoad("flContractPhoto", {
+                    formUrl:global.localUrl+'nw/upload/imageUpload',
+                    formData: {type:"OFF_LINE_REFUND_IMAGE",sessionId:userUtil.sid()},
+                    onFileRead: function (fileObj) {
+                        canUpload = true;
+                        var $p = $("<div class=\"photo_wap\"><div class=\"photo\"><input type=\"hidden\" class=\"photo_url\"/><img class=\"photo_bg\" /><div class=\"photo_upload\"><div class=\"photo_upload_progress\"><div class=\"photo_upload_bar\"><i></i></div><p class=\"photo_upload_txt\">正在读取文件</p></div><div class=\"photo_upload_cancel\"></div></div></div></div>");
+                        $p.find(".photo_upload_cancel").on("click", function () { _remove($p); });
+                        $p.insertBefore($("#btnAddPhoto").parents(".photo_wap"));
+                        photoLimit();
+                        fileObj.domBar = $p;
+                    },
+                    onLoadStart: function (e, fileObj) {
+                        var $p = fileObj.domBar;
+                        $p.find(".photo_upload_cancel ").hide();
+                        _showProgress($p);
+                    },
+                    onProgress: function (e, fileObj) {
+                        var $p = fileObj.domBar;
+                        var _loaded = e.loaded;
+                        var _total = e.total;
+                        var _per = Math.floor(100 * _loaded / _total);
+                        _showProgress($p, _per);
+                    },
+                    onSuccess: function (re, fileObj) {
+                        var $p = fileObj.domBar;
+                        $p.find(".photo_upload_progress ").hide();
+                        $p.find(".photo_upload_cancel ").show();
+                        $p.find(".photo_url").val(re.data.url);
+
+                        if (0 == $p.find(".photo_img").length) {
+                            $p.find(".photo_bg").after("<img class=\"photo_img\" />");
+                        }
+                        $p.find(".photo_img").attr("src", fileObj.localUri);
+                    },
+                      onFail: function (re, fileObj) {
+                          layer.tips("上传失败，请稍后重试");
+                          _remove(fileObj.domBar);
+                      },
+                      onError: function (fileObj) {
+                          layer.tips(global.netError);
+                          _remove(fileObj.domBar);
+                      }
+                }).init();
+
+                function _showProgress($p, per) {
+                    if (per) {
+                        per = 100 == per ? 99 : per;  //容错上传100%卡住的情况
+                        $p.find(".photo_upload_bar i").css("width", per + "%");
+                        $p.find(".photo_upload_txt").text("正在上传 " + per + "%");
+                    } else {
+                        $p.find(".photo_upload_bar i").css("width", "0");
+                        $p.find(".photo_upload_txt").text("正在准备上传");
+                    }
+                }
+
+                function _remove($p) {
+                    $p.remove();
+                    photoLimit();
+                }
+            }();
+
+            // 获取页面数据
+            function getModel() {
+                var _arr = [];
+                $(".photos .photo").each(function (k, v) {
+                    if (!$(v).hasClass("btn_add_photo")) {
+                        var _url = $(v).find(".photo_url").val();
+                        if (_url) {
+                            _arr.push(_url);
+                        } else {
+                            _arr.push("");
+                        }
+                    }
+                });
+                return {
+                    uploadImages: _arr
+                }
+            };
+
+          // 反馈字数计算
+          $("#feedText").keyup(function(){
+            $("#feedCount").text($("#feedText").val().length);
+          });
+          // 控制最多传几张图片
+          function photoLimit() {
+              var _max = 3;
+              if ($(".photos .photo").length >= _max + 1) {
+                  $("#btnAddPhoto").parents(".photo_wap").hide();
+              } else {
+                  $("#btnAddPhoto").parents(".photo_wap").show();
+              }
+          }
+
+          $(".submitBtn").click(function(){
+                $(".submitBtn").off("click");
+                var imagess=getModel().uploadImages.join("|");
+                var _data={
+                    "sessionId": sessionId,
+                    "orderNo": orderNo,
+                    "alipayNo": $("#alipayNo").val(),
+                    "images": imagess,
+                    "offineRefundType": 1
+                }
+                var zhifubao=$("#alipayNo").val();
+                if(!zhifubao||!imagess){
+                    layer.tips("参数不全，请输入支付宝账号并上传图片");
+                    setTimeout(function(){
+                        window.location.reload();
+                    },2000);
+                    return;
+                }
+                $.ajax({
+                    url: global.localUrl + "nw/orders/offlineRefund",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            layer.tips("提交成功");
+                            setTimeout(function(){
+                                window.location.href=global.localUrl +"index.html";
+                            },2000);
+                        }
+                        else{
+                            setTimeout(function(){
+                                window.location.reload();
+                            },2000);
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+          })
+
+
+            //初始化线下还款信息
+            function offlineRepay(){
+                var _data={
+                    "sessionId": sessionId,
+                    "orderNo": orderNo,
+                    "offineRefundType": 1
+                }
+                $.ajax({
+                    url: global.localUrl + "nw/orders/offlineRefundApply",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            $(".orderValue").eq(0).html(re.data.orderNo);
+                            $(".orderValue").eq(1).html(re.data.refundAmount);
+                            $(".orderValue").eq(2).html(re.data.refundTime);
+                            $(".repaymengtInfList").eq(3).html(re.data.sysChannelAccountResponse.alipayName);
+                            $(".repaymengtInfList>div").html(re.data.sysChannelAccountResponse.alipayNo);
+                            $(".zfbzh_").html(re.data.realName+'  '+re.data.mobileNumber);
+                        }
+                        else{
+
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            }
+            offlineRepay();
+
+
+            // 弹窗示例、提醒
+            $(".orderTips a").click(function(){
+                window.location.href= global.localUrl + "help/simple_zhifubao.html";
+            })
+
+            $('.orderNum i').click(function(){
+                var obj={
+                    title: "支付宝账号获取方式",
+                    content: "首先，请登录手机支付宝，点击【我的】—头像右边的>展开键—【个人主页】查询到当前登录的支付宝账户。",
+                    btnText: "我知道了",
+                    btnEvent: function () { }
+                }
+                layer.alert(obj);
+            })
+
+            //初始化页面时候的弹窗提醒
+            // $(".repayAlert1 img").click(function(){
+            $(".repayAlert1 .iknow_btn1").click(function(){
+                $(".alert11").css({"display":"none"});
+                $(".alert22").css({"display":"block"})
+            })
+            // $(".repayAlert2 img").click(function(){
+            $(".repayAlert2 .iknow_btn2").click(function(){
+                $(".alert22").css({"display":"none"})
+            })
+
+
+            //一键复制
+            $(".repaymengtInfList button").click(function(){
+                var clipboard = new ClipboardJS("#id_copy");
+                 layer.tips("复制成功")
+                clipboard.on("success",function (element) {//复制成功的回调
+                });
+                clipboard.on("error",function (element) {//复制失败的回调
+                })
+            })
+
+            $(".repaymengtInfList_ button").click(function(){
+                var clipboard = new ClipboardJS("#id_copy_");
+                 layer.tips("复制成功")
+                clipboard.on("success",function (element) {//复制成功的回调
+                });
+                clipboard.on("error",function (element) {//复制失败的回调
+                })
+            })
+        }(global, layer, userUtil, dataUtil)
+
+    </script>
+    <script>
+        $(document).ready(function(){
+            // setTimeout(function(){
+                if(localStorage.getItem('app_logo_info')){
+                    var app_logo_info = JSON.parse(localStorage.getItem('app_logo_info'));
+                    $('.app_company_name').html(app_logo_info.companyName);
+                }
+            // },500)
+        });
+    </script>
+</html>

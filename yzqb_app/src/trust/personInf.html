@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>个人信息</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            position: relative;
+        }
+        .cells {
+        }
+        .cells_title {
+            margin: 0;
+            padding: .12rem .4rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+            font-weight: 700;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+
+        .operatorContent {
+            width: 100%;
+            background: #f9f9f9;
+            overflow: hidden;
+            margin-top: .4rem;
+        }
+        .txt {
+			text-align: right;
+        }
+
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .2rem .4rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+        .cells_tips {
+            margin: 0.05rem .4rem;
+            font-size: .12rem;
+        }
+        .cells_tips a {
+            color: red;
+        }
+        .confirmBtn {
+        }
+        .submitBtn {
+            position: static;
+            margin: 0 .36rem;
+            bottom: 0;
+        }
+        select {
+            border: 0;
+            float: right;
+            width: 1.2rem;
+            height: .2rem; 
+            appearance:none;  
+            -moz-appearance:none;  
+            -webkit-appearance:none;  
+            background: url("../images/gogogo.png") ;
+            background-repeat: no-repeat;
+            background-size: 18% 100%;
+            background-position: 100% 0%;
+            /*为下拉小箭头留出一点位置，避免被文字覆盖*/ 
+            
+            padding: 0 .14rem;
+            font-size: .14rem;
+        }
+        .addressChoose {
+            width: .7rem;
+            background-size: 30% 100%;
+        }
+        select::-ms-expand { display: none; }
+        select option {
+            width: 1.2rem;
+            height: .2rem; 
+            font-size: .14rem;
+            background-color: white;
+        }
+        .cell_cn img {
+            position: absolute;
+            top: .12rem;
+            right: .4rem;
+            width: .2rem;
+            height: .2rem;
+        }
+        #education {
+            width: .8rem;
+            background-size: 25% 100%;
+        }
+        .companyTel1 {
+            width: 20%;
+            text-align: center;
+            float: right;
+            font-size: .14rem;
+            line-height: 1.41176471;
+        }
+        .companyTel2 {
+            width: 43%;
+            float: right;
+            text-align: right;
+            font-size: .14rem;
+            line-height: 1.41176471;
+        }
+        .henggang {
+            display: block;
+            float: right;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="cells_title">
+        <a>基本信息</a>
+    </div>
+	<div class="cells">
+        <div class="cell">
+            <label class="cell_hd">学历：</label>
+            <div class="cell_cn">
+                <select name="" class="selectChoose" id="education">
+                    <option value="0">请选择</option>
+                    <option value="硕士及以上">硕士及以上</option>
+                    <option value="本科">本科</option>
+                    <option value="大专">大专</option>
+                    <option value="中专/高中及以下">中专/高中及以下</option>
+                </select>
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">邮箱：</label>
+            <div class="cell_cn">
+                <input type="email" class="txt" placeholder="请输入邮箱" id="emailAddress" maxlength="24" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">微信号：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请输入微信号" maxlength="16" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">现居地址：</label>
+            <div class="cell_cn">
+                <select name="" class="selectChoose addressChoose" id="addressChoose1">
+                    <option value="0">县区</option>
+                </select>
+                <select name="" class="selectChoose addressChoose" id="addressChoose2">
+                    <option value="0">城市</option>
+                </select>
+                <select name="" class="selectChoose addressChoose" id="addressChoose3">
+                    <option value="0">省份</option>
+                </select>
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">现居详细地址：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请输入详细地址" maxlength="20" />
+            </div>
+        </div>
+        
+        <!-- //公司信息 -->
+        <div class="cell">
+            <label class="cell_hd">公司名称：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请输入公司名称" id="companyName" maxlength="16" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">公司电话：</label>
+            <div class="cell_cn">
+                <input type="text" placeholder="公司固定电话" class="companyTel2" maxlength="8" />
+                <span class="henggang"> — </span>
+                <input type="text" placeholder="区号" class="companyTel1" maxlength="4" /> 
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">公司地址：</label>
+            <div class="cell_cn">
+                <select name="" class="selectChoose addressChoose" id="addressCompany1">
+                    <option value="0">县区</option>
+                </select>
+                <select name="" class="selectChoose addressChoose" id="addressCompany2">
+                    <option value="0">城市</option>
+                </select>
+                <select name="" class="selectChoose addressChoose" id="addressCompany3">
+                    <option value="0">省份</option>
+                </select>
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">公司详细地址：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请输入详细地址" id="companyAddressDetail" maxlength="20" />
+            </div>
+        </div>
+    </div>
+
+
+	</div>
+
+    <div class="operatorContent confirmBtn">
+        <div class="submitBtn">
+            提交
+        </div>
+    </div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer){       
+        	$("body").height(document.documentElement.clientHeight);
+            var sessionId=userUtil.sid(),provinceName,cityName,districtName,provinceNameCompany,cityNameCompany,districtNameCompany;
+            var _data={
+                "sessionId": sessionId
+            };
+            $(".tip i").click(function(){
+                if($(".tip i img").attr('src')=="../images/bingo.png"){
+                    $(".tip i img").attr('src',"../images/noBingo.png");
+                    $(".confirmBtn img").attr('src',"../images/confirmBtn.png");
+                    $(".confirmBtn").off("click");
+                }else {
+                    $(".tip i img").attr('src',"../images/bingo.png");
+                    $(".confirmBtn img").attr('src',"../images/checkInfBtn.png");
+                    $(".confirmBtn").click(function(){
+
+                    })
+                }
+            })
+            
+            //  验证码
+            $("#btnCode").on("click", function () {
+                var $this = $(this);
+                if (!$this.hasClass("dis")) {
+                    $this.addClass("dis");
+                    $.ajax({
+                        url: global.localUrl + "web/credit/zhimaAuthH5",
+                        type: "post",
+                        data: JSON.stringify(_data),
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (re) {
+                            if (1 == re.code) {
+                                showWaitTips();
+                            }
+                            else{
+                                $this.removeClass("dis");
+                                layer.tips(re.message);
+                            }
+                        },
+                        error: function () {
+                            $this.removeClass("dis");
+                            layer.tips(global.netError);
+                        }
+                    });
+                }
+            });
+            
+            // 验证码倒计时
+            function showWaitTips() {
+                var $btnCode = $("#btnCode");
+                var s = 60;
+                $btnCode.text("已发送(" + s + ")").addClass("dis");
+                var sv = setInterval(function () {
+                    if (s > 1) {
+                        s--;
+                        $btnCode.text("已发送(" + s + ")");
+                    } else {
+                        $btnCode.text("重新获取").removeClass("dis");
+                        clearInterval(sv);
+                    }
+                }, 1000);
+            };
+
+            //本人省市县列表获取
+            function getAddress(id,type){
+                console.log(type+"_____"+id)
+                var _data={
+                    "sessionId": sessionId,
+                    "id": id,
+                    "type": type
+                }
+                $.ajax({
+                    url: global.localUrl + "system/provinceCityList",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            var provinceList=re.data.provinceList;
+                            var cityList=re.data.cityList;
+                            var districtList=re.data.districtList;
+                            var _html='';
+                            if(type==1){
+                                $("#addressChoose3").html('<option value="0">省份</option>');
+                                for(var i=0;i<provinceList.length;i++){
+                                    _html+=('<option value="'+provinceList[i].provinceId+'">'+provinceList[i].provinceName+'</option>');
+                                }
+                                $("#addressChoose3").append(_html);
+                            }else if(type==2){
+                                $("#addressChoose2").html('<option value="0">城市</option>');
+                                for(var i=0;i<cityList.length;i++){
+                                    _html+=('<option value="'+cityList[i].cityId+'">'+cityList[i].cityName+'</option>');
+                                }
+                                $("#addressChoose2").append(_html);  
+                            }else if(type==3){
+                                $("#addressChoose1").html('<option value="0">县区</option>');
+                                for(var i=0;i<districtList.length;i++){
+                                    _html+=('<option value="'+districtList[i].districtId+'">'+districtList[i].districtName+'</option>');
+                                }
+                                $("#addressChoose1").append(_html);  
+                            }
+                            
+                        }
+                        else{
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            }
+            getAddress(1,1);
+            $("#addressChoose1").on("change",function(){
+                districtName=$("#addressChoose1")[0].options[$("#addressChoose1")[0].selectedIndex].text;
+                
+
+            })
+            $("#addressChoose2").on("change",function(){
+                cityName =$("#addressChoose2")[0].options[$("#addressChoose2")[0].selectedIndex].text;
+                getAddress($("#addressChoose2").val(),3);
+            })
+            $("#addressChoose3").on("change",function(){
+                provinceName=$("#addressChoose3")[0].options[$("#addressChoose3")[0].selectedIndex].text;
+                getAddress($("#addressChoose3").val(),2);
+            })
+
+            // 公司地址：
+            //省市县列表获取
+            function getCompanyAddress(id,type){
+                console.log(type+"_____"+id)
+                var _data={
+                    "sessionId": sessionId,
+                    "id": id,
+                    "type": type
+                }
+                $.ajax({
+                    url: global.localUrl + "system/provinceCityList",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            var provinceList=re.data.provinceList;
+                            var cityList=re.data.cityList;
+                            var districtList=re.data.districtList;
+                            var _html='';
+                            if(type==1){
+                                $("#addressCompany3").html('<option value="0">省份</option>');
+                                for(var i=0;i<provinceList.length;i++){
+                                    _html+=('<option value="'+provinceList[i].provinceId+'">'+provinceList[i].provinceName+'</option>');
+                                }
+                                $("#addressCompany3").append(_html);
+                            }else if(type==2){
+                                $("#addressCompany2").html('<option value="0">城市</option>');
+                                for(var i=0;i<cityList.length;i++){
+                                    _html+=('<option value="'+cityList[i].cityId+'">'+cityList[i].cityName+'</option>');
+                                }
+                                $("#addressCompany2").append(_html);  
+                            }else if(type==3){
+                                $("#addressCompany1").html('<option value="0">县区</option>');
+                                for(var i=0;i<districtList.length;i++){
+                                    _html+=('<option value="'+districtList[i].districtId+'">'+districtList[i].districtName+'</option>');
+                                }
+                                $("#addressCompany1").append(_html);  
+                            }
+                            
+                        }
+                        else{
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            }
+            getCompanyAddress(1,1);
+            $("#addressCompany1").on("change",function(){
+                districtNameCompany =$("#addressCompany1")[0].options[$("#addressCompany1")[0].selectedIndex].text;
+                
+
+            })
+            $("#addressCompany2").on("change",function(){
+                cityNameCompany =$("#addressCompany2")[0].options[$("#addressCompany2")[0].selectedIndex].text;
+                getCompanyAddress($("#addressCompany2").val(),3);
+            })
+            $("#addressCompany3").on("change",function(){
+                provinceNameCompany=$("#addressCompany3")[0].options[$("#addressCompany3")[0].selectedIndex].text;
+                getCompanyAddress($("#addressCompany3").val(),2);
+            })
+
+
+
+            // 提交/
+            $(".submitBtn").click(function(){
+                var _data={
+                    "email": $(".cell_cn input").eq(0).val(),
+                    "socialAccount": $(".cell_cn input").eq(1).val(),
+                    "academic": $("#education").val(),
+                    "inhabit": (provinceName+cityName+districtName),
+                    "detailed":  $(".cell_cn input").eq(2).val(),
+                    "sessionId": sessionId,
+                    "companyName": $("#companyName").val(),
+                    "companyPhone": $(".companyTel1").val()+$(".companyTel2").val(),
+                    "companyAdress": (provinceNameCompany+cityNameCompany+districtNameCompany),
+                    "companyDetailAdress": $("#companyAddressDetail").val()
+                };
+                for(var e in _data){
+                    if(!_data[e]){layer.tips("请填写完整信息");return;}
+                }
+                if(!(checkTel($(".companyTel1").val()+"-"+$(".companyTel2").val()))){
+                    layer.tips("公司电话号码格式不正确");
+                    return;
+                }
+                // email（邮箱），socialAccount（微信号），academic（学历），inhabit（现居地址），detailed（详细地址）,sessionID
+                $.ajax({
+                    url: global.localUrl + "web/credit/addUserDetailMsg",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            layer.tips("认证成功");
+                            setTimeout(function(){
+                                window.location.href=global.localUrl +"trust/identification.html";
+                            },2000);
+                        }
+                        else{
+
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            })
+
+            // 邮箱校验
+            $("#emailAddress").blur(function (){
+                if ($("#emailAddress").val().search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1)
+                return true;
+                else
+                layer.tips("邮箱格式不正确");
+            })
+            
+            function checkTel(tel)
+            {
+               var phone =/^0\d{2,3}-?[0-9]{7,8}$/;
+               return phone.test(tel);
+            }
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

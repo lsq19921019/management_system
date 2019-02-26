@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0023)http://www.verysao.com/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>DragonWars</title>
+  <!--<base href="/">--><base href=".">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="http://www.verysao.com/favicon.ico">
+  <script src="../js/game/hm.js"></script><script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?aff18d023aacfdb128c216aefb0f526d";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>    
+<style type="text/css">/* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0; }
+
+html, body {
+  height: 100%;
+  width: 100%; }
+</style><style>.container[_ngcontent-c0] {
+  width: 100%;
+  height: 100%;
+  background-color: #87CEFA;
+  overflow: hidden; }
+
+.ground[_ngcontent-c0] {
+  background-color: #fff;
+  box-shadow: 0 6px 14px 0 rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(0, 0, 0, 0.08); }</style><style>#joystick[_ngcontent-c1] {
+  position: fixed;
+  left: 40px;
+  bottom: 40px; }</style><style>#speedUp[_ngcontent-c2] {
+  position: fixed;
+  right: 40px;
+  bottom: 40px; }</style><style>.menu[_ngcontent-c3] {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+  color: #000;
+  text-align: center; }
+  .menu[_ngcontent-c3]   .menu-list[_ngcontent-c3] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    list-style: none; }
+    .menu[_ngcontent-c3]   .menu-list[_ngcontent-c3]   .menu-item[_ngcontent-c3] {
+      line-height: 50px;
+      height: 50px;
+      font-size: 20px; }
+      .menu[_ngcontent-c3]   .menu-list[_ngcontent-c3]   .menu-item[_ngcontent-c3]:hover {
+        background-color: #eee; }
+      .menu[_ngcontent-c3]   .menu-list[_ngcontent-c3]   .menu-item[_ngcontent-c3]   button[_ngcontent-c3] {
+        height: 100%;
+        width: 100%;
+        font-size: 18px;
+        border: none;
+        background: none; }
+  .menu[_ngcontent-c3]   .title[_ngcontent-c3] {
+    font-size: 40px;
+    line-height: 50px;
+    height: 50px;
+    margin: 30px; }</style><style>.rank[_ngcontent-c4] {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 80px;
+  min-height: 50px;
+  border-radius: 10px;
+  background-color: rgba(43, 78, 233, 0.1);
+  text-align: center; }
+
+.score[_ngcontent-c4] {
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 40px; }
+
+.time[_ngcontent-c4] {
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 40px;
+  width: 100%; }</style><style>.container[_ngcontent-c5] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.95);
+  text-align: center;
+  padding: 10vh 0;
+  box-sizing: border-box;
+  color: white; }
+
+.title[_ngcontent-c5] {
+  height: 20vh;
+  line-height: 20vh;
+  font-size: 50px;
+  margin: 5vh 0; }
+
+.result[_ngcontent-c5] {
+  height: 15vh;
+  line-height: 15vh;
+  font-size: 22px;
+  font-weight: 600; }
+
+.closeBtn[_ngcontent-c5] {
+  margin-top: 5vh;
+  color: white;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  border: none;
+  background: none; }</style></head>
+<body>
+  <app-root _nghost-c0="" ng-version="5.1.3"><audio _ngcontent-c0="" loop="">
+  <source _ngcontent-c0="" src="/assets/bgm.mp3" type="audio/mpeg">
+</audio>
+<div _ngcontent-c0="" class="container">
+  <canvas _ngcontent-c0="" class="ground" height="1000" width="1000" style="width: 800px; height: 800px;">
+  </canvas>
+</div>
+<app-joystick _ngcontent-c0="" _nghost-c1="" ng-reflect-mode="0"><canvas _ngcontent-c1="" id="joystick" height="36" width="36">
+
+</canvas></app-joystick>
+<app-speed-up _ngcontent-c0="" _nghost-c2=""><canvas _ngcontent-c2="" id="speedUp" height="36" width="36">
+
+</canvas></app-speed-up>
+<app-menu _ngcontent-c0="" _nghost-c3="" ng-reflect-visibility="true"><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-c3="" class="menu">
+  <ul _ngcontent-c3="" class="menu-list">
+    <h2 _ngcontent-c3="" class="title">贪吃蛇</h2>
+    <li _ngcontent-c3="" class="menu-item">
+      <button _ngcontent-c3=""> 开始游戏 </button>
+    </li>
+<!--     <li _ngcontent-c3="" class="menu-item">
+      <button _ngcontent-c3="" disabled="disabled">创建房间</button>
+    </li>
+    <input _ngcontent-c3=""> 
+    <li _ngcontent-c3="" class="menu-item">
+      <button _ngcontent-c3="" disabled="disabled">进入房间</button>
+    </li> -->
+  </ul>
+  <!--bindings={}-->
+</div>
+</app-menu>
+<app-rank _ngcontent-c0="" _nghost-c4=""><div _ngcontent-c4="" class="rank">
+  <div _ngcontent-c4="" class="score">
+    得分  
+  </div>
+  <div _ngcontent-c4="" class="time">
+    时间  0
+  </div>
+</div></app-rank>
+<app-gameover _ngcontent-c0="" _nghost-c5="" ng-reflect-visibility="false"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-gameover></app-root>
+<script type="text/javascript" src="../js/game/inline.bundle.js"></script><script type="text/javascript" src="../js/game/polyfills.bundle.js"></script><script type="text/javascript" src="../js/game/styles.bundle.js"></script><script type="text/javascript" src="../js/game/vendor.bundle.js"></script><script type="text/javascript" src="../js/game/main.bundle.js"></script>
+
+</body></html>

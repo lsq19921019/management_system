@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>绑定联系人</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        .cells {
+            /*margin-top: .2rem;*/
+        }
+        .cells_title {
+            margin: 0;
+            padding: .12rem .4rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+            font-weight: 700;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+
+        .operatorContent {
+            width: 100%;
+            background: #f9f9f9;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0.2rem;
+        }
+        .txt {
+			text-align: right;
+        }
+
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .2rem .4rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+        .cells_tips {
+            margin: 0.05rem .4rem;
+            font-size: .12rem;
+        }
+        .cells_tips a {
+            color: red;
+        }
+        .confirmBtn {
+            position: absolute;
+            bottom: .48rem;
+        }
+        .submitBtn {
+            position: static;
+            margin: 0 .36rem;
+        }
+        .cells_line {
+            height: .1rem;
+            width: 100%;
+        }
+
+        select {
+            border: 0;
+            float: right;
+            width: 1.2rem;
+            height: .2rem; 
+            appearance:none;  
+            -moz-appearance:none;  
+            -webkit-appearance:none;  
+            background: url("../images/gogogo.png") ;
+            background-repeat: no-repeat;
+            background-size: 20% 100%;
+            background-position: 100% 0%;
+            /*为下拉小箭头留出一点位置，避免被文字覆盖*/ 
+
+            padding: 0 .14rem;
+            font-size: .14rem;
+        }
+        select::-ms-expand { display: none; }
+        select option {
+            width: 1.2rem;
+            height: .2rem; 
+            font-size: .14rem;
+            background-color: white;
+        }
+        .cell_cn img {
+            position: absolute;
+            top: .12rem;
+            right: .4rem;
+            width: .2rem;
+            height: .2rem;
+        }
+        input:disabled{
+            background-color: white;
+        }
+        .telBtn {
+            background-color: white;
+            width: .6rem;
+            height: .27rem;
+            position: absolute;
+            padding: 0rem .2rem;
+            bottom: .5rem;
+            right: .1rem;
+        }
+        .telBtn img {
+            display: block;
+            float: right;
+            height: 100%;
+        }
+        select {
+            opacity: .6;
+        }
+        .cells input {
+            padding-right: .4rem;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+	<div class="cells firstContact">
+        <div class="cell">
+            <label class="cell_hd">第一联系人关系：</label>
+            <div class="cell_cn">
+                <select name="" class="selectChoose" id="">
+                    <option value="">请选择</option>
+                    <option value="父亲/母亲">父亲/母亲</option>
+                    <option value="丈夫/妻子">丈夫/妻子</option>
+                    <option value="儿子/女儿">儿子/女儿</option>
+                    <option value="兄弟/姐妹">兄弟/姐妹</option>
+                </select>
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">第一联系人姓名：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" id="firstTxtName" disabled=disabled maxlength="4" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">第一联系人手机号：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" id="firstTxtTel" disabled=disabled maxlength="11" />
+            </div>
+        </div>
+        <div class="telBtn"><img src="../images/telBtn.png" alt=""></div>
+	</div>
+
+    <div class="cells_line">
+    </div>
+    <div class="cells secondContact">
+        <div class="cell">
+            <label class="cell_hd">第二联系人关系：</label>
+            <div class="cell_cn">
+                <select name="" class="selectChoose" id="">
+                    <option value="">请选择</option>
+                    <option value="父亲/母亲">父亲/母亲</option>
+                    <option value="丈夫/妻子">丈夫/妻子</option>
+                    <option value="儿子/女儿">儿子/女儿</option>
+                    <option value="兄弟/姐妹">兄弟/姐妹</option>
+                </select>
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">第二联系人姓名：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" id="secondTxtName" disabled=disabled maxlength="4" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">第二联系人手机号：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="" id="secondTxtTel" disabled=disabled maxlength="11" />
+            </div>
+        </div>
+        <div class="telBtn"><img src="../images/telBtn.png" alt=""></div>
+    </div>
+    <div class="operatorContent confirmBtn">
+        <div class="submitBtn">
+            提交
+        </div>
+<!--         <div class="cells_tips">
+            <span>忘记运营商服务密码？</span><a href="">点这里</a>
+        </div> -->
+    </div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+
+        (function(global,userUtil,layer){
+            var name1,name2,tel1,tel2,phoneNumbers,currentNum;
+            var sessionId=userUtil.sid();
+        	$("body").height(document.documentElement.clientHeight);
+            $(".tip i").click(function(){
+                if($(".tip i img").attr('src')=="../images/bingo.png"){
+                    $(".tip i img").attr('src',"../images/noBingo.png");
+                    $(".confirmBtn img").attr('src',"../images/confirmBtn.png");
+                    $(".confirmBtn").off("click");
+                }else {
+                    $(".tip i img").attr('src',"../images/bingo.png");
+                    $(".confirmBtn img").attr('src',"../images/checkInfBtn.png");
+                    $(".confirmBtn").click(function(){
+
+                    })
+                }
+            })
+
+            //判断填写还是修改，如果修改，加载内容
+            $.ajax({
+                url: global.localUrl + "nw/orders/getInfoComplete",
+                type: "post",
+                data: JSON.stringify({"sessionId": userUtil.sid()}),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    if (1 == re.code) {
+                        if(re.data.marriage){
+                            $(".firstContact .cell_cn select").val(re.data.kinship),
+                            $("#firstTxtName").val(re.data.immediateRelativesName);//公司名称
+                            $("#firstTxtTel").val(re.data.immediateRelativesMobile);//公司省市区
+                            $(".secondContact .cell_cn select").val(re.data.secondKinship),
+                            $("#secondTxtName").val(re.data.secondRelativesName);//公司名称
+                            $("#secondTxtTel").val(re.data.secondRelativesMobile);//公司省市区
+                            name1=re.data.immediateRelativesName;
+                            tel1=re.data.immediateRelativesMobile;
+                            name2=re.data.secondRelativesName
+                            tel2=re.data.secondRelativesMobile;
+                        }
+                    }
+                    else{
+
+                        layer.tips(re.message);
+                    }
+                },
+                error: function () {
+                    layer.tips(global.netError);
+                }
+            });
+
+            //获取通讯录
+            $(".telBtn img").eq(0).click(function(){
+                currentNum=1;
+                jsBridgess.getContacts();
+            })
+            $(".telBtn img").eq(1).click(function(){
+                currentNum=2;
+                jsBridgess.getContacts();
+
+            })
+            //提交
+            $(".submitBtn").click(function(){
+                
+                var orderNo=localStorage.getItem("orderNo");
+
+                //上传通讯录
+
+                // if(phoneNumbers){
+                //     $.ajax({
+                //         url: global.localUrl + "nw/orders/saveHbUserContact",
+                //         type: "post",
+                //         data: JSON.stringify({"contactStr": String(phoneNumbers),"sessionId": sessionId}),
+                //         contentType: 'application/json;charset=utf-8',
+                //         success: function (re) {
+
+                //         },
+                //         error: function () {
+                //             layer.tips(re.message);
+                //         }
+                //     });
+                // }
+                var _data={
+                    "sessionId": sessionId,
+                    "kinship": $(".firstContact .cell_cn select").val(),
+                      "relativesMobile": tel1,
+                      "relativesName": name1,
+                      "secondKinship": $(".secondContact .cell_cn select").val(),
+                      "secondRelativesMobile": tel2,
+                      "secondRelativesName": name2,
+                    };
+                    
+                    for(e in _data){
+                       if(!_data[e]) {
+                        layer.tips("请填写完整信息");
+                        return;
+                       }
+                    }
+
+                $.ajax({
+                    url: global.localUrl + "/nw/orders/contactInfo",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            layer.tips("认证成功");
+                            setTimeout(function(){
+                                window.location.href=global.localUrl +"trust/identification.html";
+                            },2000);
+                        }
+                        else{
+                            setTimeout(function(){
+                                window.location.reload();
+                            },2000);
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            });
+
+
+            //app交互
+            var jsBridgess = (function () {   
+
+                function connectWebViewJavascriptBridge(callback) {
+                    if (window.WebViewJavascriptBridge) {
+                        callback(WebViewJavascriptBridge);
+                    } else {
+                        document.addEventListener('WebViewJavascriptBridgeReady', function () {
+                            callback(WebViewJavascriptBridge);
+                        }, false)
+                    }
+                }
+                connectWebViewJavascriptBridge(function (WebViewJavascriptBridge) {
+                    WebViewJavascriptBridge.init(function (message, responseCallback) {
+
+                    });
+                    WebViewJavascriptBridge.registerHandler("contactsList", function(data, responseCallback) {
+                        phoneNumbers=(data);
+                        $.ajax({
+                            url: global.localUrl + "nw/orders/saveHbUserContact",
+                            type: "post",
+                            data: JSON.stringify({"contactStr": (phoneNumbers),"sessionId": sessionId}),
+                            contentType: 'application/json;charset=utf-8',
+                            success: function (re) {
+                             
+                            },
+                            error: function () {
+                                layer.tips(re.message);
+                            }
+                        });
+                    });
+                    WebViewJavascriptBridge.registerHandler("contacts", function(data, responseCallback) {
+                        var datas=JSON.parse(data);
+                        
+                        if(currentNum==1){
+                            name1=datas.name;
+                            tel1=datas.phone;
+                            $("#firstTxtName").val(datas.name);
+                            $("#firstTxtTel").val(datas.phone);
+                        }else {
+                            name2=datas.name;
+                            tel2=datas.phone;
+                            $("#secondTxtName").val(datas.name);
+                            $("#secondTxtTel").val(datas.phone);
+                        }
+                    });
+
+                    fn && fn();
+
+                })
+                return {
+                    init: function (fn) {
+                        connectWebViewJavascriptBridge(function (WebViewJavascriptBridge) {
+                            WebViewJavascriptBridge.init(function (message, responseCallback) {
+
+                            });
+
+                            fn && fn();
+
+                        })
+                    },
+                    copyWechat: function (obj) {
+                        WebViewJavascriptBridge.callHandler('copyWechat', { pageID: obj.pageID }, function (response) { });
+                    },
+                    saveQR: function (obj) {
+                        WebViewJavascriptBridge.callHandler('saveQR', { pageID: obj.pageID }, function (response) { });
+                    },
+                    showAppPage: function (obj) {
+                        WebViewJavascriptBridge.callHandler('showAppPage', { pageID: obj.pageID }, function (response) { });
+                    },
+                    jumpTo: function (obj) {
+                        WebViewJavascriptBridge.callHandler('jumpTo', {}, function (response) { });
+                    },
+                    showWebPage: function (obj) {
+                    WebViewJavascriptBridge.callHandler('showWebPage', { title: obj.title, pageUrl: obj.pageUrl }, function (response) { });
+                    },
+                    getSid: function (callback) {
+                        WebViewJavascriptBridge.callHandler('getSid', {}, function (response) { callback(response); });
+                    },       
+                    getContacts: function (callback) {
+                        WebViewJavascriptBridge.callHandler('getContacts', {}, function (response) { callback(response); });
+                    },
+                      getAppVersion: function (callback) {
+                          WebViewJavascriptBridge.callHandler('getAppVersion', {}, function (response) { callback(response); });
+                      }
+                }
+            })();
+
+
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

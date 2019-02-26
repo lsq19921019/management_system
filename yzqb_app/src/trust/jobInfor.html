@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>工作信息</title>
+    <meta charset="utf-8" />
+    <link href="../css/mobileSelect.css?rev=@@hash" rel="stylesheet" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        .cell_cn {
+            color: gray;
+        }
+        .cell_cn img {
+            float: right;
+            width: .2rem;
+            height: .2rem;
+        }
+        #btnCode {
+            color: rgb(255,85,78);
+        }
+        .cell .cell_cn .companyTel1 {
+            width: 20%;
+            text-align: center;
+            float: left;
+            font-size: .14rem;
+            line-height: 1.41176471;
+        }
+        .cell .cell_cn .companyTel2 {
+            width: 43%;
+            padding-left: .1rem;
+            float: left;
+            text-align: left;
+            font-size: .14rem;
+            line-height: 1.41176471;
+        }
+        .henggang {
+            display: block;
+            float: left;
+            font-weight: 700;
+        }
+        .cell_cn ::-webkit-input-placeholder{
+            color: gray;
+            font-size: .14rem;
+        }
+        .cell_cn input {
+            height: .2rem;
+            line-height: .2rem;
+            width: 100%;
+            font-size: .14rem;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+<!--     <div class="cells_title">
+        <a>个人信息</a>
+    </div> -->
+	<div class="cells">
+        <div class="cell">
+            <label class="cell_hd">公司名称：</label>
+            <div class="cell_cn">
+                <input id="companyName" type="text" placeholder="请填写您的公司名称">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">公司地址：</label>
+            <div id="trigger1" class="cell_cn">
+                <span>请选择您的公司所在地：</span>
+                <img src="../images/goForward.png" alt="">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">详细地址：</label>
+            <div class="cell_cn">
+                <input id="companyDetailAdress" type="text" placeholder="请填写详细的公司地址">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">公司类型：</label>
+            <div id="trigger2" class="cell_cn">
+                <span>请选择您的公司类型</span>
+                <img src="../images/goForward.png" alt="">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">工作年限：</label>
+            <div id="trigger3" class="cell_cn">
+                <span>请选择您在当前公司的工作年限</span>
+                <img src="../images/goForward.png" alt="">
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">月收入：</label>
+            <div class="cell_cn">
+                <input type="number" id="monthlyIncome" placeholder="请填写您的月收入，如5000">
+            </div>
+        </div>        
+        <div class="cell">
+            <label class="cell_hd">公司电话：</label>
+            <div class="cell_cn">
+                <input type="text" placeholder="区号" class="companyTel1" maxlength="4" /> 
+                <span class="henggang"> &nbsp—  &nbsp</span>
+                <input type="text" placeholder="座机号" class="companyTel2" maxlength="8" />
+            </div>
+        </div>
+	</div>
+
+        <div class="submitBtn">
+            提交
+        </div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../lib/mobileSelect.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer){       
+            var localH=localStorage.getItem("localH")
+            if(!localH){
+                localH=localStorage.setItem("localH",document.documentElement.clientHeight)
+            }
+            $("body").height(Number(localH));
+            
+            var sessionId=userUtil.sid(),userUuid=userUtil.userID(),bankId,bankCardName;
+            var marriageStatus=['未婚','已婚','离异'];
+            var homeProvince=['北京市','北京市','北京市'];
+            var homeCity=['待选择'];
+            var homeCounty=["待选择"];
+            var marriageStatus=['未婚','已婚','离异'];
+            var companyName,companyPhone,companyAdress,companyDetailAdress,companyType,workYear,monthlyIncome;
+
+            //判断填写还是修改，如果修改，加载内容
+            $.ajax({
+                url: global.localUrl + "nw/orders/getInfoComplete",
+                type: "post",
+                data: JSON.stringify({"sessionId": sessionId}),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    // alert(666);
+                    if (1 === re.code) {
+                        // if(re.data.marriage){
+                            var tels=re.data.companyPhone;
+                            tesl=tels.split("-");
+                            console.log(re);
+                            $("#companyName").val(re.data.companyName);//公司名称
+                            $("#trigger1").text(re.data.companyAdress);//公司省市区
+                            $("#companyDetailAdress").val(re.data.companyDetailAdress) //居住详细地址
+                            $("#trigger2").text(re.data.companyType);//公司类型
+                            $("#trigger3").text(re.data.workYear);//工作年限
+                            $("#monthlyIncome").val(re.data.monthlyIncome); //微信号
+                            $(".companyTel1").val(tesl[0]);//区号
+                            $(".companyTel2").val(tesl[1]);//电话号码
+                        // }
+                    }
+                    else{
+
+                        layer.tips(re.message);
+                    }
+                },
+                error: function () {
+                    layer.tips(global.netError);
+                }
+            });
+
+            //省市县地区选择
+            $.ajax({
+                url: global.localUrl + "nw/system/provinceCityList",
+                type: "post",
+                data: JSON.stringify({"sessionId": sessionId,"id": 1,"type": 1}),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    if (1 == re.code) {
+                        var provinceList=re.data.provinceList,homeProvince=[];
+                        for(var i in provinceList){
+                            homeProvince.push(provinceList[i].provinceName)
+                        }
+                        var mobileSelect1 = new MobileSelect({
+                            trigger: '#trigger1',
+                            title: '居住地区',
+                            wheels: [
+                                        {data: homeProvince},
+                                        {data: homeCity},
+                                        {data: homeCounty}
+                                    ],
+                            position:[0,0,0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                            transitionEnd:function(indexArr, data){
+
+                                $.ajax({
+                                    url: global.localUrl + "nw/system/provinceCityList",
+                                    type: "post",
+                                    data: JSON.stringify({"sessionId": sessionId,"id": (indexArr[0]+1),"type": 2}),
+                                    contentType: 'application/json;charset=utf-8',
+                                    success: function (re) {
+                                        if (1 == re.code) {
+                                            var cityList=re.data.cityList,newCityList=[];
+                                            var newCityIdList=[];
+                                            for(var i in cityList){
+                                                newCityList.push(cityList[i].cityName)
+                                                newCityIdList.push(cityList[i].cityId)
+                                            }
+                                            homeCity=newCityList;
+
+                                            mobileSelect1.updateWheel(1,newCityList);
+                                            var cityId=indexArr[1];
+                                            xiancheng(cityId,newCityIdList);
+                                        }
+                                        else{
+                                            layer.tips(re.message);
+                                        }
+                                    },
+                                    error: function () {
+                                        layer.tips(global.netError);
+                                    }
+                                });
+                                function xiancheng(cityId,newCityIdList){
+                                    $.ajax({
+                                        url: global.localUrl + "nw/system/provinceCityList",
+                                        type: "post",
+                                        data: JSON.stringify({"sessionId": sessionId,"id": newCityIdList[cityId],"type": 3}),
+                                        contentType: 'application/json;charset=utf-8',
+                                        success: function (re) {
+                                            if (1 == re.code) {
+                                                var districtList=re.data.districtList,newDistrictList=[];
+                                                for(var i in districtList){
+                                                    newDistrictList.push(districtList[i].districtName)
+                                                }
+                                                mobileSelect1.updateWheel(2,newDistrictList);
+                                                
+                                            }
+                                            else{
+                                                layer.tips(re.message);
+                                            }
+                                        },
+                                        error: function () {
+                                            layer.tips(global.netError);
+                                        }
+                                    });
+                                }
+
+
+                            },
+                            callback:function(indexArr, data){
+                                companyAdress=data;
+                            }
+                        });
+                    }
+                    else{
+                        layer.tips(re.message);
+                    }
+                },
+                error: function () {
+                    layer.tips(global.netError);
+                }
+            });
+
+            var mobileSelect2 = new MobileSelect({
+                trigger: '#trigger2',
+                title: '公司类型',
+                wheels: [
+                            {data: ["政府或企事业单位","央企国企","外资企业","上市公司","民营企业","个体工商户"]}
+                        ],
+                position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                transitionEnd:function(indexArr, data){
+                    companyType=data;
+                },
+                callback:function(indexArr, data){
+                    companyType=data;
+                }
+            });
+
+            var mobileSelect3 = new MobileSelect({
+                trigger: '#trigger3',
+                title: '工作年限',
+                wheels: [
+                            {data: ["1-5个月","6-11个月","1-3年","4-7年","7年以上"]}
+                        ],
+                position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                transitionEnd:function(indexArr, data){
+                    workYear=data;
+                },
+                callback:function(indexArr, data){
+                    workYear=data;
+                }
+            });
+
+            // 提交/
+            $(".submitBtn").click(function(){
+
+
+                if(typeof(companyAdress)=="object"){
+                    companyAdress=companyAdress[0]+companyAdress[1]+companyAdress[2]
+                }
+                if(typeof(companyType)=="object"){
+                    companyType=companyType[0];
+                }
+
+                if(typeof(workYear)=="object"){
+                    workYear=workYear[0];
+                }
+                var _data={
+                    "sessionId": sessionId,
+                    "companyName": $("#companyName").val(),
+                    "companyPhone": $(".companyTel1").val()+"-"+$(".companyTel2").val(),
+                    "companyAdress": $("#trigger1").text(),
+                    "companyDetailAdress": $("#companyDetailAdress").val(),
+                    "companyType": $("#trigger2").text(),
+                    "workYear": $("#trigger3").text(),
+                    "monthlyIncome": Math.round($("#monthlyIncome").val())
+                };
+                console.log(_data);
+                for(var e in _data){
+                    if(!_data[e]){layer.tips("请填写完整信息");return;}
+                }
+                if(!(checkTel($(".companyTel1").val()+"-"+$(".companyTel2").val()))){
+                    layer.tips("公司电话号码格式不正确");
+                    return;
+                }
+                // email（邮箱），socialAccount（微信号），academic（学历），inhabit（现居地址），detailed（详细地址）,sessionID
+                $.ajax({
+                    url: global.localUrl + "nw/orders/workComplete",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            layer.tips("提交成功");
+                            setTimeout(function(){
+                                window.location.href=global.localUrl +"trust/identification.html";
+                            },800);
+                        }
+                        else{
+
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            })
+
+            // 邮箱校验
+            $("#emailAddress").blur(function (){
+                if ($("#emailAddress").val().search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1)
+                return true;
+                else
+                layer.tips("邮箱格式不正确");
+                $("#emailAddress").val("")
+            })
+            
+            function checkTel(tel)
+            {
+               var phone =/^0\d{2,3}-?[0-9]{7,8}$/;
+               return phone.test(tel);
+            }
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

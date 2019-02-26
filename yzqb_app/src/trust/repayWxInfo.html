@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>微信还款</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            background: rgb(246,246,246);
+            width: 3.75rem;
+            position: relative;
+        }
+        .repay_title{
+            padding-top: .28rem;
+            min-height: 1.22rem;
+            padding: .28rem .38rem 0;
+            background: #fff;
+            text-align: center;
+            margin-bottom: .1rem;
+        }
+        .repay_money{
+            font-size: .3rem;
+            margin: .03rem 0 .1rem;
+        }
+        .repay_tips{
+            font-size: .12rem;
+            text-align: left;
+            line-height: 1.6;
+        }
+        .repay_content{
+            background: #fff;
+            width: 100%;
+        }
+        .btn{
+            margin: 0 .36rem;
+            background: rgb(255,85,78);
+            color: #fff;
+            box-shadow: 1px 2px 2px #e2e2e2;
+            line-height: .4rem;
+            margin-top: 1.5rem;
+        }
+        .cell_cn{
+            text-align: right;
+            color:rgb(191,191,191);
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+
+    <div class="hide" id="repayWxInfoBox">
+        <div class="repay_title">
+            <div id="refundTime"></div>
+            <div class="repay_money" id="refundAmount"></div>
+            <div class="repay_tips">请确保您的还款账户金额充足，还款成功后，订单会自动更改为已还款状态。</div>
+        </div>
+
+        <div class="repay_content cells">
+            <div class="cell">
+                <div class="cell_hd">编号</div>
+                <div class="cell_cn" id="orderNo"></div>
+            </div>
+            <div class="cell">
+                <div class="cell_hd">本金</div>
+                <div class="cell_cn" id="applyAmount"></div>
+            </div>
+            <div class="cell">
+                <div class="cell_hd">利息</div>
+                <div class="cell_cn" id="interest"></div>
+            </div>
+            <div class="cell">
+                <div class="cell_hd">还款方式</div>
+                <div class="cell_cn">一次性还款付息</div>
+            </div>
+        </div>
+        <div class="btn" id="saveImg">立即支付</div>
+    </div>
+
+
+
+</body>
+    <!-- 脚本sd -->
+    <script src="../lib/zepto.min.js"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/upload.js?rev=@@hash"></script>
+    <script src="../js/clipboard.min.js"></script>
+    <script>
+        !function(global, layer, userUtil, dataUtil){
+
+            //初始化线下还款信息
+            function offlineRepay(){
+                var _data={
+                    orderNo: global.query['orderNo']
+                }
+                $.ajax({
+                    url: global.localUrl + "wallet/orders/initWechatRefund",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        layer.hideLoad();
+                        if (1 == re.code) {
+                            $('#repayWxInfoBox').removeClass('hide');
+                            $('#refundTime').html(re.data.refundTime+'应还款（元）');
+                            $('#refundAmount').html(re.data.refundAmount);
+                            $('#applyAmount').html(re.data.applyAmount);
+                            $('#interest').html(re.data.interest);
+                            $('#orderNo').html(re.data.orderNo);
+                        }
+                        else{
+                            window.location.replace('./repayWxFail.html');
+                        }
+                    },
+                    error: function () {
+                        layer.hideLoad();
+                        layer.tips(global.netError);
+                    }
+                });
+            }
+
+            offlineRepay();
+
+
+            $('#saveImg').on('click',function(){
+                layer.showLoad();
+                $.ajax({
+                    url: global.localUrl+'wallet/wechat/getOauthCode',
+                    type: 'post',
+                    data: JSON.stringify({
+                        reqUrl: global.localUrl+ "trust/repayWxgetOpenid.html?orderNo="+global.query['orderNo']
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        layer.hideLoad();
+                        if (1 == re.code) {
+                            window.location.href=re.data.redirectUrl;
+                            // window.location.replace(re.data.redirectUrl); 
+                        }
+                        else{
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.hideLoad();
+                        layer.tips(global.netError);
+                    }
+                });
+            });
+
+        }(global, layer, userUtil, dataUtil)
+
+    </script>
+</html>

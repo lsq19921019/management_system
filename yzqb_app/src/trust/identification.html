@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>认证中心</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            position: relative;
+        }
+        .cells_title {
+            margin-top: 0;
+            background-color: white;
+            padding: .12rem .2rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+        }
+        .cells_title img {
+            margin: 0.02rem .12rem;
+            height: .16rem;
+            width: .16rem;
+            float: left;
+            display: block;
+        }
+        .indentf {
+            margin: .16rem;
+            width: 3.43rem;
+            overflow: hidden;
+        }
+        .indentf_img {
+            width: 1.14rem;
+            height: 1.2rem;
+            float: left;
+        }
+        .indentf_img img {
+            width: 100%;
+        }
+        div.submitBtn {
+            position:inherit;
+            left: inherit;
+            bottom:inherit;
+            margin:10px auto;
+            width: 3.2rem;
+            font-size: .18rem;
+            background-color: rgba(255,85,78,.7);
+        }
+        .layer_dialog .layer_dialog_ft::after, .layer_dialog .layer_dialog_hd:after {
+            border-top: 0px solid white;
+        }
+        .layer_dialog .layer_dialog_hd {
+            padding: .05rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="cells_title">
+        <a>基本信息</a><img src="../images/tip.png" alt="">
+    </div>
+    <div class='layer_dialog alert_box'>
+        <div class='layer_mask'>
+            <div style="width:80%;background-color: #fff;margin: 0 auto;border-radius: .1rem;margin-top: 2rem;">
+                <div style="text-align: center;font-size:.2rem;padding: .15rem;box-sizing:border-box;width:100%;">
+                    温馨提示
+                </div>
+                <div style="box-sizing:border-box;width:100%;padding:.3rem;padding-top:0;">
+                    <p>您绑定的银行卡已失效，需重新绑定银行卡后才能提交审核。</p>
+                    <p>支持绑定原来的银行卡和新银行卡！</p>
+                </div>
+                <div style="overflow:hidden;">
+                    <div id="cancelAlertBtn" style="color: #0099ff;text-align:center;border-top: 1px solid #ccc;padding: .15rem 0;width:50%;float: left;box-sizing: border-box;border-right: 1px solid #ccc;">暂不绑卡</div>
+                    <div id="confirmAlertBtn" style="color: #0099ff;text-align:center;border-top: 1px solid #ccc;padding: .15rem 0;width:50%;float: left;box-sizing: border-box;">立即绑卡</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='layer_dialog alert_box1'>
+        <div class='layer_mask'>
+            <div style="width:80%;background-color: #fff;margin: 0 auto;border-radius: .1rem;margin-top: 2rem;">
+                <div style="box-sizing:border-box;width:100%;padding:.3rem;"><p>您当前还有进行中的订单，需订单完结后
+                才能再次申请借款！</p></div>
+                <div id="confirmAlertBtn1" style="text-align:center;border-top: 1px solid #ccc;padding: .1rem 0;">知道了</div>
+            </div>
+        </div>
+    </div>
+    <div class="indentf">
+        <div class="indentf_img"><img src="../images/ident1.png" alt=""></div>
+        <div class="indentf_img"><img src="../images/ident2.png" alt=""></div>
+        <div class="indentf_img"><img src="../images/ident3.png" alt=""></div>
+        <div class="indentf_img"><img src="../images/ident4.png" alt=""></div>
+        <div class="indentf_img"><img src="../images/ident5.png" alt=""></div>
+        <div class="indentf_img"><img src="../images/ident6.png" alt=""></div>
+        <div class="indentf_img"><img src="../images/ident7.png" alt=""></div>
+    </div>
+    <div class="submitBtn">提交审核</div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        (function(global,userUtil,layer){        
+            // var btn_tag = '';
+            // if(global.query){
+            //     btn_tag = global.query['from'];
+            // }
+            // if(btn_tag==='myWallet'){
+            //     $('.submitBtn').hide();
+            // }
+            if(localStorage.getItem('fromWallet')){
+                $('.submitBtn').hide();
+            }
+            $("body").height(document.documentElement.clientHeight);
+            var mobile=localStorage.getItem("moblie");
+            var sessionId=userUtil.sid();
+            var orderNo=localStorage.getItem("orderNo");
+            var realName=localStorage.getItem("realName");
+            var idCard=localStorage.getItem("idCard");
+            var fromMywallet,moxierenzheng;
+            var arrList=[      //对照认证步骤和状态
+                {
+                    isClick:1,
+                    isDone:0,
+                    toUrl: "trust/checkInf.html"
+                },
+                {
+                    isClick:0,
+                    isDone:0,
+                    toUrl: "trust/personInfor.html"
+                },
+                {
+                    isClick:0,
+                    isDone:0,
+                    toUrl: "trust/jobInfor.html"
+                },
+                {
+                    isClick:0,
+                    isDone:0,
+                    toUrl: moxierenzheng
+                },
+                {
+                    isClick:0,
+                    isDone:0,
+                    toUrl: "trust/bindCard.html"
+                },
+                {
+                    isClick:0,
+                    isDone:0,
+                    toUrl: ""
+                },
+                {
+                    isClick:0,
+                    isDone:0,
+                    toUrl: "trust/contacts.html"
+                },{
+                    isClick:0,
+                    isDone:0,
+                    toUrl: "trust/contacts.html"
+                }
+            ];
+            if(global.query){
+                fromMywallet=global.query;
+            }
+            $('#cancelAlertBtn').on('click',function(){
+                $('.alert_box').removeClass('on');
+            });
+            $('#confirmAlertBtn').on('click',function(){
+                $('.alert_box').removeClass('on');
+                setTimeout(function(){
+                    //跳转到认证页面
+                    location.href = '../trust/bindCard.html';
+                },500);
+            });
+            $('#confirmAlertBtn1').on('click',function(){
+                $('.alert_box1').removeClass('on');
+            });
+            //获取身份证号码和姓名
+            function getIdcard(){
+                // $('.alert_box').removeClass('on');
+                $.ajax({
+                    url: global.localUrl + "nw/credit/getCompletion",
+                    type: "post",
+                    data: JSON.stringify({"sessionId": sessionId}),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        // if(re.code==1040){//验证银行卡
+                        //     // layer.tips("请重新绑定银行卡！");
+                        //     $('.alert_box').addClass('on');
+                        //     // setTimeout(function(){
+                        //     //     //跳转到认证页面
+                        //     //     location.href = '../trust/bindCard.html';
+                        //     // },500);
+                        //     return;
+                        // }else{
+                            var _data=re.data;
+                            idCard=_data.idCardNo;
+                            realName=_data.realName; 
+                            arrList[3].toUrl=moxierenzheng='moxie/index.html#/carrier?apiKey='+global.moXieApiKey+'&userId='+userUtil.mobile()+'&showTitleBar=NO&themeColor=ff554e&showAgreement=NO&quitOnLoginDone=1&loginParams={"phone":"'+userUtil.mobile()+'","name":"'+realName+'","idcard":"'+idCard+'"}&backUrl='+global.localUrl+'trust/operateRes.html';
+                            getProgress();
+                        // }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            }
+            getIdcard();
+
+
+            //获取认证进展状态
+            function getProgress(){
+                $.ajax({
+                    url: global.localUrl + "nw/users/getUserCertificationStatus",
+                    type: "post",
+                    data: JSON.stringify({"sessionId": sessionId}),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        if (1 == re.code) {
+                            arrList[0].isDone=re.data.idCardStatus;
+                            arrList[1].isDone=re.data.userInfoStatus;
+                            arrList[2].isDone=re.data.workInfoStatus;
+                            arrList[3].isDone=re.data.operatorStatus;
+                            arrList[4].isDone=re.data.userBankStatus;
+                            arrList[5].isDone=re.data.userLivingStatus;
+                            arrList[6].isDone=re.data.userContactStatus;
+                            $.each(arrList,function(index,value){
+                                if(value.isDone==1){
+                                    
+                                    $(".indentf_img").eq(index).html('<img src="../images/ident'+(index+1)+'Done.png" alt="">');
+                                    arrList[index+1].isClick=1;
+                                }
+                                if(arrList[index].isClick==1){
+                                    $(".indentf_img").eq(index).click(function(){
+                                        if(index!=5){
+                                            window.location.href=global.localUrl+value.toUrl;
+                                        }else{
+
+                                            function connectWebViewJavascriptBridge (callback) { if (window.WebViewJavascriptBridge) { callback(WebViewJavascriptBridge) } else { document.addEventListener( 'WebViewJavascriptBridgeReady' , function() { callback(WebViewJavascriptBridge) }, false ); } }
+                                            connectWebViewJavascriptBridge (function(bridge) { 
+                                            // bridge.registerHandler('JS Echo', function(data, responseCallback) { console.log("JS Echo called with:", data) responseCallback(data) }) 
+                                            bridge.callHandler('oliveness', {}, function responseCallback(responseData) { }) })
+
+                                        }
+                                    })
+                                }
+                            });
+
+                            if(arrList[6].isDone==1){
+                                $(".submitBtn").css("background-color","#EF0600").click(function(){
+                                    $.ajax({
+                                        url: global.localUrl + "nw/users/credit/submitCompletion",
+                                        type: "post",
+                                        data: JSON.stringify({"sessionId": sessionId}),
+                                        contentType: 'application/json;charset=utf-8',
+                                        success: function (re) {
+                                            if(re.code==1048){//验证银行卡
+                                                $('.alert_box1').addClass('on');
+                                                return;
+                                            }
+                                            if(re.code==1040){//验证银行卡
+                                                // layer.tips("请重新绑定银行卡！");
+                                                $('.alert_box').addClass('on');
+                                                // setTimeout(function(){
+                                                //     //跳转到认证页面
+                                                //     location.href = '../trust/bindCard.html';
+                                                // },500);
+                                                return;
+                                            }
+                                            if (1 == re.code) {
+                                                layer.tips("提交审核成功");
+                                                setTimeout(function(){
+                                                    window.location.href=global.localUrl+'/trust/applyRecord.html';
+                                                }, 1500);
+                                                return;
+                                            }else if(1046 == re.code){
+                                                layer.tips("请设置交易密码");
+                                                setTimeout(function(){
+                                                    window.location.href=global.localUrl+'trust/setPassword.html';
+                                                }, 1500);
+                                                return;
+                                            }else{
+                                                layer.tips(re.message);
+                                                return;
+                                            }
+                                        },
+                                        error: function () {
+                                            layer.tips(global.netError);
+                                                return;
+                                        }
+                                    });
+             
+                                });
+                                if(!browser.HYQ){
+                                    $(".indentf_img").eq(5).css({"display":"none"});
+                                    $(".indentf_img").eq(6).css({"display":"none"});
+                                }
+                            }else {
+                                if(!browser.HYQ){
+                                    $(".indentf_img").eq(5).css({"display":"none"});
+                                    $(".indentf_img").eq(6).css({"display":"none"});
+                                    $(".submitBtn").click(function(){
+                                        
+                                        if(arrList[4].isDone==1){
+                                            $(".submitBtn").css("background-color","#EF0600");
+                                            var _obj={
+                                                title: "提 示",
+                                                content: "下载APP，补充信息，即刻拿钱",
+                                                btnText: "确 定",
+                                                btnEvent: function () {
+                                                    window.location.href=global.localUrl+"help/downLoad.html";
+                                                }
+                                            }
+                                            layer.alert(_obj)
+                                        }else {
+                                            $(".submitBtn").off("click");
+                                        }
+                                    })
+                                }else{
+                             
+
+                                    $("#submitBtn").off("click");
+                                }
+                            }
+    
+                            
+                            if(arrList[0].isDone){
+                                $(".indentf_img").eq(0).off("click");
+                            }
+                             if(arrList[4].isDone){
+                                $(".indentf_img").eq(4).off("click");
+                            }
+                            if(arrList[5].isDone){
+                                $(".indentf_img").eq(5).off("click");
+                            }
+                        }else{
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        layer.tips(global.netError);
+                    }
+                });
+            }
+           
+
+            $(".cells_title img ").click(function(){
+                var tips_a={
+                    title: "提 示",
+                    content: "请务必填写您的真实信息，错误信息会影响您的审核结果。",
+                    btnText: "我知道了",
+                    btnEvent: function () { }
+                }
+                layer.alert(tips_a);
+            })
+
+
+
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

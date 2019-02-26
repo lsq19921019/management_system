@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>柚子钱包</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+
+    <style type="text/css">
+        .view{
+            padding-top: .02rem;
+            margin-bottom: .6rem;
+        }
+        .wallet_list{
+            width: 3.33rem;
+            height: 1.8rem;
+            display: block;
+            margin: -.1rem auto 0;
+        }
+        .downLoadBar {
+            height: .5rem;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .downLoadBar img {
+            width: 110%;
+            position: absolute;
+            top: 0;
+            left: -5%;
+        }
+        .layer_dialog .layer_dialog_box {
+            overflow: visible;
+        }
+        .boxClose {
+            position: absolute;
+            right: .1rem;
+            top: .1rem;
+            width: .15rem;
+            height: .15rem;
+            z-index: 22!important;
+            display: block;
+            background-color: red;
+            background: url("../images/warning_close.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="downLoadBar"><img src="../images/downLoad.png" alt=""></div>
+    <div class="layer_load">
+      <div class="layer_mask"></div>
+      <div class="layer_load_icon iconfont icon-loading"></div>
+    </div>
+    <div class="view">
+        <div id="btnGoApply"><img class="wallet_list" src="../images/wallet01.png" ></div>
+        <div id="btnGoApply1"><img class="wallet_list" src="../images/wallet02.png"></div>
+        <div><img class="wallet_list" src="../images/wallet03.png"></div>
+    </div>
+
+    <div class="tab_bar">
+        <footer>
+            <a href="../index.html"><img src="../images/youlechang.png"></a>
+            <a href="#"><img src="../images/qianbao_active.png"></a>
+            <a href="../user/oneStep.html"><img src="../images/oneStep.png"></a>
+            <a href="../user/myWallet.html"><img src="../images/my.png"></a>
+        </footer>   
+    </div>
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script type="text/javascript">
+        !function(global,userUtil,layer,dataUtil){
+            var sessionId=userUtil.sid();
+            var productLevel;
+            $.ajax({
+                url: global.localUrl + "wallet/system/initProduct",
+                type: "post",
+                data: JSON.stringify({"sessionId": sessionId}),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    if (1 == re.code) {
+                      productLevel=re.data[0].productLevel;
+                      if(re.data.length==2){
+                          $("#btnGoApply1 img").attr("src","../images/wallet022.png");
+                          $("#btnGoApply1").click(function(){
+                              if(userUtil.sid() && userUtil.userID()){    //登录状态
+                                  window.location.href="../trust/speedCard.html?productLevel=2";
+                              }else{
+                                  window.location.href="../user/login.html";
+                              }
+                          })
+                      }
+                    }else{
+                        layer.tips(re.message);
+                    }
+                },
+                error: function () {
+                    layer.tips(global.netError);
+                }
+            });
+              // 浏览器判断
+              var browserObj = function () {
+                  var u = navigator.userAgent;
+                  return {
+                      trident: u.indexOf('Trident') > -1, //IE内核
+                      presto: u.indexOf('Presto') > -1, //opera内核
+                      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+                      mobile: u.indexOf('Mobile') > -1, //是否为移动终端
+                      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端
+                      iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                      iPad: u.indexOf('iPad') > -1, //是否iPad
+                      webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                      weixin: u.indexOf('MicroMessenger') > -1, //是否微信
+                      qq: u.indexOf("QQBrowser") > -1, //是否QQ浏览器
+                      mobile_qq: u.indexOf("MQQBrowser") > -1, //是否是手机QQ浏览器
+                      uc: u.indexOf("UCBrowser") > -1, //是否是uc浏览器
+                      baidu: u.indexOf("Baidu") > -1, //是否是百度浏览器
+                      firefox: u.indexOf("Firefox") > -1, //是否是火狐浏览器
+                      lieBao: u.indexOf("LieBao") > -1, //是否是猎豹浏览器
+                      sogou: u.indexOf("SogouMobile") > -1, //是否是搜狗手机浏览器
+                      bjhb:u.indexOf("BJHB") > -1
+
+                  };
+              };
+              var browser = browserObj();
+              //APP内隐藏
+              if(browser.bjhb){
+
+                  $.ajax({
+                      url: global.localUrl + "web/credit/getCompletion",
+                      type: "post",
+                      data: JSON.stringify({"sessionId": sessionId}),
+                      contentType: 'application/json;charset=utf-8',
+                      success: function (re) {
+                          if (1 == re.code) {
+                              var _data=re.data;
+                              if(re.data.contactsProgress!=2){
+                                getOrders();
+                              }
+
+                          }else{
+                              layer.tips(re.message);
+                          }
+                      },
+                      error: function () {
+                          layer.tips(global.netError);
+                      }
+                  });
+                  function getOrders (){
+                    $.ajax({
+                        url: global.localUrl + "orders/borrowingInfo",
+                        type: "post",
+                        data: JSON.stringify({"sessionId": sessionId}),
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (re) {
+                            if (1 == re.code) {
+
+                              $.each(re.data,function(k,v){
+                                if(v.status == 1 ){    //有待提交
+                                  var conf = {
+                                      title: "快来申请",
+                                      content: "您当前有一笔订单待提交，享受<a>极速审核、实时放款</a>服务，快去补充信息吧。",
+                                      btnText: "马上补充信息",
+                                      btnEvent: function () {
+                                        window.location.href=global.localUrl + "trust/identification.html"
+                                      }
+                                  };
+                                  layer.alert(conf);
+                                  $(".layer_dialog_box").append("<i class='boxClose'></i>");
+                                  $(".boxClose").click(function(){
+                                    $(".alert").removeClass("on");
+                                  })
+                                }
+                              }); 
+
+                            }else{
+                                layer.tips(re.message);
+                            }
+                        },
+                        error: function () {
+                            layer.tips(global.netError);
+                        }
+                    });
+
+                  }
+
+              }
+
+            $("#btnGoApply").click(function(){
+                if(userUtil.sid() && userUtil.userID()){    //登录状态
+                    window.location.href="../trust/speedCard.html?productLevel="+productLevel;
+                }else{
+                    window.location.href="../user/login.html";
+                }
+            })
+
+
+
+            /**
+             * 浏览器判断*/
+            var browserObj = function () {
+                var u = navigator.userAgent;
+                return {
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+                    mobile: u.indexOf('Mobile') > -1, //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                    weixin: u.indexOf('MicroMessenger') > -1, //是否微信
+                    qq: u.indexOf("QQBrowser") > -1, //是否QQ浏览器
+                    mobile_qq: u.indexOf("MQQBrowser") > -1, //是否是手机QQ浏览器
+                    uc: u.indexOf("UCBrowser") > -1, //是否是uc浏览器
+                    baidu: u.indexOf("Baidu") > -1, //是否是百度浏览器
+                    firefox: u.indexOf("Firefox") > -1, //是否是火狐浏览器
+                    lieBao: u.indexOf("LieBao") > -1, //是否是猎豹浏览器
+                    sogou: u.indexOf("SogouMobile") > -1, //是否是搜狗手机浏览器
+                    bjhb:u.indexOf("BJHB") > -1
+
+                };
+            };
+            var browser = browserObj();
+            //APP内隐藏
+            if(browser.bjhb){
+                $(".downLoadBar").height(".2rem");
+                $(".downLoadBar img").css({"display":"none"})
+            }
+
+            $(".downLoadBar img").click(function(){
+                window.location.href = global.localUrl + "help/downLoad.html"
+            })
+
+            //老用户绑卡鉴权
+            function isNeedRebindCard(){
+              $.ajax({
+                  url: global.localUrl + "wallet/checkUserBankIsBind",
+                  type: "post",
+                  data: JSON.stringify({"sessionId": sessionId}),
+                  contentType: 'application/json;charset=utf-8',
+                  success: function (re) {
+                      if (1 == re.code) {
+                          if(re.data.isNeed==1){
+                            layer.tips("请重新绑卡！");
+                            setTimeout(function(){
+                              window.location.href=global.localUrl+"trust/bindCardSecond.html"
+                            },1000);
+                          }else{
+
+                          }
+
+                      }else{
+                          layer.tips(re.message);
+                      }
+                  },
+                  error: function () {
+                      layer.tips(global.netError);
+                  }
+              });
+            }
+            isNeedRebindCard();
+  
+        }(global,userUtil,layer,dataUtil)
+    </script>
+    <script>
+        $(document).ready(function(){
+            // setTimeout(function(){
+                if(localStorage.getItem('app_logo_info')){
+                    var app_logo_info = JSON.parse(localStorage.getItem('app_logo_info'));
+                    $('title').html(app_logo_info.themeName);
+                }
+            // },500)
+        });
+    </script>
+</body>
+</html>

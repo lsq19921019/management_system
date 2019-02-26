@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>申请记录</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        .cells {
+            /*margin-top: .2rem;*/
+        }
+        .cells_title {
+            margin: 0;
+            padding: .12rem .4rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+            font-weight: 700;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+
+        .operatorContent {
+            width: 100%;
+            background: #f9f9f9;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0.2rem;
+        }
+        .txt {
+			text-align: right;
+        }
+
+        .getCode {
+            color: red;
+            font-size: .12rem;
+        }
+        .cell_ft img {
+            display: block;;
+            width: .2rem;
+            height: .1rem;
+        }
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .2rem .4rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+        .cells_tips {
+            margin: 0rem .4rem;
+            border-top: solid .01rem #eee;
+            font-size: .12rem;
+            height: .4rem;
+            line-height: .4rem;
+        }
+
+        .confirmBtn {
+            position: absolute;
+            bottom: .48rem;
+        }
+        .submitBtn {
+            position: static;
+            margin: 0 .36rem;
+        }
+        .cells_line {
+            height: .1rem;
+            width: 100%;
+        }
+        .recordContent {
+            /*width: 100%;*/
+            background-color: white;
+            padding: .15rem .35rem;
+            margin-bottom: .1rem;
+            position: relative;
+        }
+        .recordContent .recordList {
+            font-size: .14rem;
+        }
+        .recordListBtnTop {
+            border: solid .01rem rgb(234,204,169);
+            color: rgb(234,204,169);
+            position: absolute;
+            right: .35rem;
+            top: .15rem;
+            height: .25rem;
+            padding: 0 .1rem;
+            line-height: .25rem;
+            border-radius: .03rem;
+            /*margin: 0 .2rem;*/
+            font-size: .14rem;
+        }
+        .recordListBtnBottom {
+            color: red;
+            position: absolute;
+            right: .35rem;
+            bottom: .15rem;
+            height: .25rem;
+            padding: 0 .1rem;
+            line-height: .25rem;
+            border: solid .01rem red;
+            background-color: red;
+            color: white;
+            border-radius: .03rem;
+            /*margin: 0 .2rem;*/
+            font-size: .14rem;
+        }
+        .orderNone {
+            text-align: center;
+            font-size: .16rem;
+            margin-top: .2rem;
+            color: gray;
+        }
+        .cooperationContain {
+            display: none;
+            background-color: white;
+            overflow: hidden;
+            width: 3.25rem;
+            margin: 0 auto;
+
+            border-radius: .05rem;
+            box-shadow: 0 .05rem .05rem rgb(214,193,192);
+        }
+        .cooperationTitle {
+            /*border-top: 8px solid #F6F6F6;*/
+            height: .5rem;
+            background-color: rgb(229,192,149);
+            width: 100%;
+            color: white;
+            padding: .2rem 0;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cooperationTitle p {
+            padding-left: 6px;
+            font-size: .16rem;
+            height: .6rem;
+            line-height: .25rem;
+            color: white;
+            width: 100%;
+
+        }
+        .cooperationProduction {
+            /*border-top: 8px solid #F6F6F6;*/
+
+        }
+        .productionName {
+            width: 85%;
+            height: .4rem;
+            margin: 5px auto;
+        }
+        .productionName>img {
+            width: .3rem;
+            height: .3rem;
+            float: left;
+            margin-top: .05rem;
+        }
+        .productionName p {
+            float: left;
+            font-weight: 700;
+            margin-top: .05rem;
+            font-size: 14px;
+            line-height: .3rem;
+            padding-left: 14px;
+        }
+        .productionName span {
+            display: block;
+            width: .7rem;
+            height: .3rem;
+            margin-top: .05rem;
+            font-size: .14rem;
+            color: white;
+            float: right;
+            background-color: rgb(254,85,78);
+            border-radius: .05rem;
+            text-align: center;
+            line-height: .3rem;
+        }
+        .productionIntroduce {
+            width: 85%;
+            height: .4rem;
+            line-height: .4rem;
+            margin: 0 auto;
+            border-top: 0.5px dashed #BDBDBD;
+            padding: 5px 0;
+            color: rgb(72,77,80);
+            font-size: 14px; 
+            text-align: right;
+        }
+
+        .introduceLeft {
+            text-align: left;
+            float: left;
+            width: 117px;
+            height: .4rem;
+            line-height: .4rem;
+            color: rgb(72,77,80);
+            font-size: 14px; 
+        }
+        .edu {
+            color: rgb(254,85,78);
+            font-size: .2rem;
+        }
+        .blank {
+            width: 100px;
+            height: .4rem;
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load on">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div id="borrowList">
+
+    </div>
+
+<!--     <div class="cooperationContain">
+        <div class="cooperationTitle">
+            <p>不要灰心<br>八戒荷包为您推荐以下产品</p>
+        </div>
+        <div class="cooperationProduction">
+            <div class="productionName">
+                <img src="../images/nqb.png" alt="">
+                <p>暖钱宝</p>
+                <span id="nqb">立即下载</span>
+            </div>
+        </div>
+        <div class="productionIntroduce edu">
+            <div class="introduceLeft">
+                额度
+            </div>
+            1000~5000
+        </div>
+        <div class="productionIntroduce">
+            <div class="introduceLeft">
+                产品介绍
+            </div>
+            简单三步，5000到手
+        </div>
+    </div> -->
+    <div class="blank"></div>
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/trust/applyRecords.js"></script>
+    <script>
+        (function(global,userUtil,layer){     
+        	$("body").height(document.documentElement.clientHeight);
+
+        $("#nqb").click(function(){
+            markPoint();
+            window.location.href="https://sspprod.lianzi360.com/security/demand?appId=b733612c17c4e0ace98419488e35e8af&dk=D3267A58EE45EF4E1B9D8DBF8B511477";
+        })
+        $('.noPass span').off('click').on("click",function(){
+            window.location.href=global.localUrl +"help/helpcenter.html";
+        });
+        //埋点
+        var mobileNumber=localStorage.getItem("mobile");
+        function markPoint(){
+            var _data={"type": 1,"mobileNumber": mobileNumber};
+            
+            $.ajax({
+                url: global.localUrl+"web/userDiversionMsg",
+                type: "post",
+                data: JSON.stringify(_data),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    if (1 == re.code) {
+                    } else{
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+        markPoint()
+
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

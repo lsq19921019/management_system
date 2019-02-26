@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>运营商认证-现金白卡</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="iconfont layer_load_icon icon-loading"></div>
+    </div>
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+        !function (global, userUtil, layer) {
+
+            if (global.query) {
+
+                var _mxcode = global.query['mxcode'];
+                var _loginDone  = global.query['loginDone'];
+
+                if(_mxcode == 1){   // 任务进行成功     
+                    moxieSuccess();
+                }else if(_mxcode == 2){    //任务进行中
+                    
+                    if(_loginDone){             //登录成功
+                        moxieSuccess();
+                    }else{                      //登录失败
+                        moxieFail();
+                    }
+
+                }else{      
+                        moxieFail();//其他情况
+                }
+
+
+                function moxieSuccess() {     //魔蝎认证成功
+                    layer.showLoad();
+                    $.ajax({
+                        url: global.localUrl + "xjbk/web/credit/addMoxieCompletion",
+                        data: JSON.stringify({
+                            userUuid: global.query['userId']
+                        }),
+                        type: "post",
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (re) {
+                            layer.hideLoad();
+                            if (1 == re.code) {
+                                
+                                window.location.replace("http://webapp.xianjincard.com/products/notify?title=操作成功&pageTitle=操作成功&button={\"label\":\"确定\",\"link\":\"http://webapp.xianjincard.com/associates/details?product_id=428\"}&status=success")
+
+                            }
+                            else{
+                                layer.tips(re.message);
+                            }
+                        },
+                        error: function () {
+                          layer.hideLoad();
+                          layer.tips(global.netError);
+                        }
+                    })
+                };
+
+                function moxieFail() {      //魔蝎认证失败
+                   window.location.replace("http://web.xianjincard.com/channel/app/bank/state?type=fail&title=操作失败");
+                };
+         
+            }
+
+        }(global, userUtil, layer);
+
+    </script>
+</body>
+</html>

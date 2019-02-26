@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>拿现金</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style type="text/css">
+        .view{
+            padding: .25rem .16rem 0;
+        }
+        .apply_desc{
+            font-size: .18rem;
+        }
+        .apply_select{
+            box-sizing: border-box;
+            width: 100%;
+            height: .46rem;
+            border: 1px solid rgb(221,221,221);
+            background: #fff;
+            border-radius: 6px;
+            margin: .12rem 0 .2rem;
+            font-size: .18rem;
+            padding: 0 .16rem;
+        }
+        .apply_select{
+            width: 100%;
+            height: .46rem;
+            border: 1px solid rgb(221,221,221);
+            background: #fff;
+            border-radius: 6px;
+            margin: .12rem 0 .2rem;
+            font-size: .18rem;
+            padding: 0 .16rem;
+        }
+        .line_height46{
+            line-height: .46rem;
+        }
+        .apply_info{
+            border: 1px dashed #9b9b9b;
+            padding: .2rem;
+            border-radius: 8px;
+            font-size: .16rem;
+            color: #000;
+        }
+        .apply_tips{
+            font-size: .1rem;
+            color: #9b9b9b;
+        }
+        .refund_money{
+            font-size: .24rem;
+            text-align: center;
+            margin-top: .1rem;
+        }
+        .select_item{
+            position: relative;
+        }
+        .icon-gos{
+            display: block;
+            position: absolute;
+            right: .1rem;
+            top: .2rem;
+        }
+        .icon-gos img {
+            width: .3rem;
+            height: .3rem; 
+        }
+        .icon-gos1{
+            display: block;
+            position: absolute;
+            right: .1rem;
+            top: .08rem;
+        }
+        .icon-gos1 img {
+            width: .3rem;
+            height: .3rem; 
+        }
+        #btnApply {
+
+            border-radius: .225rem;
+        }
+        select {
+            /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+            border: solid 1px #000;
+            /*很关键：将默认的select选择框样式清除*/
+            appearance:none;
+            -moz-appearance:none;
+            -webkit-appearance:none;
+            /*在选择框的最右侧中间显示小箭头图片*/
+            background: url("") no-repeat scroll right center transparent;
+            /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+            padding-right: 14px;
+        }
+
+        .tip {
+            line-height: .2rem;
+            height: .2rem;
+            overflow: hidden;
+            margin: .1rem .2rem;
+        }
+        .tip span{
+            display: block;
+            float: left;
+            font-size: .12rem;
+            line-height: .2rem;
+            height: .2rem;
+        }
+        .tip i {
+            display: block;
+            width: .12rem;
+            height: .12rem;
+            margin: 0.02rem .04rem 0.02rem 0rem;
+            float: left;
+        }
+        .tip i img {
+            width: 100%;
+        }
+        #btnBlank {
+            width: 100%;
+            height: .6rem;
+        }
+        #applyTips {
+            font-size: .12rem;
+            padding: .1rem 0.05rem;
+            color: gray;
+        }
+        
+        #applyAlert {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -150px;
+            margin-top: -200px;
+            width: 300px;
+            background-color: white;
+            border-radius: .1rem;
+            padding: .1rem 0;
+
+        }
+        #touchSelect {
+            margin: 10px auto;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            font-size: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        #touchSelect ul{
+            display: block;
+            position: absolute;
+            width: 80%;
+            height: 200px;
+            top: 0;
+            left: 10%;
+            margin: 0;
+            padding: 0;
+            
+        }
+        #touchSelect ul li {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
+            list-style: none;
+            color: #BDBDBD;
+            font-weight: 700;
+        }
+        #selectBgc {
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            position: absolute;
+            width: 80%;
+            height: 40px;
+            top: 80px;
+            left: 10%;
+            margin: 0;
+            padding: 0;
+
+        }
+        #applyAlertTitle {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            height: 40px;
+            line-height: 40px;
+        }
+        #applyAlertBtn {
+            color: rgb(7,122,255);
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            border-top: 1px solid gray;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+        }   
+        .cells_btns {
+            padding-top: .1rem;
+        }
+        .off{
+            display:none!important;
+        }
+        .alert_box{
+            display: none;
+            position: relative;
+            z-index: 160;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load on">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading iconfont"></div>
+    </div>
+    <img class='banner_to_detail' src="../images/activity/banner_apply.jpg" style="width:100%;" alt="">
+    <div class="view">
+        <div class="apply_item">
+            <div class="apply_desc">借款金额(元)</div>
+            <div  class="select_item">
+                <!-- <select class="apply_select" id="borrowingAmount">
+                </select> -->
+                <div class="apply_select line_height46" id="borrowingAmount">
+                </div>
+                <i class="icon-gos1"><img src="../images/goForward.png" alt=""></i>
+            </div>
+        </div>
+
+        <div class="apply_item">
+            <div class="apply_desc">借款期限(天)</div>
+            <div class="select_item">
+                <select class="apply_select" id="borrowingTerm">
+                </select>
+                <i class="icon-gos"><img src="../images/goForward.png" alt=""></i>
+            </div>
+        </div>
+
+        <div class="apply_info">
+            <div>预计到账：</div>
+            <div style="margin: .12rem 0;">
+                <div style="margin-bottom: .1rem"><span style="color: #ff642e;" id="arriveMoney"></span>元现金<span class="apply_tips">（直接汇入您绑定的银行卡中）</span></div>
+                <!-- <div>注:到账后会自动为您充值<span style="color: #ff642e;" id="arriveGameCoin"></span>元游戏币<span class="apply_tips">（直接充入您的游戏币账户中）</span></div> -->
+                <div><span class="apply_tips">注:到账后会自动为您充值</span><span style="color: #ff642e;" id="arriveGameCoin"></span><span class="apply_tips">元游戏币，由系统代扣</span></div>
+            </div>
+
+            <div>到期应还：</div>
+            <div class="refund_money" id="repaymentAmount"></div>
+        </div>
+        <div id="applyTips">不提供学生申请消费服务</div>
+    </div>
+    <div class="cells_btns">
+        <div class="tip">
+            <i><img src="../images/bingo.png" alt=""></i><span>我已阅读并同意<a href="../help/loanprotocol.html">《借款协议》</a></span>
+        </div>
+        <a href="javascript:;" class="btn" id="btnApply">马上申请</a>
+        <div id="btnBlank"></div>
+    </div>
+ 
+    <div class="tab_bar">
+        <footer>
+            <a href="../index.html"><img src="../images/youlechang.png"></a>
+            <a class="active"><img src="../images/qianbao_active.png"></a>
+            <a href="../user/oneStep.html"><img src="../images/oneStep.png"></a>
+            <a href="../user/myWallet.html"><img src="../images/my.png"></a>
+        </footer>   
+    </div>
+<div class="layer_dialog alert" >
+    <div class='layer_mask'>
+        <div id="applyAlert">
+            <div id="applyAlertTitle">借款用途</div>
+            <div id="touchSelect">
+                <div id="selectBgc">
+                    
+                </div>
+                <ul>
+<!--                     <li>旅游</li>
+                    <li>日常消费</li>
+                    <li>医疗</li>
+                    <li>教育</li>
+                    <li>装修</li>
+                    <li>购车</li>
+                    <li>购房</li>
+                    <li>其他</li> -->
+                </ul>
+            </div>
+            <div id="applyAlertBtn">确定</div>
+        </div>
+    </div>
+</div>
+<div class='layer_dialog alert_box'>
+    <div class='layer_mask'>
+        <div style="width:80%;background-color: #fff;margin: 0 auto;border-radius: .1rem;margin-top: 2rem;">
+            <div style="box-sizing:border-box;width:100%;padding:.3rem;"><p>您当前还有进行中的订单，需订单完结后
+            才能再次申请借款！</p></div>
+            <div id="confirmAlertBtn" style="text-align:center;border-top: 1px solid #ccc;padding: .1rem 0;">知道了</div>
+        </div>
+    </div>
+</div>
+<div id="sel_box_lawyer" style="display:none;position:absolute;height:100%;width:100%;background:#555;opacity:.5;top:0;left:0;"></div>
+<div id="sel_box_container" style="display:none;position:fixed;bottom:0;left:0;width:100%;background:#FFF;text-align: center;">
+    <div style="display:flex;line-height: 50px;font-size: 15px;height: 50px;">
+        <div style="flex:1;color: #999999;" id="sel_box_cancel">取消</div>
+        <div style="flex:3;color: #555555;font-size: 16px;font-weight: bold;">请选择借款金额</div>
+        <div style="flex:1;color: #4D91E5;" id="sel_box_confirm">完成</div>
+    </div>
+    <div style="box-sizing:border-box;padding:0 20px;line-height:40px;height:40px;text-align: left;background-color: #F5F5F5;color: #999;">按时还款，下次借款即可解锁新的借款金额哦~</div>
+    <div style="height: 300px;overflow-y:scroll;" id="sel_box_list">
+        <div style="text-align:center;line-height:50px;height:50px;color:#999;">暂无数据</div>
+        <!-- <div style="overflow:hidden;box-sizing: border-box;padding: 0 20px;line-height: 40px;height: 40px;color:#555555;">
+            <div style="float:left;">1000元</div>
+            <div style="float:right;position: relative;">
+            </div>
+        </div>
+        <div style="overflow:hidden;box-sizing: border-box;padding: 0 20px;line-height: 40px;height: 40px;color:#555555;">
+            <div style="float:left;">1000元</div>
+            <div style="float:right;position: relative;">
+                <img src="../images/apply/selected_icon.png" alt="" style="position: absolute;height:15px;top: 12px;left: -20px;"> 
+            </div>
+        </div>
+        <div style="overflow:hidden;box-sizing: border-box;padding: 0 20px;line-height: 40px;height: 40px;color:#CCCCCC;">
+            <div style="float:left;">1000元</div>
+            <div style="float:right;position: relative;">
+                <img src="../images/apply/locked_icon.png" alt="" style="position: absolute;height:15px;top: 12px;left: -20px;"> 
+                复借解锁
+            </div>
+        </div> -->
+    </div>
+</div>
+    <!-- 脚本 -->
+    <!-- <script src="../lib/zepto.min.js?rev=@@hash"></script> -->
+    <script src="../lib/jquery.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/apply/apply.js?rev=@@hash"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>设置</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+
+    <style type="text/css">
+        .view{
+            padding: .07rem .09rem 0;
+        }
+        .view div {
+            height: .75rem;
+            padding: 0;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .setting_img{
+            width: 3.59rem;
+            height: .8rem;
+            display: block;
+            /*margin: -.05rem auto;*/
+        }
+        .login_out{
+            width: 3.03rem;
+            height: .49rem;
+            display: block;
+            margin: 0 auto;
+        }
+        .web_version{
+            font-size: .16rem;
+            color: rgb(65,65,65);
+            text-align: center;
+            margin: .2rem 0 .08rem;
+        }
+        .bottomVersion {
+            position: absolute;
+            bottom: .5rem;
+            left: .36rem;
+        }
+        #loginOut {
+            position: static;
+        }
+    </style>
+</head>
+<body>
+    <div class="layer_load">
+      <div class="layer_mask"></div>
+      <div class="layer_load_icon iconfont icon-loading"></div>
+    </div>
+
+    <div class="view">
+        <a href="./resetPassword.html"><div><img class="setting_img" src="../images/setting01.png"></div></a>
+        <a href="./resetBankCard.html"><div><img class="setting_img" src="../images/setting03.png"></div></a>
+        <a href="../help/about.html"><div><img class="setting_img" src="../images/setting02.png"></div></a>
+    </div>
+    
+    <div class="bottomVersion">
+        <!-- <div class="web_version">V 1.0.0</div> -->
+        <div class="web_version"></div>
+        <div class="submitBtn" id="loginOut">退出登录</div>
+        <!-- <img class="login_out" id="loginOut" src="../images/loginout.png"> -->
+    </div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script type="text/javascript">
+        var browserObj = function () {
+            var u = navigator.userAgent;
+            return {
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+                mobile: u.indexOf('Mobile') > -1, //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                weixin: u.indexOf('MicroMessenger') > -1, //是否微信
+                qq: u.indexOf("QQBrowser") > -1, //是否QQ浏览器
+                mobile_qq: u.indexOf("MQQBrowser") > -1, //是否是手机QQ浏览器
+                uc: u.indexOf("UCBrowser") > -1, //是否是uc浏览器
+                baidu: u.indexOf("Baidu") > -1, //是否是百度浏览器
+                firefox: u.indexOf("Firefox") > -1, //是否是火狐浏览器
+                lieBao: u.indexOf("LieBao") > -1, //是否是猎豹浏览器
+                sogou: u.indexOf("SogouMobile") > -1, //是否是搜狗手机浏览器
+                HYQ:u.indexOf("HYQ") > -1,
+                HYQ_ios_version:((u.indexOf('yzqb_android_')>-1)),
+                HYQ_android_iosversion:((u.indexOf('yzqb_iOS_')>-1)),
+                total_info:u
+            };
+        };
+        var browser = browserObj();
+        !function(global,userUtil,layer,dataUtil){
+        
+            //piece of shit 2: 2018-12-14 17:41  author:liusiqi;    
+            var nu = navigator.userAgent;
+            var app_version = '';
+            if(browser.HYQ_android_iosversion){
+                app_version = nu.substr(parseInt(nu.indexOf('yzqb_iOS_'))+9);
+            }else if(browser.HYQ_ios_version){
+                app_version = nu.substr(parseInt(nu.indexOf('yzqb_android_'))+13);
+            }else{
+                app_version = 'v1.0.0';
+            }
+            if(app_version==='v1.1.1'){
+                app_version = 'v1.1.1'
+            }
+            $('.web_version').html(app_version);
+            // var u_index = navigator.userAgent.indexOf('yzqb_');
+            // alert(u_index);
+
+            $('#loginOut').on('click',function(){
+                var $this = $(this);
+
+                var _data =  {
+                    sessionId: userUtil.sid(),
+                    ss: new Date().getMilliseconds()
+                };
+                layer.showLoad();
+                $.ajax({
+                    url: global.localUrl + "nw/users/logout",
+                    type: "post",
+                    data: JSON.stringify(_data),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (re) {
+                        layer.hideLoad();
+                        if (1 == re.code) {
+                            layer.tips('退出登录');
+                            userUtil.sid('');
+                            userUtil.userID('');
+                            sessionStorage.removeItem('isOverdue');
+                            window.location.href="../index.html";
+                        } else {
+                            layer.tips(re.message);
+                        }
+                    },
+                    error: function () {
+                        $('.layer_mask').removeClass('on');
+                        layer.tips(global.netError);
+                    }
+                });
+            })
+        }(global,userUtil,layer,dataUtil)
+    </script>
+</body>
+</html>

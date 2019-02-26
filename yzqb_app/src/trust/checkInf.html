@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>身份认证</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body{
+            width: 3.75rem;
+            /*height: 6rem;*/
+            position: relative;
+        }
+        .cells_title {
+            margin: 0;
+            padding: .12rem .2rem;
+            font-size: .16rem;
+            height: .22rem;
+            color: rgb(68,74,89);
+        }
+        .cells_title a {
+            display: block;
+            float: left;
+            font-size: .16rem;
+            height: .22rem;
+            padding-left: .2rem;
+            font-weight: 700;
+        }
+        .cells_title span {
+            display: block;
+            float: left;
+            font-size: .13rem;
+            height: .22rem;
+            line-height: .22rem;
+            margin-left: .2rem;
+            color: rgb(136,136,136)
+        }
+
+        .face_photo {
+        	width: 100%;
+        	padding: .2rem 0;
+            height: 2.5rem;
+        	background-color: white;
+            position: relative;
+        }
+        .face_photo img {
+            position: absolute;
+            top: 0;
+            left: 0.4rem;
+        	display: block;
+        	width: 2.95rem;
+        	height: 2.15rem;
+        }
+        .face_photo span {
+        	display: block;
+        	text-align: center;
+        	height: .2rem;
+        	width: 100%;
+        	background-color: white;
+        	font-size: .12rem;
+        	margin-top: 1.8rem;
+        }
+        .txt {
+			text-align: right;
+		}
+        .feed_image {
+            display: block;
+            padding: 0.4rem .4rem;
+            background-color: white;
+            width: 2.95rem;
+            height: 2.15rem;
+        }
+        .feed_image_item {
+
+            width: 100%;
+        }
+        .photo_img {
+            width: 3rem;
+            height: 2rem;
+            position: absolute;
+            left: 0rem;
+            top: 0.25rem;
+        }
+        .cells {
+            margin-top: .2rem;
+            background-color: white;
+            padding: 0rem .2rem;
+            width: 3.4rem;
+        }
+        .upload {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: .5rem;
+            height: .15rem;
+            z-index: 1;
+            opacity: 0;
+        }
+        .photos {
+            position: relative;
+        }
+        .submitBtnss {
+            width: 2.9rem;
+            height: .45rem;
+            line-height: .45rem;
+            font-size: .18rem;
+            text-align: center;
+            letter-spacing: .02rem;
+            color: white;
+            border-radius: .225rem;
+            background-color: #EF0600;
+            box-shadow: 0 .05rem .05rem rgb(214,193,192);
+            margin: .4rem auto;
+        }
+        .layer_dialog .layer_dialog_hd {
+            font-size: .16rem;
+        }
+        .layer_dialog .layer_dialog_cn {
+            font-size: .12rem;
+        }
+        #layerDialogImg {
+            display: block;
+            width: 2rem;
+            margin: 0 auto;
+        }
+        .cell:before{
+            border: 0!important;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="cells_title">
+        <a>小贴士</a><span>只有先进行实名认证，才能完成借款哦</span>
+    </div>
+    <div class="cells">
+        <div class="cell">
+            <label class="cell_hd">姓名：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请输入真实姓名" id="realName" maxlength="20" />
+            </div>
+        </div>
+        <div class="cell">
+            <label class="cell_hd">身份证：</label>
+            <div class="cell_cn">
+                <input type="text" class="txt" placeholder="请填写身份证号" id="idCard" maxlength="20" />
+            </div>
+        </div>
+    </div>
+    <div class="feed_image">
+        <div class="photos">
+            <div class="photo_wap">
+                <div class="photo btn_add_photo" id="btnAddPhoto">
+                    <img class="feed_image_item" src="../images/face_photo.png">
+                </div>
+                <input type="file" accept="image/*" class="upload" id="flContractPhoto" data-name="Contract" />  
+            </div>
+        </div>
+    </div>
+
+    <div class="submitBtnss">完成</div>
+
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/upload.js?rev=@@hash"></script>
+    <script>
+
+        (function(global,userUtil,layer){   
+            var sessionId=userUtil.sid();
+            function alerts(obj) {
+                var conf = {
+                    title: "拍照要求",
+                    content: "为保证审核结果，请您务必上传清晰、无污损的身份证正面照片。",
+                    btnText: "5s",
+                    btnEvent: function () {
+                        $(".photos").off("click");
+                        $("#flContractPhoto").css({"width":"3.5rem","height":"2.15rem"})
+                    }
+                };
+                if (typeof obj == "string") { obj = { content: obj } };
+                $.extend(conf, obj);
+                if ($(".alert").length == 0) {
+                    $("body").append("<div class='layer_dialog alert'><div class='layer_mask'></div><div class='layer_dialog_box'><div class='layer_dialog_hd'><span class='layer_dialog_title'></span><i class='layer_btn_close icon-close' style='display:none'></i></div><div class='layer_dialog_cn'></div><img id='layerDialogImg' src='../images/shenfenzhengImg.png' alt=''><div class='layer_dialog_ft'><a class='layer_btn layer_btn_primary'></a></div></div></div>");
+                }
+                $(".alert").addClass("on");
+                $(".alert .layer_dialog_title").text(conf.title);
+                $(".alert .layer_dialog_cn").html(conf.content);
+                    var timers=5;
+                    $(".alert .layer_btn").text("5s")
+                    var setTime=setInterval(function(){
+                        timers--;
+                        $(".alert .layer_btn").text(timers+"s")
+                        if(timers==0){
+                            close();
+                            clearInterval(setTime);
+                            conf.btnEvent()
+                        }
+                    }, 1000);
+                    // $(".alert .layer_btn").text(conf.btnText).off("click").on("click", function () { conf.btnEvent(); close(); });
+                    // $(".alert .layer_btn_close").off("click").on("click", function () { conf.btnEvent(); close(); });
+
+                function close() {
+                    $(".alert").removeClass("on");
+                }
+            }
+            $(".photos").click(function(){
+                alerts();
+
+            })
+            var picUrl;
+            var isUpload=0;
+            // 上传图片
+            !function () {
+                new PicUpLoad("flContractPhoto", {
+                    formUrl:global.localUrl+'nw/upload/imageUpload',
+                    formData: {type:"ID_CARD",sessionId:userUtil.sid()},
+                    onFileRead: function (fileObj) {
+                        canUpload = true;
+                        var $p = $("<div class=\"photo_wap\"><div class=\"photo\"><input type=\"hidden\" class=\"photo_url\"/><img class=\"photo_bg\" /><div class=\"photo_upload\"><div class=\"photo_upload_progress\"><div class=\"photo_upload_bar\"><i></i></div><p class=\"photo_upload_txt\">正在读取文件</p></div><div class=\"photo_upload_cancel\"></div></div></div></div>");
+                        $p.find(".photo_upload_cancel").on("click", function () { _remove($p); });
+                        $p.insertBefore($("#btnAddPhoto").parents(".photo_wap"));
+                        fileObj.domBar = $p;
+                    },
+                    onLoadStart: function (e, fileObj) {
+                        var $p = fileObj.domBar;
+                        $p.find(".photo_upload_cancel ").hide();
+                        _showProgress($p);
+                    },
+                    onProgress: function (e, fileObj) {
+                        var $p = fileObj.domBar;
+                        var _loaded = e.loaded;
+                        var _total = e.total;
+                        var _per = Math.floor(100 * _loaded / _total);
+                        _showProgress($p, _per);
+                    },
+                    onSuccess: function (re, fileObj) {
+                        var $p = fileObj.domBar;
+                        $p.find(".photo_upload_progress ").hide();
+                        $p.find(".photo_upload_cancel ").show();
+                        $p.find(".photo_url").val(re.data.url);
+                        isUpload=1;
+                        picUrl=re.data.url;
+                        if (0 == $p.find(".photo_img").length) {
+                            $p.find(".photo_bg").after("<img class=\"photo_img\" />");
+                        }
+                        $p.find(".photo_img").attr("src", fileObj.localUri);
+                    },
+                      onFail: function (re, fileObj) {
+                          layer.tips("上传失败，请稍后重试");
+                          _remove(fileObj.domBar);
+                      },
+                      onError: function (fileObj) {
+                          layer.tips(global.netError);
+                          _remove(fileObj.domBar);
+                      }
+                }).init();
+                function _showProgress($p, per) {
+                    if (per) {
+                        per = 100 == per ? 99 : per;  //容错上传100%卡住的情况
+                        $p.find(".photo_upload_bar i").css("width", per + "%");
+                        $p.find(".photo_upload_txt").text("正在上传 " + per + "%");
+                    } else {
+                        $p.find(".photo_upload_bar i").css("width", "0");
+                        $p.find(".photo_upload_txt").text("正在准备上传");
+                    }
+                }
+
+                function _remove($p) {
+                    $p.remove();
+                    // photoLimit();
+                }
+
+
+            }();
+
+            // 获取页面数据
+                function getModel() {
+                var _arr = [];
+                $(".photos .photo").each(function (k, v) {
+                    if (!$(v).hasClass("btn_add_photo")) {
+                        var _url = $(v).find(".photo_url").val();
+                        if (_url) {
+                            _arr.push(_url);
+                        } else {
+                            _arr.push("");
+                        }
+                    }
+                });
+                return {
+                    feedbackString: $.trim($("#feedText").val()),
+                    uploadImages: _arr
+                }
+            };
+
+            // 数据校验
+            function validate() {
+                var _model = getModel();
+                if (!_model.feedbackString) {
+                    layer.tips("请输入反馈意见"); return false;
+                }
+                for (var i = 0 ; i < _model.uploadImages.length; i++) {
+                    if (!_model.uploadImages[i]) {
+                        layer.tips("照片正在上传，请等待"); return false;
+                    }
+                }
+                return true;
+            };
+
+            //提交
+            $(".submitBtnss").click(function(){
+                var sessionId=userUtil.sid();
+                var idCardNo=$("#idCard").val();
+                var realName=$("#realName").val();
+                var mobile=userUtil.mobile();
+
+                if(isUpload==0){
+                    layer.tips("请先上传身份证照片");
+                }else{
+
+                    if(!realName||!idCardNo){
+                        layer.tips("请先填写姓名和身份证号");
+                        return;
+                    }
+
+                   // 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X  
+                   var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+                   if(reg.test(idCardNo) === false)  
+                   {  
+                        layer.tips("身份证输入不合法");  
+                        return ;  
+                   }  
+                    var _data={
+                        "sessionId": sessionId,
+                        "cardId": idCardNo,
+                        "name": realName,
+                        "identityPicUrl": picUrl
+                    };
+                    $.ajax({
+                        url: global.localUrl + "nw/orders/identity",
+                        type: "post",
+                        data: JSON.stringify(_data),
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (re) {
+                            if (1 == re.code) {
+                                layer.tips("认证成功");
+                                localStorage.setItem("realName",realName);
+                                localStorage.setItem("idCard",idCardNo);
+                                setTimeout(function(){
+                                    window.location.href=global.localUrl +"trust/identification.html";
+                                },2000);
+                            }
+                            else{
+                                setTimeout(function(){
+                                    window.location.reload();
+                                },2000);
+                                layer.tips(re.message);
+                            }
+                        },
+                        error: function () {
+                            layer.tips(global.netError);
+                        }
+                    });
+                }
+            })
+        })(global,userUtil,layer)
+    </script>
+</body>
+</html>

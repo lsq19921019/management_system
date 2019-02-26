@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>审核详情</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #F6F6F6;
+        }
+        .apply_list{
+            width: 1.9rem;
+            margin: 0 auto;
+            color: rgb(72,77,80);
+            font-size: 0.13rem;
+            /*padding-left: 0.2rem;*/
+            line-height: 30px;
+
+        }
+        .refuseContain {
+           background-color: white; 
+           padding: 10px 0;
+        }
+        .noPass {
+            width: 1.9rem;
+            /*height: 42px;*/
+            margin: 0 auto;
+            margin-top: .2rem;
+            overflow: hidden;
+            
+        }
+        .noPass>img {
+            width: 1.8rem;
+            height: 1.8rem;
+            margin: 0 auto;
+            display: block;
+        }
+        .noPass p {
+            float: left;
+            font-size: .16rem;
+            line-height: .3rem;
+            font-weight: 700;
+
+        }
+        .noPass span {
+            display: block;
+            width: 16px;
+            height: 16px;
+            margin-top: 4px;
+            background-image: url("../images/iconDoubt.png");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            float: left;
+        }
+        .cooperationContain {
+            background-color: white;
+            overflow: hidden;
+            
+        }
+        .cooperationTitle {
+            /*border-top: 8px solid #F6F6F6;*/
+            height: .5rem;
+            background-color: rgb(55,58,91);
+            width: 100%;
+            color: white;
+            padding: .15rem 0;
+            text-align: center;
+            overflow: hidden;
+        }
+        .cooperationTitle p {
+            padding-left: 6px;
+            font-size: .16rem;
+            height: .6rem;
+            line-height: .25rem;
+            color: white;
+            width: 100%;
+
+        }
+        .cooperationProduction {
+            border-top: 8px solid #F6F6F6;
+
+        }
+        .productionName {
+            width: 85%;
+            height: .4rem;
+            margin: 5px auto;
+        }
+        .productionName>img {
+            width: .3rem;
+            height: .3rem;
+            float: left;
+            margin-top: .05rem;
+        }
+        .productionName p {
+            float: left;
+            font-weight: 700;
+            margin-top: .05rem;
+            font-size: 14px;
+            line-height: .3rem;
+            padding-left: 14px;
+        }
+        .productionName span {
+            display: block;
+            width: .7rem;
+            height: .3rem;
+            margin-top: .05rem;
+            font-size: .14rem;
+            color: white;
+            float: right;
+            background-color: rgb(254,85,78);
+            border-radius: .05rem;
+            text-align: center;
+            line-height: .3rem;
+        }
+        .productionIntroduce {
+            width: 85%;
+            height: .4rem;
+            line-height: .4rem;
+            margin: 0 auto;
+            border-top: 0.5px dashed #BDBDBD;
+            padding: 5px 0;
+            color: rgb(72,77,80);
+            font-size: 14px; 
+            text-align: right;
+        }
+
+        .introduceLeft {
+            text-align: left;
+            float: left;
+            width: 117px;
+            height: .4rem;
+            line-height: .4rem;
+            color: rgb(72,77,80);
+            font-size: 14px; 
+        }
+        .edu {
+            color: rgb(254,85,78);
+            font-size: .2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading"></div>
+    </div>
+    <div class="refuseContain">
+        <div class="noPass">
+            <img src="../images/refusedBanner.png" alt="">
+            <p>哎呀，借款审核未通过</p>
+            <span></span>
+        </div>
+        <div class="apply_list">
+            <p>建议：</p>
+            <p>1.保持良好的个人信用记录</p>
+            <p>2.保持良好的还款习惯</p>
+            <p>3.保护好账号信息及个人隐私</p>
+        </div>
+    </div>
+    <div class="cooperationContain">
+        <div class="cooperationTitle">
+            <p>不要灰心<br><span class="app_name">柚子钱包</span>为您推荐以下产品</p>
+        </div>
+        <div class="cooperationProduction">
+            <div class="productionName">
+                <img src="../images/nqb.png" alt="">
+                <p>暖钱宝</p>
+                <span id="nqb">立即下载</span>
+            </div>
+        </div>
+        <div class="productionIntroduce edu">
+            <div class="introduceLeft">
+                额度
+            </div>
+            1000~5000
+        </div>
+        <div class="productionIntroduce">
+            <div class="introduceLeft">
+                产品介绍
+            </div>
+            简单三步，5000到手
+        </div>
+    </div>
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script>
+    !(function(global,userUtil,layer,dataUtil){       
+
+        $("#nqb").click(function(){
+            markPoint()
+            window.location.href="https://sspprod.lianzi360.com/security/demand?appId=b733612c17c4e0ace98419488e35e8af&dk=D3267A58EE45EF4E1B9D8DBF8B511477";
+        })
+
+        $('.noPass span').off('click').on("click",function(){
+            window.location.href=global.localUrl +"help/helpcenter.html";
+        });
+        //埋点
+        var mobileNumber=localStorage.getItem("mobile");
+        function markPoint(){
+            var _data={"type": 0,"mobileNumber": mobileNumber};
+            
+            $.ajax({
+                url: global.localUrl+"web/userDiversionMsg",
+                type: "post",
+                data: JSON.stringify(_data),
+                contentType: 'application/json;charset=utf-8',
+                success: function (re) {
+                    if (1 == re.code) {
+                    } else{
+                    }
+                },
+                error: function () {
+                }
+            });
+        }
+        
+    })(global,userUtil,layer,dataUtil)
+    </script>
+    <script>
+        $(document).ready(function(){
+            // setTimeout(function(){
+                if(localStorage.getItem('app_logo_info')){
+                    var app_logo_info = JSON.parse(localStorage.getItem('app_logo_info'));
+                    $('.app_name').html(app_logo_info.themeName);
+                }
+            // },500)
+        });
+    </script>
+</body>
+</html>

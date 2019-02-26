@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="browsermode" content="application" />
+    <meta name="x5-page-mode" content="app" />
+    <title>确认借款</title>
+    <meta charset="utf-8" />
+    <link href="../css/main.css?rev=@@hash" rel="stylesheet" />
+    <style type="text/css">
+        body{
+            background: #f5f5f5;
+        }
+        .view{
+            padding: .25rem .16rem .16rem;
+            background: #fff;
+        }
+        .app_logo{
+            width: .26rem;
+            height: .26rem;
+            display: block;
+            margin-right: .08rem;
+        }
+        .apply_header{
+            font-size: .18rem;
+            margin-bottom: .14rem;
+            align-items: center;
+        }
+        .apply_item>div{
+            font-size: .16rem;
+            margin-bottom: .05rem;
+        }
+        .apply_info{
+            border: 1px dashed #9b9b9b;
+            padding: .18rem .2rem .14rem;
+            border-radius: 8px;
+            font-size: .16rem;
+            color: #000;
+        }
+        .apply_tips{
+            font-size: .14rem;
+            color: #9b9b9b;
+        }
+        .refund_money{
+            font-size: .24rem;
+            text-align: center;
+            margin-top: .08rem;
+        }
+        .apply_card{
+            border: 1px dashed #9b9b9b;
+            padding: .2rem .2rem 0;
+            border-radius: 8px;
+            margin: .1rem 0 .12rem;
+        }
+        .game_card{
+            width: 2.06rem;
+            height: 1.53rem;
+            display: block;
+            margin: 0 auto;
+        }
+        .apply_desc{
+            text-align: center;
+            line-height: 1.8;
+        }
+        .icon-more{
+            font-size: .14rem;
+            color: #2ad2c8;
+            margin-left: .03rem;
+        }
+        .cells_btns{
+            margin: .16rem 0 .62rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 蒙版 -->
+    <div class="layer_load">
+        <div class="layer_mask"></div>
+        <div class="layer_load_icon icon-loading iconfont"></div>
+    </div>
+
+    <div class="view">
+        <div class="flex apply_header">
+            <img src="../images/app_logo.png" class="app_logo">
+            <div><span class="app_name">柚子钱包</span></div>
+        </div>
+        <div class="apply_item">
+            <div>借款金额： <span id="borrowingAmount">1000元</span></div>
+            <div>借款期限：<span id="borrowingTerm">14天</span></div>
+        </div>
+
+        <div class="apply_info">
+            <div>预计到账：</div>
+            <div style="margin: .12rem 0;">
+                <div><span style="color: #ff642e;" id='arriveMoney'>800</span>元现金<span class="apply_tips">（直接汇入您绑定的银行卡中）</span></div>
+                <div><span class="apply_tips">注:到账后会自动为您充值</span><span style="color: #ff642e;" id="arriveGameCoin">200</span><span class="apply_tips">元游戏币，由系统代扣</span></div>
+            </div>
+
+            <div>到期应还款：</div>
+            <div class="refund_money" id="repaymentAmount">1006.30元</div>
+        </div>
+
+        <div class="apply_card">
+            <img src="../images/game_card.png" class="game_card"/>
+        </div>
+
+        <div class="apply_desc">
+            <div>成功放款后，可登录游戏商城尽情娱乐。</div>
+            <div class="active" id="downLoad">点击下载游戏商城<i class="iconfont icon-more"></i></div>
+        </div>
+
+    </div>
+
+
+
+    <div class="cells_btns">
+        <a href="javascript:;" class="btn" id="btnReg">确认借款</a>
+    </div>
+
+    <!-- 脚本 -->
+    <script src="../lib/zepto.min.js?rev=@@hash"></script>
+    <script src="../js/main.js?rev=@@hash"></script>
+    <script src="../js/apply/applyconfirm.js?rev=1"></script>
+    <script>
+        $(document).ready(function(){
+            // setTimeout(function(){
+                if(localStorage.getItem('app_logo_info')){
+                    var app_logo_info = JSON.parse(localStorage.getItem('app_logo_info'));
+                    $('.app_name').html(app_logo_info.themeName);
+                }
+            // },500)
+        });
+    </script>
+</body>
+</html>

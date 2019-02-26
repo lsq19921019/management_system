@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>注册立领888元红包</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./css/mui.min.css">
+    <link rel="stylesheet" href="./css/hongbao.css">
+</head>
+
+<body id="red-packet">
+    <div class="head">
+        <img src="./images/888_head.jpg">
+        <p>第三方机构担保 SH银行 资金存管</p>
+    </div>
+    <div class="main">
+        <div class="red-packet-box">
+            <img src="./images/888_red_packet_1.png">
+            <p><span>单笔投资额≥4000元<br>适用于3月/6月/12月定存宝</span></p>
+        </div>
+        <div class="red-packet-box">
+            <img src="./images/888_red_packet_2.png">
+            <p><span>单笔投资额≥15000元<br>适用于3月/6月/12月定存宝</span></p>
+        </div>
+        <div class="red-packet-box">
+            <img src="./images/888_red_packet_3.png">
+            <p><span>单笔投资额≥30000元<br>适用于3月/6月/12月定存宝</span></p>
+        </div>
+        <div class="red-packet-box">
+            <img src="./images/888_red_packet_4.png">
+            <p><span>单笔投资额≥40000元<br>适用于6月/12月定存宝&nbsp;</span></p>
+        </div>
+        <div class="red-packet-box">
+            <img src="./images/888_red_packet_5.png">
+            <p><span>单笔投资额≥80000元<br>适用于6月/12月定存宝&nbsp;</span></p>
+        </div>
+        <div class="red-packet-box">
+            <img src="./images/888_red_packet_6.png">
+            <p><span>单笔投资额≥150000元<br>适用于6月/12月定存宝&nbsp;</span></p>
+        </div>
+        <div class="clear"></div>
+        <div class="go-reg">
+            <a href="./888_register.html"><img src="./images/888_go_reg.png"></a>
+        </div>
+    </div>
+    <div class="foot-prompt">
+        <p>温馨提示
+            <br>1、活动时间：2017年11月1日-11月30日；
+            <br>2、红包有效期是领取日起30天内，逾期失效；
+            <br>3、每次投资，红包不能叠加只可使用一张；
+            <br>4、红包不适用于新手标，其适用投资项目以实际使用为准；
+            <br>5、使用红包投资成功后，现金将直接返还到账户，可提现可投资。</p>
+    </div>
+    <div class="foot-notice">
+        <p>本次活动最终解释权归
+            <br>深圳市温馨港湾网络技术有限公司所有
+            <br>若有疑问请咨询400-700-4007</p>
+    </div>
+
+
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+    <script>
+    //禁止底层滚动
+    var scrollFlag = true;
+    document.addEventListener('touchmove', function(event) {
+        if (!scrollFlag) {
+            event.preventDefault();
+        }
+    }, false);
+
+    $(function() {
+        $(".img-word2").on("click", function() {
+            $(".tan-box").show();
+            scrollFlag = false;
+        })
+        $(".tan-x").on("click", function() {
+            $(".tan-box").hide();
+            scrollFlag = true;
+        })
+        $(".tan-ok").on("click", function() {
+            $(".tan-box").hide();
+            scrollFlag = true;
+        })
+
+    })
+    </script>
+</body>
+
+</html>

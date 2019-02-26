@@ -1,0 +1,583 @@
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  /* -webkit-user-select: none; */
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  background: #f2f2f2;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  user-select: auto;
+  -webkit-user-select: auto !important;
+}
+
+.clear:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.border-one-half-top,
+.border-one-half-bottom {
+  position: relative;
+}
+
+.border-one-half-top:after {
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 200%;
+  height: 1px;
+  border-bottom: 1px solid #ddd;
+  transform-origin: 0 0;
+  transform: scale(0.5, 0.5);
+  box-sizing: border-box;
+  color: #ddd;
+  background-color: transparent;
+}
+
+.border-one-half-bottom:after {
+  content: "";
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 200%;
+  height: 1px;
+  border-bottom: 1px solid #ddd;
+  transform-origin: 0 0;
+  transform: scale(0.5, 0.5);
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.repay-calend .payback-tips {
+  background: #ffebe7;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.repay-calend .payback-tips p {
+  font-size: 13px;
+  line-height: 35px;
+  color: #ae6262;
+}
+
+.repay-calend .payback-tips p img {
+  display: block;
+  float: right;
+  width: 13px;
+  margin-top: 11px;
+}
+
+.repay-calend .payback-tips p a {
+  float: right;
+  font-size: 14px;
+  line-height: 35px;
+  color: #ae6262;
+}
+
+.repay-calend .header-data {
+  padding-top: 21px;
+  padding-bottom: 19px;
+  background: #ff5637;
+}
+
+.repay-calend .header-data .left-data,
+.repay-calend .header-data .right-data {
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+.repay-calend .header-data .left-data p.title,
+.repay-calend .header-data .right-data p.title {
+  font-size: 12px;
+  line-height: 23px;
+  color: #fff;
+}
+
+.repay-calend .header-data .left-data p.title img,
+.repay-calend .header-data .right-data p.title img {
+  width: 13px;
+  position: relative;
+  top: 2px;
+  right: -3px;
+}
+
+.repay-calend .header-data .left-data p.num,
+.repay-calend .header-data .right-data p.num {
+  font-size: 17px;
+  line-height: 26px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.repay-calend .cent-calend .year-month-bar {
+  background: #ff7b5c;
+}
+
+.repay-calend .cent-calend .year-month-bar .year-bar {
+  float: left;
+  box-sizing: border-box;
+  width: 23.33%;
+  border-right: 1px solid #dddddd;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.repay-calend .cent-calend .year-month-bar .year-bar span {
+  display: inline-block;
+  width: 100%;
+  line-height: 22px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+
+.repay-calend .cent-calend .month-bar {
+  float: left;
+  width: 76.66%;
+}
+
+.repay-calend .cent-calend .month-bar span {
+  display: block;
+  width: 62.4%;
+  text-align: center;
+  font-size: 14px;
+  line-height: 28px;
+  color: #fff;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  margin-left: 18.8%;
+  margin-right: 18.8%;
+  margin-top: 7px;
+  padding-bottom: 7px;
+}
+
+.repay-calend .cent-calend .month-bar .swiper-slide-active span {
+  color: #ff5637;
+  background: #fff;
+  position: relative;
+}
+
+.repay-calend .cent-calend .month-bar .swiper-slide-active span:before {
+  content: "";
+  background: url(/static/img/mobile_repay_calend_01.png?v=1.0.0) no-repeat
+    center;
+  background-size: contain;
+  height: 19px;
+  width: 19px;
+  position: absolute;
+  bottom: 0;
+  left: -19px;
+}
+
+.repay-calend .cent-calend .month-bar .swiper-slide-active span:after {
+  content: "";
+  background: url(/static/img/mobile_repay_calend_02.png?v=1.0.0) no-repeat
+    center;
+  background-size: contain;
+  height: 19px;
+  width: 19px;
+  position: absolute;
+  bottom: 0;
+  right: -19px;
+}
+
+.repay-calend .cent-calend .date-bar {
+  background: #fff;
+  padding-left: 2.93%;
+  padding-right: 2.93%;
+}
+
+.repay-calend .cent-calend .date-bar .week-line {
+  padding-top: 10px;
+}
+
+.repay-calend .cent-calend .date-bar .week-line span {
+  float: left;
+  width: 14.28%;
+  text-align: center;
+  line-height: 24px;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.repay-calend .cent-calend .date-bar .date-line ul li {
+  float: left;
+  width: 14.28%;
+  transition: all 0.3s;
+}
+
+.repay-calend .cent-calend .date-bar .date-line span span {
+  display: block;
+  width: 100%;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  font-size: 18px;
+  color: #38404d;
+  position: relative;
+  z-index: 0;
+}
+
+.repay-calend .cent-calend .date-bar .date-line span span.already:after,
+.repay-calend .cent-calend .date-bar .date-line span span.not:after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  position: absolute;
+  left: 44%;
+  bottom: -1px;
+}
+
+.repay-calend .cent-calend .date-bar .date-line span span.already:after {
+  background: #ccc;
+}
+
+.repay-calend .cent-calend .date-bar .date-line span span.not:after {
+  background: #ff5637;
+}
+
+.repay-calend .cent-calend .date-bar .date-line span span.today {
+  color: #ff5637;
+  font-size: 15px;
+}
+
+.repay-calend .cent-calend .date-bar .date-line span span.today:before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  box-sizing: border-box;
+  border: 1px solid #ff5637;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.repay-calend .cent-calend .date-bar .date-line span.active span {
+  color: #fff;
+}
+
+.repay-calend .cent-calend .date-bar .date-line span.active span:before {
+  content: "";
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  border-radius: 50%;
+  background: #ff5637;
+  z-index: -1;
+}
+
+.repay-calend .cent-calend .example-bar {
+  background: #fff;
+  padding-bottom: 15px;
+}
+
+.repay-calend .cent-calend .example-bar p {
+  font-size: 12px;
+  line-height: 59px;
+  color: #999;
+  text-align: center;
+}
+
+.repay-calend .cent-calend .example-bar p .left {
+  margin-right: 33px;
+}
+
+.repay-calend .cent-calend .example-bar p .left,
+.repay-calend .cent-calend .example-bar p .right {
+  position: relative;
+  padding-left: 11px;
+}
+
+.repay-calend .cent-calend .example-bar p .left span,
+.repay-calend .cent-calend .example-bar p .right span {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+}
+
+.repay-calend .cent-calend .example-bar p .left span {
+  background: #ccc;
+}
+
+.repay-calend .cent-calend .example-bar p .right span {
+  background: #ff5637;
+}
+
+.repay-calend .today-payback {
+  margin-top: 7px;
+  background: #fff;
+}
+
+.repay-calend .today-payback .padding-left {
+  padding-left: 4%;
+}
+
+.repay-calend .today-payback .padding-right {
+  padding-right: 4%;
+}
+
+/*.repay-calend .today-payback .payback-line {
+  border-bottom: 1px solid #ddd;
+}
+
+.repay-calend .today-payback .no-border {
+  border-bottom: none;
+}*/
+
+.repay-calend .today-payback .payback-line span {
+  font-size: 14px;
+  line-height: 48px;
+  color: #162337;
+}
+
+.repay-calend .today-payback .payback-line span.right {
+  float: right;
+}
+
+.repay-calend .footer-list {
+  margin-top: 7px;
+  margin-bottom: 63px;
+}
+
+.repay-calend .footer-list .empty {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.repay-calend .footer-list .empty p {
+  font-size: 16px;
+  color: #aaa;
+  text-align: center;
+}
+
+.repay-calend .footer-list .tips {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.repay-calend .footer-list .tips p {
+  font-size: 16px;
+  color: #aaa;
+  text-align: center;
+}
+
+.repay-calend .footer-list .list {
+  background: #fff;
+}
+
+.repay-calend .footer-list .list .list-title {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.repay-calend .footer-list .list .list-title span {
+  font-size: 15px;
+  line-height: 43px;
+  color: #162337;
+}
+
+.repay-calend .footer-list .list .list-title span.right {
+  float: right;
+  font-size: 12px;
+  color: #999;
+}
+
+.repay-calend .footer-list .list .van-list van-cell {
+  margin-left: 4%;
+  margin-right: 4%;
+  padding-top: 10px;
+  padding-bottom: 12px;
+  display: block;
+}
+
+.repay-calend .footer-list .list .van-list van-cell:last-child {
+  border-bottom: none;
+}
+
+.repay-calend .footer-list .list .van-list van-cell .left {
+  float: left;
+}
+
+.repay-calend .footer-list .list .van-list van-cell .left .borrow-name {
+  font-size: 15px;
+  line-height: 25px;
+  color: #000;
+}
+
+.repay-calend .footer-list .list .van-list van-cell .left .numbering {
+  font-size: 12px;
+  line-height: 22px;
+  color: #999;
+}
+
+.repay-calend .footer-list .list .van-list van-cell .left .numbering .label {
+  padding: 1px 6px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+.repay-calend
+  .footer-list
+  .list
+  .van-list
+  van-cell
+  .left
+  .numbering
+  .label.not {
+  color: #ff5637;
+  border: 1px solid #ff5637;
+}
+
+.repay-calend .footer-list .list .van-list van-cell .right {
+  float: right;
+  text-align: right;
+}
+
+.repay-calend .footer-list .list .van-list van-cell .right .amount {
+  font-size: 14px;
+  line-height: 49px;
+  color: #162337;
+}
+
+.repay-calend .footer-list .list p.load-more {
+  border-top: 1px solid #ddd;
+  margin-left: 4%;
+  margin-right: 4%;
+  font-size: 12px;
+  line-height: 38px;
+  text-align: center;
+  color: #999;
+}
+
+.repay-calend .footer-list .list p.no-more {
+  font-size: 12px;
+  line-height: 38px;
+  text-align: center;
+  color: #ccc;
+  background: #f2f2f2;
+}
+
+/* 权益标提示弹窗 */
+
+.repay-calend #interests-tip {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.repay-calend #interests-tip .block {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.8;
+}
+
+.repay-calend #interests-tip .window {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  width: 267px;
+  height: 318px;
+  transform: translate(-50%, -50%);
+  background: url(/static/img/mobile_repay_calend_03.png) no-repeat center;
+  background-size: contain;
+}
+
+.repay-calend #interests-tip .window .tips-text {
+  width: 170px;
+  font-size: 15px;
+  line-height: 23px;
+  color: #333;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.repay-calend #interests-tip .window .to-join {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+}
+
+.repay-calend #interests-tip .window .to-join a {
+  display: block;
+  width: 178px;
+  margin: auto;
+  height: 47px;
+}
+
+.repay-calend #interests-tip .window .to-join a img {
+  display: block;
+  width: 100%;
+}
+
+.repay-calend #interests-tip .window #interests-clos {
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -70px;
+  text-align: center;
+}
+
+.repay-calend #interests-tip .window #interests-clos img {
+  height: 100%;
+}
+
+.interests-tip-enter-active,
+.interests-tip-leave-active {
+  transition: opacity 0.3s;
+}
+
+.interests-tip-enter,
+.interests-tip-leave-to {
+  opacity: 0;
+}
+
+.mui-toast-container {
+  bottom: 45%;
+}
+
+.mui-toast-container .mui-toast-message {
+  color: #fff;
+  background: #3d3d3d;
+}

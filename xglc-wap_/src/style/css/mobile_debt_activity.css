@@ -1,0 +1,21 @@
+.debt-activity .img-line {
+  position: relative;
+}
+
+.debt-activity .img-line img {
+  display: block;
+  width: 100%;
+}
+
+.debt-activity .img-line .btn-line {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 27px;
+}
+
+.debt-activity .img-line .btn-line img {
+  display: block;
+  width: 49.8%;
+  margin: 0 auto;
+}

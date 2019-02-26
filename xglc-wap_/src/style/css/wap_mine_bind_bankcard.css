@@ -1,0 +1,63 @@
+.bind-card .in-padding {
+  padding-left: 4%;
+}
+
+.bind-card .p-r {
+  padding-right: 4%;
+}
+
+.bind-card .cardholder {
+  font-size: 12px;
+  line-height: 30px;
+  color: #999;
+  padding-left: 5%;
+}
+
+.bind-card .input-bg {
+  background: #fff;
+}
+
+.bind-card .input-line span {
+  float: left;
+  font-size: 16px;
+  line-height: 48px;
+  color: #333;
+  width: 27.9%;
+}
+
+.bind-card .in-border:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.bind-card .input-line input {
+  float: right;
+  padding: 0;
+  width: 71%;
+  border: none;
+  height: 48px;
+  line-height: 18px;
+  font-size: 15px;
+  outline: none;
+}
+
+.bind-card .bank-list a {
+  float: right;
+  font-size: 12px;
+  line-height: 52px;
+  color: #ff5637;
+}
+
+.bind-card .btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: 28px auto 0;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  background: #ff5637;
+}

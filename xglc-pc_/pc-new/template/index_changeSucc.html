@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>修改成功</title>
+		<!--#include virtual="_inc/_inc_import_css.html" -->
+		<!--#include virtual="_inc/_inc_import_js.html" -->
+	</head>
+
+	<body>
+		<!--登陆注册页面公用头部-->
+		<div class="login_headerPart">
+			<div>
+				<div onclick="window.location.href='index.html'"></div>
+				<div>修改成功</div>
+			</div>
+		</div>
+		
+		<!--内容部分-->
+		<div class="changeSucc_content">
+			<div>
+				<p></p>
+				<p>您的密码已修改成功！</p>
+				<p>(<font id="seconds">3</font>秒后) 即将跳转登录页......</p>
+			</div>
+		</div>
+
+		<!--底部-->
+		<div class="login_footerPart">
+			<div>
+				<ul>
+					<li><a href="about_xg_company.html">关于我们</a></li>
+					<li><a href="laws_page.html">法律法规</a></li>
+					<li><a href="about_xg_contact.html">联系我们</a></li>
+					<li><a href="#">帮助中心</a></li>
+				</ul>
+			</div>
+			<div>
+				<ul>
+					<li>&copy;2016-2017 xiaogelicai.com</li>
+					<li>深圳市温馨港湾网络技术有限公司</li>
+					<li>备案号： <a href="http://www.miit.gov.cn">粤ICP备14025100号-5</a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		$(function(){
+			var i = 3;
+			var time = setInterval(function(){
+				i--;
+				$('font#seconds').html(i);
+				if(i == 0){
+					Web.go('index_login.html');
+				}
+			},1000);
+		});
+	</script>
+</html>

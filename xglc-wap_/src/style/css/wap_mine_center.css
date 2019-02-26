@@ -1,0 +1,161 @@
+.mine-center .reg-login-line {
+  display: block;
+  padding-top: 0.57rem;
+  padding-bottom: 0.57rem;
+  background: #fff;
+}
+
+.in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.margin-b {
+  margin-bottom: 7px;
+}
+
+.mine-center .reg-login-line .header-box {
+  height: 1.12rem;
+  float: left;
+}
+
+.mine-center .reg-login-line .header-box img {
+  display: block;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.mine-center .reg-login-line .user-data {
+  float: left;
+  padding-left: 5.5%;
+}
+
+.mine-center .reg-login-line .user-data .has-login,
+.mine-center .reg-login-line .user-data .not-login {
+  font-size: 0.42rem;
+  line-height: 0.4rem;
+  font-weight: bold;
+  padding-top: 0.14rem;
+  color: #333;
+}
+
+.mine-center .reg-login-line .user-data .has-login span,
+.mine-center .reg-login-line .user-data .not-login span {
+  display: block;
+  font-size: 0.28rem;
+  line-height: 0.22rem;
+  font-weight: normal;
+  padding-top: 0.23rem;
+  color: #666;
+}
+
+/* .mine-center .reg-login-line .user-data .not-login {
+  line-height: 50px;
+  font-size: 16px;
+  color: #333;
+} */
+
+.mine-center .reg-login-line .right {
+  float: right;
+  height: 50px;
+  width: 8px;
+  position: relative;
+}
+
+.mine-center .reg-login-line .right img {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mine-center .ad_line {
+  background: #fff;
+}
+
+.mine-center .ad_line img {
+  width: 100%;
+  display: block;
+}
+
+.mine-center .line_tab {
+  background: #fff;
+}
+
+.mine-center .line_tab .tab_icon {
+  padding-top: 0.18rem;
+}
+
+.mine-center .line_tab .icon {
+  color: #ff5637;
+  height: 0.5rem;
+  width: 0.5rem;
+  position: relative;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mine-center .line_tab .tab_title {
+  padding-top: 0.19rem;
+  padding-bottom: 0.39rem;
+}
+
+.mine-center .line_tab .tab_title p {
+  font-size: 0.26rem;
+  color: #333;
+  line-height: 0.25rem;
+  text-align: center;
+}
+
+.mine-center .tab-line {
+  display: block;
+  background: #fff;
+  padding-left: 4%;
+}
+
+.mine-center .tab-line .border-box {
+  padding-right: 4%;
+}
+
+.mine-center .tab-line .border-box .left {
+  float: left;
+}
+
+.mine-center .tab-line .border-box .left .icon {
+  color: #ff5637;
+  height: 20px;
+  width: 20px;
+  margin-right: 9px;
+  position: relative;
+  top: 4px;
+}
+
+.mine-center .tab-line .border-box .left span {
+  font-size: 15px;
+  color: #333;
+  line-height: 55px;
+}
+
+.mine-center .tab-line .border-box .right {
+  float: right;
+  height: 55px;
+  position: relative;
+}
+
+.mine-center .tab-line .border-box .right span {
+  font-size: 15px;
+  line-height: 55px;
+  color: #999;
+  padding-right: 17.5px;
+}
+
+.mine-center .tab-line .border-box .right img {
+  display: block;
+  width: 8px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}

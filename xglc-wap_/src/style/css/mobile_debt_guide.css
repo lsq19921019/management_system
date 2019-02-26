@@ -1,0 +1,82 @@
+.clear:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.debt-guide .top img {
+  display: block;
+  width: 100%;
+}
+
+.debt-guide .step-line {
+  padding-top: 19px;
+}
+
+.debt-guide .step-line .title {
+  width: 81.3%;
+  margin: 0 auto;
+}
+
+.debt-guide .step-line .title p {
+  font-size: 15px;
+  line-height: 22px;
+  color: #333;
+}
+
+.debt-guide .step-line .title p span {
+  font-weight: bold;
+  color: #fe7f0e;
+  padding-right: 10px;
+}
+
+.debt-guide .step-line .step-img {
+  padding-top: 17px;
+  padding-bottom: 18px;
+}
+
+.debt-guide .step-line .step-img img {
+  display: block;
+  width: 62.9%;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(133, 133, 133, 0.3);
+}
+
+.debt-guide .step-line .step-img.double {
+  position: relative;
+}
+
+.debt-guide .step-line .step-img.double img {
+  float: left;
+  width: 40%;
+  margin-right: 6.6%;
+}
+
+.debt-guide .step-line .step-img.double img:first-child {
+  margin-left: 6.7%;
+}
+
+.debt-guide .step-line .step-img.double img:last-child {
+  margin-right: 0;
+}
+
+.debt-guide .step-line .step-img.double .btn-left,
+.debt-guide .step-line .step-img.double .btn-right {
+  position: absolute;
+  bottom: 18px;
+  height: 20px;
+  width: 40%;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  background: #ff5637;
+}
+
+.debt-guide .step-line .step-img.double .btn-left {
+  left: 6.6%;
+}
+
+.debt-guide .step-line .step-img.double .btn-right {
+  right: 6.6%;
+}

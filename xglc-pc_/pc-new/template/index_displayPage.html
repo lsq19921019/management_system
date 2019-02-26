@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>app展示页</title>
+		<!--#include virtual="_inc/_inc_import_css.html" -->
+        <!--#include virtual="_inc/_inc_import_js.html" -->
+	</head>
+
+	<body>
+		<!--#include virtual="_inc/_inc_import_header.html" -->
+
+		<!--第一部分-->
+		<div class="displayPage_partFirst">
+			<p id="text1">您已注册成功！</p>
+			<p id="text2">即刻下载app，享受随身理财的乐趣吧！</p>
+		</div>
+
+		<!--第二部分-->
+		<div class="displayPage_partSecond"></div>
+
+		<!--第三部分-->
+		<div class="displayPage_partThird"></div>
+
+		<!--#include virtual="_inc/_inc_import_footer.html" -->
+	</body>
+	
+	<script>
+		$(function(){
+			if(Utils.getQueryParameter('notOpenOlineBank')){
+				$('p#text1').html('您还未开通存管账户！');
+				$('p#text2').html('即刻下载 app，3分钟轻松搞定，享受随身理财的乐趣吧！！');
+			}
+		});
+	</script>
+</html>

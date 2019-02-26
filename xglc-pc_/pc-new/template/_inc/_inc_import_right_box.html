@@ -1,0 +1,32 @@
+<!-- 信息披露侧边栏 -->
+<div class="right-box">
+    <ul>
+        <li><a href="about_xg_company.html"><span>关于小鸽</span></a></li>
+        <li class="child"><a href="about_xg_company.html"><span>公司简介</span></a></li>
+        <li class="child"><a href="about_xg_basicInfo.html"><span>基本信息</span></a></li>
+        <li class="child"><a href="about_xg_team.html"><span>管理团队</span></a></li>
+        <li class="child"><a href="about_xg_major.html"><span>重大事项</span></a></li>
+        <li class="child"><a href="about_xg_toll.html"><span>收费标准</span></a></li>
+        <li class="child"><a href="about_xg_contact.html"><span>联系我们</span></a></li>
+        <li><a href="record_info.html"><span>备案信息</span></a></li>
+        <li><a href="bank_dep.html"><span>银行存管</span></a></li>
+        <li><a href="security.html"><span>安全保障</span></a></li>
+        <!-- <li><a href="business.html"><span>业务介绍</span></a></li> -->
+        <li><a href="supervision.html"><span>监管机构</span></a></li>
+        <li><a href="laws_page.html"><span>法律法规</span></a></li>
+        <li><a href="risk.html"><span>风险提示</span></a></li>
+        <li><a href="noticePop_list.html?pageNum=1"><span>平台公告</span></a></li>
+    </ul>
+</div>
+<script type="text/javascript">
+$(function() {
+    $(".right-box ul li").on('mouseenter mouseleave', function(event) {
+        if (event.type == "mouseenter") {
+            $(this).addClass('hover')
+        } else if (event.type == "mouseleave") {
+            $(this).removeClass('hover')
+        }
+    });
+    $('#navBar>li:nth-child(2)').addClass('active');
+})
+</script>

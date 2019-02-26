@@ -1,0 +1,25 @@
+<div id="header">
+	<div class="container">
+		<a href="/"><img src="./img/logo-2.png" alt="" class="fl logo-1Box"></a>
+		<ul class="ul_li_fl clears" id="header-Ul-list">
+			<a href="/"><li>
+				首页
+			</li></a>
+			<a href="/Entering.html"><li>
+				申请入驻
+			</li></a>
+			<a href="/understanding.html"><li>
+				关于我们
+			</li></a>
+		</ul>
+	</div>
+</div>
+<script>
+	(function ActiveItem(){
+		var pageId = document.getElementById('pageId').value||"0",List_item =  document.getElementById('header-Ul-list').children;
+		for(var i = 0 ; i<List_item.length;i++){
+			List_item[pageId].className += 'snow-container'
+			return false;
+		}
+	})()
+</script>

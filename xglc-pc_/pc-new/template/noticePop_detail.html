@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>公告详情</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--#include virtual="_inc/_inc_import_header.html" -->
+    <!--内容部分-->
+    <div class="notice_detail">
+        <div class="inner">
+            <h3 class="title"></h3>
+            <p id="time"></p>
+            <p class="content"></p>
+            <p class="signature">小鸽理财
+                <br><span id="signaDate"></span></p>
+        </div>
+    </div>
+    <!--#include virtual="_inc/_inc_import_footer.html" -->
+    <script type="text/javascript">
+    $(function() {
+        Detail.postAnn();
+    })
+    var Detail = {
+        postAnn: function() {
+            var id = Utils.getQueryParameter("id")
+            var self = this;
+            var dataJson = {
+                id: id
+            };
+            $.ajax({
+                type: "POST",
+                headers: base.ajaxHeaderWithoutToken(dataJson),
+                data: {
+                    noticeId: id
+                },
+                dataType: 'json',
+                async: true,
+                url: '/api/index/noticeDetail',
+                success: function(data) {
+                    //console.log(data)
+                    if (data.status == 0) {
+                        $(".title").html(data.result.title)
+                        $("#time").html(data.result.time)
+                        $(".content").html(data.result.content)
+                        var signaDate = data.result.time.split(" ")[0]
+                        $("#signaDate").text(signaDate.split("-")[0] + "年" + signaDate.split("-")[1] + "月" + signaDate.split("-")[2] + "日")
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        },
+    }
+    </script>
+</body>
+
+</html>

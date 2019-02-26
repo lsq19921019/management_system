@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>银行存管</title>
+		<!--#include virtual="_inc/_inc_import_css.html" -->
+		<!--#include virtual="_inc/_inc_import_js.html" -->
+		<script type="text/javascript" src="../js/jquery.media.js"></script>
+	</head>
+
+	<body>
+		<!--#include virtual="_inc/_inc_import_header.html" -->
+
+		<!--这里是内容部分-->
+		<div class="bankCustodyContent">
+			<div>
+				<p></p>
+				<p>银<span></span>行<span></span>存<span></span>管<span></span>正<span></span>式<span></span>上<span></span>线</p>
+			</div>
+			<div>
+				<div>为什么一定要接入存管？</div>
+				<div>银行存管， 让您的资金更安全</div>
+				<div>
+					<p>在2016年8月，监管部门发布的《网络借贷信息中介机构业务活动管理暂行办法》中明确要求平台应当选择符合条件的银行业金融机构作为存管机构。
+					</p>
+					<p>资金存管系统是存管银行依据行业监管政策，向网络借贷信息中介机构提供的用于管理投资人与借款人资金的系统，其功能包括开户、充值、投标、提现、还款等。 除了充值、提现， 其他的交易都是在存管内部的虚拟资金交易记录，不会产生外部资金流。合规安全，从我做起。
+					</p>
+				</div>
+				<div></div>
+				<div id="showProtocol"> <a style="color: inherit;display: block;" href="shanghai_protocol.pdf">查看资金存管协议</a></div>
+			</div>
+			<div>
+				<div>为什么选择SH银行存管？</div>
+				<div>
+					<p>SH银行股份有限公司（以下简称“SH银行”）成立于1995年12月29日，总行位于SH， 是SH证券交易所主板上市公司，股票代码601229。
+					</p>
+					<p>SH银行符合《网络借贷信息中介机构业务活动管理暂行办法》和《网络借贷资金存管业务指引 （征求意见稿）》中的政策规定，是合规的银行存管模式。2017年SH银行排名升至全球银行业第85位。
+					</p>
+				</div>
+				<div>
+					<p><span>1</span>合作银行：资金存管主体。</p>
+					<p><span>2</span>互联网金融服务平台：信息中介，撮合网络借贷交易。</p>
+					<p><span>3</span>支付公司：为银行资金存管服务提供跨行支付通道服务。
+					</p>
+					<p><span>4</span>存管：银行资金存管系统的前置服务平台，负责信息的封装与传递。
+					</p>
+				</div>
+			</div>
+			<div>
+				<div>SH银行如何保障用户资金安全</div>
+				<div>
+					<div>
+						<p>系统分账</p>
+						<p>监管接入SH银行存管后，将由SH银行对平台用户账户资金及平台自有运营资金进行分账监管，二者完全独立且相互隔离，平台无法接触用。</p>
+					</div>
+					<div>
+						<p>用户资金</p>
+						<p>存管微粉们进行充值、绑卡、提现等每一笔与资金有关的操作，均需要通过SH银行资金存管账户，由SH银行对用户资金信息进行管理，避免资金被挪用。
+						</p>
+					</div>
+					<div>
+						<p>用户授权</p>
+						<p>操作用户需要开通SH银行存管账户，并单独设立交易密码。在充值投资操作时，系统会验证密码，在得到用户的授权后，由银行根据交易指令进行资金划转。
+						</p>
+					</div>
+					<div>
+						<p>银行监管</p>
+						<p>SH银行对交易流程进行管理，并对所有的资金流水存档记录，确保借贷双方的资金流转和债权关系清晰明确。
+						</p>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div>更多关于银行存管</div>
+				<div>
+					<div>
+						<p>
+							<font>Q：</font>银行存管上线后，用户资金有什么有变化？
+						</p>
+						<p>
+							<font>A：</font>用户资金由银行专门管理，只有用户本人才能操作账户上的资金，从根本上杜绝了用户资金被挪用的 潜在风险。
+						</p>
+					</div>
+					<div>
+						<p>
+							<font>Q：</font>银行存管上线后，提现会有什么影响？
+						</p>
+						<p>
+							<font>A：</font>SH银行会在收到申请的当日受理，下一个工作日到账；遇双休日、国家法定节假日，到账日期顺延。
+						</p>
+					</div>
+					<div>
+						<p>
+							<font>Q：</font>银行存管上线后，有哪些银行卡支持绑定？
+						</p>
+						<p>
+							<font>A：</font>当前支持16家银行绑卡开户：中国银行、农业银行、工商银行、建设银行、光大银行、浦发银行、 兴业银行、平安银行、民生银行、中信银行、广发银行、邮政储蓄银行、华夏银行、北京银行、招商银行、 交通银行。
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--#include virtual="_inc/_inc_import_footer.html" -->
+	</body>
+	<script>
+		$('div#showProtocol').on('click',function(){
+			$(this).find('a').media({width:800, height:600});
+		});
+	</script>
+</html>

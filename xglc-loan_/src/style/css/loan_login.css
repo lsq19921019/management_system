@@ -1,0 +1,102 @@
+.form {
+  margin-top: 11px;
+}
+
+.form .info-list {
+  height: 45px;
+}
+
+.form .in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.form .in-border {
+  border: none;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.form .login-input {
+  position: relative;
+}
+
+.form .login-input img.top-icon {
+  display: inline-block;
+  width: 5.8%;
+  padding-left: 3.4%;
+  padding-right: 3.1%;
+  position: relative;
+  top: 5px;
+}
+
+.form .login-input input {
+  display: inline-block;
+  padding: 0;
+  width: 65.8%;
+  border: none;
+  height: 62px;
+  line-height: 18px;
+  font-family: "Microsoft Yahei";
+  font-size: 14px;
+  outline: none;
+  padding-left: 8.6%;
+  padding-right: 9.3%;
+  border-bottom: 1px solid #e6e6e6;
+}
+.form .login-input img.clear {
+  position: absolute;
+  top: 23px;
+  right: 7%;
+  width: 5.2%;
+}
+.form .login-input .switch-box {
+  position: absolute;
+  top: 17px;
+  right: 7%;
+  width: 7.8%;
+  height: 30px;
+}
+
+.form .login-input .switch-box img.switch-img {
+  width: 100%;
+  display: block;
+}
+
+.form .login-input .switch-box img.f-show {
+  position: absolute;
+  top: 16px;
+  left: 0;
+}
+
+.form .login-input .switch-box img.t-show {
+  position: absolute;
+  top: 4px;
+  left: 0;
+}
+
+.form .btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: 60px auto 0;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 86, 55, 0.5);
+  background: linear-gradient(left, #fe7229, #ff5637);
+}
+.form .foot-title {
+  margin-top: 5px;
+}
+.form .foot-title p {
+  text-align: center;
+  font-size: 14px;
+  line-height: 32px;
+  color: #999;
+}
+
+.form .foot-title p a {
+  color: #ff5637;
+}

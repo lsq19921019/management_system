@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>信息披露</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--#include virtual="_inc/_inc_import_header.html" -->
+    <!--内容部分-->
+    <div class="inf-dis">
+        <div class="content">
+            <div class="left-box notice_list">
+                <div class="head-title">
+                    <h2>平台公告</h2>
+                </div>
+                <div class="center-piece">
+                    <div class="list">
+                        <ul class="min-h">
+                        </ul>
+                        <div class="page">
+                            <span class="last">上一页</span>
+                            <ul class="page-box">
+                            </ul>
+                            <span class="next">下一页</span>
+                        </div>
+                        <div class="page-num">
+                            <p>第<span class="current"></span>页/共<span class="total"></span>页</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 侧边栏 -->
+            <!--#include virtual="_inc/_inc_import_right_box.html" -->
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <!--#include virtual="_inc/_inc_import_footer.html" -->
+    <script type="text/javascript">
+    $(function() {
+        $(".right-box ul li").eq(13).addClass('active')
+        $(".arch .arch-out").on('mouseenter', function() {
+            $(this).children(".wind").addClass('show')
+        })
+        $(".arch .arch-out").on('mouseleave', function() {
+            $(this).children(".wind").removeClass('show')
+        })
+        $(".page .last").on('click', function() {
+            location.href = 'noticePop_list.html?pageNum=' + (List.pageNum * 1 - 1)
+        })
+        $(".page .next").on('click', function() {
+            location.href = 'noticePop_list.html?pageNum=' + (List.pageNum * 1 + 1)
+        })
+        List.getPageNum();
+    })
+    var List = {
+        pageNum: null,
+        getPageNum: function() {
+            this.pageNum = Utils.getQueryParameter("pageNum")
+            this.postList()
+        },
+        postList: function() {
+            var self = this;
+            var dataJson = {
+                pageNum: this.pageNum,
+            };
+            $.ajax({
+                type: "POST",
+                headers: base.ajaxHeaderWithoutToken(dataJson),
+                dataType: 'json',
+                data: dataJson,
+                async: true,
+                url: '/api/index/noticeList',
+                success: function(data) {
+                    var that = this
+                    //console.log(data)
+                    if (data.status == 0) {
+                        if (data.result.mobileNoticeList.length > 0) {
+                            if (data.result.pageEntity.currentPage == 1) {
+                                $(".page .last").hide()
+                            }
+                            if (data.result.pageEntity.currentPage == data.result.pageEntity.totalPage) {
+                                $(".page .next").hide()
+                            }
+                            $(".current").text(data.result.pageEntity.currentPage)
+                            $(".total").text(data.result.pageEntity.totalPage)
+                            for (var i = 0; i < data.result.mobileNoticeList.length; i++) {
+                                $(".min-h").append("<li><a target='_blank' href='noticePop_detail.html?id=" + data.result.mobileNoticeList[i].noticeId + "'><span>" + data.result.mobileNoticeList[i].title + "</span><span>" + data.result.mobileNoticeList[i].time1 + "</span></a></li>")
+                            }
+                            for (var i = 0; i < data.result.pageEntity.totalPage; i++) {
+                                if (i + 1 == List.pageNum * 1) {
+                                    $(".page-box").append("<li class='active'><a href='noticePop_list.html?pageNum=" + (i + 1) * 1 + "'>" + (i + 1) * 1 + "</a></li>")
+                                } else {
+                                    $(".page-box").append("<li><a href='noticePop_list.html?pageNum=" + (i + 1) * 1 + "'>" + (i + 1) * 1 + "</a></li>")
+                                }
+                            }
+
+                        }
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        },
+    }
+    </script>
+</body>
+
+</html>

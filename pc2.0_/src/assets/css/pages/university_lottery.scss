@@ -1,0 +1,149 @@
+.lottery {
+  width: 1920px;
+  height: 1080px;
+  background: url(../../images/activity/pc_lottery_01.png) no-repeat center;
+  background-size: cover;
+  position: relative;
+  .center_winner {
+    position: absolute;
+    top: 394px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 560px;
+    height: 124px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: auto;
+    .winner_num {
+      float: left;
+      width: 20%;
+      font-size: 18px;
+      line-height: 31px;
+      text-align: center;
+      font-weight: bold;
+      color: #b93836;
+    }
+  }
+  .center_roll {
+    position: absolute;
+    top: 524px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 860px;
+    height: 260px;
+    background: url(../../images/activity/pc_lottery_02.png) no-repeat center;
+    background-size: cover;
+    .roll_box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 236px;
+      overflow: hidden;
+      .num {
+        background: url(../../images/activity/pc_lottery_03.png) top center
+          repeat-y;
+        float: left;
+        width: 25%;
+        height: 236px;
+      }
+    }
+  }
+  .btn_line {
+    position: absolute;
+    top: 821px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 660px;
+    height: 112px;
+    img:first-child {
+      float: left;
+      cursor: pointer;
+    }
+    img:last-child {
+      float: right;
+      cursor: pointer;
+    }
+  }
+  .award {
+    img.btn {
+      position: absolute;
+      right: 30px;
+      top: 120px;
+      cursor: pointer;
+    }
+    .award_list {
+      display: none;
+      box-sizing: border-box;
+      width: 198px;
+      height: 340px;
+      padding-top: 15px;
+      position: absolute;
+      top: 120px;
+      right: 158px;
+      background: linear-gradient(
+        180deg,
+        rgba(111, 36, 212, 1) 0%,
+        rgba(67, 24, 176, 1) 100%
+      );
+      box-shadow: 0px 0px 56px 0px rgba(255, 255, 255, 0.7) inset;
+      border-radius: 12px;
+      text-align: center;
+      img {
+        margin: 10px 0;
+        cursor: pointer;
+      }
+      img.active {
+        transform: scale(1.4, 1.4);
+        border: 1px solid #fff;
+        border-radius: 40px;
+      }
+    }
+  }
+  .winner {
+    img.btn {
+      position: absolute;
+      right: 30px;
+      top: 268px;
+      cursor: pointer;
+    }
+    .winner_list {
+      display: none;
+      box-sizing: border-box;
+      width: 288px;
+      height: 698px;
+      padding: 15px 0;
+      position: absolute;
+      top: 268px;
+      right: 158px;
+      background: linear-gradient(
+        180deg,
+        rgba(111, 36, 212, 1) 0%,
+        rgba(67, 24, 176, 1) 100%
+      );
+      box-shadow: 0px 0px 56px 0px rgba(255, 255, 255, 0.7) inset;
+      border-radius: 12px;
+      text-align: center;
+      overflow: auto;
+      img {
+        margin: 10px 0;
+      }
+      p {
+        span {
+          float: left;
+          width: 25%;
+          font-size: 18px;
+          line-height: 32px;
+          color: #fff;
+          text-align: center;
+        }
+      }
+      p::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="email=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./css/ok.css" />
+<title>操作成功 </title>
+</head>
+<body>
+<br><br><br>
+<h1>操作成功，请点击返回</h1>
+ 
+<div class="ok-but">返回</div>
+
+<script type="text/javascript" src="./js/jquery.min.js" ></script>
+<script type="text/javascript" src="./js/common.js" ></script>
+<script>
+$(function(){
+    $(".ok-but").on("click",function(){
+      location.href="http://www.baidu.com?url='aaaa'";
+   })
+})
+</script>
+</body>
+</html>

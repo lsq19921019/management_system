@@ -1,0 +1,48 @@
+.myAccount_content{
+    width: 100%;
+    height: 1050px;
+    background: url('../../images/june_promotion/myAccountWater.png')center bottom no-repeat;
+    background-size: 100% auto;
+    &>div{
+        position: relative;
+        width: 1205px;
+        height: 100%;
+        margin: 0 auto;
+        border-top: 1px solid #e6e6e6;
+        &>div{
+            &{
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                -webkit-transform: translateX(-50%);
+            }
+        }
+        .myacc1{
+            top: 274px;
+            font-size: 40px;
+            color: #555;
+        }
+        .myacc2{
+            top: 342px;
+            font-size: 70px;
+            color: #ff5637;
+        }
+        .myacc3{
+            top: 470px;
+            width: 460px;
+            height: 92px;
+            background: #ea553a;
+            text-align: center;
+            line-height: 92px;
+            border-radius: 46px;
+            color: #fff;
+            font-size: 45px;
+            cursor: pointer;
+        }
+        .myacc4{
+            top: 620px;
+            font-size: 20px;
+            color: #999;
+        }
+    }
+}

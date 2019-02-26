@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>信息披露</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--#include virtual="_inc/_inc_import_header.html" -->
+    <!--内容部分-->
+    <div class="inf-dis">
+        <div class="content">
+            <div class="left-box about_xg">
+                <div class="head-title">
+                    <h2>联系我们</h2>
+                </div>
+                <div class="center-piece contactUs_rightPart" style="padding-top: 15px;">
+                    <div style="margin-left: 15px;margin-right: 15px;">
+                    </div>
+                    <div class="piece">
+                        <h4>人工服务</h4>
+                        <p class="tel"><span><img src="../img/about_xg_contact_01.png">咨询电话： 400-700-4007</span><span><img src="../img/about_xg_contact_01.png">投诉、举报电话： （0755）2833-6926</span></p>
+                        <p class="tel"><img src="../img/about_xg_contact_01.png">服务时间： 工作日（09:00-18:30）</p>
+                    </div>
+                    <div class="piece">
+                        <h4>商务合作</h4>
+                        <p>如您有意合作，请发送相关资料至以下联系人邮箱，我们会尽快与您联系线下资产端业务合作联系：</p>
+                        <p>kefu@xiaogelicai.com</p>
+                    </div>
+                    <div class="piece">
+                        <h4>媒体采访</h4>
+                        <p>如果您有采访需求或品牌合作意向，请将采访提纲或合作方式等资料发送到邮箱：kefu@xiaogelicai.com</p>
+                        <p>我们会尽快与您联系。</p>
+                    </div>
+                    <div class="piece">
+                        <h4>小鸽理财（总部）</h4>
+                        <p>公司地址：深圳市南山区高新九道北理工创新大厦1202</p>
+                        <p>邮编：518000</p>
+                        <p>公司地图：</p>
+                        <div style="width: 945px;height: 634px;margin: 13px auto 0;background: url(../img/mapBg.0.1.png) center no-repeat;background-size: cover;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 侧边栏 -->
+            <!--#include virtual="_inc/_inc_import_right_box.html" -->
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <!--#include virtual="_inc/_inc_import_footer.html" -->
+    <script type="text/javascript">
+    $(function() {
+        $(".right-box ul li").eq(6).addClass('active')
+        $(".arch .arch-out").on('mouseenter', function() {
+            $(this).children(".wind").addClass('show')
+        })
+        $(".arch .arch-out").on('mouseleave', function() {
+            $(this).children(".wind").removeClass('show')
+        })
+    })
+    </script>
+</body>
+
+</html>

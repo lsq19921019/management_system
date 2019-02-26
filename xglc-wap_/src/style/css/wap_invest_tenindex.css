@@ -1,0 +1,318 @@
+.margin-b {
+  margin-bottom: 7px;
+}
+
+.in-padding {
+  padding-top: 8px;
+  padding-left: 4.6%;
+  padding-right: 4.6%;
+}
+
+.inv-teni .top-income {
+  background: #ff5637;
+}
+
+.inv-teni .top-income .interest-rate {
+  font-size: 38px;
+  line-height: 47px;
+  text-align: center;
+  color: #fff;
+  padding-top: 40px;
+}
+
+.inv-teni .top-income .interest-rate .plus {
+  font-size: 28px;
+  position: relative;
+}
+
+.inv-teni .top-income .interest-rate .plus .tip {
+  width: 79px;
+  font-size: 12px;
+  line-height: 22px;
+  color: #d5aa47;
+  background: #fdf6e6;
+  position: absolute;
+  right: -43px;
+  top: -22px;
+  border-radius: 5px;
+}
+
+.inv-teni .top-income .interest-rate .plus .tip:after {
+  content: "";
+  background: url(/static/img/wap_invest_tenindex_01.png) no-repeat center;
+  background-size: cover;
+  height: 5px;
+  width: 9px;
+  position: absolute;
+  left: 12px;
+  bottom: -5px;
+}
+
+.inv-teni .top-income .bottom-tip {
+  font-size: 14px;
+  line-height: 25px;
+  text-align: center;
+  color: #fff;
+  padding-bottom: 29px;
+  opacity: 0.8;
+}
+
+.inv-teni .center-introduce {
+  background: #fff;
+}
+
+.inv-teni .title {
+  background: #fff;
+  padding-left: 4.6%;
+  padding-right: 4.6%;
+}
+
+.inv-teni .title h5 {
+  font-size: 14px;
+  line-height: 43px;
+  color: #162337;
+  font-weight: normal;
+}
+
+.inv-teni .title a {
+  float: right;
+  font-size: 12px;
+  color: #999;
+  padding-right: 5.2%;
+  position: relative;
+}
+
+.inv-teni .title a img {
+  width: 7px;
+  height: 13px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.inv-teni .center-introduce .introduce-li {
+  padding-bottom: 7px;
+}
+
+.inv-teni .center-introduce .introduce-li ul li {
+  font-size: 13px;
+  line-height: 15px;
+  color: #404451;
+  position: relative;
+  padding-left: 6%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.inv-teni .center-introduce .introduce-li ul li:before {
+  content: "";
+  background: #ff6137;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.inv-teni .center-cycle {
+  background: #fff;
+}
+
+.inv-teni .center-cycle .bar-box .mui-col-xs-3 {
+  width: 22.5%;
+}
+
+.inv-teni .center-cycle .bar-box .mui-col-xs-4 {
+  width: 30.83333333%;
+}
+
+.inv-teni .center-cycle .bar-box .mui-col-xs-5 {
+  width: 46.66666667%;
+}
+
+.inv-teni .center-cycle .bar-box .bar-text {
+  padding-bottom: 4px;
+}
+
+.inv-teni .center-cycle .bar-box .bar-date {
+  padding-top: 2px;
+  padding-bottom: 7px;
+}
+
+.inv-teni .center-cycle .bar-box .bar-text span {
+  font-size: 12px;
+  line-height: 32px;
+  color: #404451;
+}
+
+.inv-teni .center-cycle .bar-box .bar-date span {
+  color: #999999;
+}
+
+.inv-teni .center-cycle .bar-box .bar-text .mui-col-xs-4 span {
+  display: block;
+  text-align: center;
+}
+
+.inv-teni .center-cycle .bar-box .bar-text .mui-col-xs-5 span {
+  display: block;
+  text-align: right;
+}
+
+.inv-teni .center-cycle .bar-box .bar-line {
+  height: 10px;
+  position: relative;
+}
+
+.inv-teni .center-cycle .bar-box .bar-line span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  box-sizing: border-box;
+  border: 2px solid #ff6137;
+  border-radius: 50%;
+}
+
+.inv-teni .center-cycle .bar-box .bar-line .mui-col-xs-4 {
+  position: relative;
+}
+
+.inv-teni .center-cycle .bar-box .bar-line .mui-col-xs-4 span {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.inv-teni .center-cycle .bar-box .bar-line .mui-col-xs-5 {
+  position: relative;
+}
+
+.inv-teni .center-cycle .bar-box .bar-line .mui-col-xs-5 span {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.inv-teni .center-cycle .bar-box .bar-line .inner-line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: #ff6137;
+  width: 100%;
+}
+
+.inv-teni .center-dynamic .list .van-list {
+  background: #fff;
+}
+
+.inv-teni .center-dynamic .list .van-list van-cell {
+  display: block;
+  padding-top: 11px;
+  padding-bottom: 9px;
+  position: relative;
+}
+
+.inv-teni .center-dynamic .list .van-list van-cell .left {
+  float: left;
+}
+
+.inv-teni .center-dynamic .list .van-list van-cell .left span.left-person,
+.inv-teni .center-dynamic .list .van-list van-cell .right span.right-person {
+  font-size: 14px;
+  line-height: 23px;
+  color: #404451;
+}
+
+.inv-teni .center-dynamic .list .van-list van-cell .left span.left-date,
+.inv-teni .center-dynamic .list .van-list van-cell .right span.right-another {
+  font-size: 12px;
+  line-height: 21px;
+  color: #a3a2a8;
+}
+
+.inv-teni .center-dynamic .list .van-list van-cell .right {
+  float: right;
+  text-align: right;
+}
+
+.inv-teni .center-dynamic .list .van-list van-cell .center {
+  width: 6.3%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.inv-teni .center-dynamic .list .van-list van-cell .center img {
+  display: block;
+  width: 100%;
+}
+
+.inv-teni .center-dynamic .list p.load-more {
+  font-size: 12px;
+  line-height: 38px;
+  text-align: center;
+  color: #999;
+  position: relative;
+}
+
+.inv-teni .center-dynamic .list p.no-more {
+  font-size: 12px;
+  line-height: 38px;
+  text-align: center;
+  color: #ccc;
+  position: relative;
+}
+
+.invest-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.invest-btn a {
+  display: block;
+  height: 45px;
+  font-size: 16px;
+  line-height: 45px;
+  text-align: center;
+}
+
+.invest-btn span {
+  display: block;
+  height: 45px;
+  font-size: 16px;
+  line-height: 45px;
+  text-align: center;
+}
+
+.invest-btn a.lock,
+.invest-btn span.lock {
+  color: #fff;
+  background: #ccc;
+}
+
+.invest-btn a.unlock,
+.invest-btn span.unlock {
+  color: #fff;
+  background: #ff5637;
+}
+
+.invest-btn span.vip {
+  line-height: 30px;
+}
+
+.invest-btn span.vip p {
+  font-size: 12px;
+  line-height: 3px;
+}

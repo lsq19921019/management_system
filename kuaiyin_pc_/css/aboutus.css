@@ -1,0 +1,40 @@
+.aboutus{
+    width: 1242px;
+    margin: 50px auto 0;
+}
+.aboutus .title{
+    font-size:36px;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin-bottom:29px;; 
+}
+.aboutus .aboutus_l{
+    width:1022px;
+    float: left;
+    margin-left: 21px;
+}
+.aboutus .about_con{
+    height:780px;
+    background:rgba(255,255,255,1);
+    padding: 60px;
+    margin-bottom: 30px;
+}
+.aboutus .about_con .about_con_desc{
+    font-size:16px;
+    color:rgba(51,51,51,1);
+    line-height: 25px;
+}
+.aboutus .about_con .about_ser{
+    font-size:16px;
+    color:rgba(51,51,51,1);
+    margin-top: 58px;
+}
+.aboutus .about_con .about_ser .about_ser_tit{
+    font-size:20px;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin-bottom: 12px;
+}
+.aboutus .about_con .about_ser .about_ser_tit:nth-child(n+2){
+    margin-top: 30px;
+}

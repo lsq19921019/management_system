@@ -1,0 +1,54 @@
+{
+    "status":"0",
+    "data":{
+        "header":[{
+            "logoUrl":"./img/logo.png",
+            "navList":[{
+                "id":"home",
+                "link":"index.html",
+                "title":"首页"
+            },{
+                "id":"aboutus",
+                "link":"aboutus.html",
+                "title":"关于我们"
+            },{
+                "id":"privacy",
+                "link":"privacyInfo.html",
+                "title":"隐私声明"
+            }]
+        }],
+        "vList":[{
+            "name":"极速审批 ,  ",
+            "desc":"上传资料最快5分钟下款",
+            "imgUrl":"./img/db2.png"
+        },{
+            "name":"信用生活 , ",
+            "desc":"提高生活品质，解决多种用钱场景",
+            "imgUrl":"./img/db3.png"
+        },{
+            "name":"账单轻松查询  ",
+            "desc":"畅享信用服务",
+            "imgUrl":"./img/db1.png"
+        }],
+        "markImg":[
+            "./img/ios_code.png","./img/android_code.png"
+        ],
+        "footdata":{
+            "baId":["粤ICP备17096796号-1","粤ICP备17096796号-3","粤ICP备17096796号-4","粤ICP备17061941号"],
+            "info":{
+                "src":"./img/pub_code.jpg",
+                "phone":"0755-26924103"
+            },
+            "linklist":[{
+                "id":"about",
+                "linkarr":[{"title":"","link":""}]
+            },{
+                "id":"info",
+                "linkarr":[]
+            },{
+                "id":"service",
+                "linkarr":[]
+            }]
+        }
+    }
+}

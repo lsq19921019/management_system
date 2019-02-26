@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>联系我们</title>
+		<!--#include virtual="_inc/_inc_import_css.html" -->
+		<!--#include virtual="_inc/_inc_import_js.html" -->
+	</head>
+
+	<body>
+
+		<!--#include virtual="_inc/_inc_import_header.html" -->
+
+		<!--内容部分-->
+		<div class="contactUsContent">
+			<div>
+				<!--left-->
+				<div>
+					<span id="aboutUs" data-href="aboutUs.html"><span></span>关于小鸽</span>
+					<span><span></span>联系我们</span>
+				</div>
+				<!--right-->
+				<div class="contactUs_rightPart">
+					<div>
+						<p>联系我们</p>
+					</div>
+					<div>
+						<div>
+							<p>人工服务</p>
+							<p>客服电话：400-700-4007</p>
+							<p>客服服务时间：工作日（09:00-18:30）</p>
+						</div>
+
+						<div>
+							<p>商务合作 </p>
+							<p>如您有意合作，请发送相关资料至以下联系人邮箱，我们会尽快与您联系</p>
+							<p>线下资产端业务合作联系：jigou@xiaogelicai.com</p>
+						</div>
+
+						<div>
+							<p>媒体采访 </p>
+							<p>如果您有采访需求或品牌合作意向，请将采访提纲或合作方式等资料发送到</p>
+							<p>邮箱：meiti@xiaogelicai.com</p>
+							<p>我们会尽快与您联系。</p>
+						</div>
+
+						<div>
+							<p>小鸽理财（总部）</p>
+							<p>公司地址：深圳市南山区高新九道北理工创新大厦1202</p>
+							<p>邮编：518000</p>
+							<p>公司地图：</p>
+						</div>
+					</div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+
+		<!--#include virtual="_inc/_inc_import_footer.html" -->
+	</body>
+	<script>
+		$('#aboutUs').on('click',function(){
+			Web.go($(this).attr("data-href"));
+		});
+	</script>
+</html>

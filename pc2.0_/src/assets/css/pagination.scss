@@ -1,0 +1,88 @@
+  /*.wrapper{*/
+  /*margin:0 auto;*/
+  /*width:960px;*/
+  /*height:100%;*/
+  /*}*/
+  .M-box {
+      position: relative;
+      text-align: center;
+      zoom: 1;
+      margin-left: 20%;
+  }
+
+  .M-box:before,
+  .M-box:after {
+      content: "";
+      display: table;
+  }
+
+  .M-box:after {
+      clear: both;
+      overflow: hidden;
+  }
+
+  .M-box span {
+      float: left;
+      margin: 0 5px;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      color: #bdbdbd;
+      font-size: 14px;
+  }
+
+  .M-box .active {
+      float: left;
+      margin: 0 5px;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      color:rgba(255,86,55,1);
+      font-size: 14px;
+      border: 1px solid #FF5637;
+  }
+
+  .M-box a {
+      float: left;
+      margin: 0 5px;
+      min-width: 32px;
+      height: 32px;
+      line-height: 32px;
+      background: #fff;
+      border: 1px solid #ebebeb;
+      color: #bdbdbd;
+      font-size: 14px;
+  }
+
+  .M-box a:hover {
+      color:rgba(255,86,55,1);
+      border: 1px solid #FF5637;
+  }
+
+  .M-box .next,
+  .M-box .prev {
+      font-family: "Simsun";
+      font-size: 14px;
+      font-weight: bold;
+      padding: 0 18px;
+  }
+
+  .now,
+  .count {
+      padding: 0 5px;
+      color: #f00;
+  }
+
+  input {
+      float: left;
+      margin: 0 5px;
+      width: 38px;
+      height: 38px;
+      line-height: 38px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid #ebebeb;
+      outline: none;
+      color: #bdbdbd;
+      font-size: 14px;
+  }

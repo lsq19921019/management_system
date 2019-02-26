@@ -1,0 +1,140 @@
+.big-recharge {
+  padding-top: 7px;
+}
+
+.inner-pandding {
+  padding-left: 5.3%;
+}
+
+.big-recharge .replace {
+  background: #fff;
+  margin-bottom: 7px;
+}
+
+.big-recharge .replace .tab-line p {
+  font-size: 15px;
+  line-height: 43px;
+  color: #333;
+}
+
+.big-recharge .replace .tab-line a {
+  display: block;
+  font-size: 15px;
+  line-height: 43px;
+  color: #ff9c1c;
+  text-align: center;
+}
+
+.big-recharge .replace .text-line {
+  padding-top: 7px;
+  padding-bottom: 19px;
+}
+
+.big-recharge .replace .text-line p {
+  font-size: 14px;
+  line-height: 43px;
+  color: #666;
+}
+
+.big-recharge .online-bank {
+  background: #fff;
+}
+
+.big-recharge .online-bank .tab-line p {
+  font-size: 15px;
+  line-height: 43px;
+  color: #333;
+}
+
+.big-recharge .online-bank .text-line {
+  padding-top: 22px;
+  padding-bottom: 21px;
+  position: relative;
+}
+
+.big-recharge .online-bank .text-line img {
+  display: block;
+  width: 15px;
+  position: absolute;
+  left: 5.3%;
+  top: 24px;
+}
+
+.big-recharge .online-bank .text-line p.step {
+  font-size: 15px;
+  line-height: 18px;
+  color: #666;
+  padding-left: 36px;
+}
+
+.big-recharge .online-bank .text-line p.step:nth-child(2) {
+  padding-bottom: 25px;
+}
+
+.big-recharge .online-bank .text-line p.step:nth-child(3) {
+  padding-bottom: 43px;
+}
+
+.big-recharge .online-bank .text-line p.step:nth-child(4) {
+  padding-bottom: 20px;
+}
+
+.big-recharge .online-bank .text-line p.tips {
+  font-size: 12px;
+  line-height: 18px;
+  color: #909197;
+}
+
+.big-recharge .footer-servers {
+  width: 100%;
+  position: fixed;
+  bottom: 21px;
+  left: 0;
+}
+
+.big-recharge .footer-servers p {
+  font-size: 14px;
+  line-height: 18px;
+  color: #aaa;
+  text-align: center;
+}
+
+.big-recharge .footer-servers p a {
+  color: #ff9c1c;
+}
+
+/* .big-recharge {
+  padding-top: 30px;
+  padding-bottom: 7px;
+  background: #fff;
+  position: relative;
+}
+
+.big-recharge .img-line {
+  position: absolute;
+  left: 10.4%;
+  top: 33px;
+  height: 113px;
+}
+
+.big-recharge .img-line img {
+  height: 100%;
+}
+
+.big-recharge .text-line {
+  padding-left: 18.2%;
+  padding-right: 9.7%;
+  padding-bottom: 23px;
+}
+
+.big-recharge .text-line p {
+  font-size: 15px;
+  line-height: 18px;
+  color: #162337;
+}
+
+.big-recharge .text-line p span {
+  font-size: 14px;
+  color: #a3a2a8;
+}
+ */

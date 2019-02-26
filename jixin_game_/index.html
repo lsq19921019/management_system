@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>极信科技</title>
+    <style>
+      /* 公共样式 */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-size: 12px;
+        color: #171717;
+        line-height: 1.5;
+        font-family: "Microsoft Yahei";
+      }
+      ul,
+      ol,
+      li {
+        list-style: none;
+      }
+      img {
+        vertical-align: top;
+        border: none;
+      }
+      a {
+        color: #171717;
+        text-decoration: none;
+      }
+
+      input,
+      textarea,
+      button {
+        background: none;
+        border: none;
+        outline: none;
+      }
+      a,
+      button {
+        cursor: pointer;
+      }
+      .c:after {
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+      }
+      /* 头部菜单栏样式 */
+      .jx .top_header {
+        height: 90px;
+        background: #fff;
+      }
+      .jx .top_header .inner {
+        width: 1200px;
+        height: 100%;
+        margin: auto;
+        position: relative;
+      }
+      .jx .top_header .inner .logo {
+        width: 170px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .jx .top_header .inner .menu {
+        width: 260px;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .jx .top_header .inner .menu span {
+        float: left;
+        width: 130px;
+        font-size: 20px;
+        line-height: 90px;
+        color: #333;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+      }
+      .jx .top_header .inner .menu span.active::after {
+        content: "";
+        display: block;
+        width: 15px;
+        height: 3px;
+        background: #ff6d33;
+        position: absolute;
+        top: 66px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      /* 首页样式 */
+      .jx .index .banner {
+        height: 672px;
+        position: relative;
+        overflow: hidden;
+      }
+      .jx .index .banner img {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .jx .index .line {
+        height: 630px;
+      }
+      .jx .index .line .inner {
+        width: 1200px;
+        height: 100%;
+        margin: auto;
+        position: relative;
+      }
+      .jx .index .line .inner img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 660px;
+      }
+      .jx .index .line .inner p {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 38px;
+        line-height: 75px;
+        color: #000;
+      }
+      .jx .index .line .inner.left img {
+        left: 0;
+      }
+      .jx .index .line .inner.left p {
+        left: 692px;
+      }
+      .jx .index .line .inner.right img {
+        right: 0;
+      }
+      .jx .index .line .inner.right p {
+        left: 123px;
+      }
+      /* 关于我们样式 */
+      .jx .about {
+        display: none;
+      }
+      .jx .about .banner {
+        height: 672px;
+        position: relative;
+        overflow: hidden;
+      }
+      .jx .about .banner img {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .jx .about .content {
+        margin: -166px auto 40px;
+        width: 1200px;
+        box-sizing: border-box;
+        padding: 0 63px;
+        background: #fff;
+        box-shadow: 0px 2px 25px -1px rgba(201, 201, 201, 0.5);
+        border-radius: 10px;
+        position: relative;
+        z-index: 9;
+      }
+      .jx .about .content h4 {
+        font-size: 40px;
+        line-height: 56px;
+        font-weight: normal;
+        padding: 60px 0 36px;
+        color: #000;
+      }
+      .jx .about .content p {
+        font-size: 26px;
+        line-height: 50px;
+        color: #000;
+        padding-bottom: 100px;
+      }
+      /* 底部信息栏样式 */
+      .jx .footer {
+        background: #191919;
+      }
+      .jx .footer .inner {
+        width: 1200px;
+        margin: auto;
+        height: 164px;
+      }
+      .jx .footer .inner .title {
+        font-size: 18px;
+        line-height: 25px;
+        color: #fff;
+        font-weight: bold;
+        padding: 50px 0 18px;
+      }
+      .jx .footer .inner .contact {
+        font-size: 16px;
+        line-height: 22px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jx">
+      <div class="top_header">
+        <div class="inner">
+          <img class="logo" src="./img/logo.png" alt="" />
+          <div class="menu">
+            <span class="active" id="index">首页</span>
+            <span id="about">关于我们</span>
+          </div>
+        </div>
+      </div>
+      <div class="index" id="indexDom">
+        <div class="banner"><img src="./img/banner.png" alt="" /></div>
+        <div class="line">
+          <div class="inner left">
+            <img src="./img/character_01.png" alt="" />
+            <p>完美把控不同画风游戏人物</p>
+          </div>
+        </div>
+        <div class="line" style="background: #F6F7F9;">
+          <div class="inner right">
+            <img src="./img/character_02.png" alt="" />
+            <p>告别传统美术外包，<br />迎接全新的解决办法</p>
+          </div>
+        </div>
+        <div class="line">
+          <div class="inner left">
+            <img src="./img/character_03.png" alt="" />
+            <p>
+              公开透明报价<br /><span style="font-size: 32px;"
+                >拒绝转包中介，画师直接报价<br />每一分成本都提现在作品质量上<br />
+                超高性价比的选择</span
+              >
+            </p>
+          </div>
+        </div>
+        <div class="line" style="background: #F6F7F9;">
+          <div class="inner right">
+            <img src="./img/character_04.png" alt="" />
+            <p>
+              全程交易担保<br /><span style="font-size: 32px;"
+                >完善的信誉体系，多项信誉数据<br />全程担保，放心合作</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="about" id="aboutDom">
+        <div class="banner"><img src="./img/banner.png" alt="" /></div>
+        <div class="content">
+          <h4>公司简介</h4>
+          <p>
+            极信科技是一家集创意，创新，为一体综合型的游戏美术外包公司，一支20人的网原画设计团队，一直专注原画美术领域，在未来我们将永不停步地研究更精美的原画技术。我们的理念成就客户，成就自己。与客户成为朋友，彼此信任，喜欢他们的项目，
+            学习他们的精神，提供我们擅长的美术解决方案，让客户的互联网品牌形象更加好，然后长久合作，共同成长，愿意帮助彼此，也愿意给彼此机会。
+          </p>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="inner">
+          <p class="title">联系我们</p>
+          <p class="contact">
+            <span>公司地址：深圳市南山区粤海街道粤兴五道9号北理工大厦12楼</span
+            ><span style="padding-left: 80px;">联系电话：0755-2692 4103</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function() {
+        $("#index").on("click", function() {
+          $(this)
+            .siblings()
+            .removeClass("active");
+          $(this).addClass("active");
+          $("#indexDom").show();
+          $("#aboutDom").hide();
+        });
+        $("#about").on("click", function() {
+          $(this)
+            .siblings()
+            .removeClass("active");
+          $(this).addClass("active");
+          $("#indexDom").hide();
+          $("#aboutDom").show();
+        });
+      });
+    </script>
+  </body>
+</html>

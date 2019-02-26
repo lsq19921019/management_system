@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>理财师养成计划</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./css/mui.min.css">
+    <link rel="stylesheet" href="./css/financial.css">
+</head>
+
+<body id="fin">
+    <div class="main-box">
+        <img src="./images/financial_planner_1.0.1.jpg">
+    </div>
+    <div class="main-box">
+        <img src="./images/financial_planner_2.0.2.jpg">
+    </div>
+    <div class="main-box">
+        <img src="./images/financial_planner_3.0.3.jpg">
+    </div>
+    <div class="main-box">
+        <img src="./images/financial_planner_4.0.4.jpg">
+    </div>
+    <div class="main-box">
+        <img src="./images/financial_planner_5.0.5.jpg">
+        <div class="join_btn">
+            <button id="join" type="button" class="mui-btn mui-btn-outlined">我要加入</button>
+        </div>
+        <div class="f2f_btn" style="display: none;">
+            <button id="f2f" type="button" class="mui-btn mui-btn-outlined">当面邀请</button>
+        </div>
+    </div>
+    <div id="bomb">
+        <div class="block"></div>
+        <div class="window">
+            <div id="clos">
+                <a href="javascript:;"><img src="./images/interior_closed.png"></a>
+            </div>
+            <div class="main-win">
+                <img src="./images/financial_planner_6.png">
+            </div>
+        </div>
+    </div>
+    <div id="face-2-face">
+        <div class="block show"></div>
+        <div class="window show">
+            <div class="out">
+                <p>请朋友扫描二维码</p>
+            </div>
+            <div class="main-win">
+                <div class="title">
+                    <img src="./images/f2f_peo.png">
+                    <p class="phone-num" id="f2f-phone"></p>
+                    <p class="txt">邀请小伙伴一起赚钱享福利</p>
+                </div>
+                <img src="./images/f2f_bg.png" class="bg">
+                <div class="code">
+                    <img id="f2f-code" src="">
+                </div>
+            </div>
+            <div id="f2f-clos">
+                <img src="./images/f2f_clos.png">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+    <script type="text/javascript" src="./js/3DES.js"></script>
+    <script type="text/javascript" src="./js/hmac-sha256.js"></script>
+    <script type="text/javascript" src="./js/enc-base64-min.js"></script>
+    <script type="text/javascript" src="./js/base.js"></script>
+    <script type="text/javascript" src="./js/mui.min.js"></script>
+    <script>
+    $(function() {
+        //初始化两个弹窗
+        set.f2face()
+        set.tipSuccess()
+
+        base.getUserType()
+        //获取usertype
+        base.inLocalStorage() //获取token
+        //获取usertype
+
+        if (set.userType == 2) {
+            set.hasPlanner() //已经是理财师，可以邀请好友和面对面二维码
+        } else {
+            set.joinPlanner() //初始化加入理财师按钮
+        }
+
+    })
+
+    var set = {
+        userType: window.localStorage.getItem("userType"),
+        token: window.localStorage.getItem("token"),
+        doAjax: function() {
+            var data = {
+                "token": window.localStorage.getItem("token")
+            }
+
+            $.ajax({
+                type: "POST",
+                headers: base.ajaxHeadersWithToken({}),
+                dataType: 'json',
+                async: true,
+                data: data,
+                url: base.apiStr + "/user/joinPlanner",
+                success: function(data) {
+                    if (data.status == "0") {
+                        showClick()
+                    } else if (data.status == "6005") {
+                        mui.alert("您已成为理财师")
+                    } else if (data.status == "6006") {
+                        mui.alert("您尚未开户，请开户再试")
+                    } else if (data.status == "6008") {
+                        mui.alert("您的申请我们正在审核哦，敬请等待")
+                    } else if (data.status == "6009") {
+                        mui.alert("加入失败，您的加入条件尚不满足")
+                    } else if (data.status == "-3") {
+                        mui.alert("页面已过期，请您重新进入")
+                    } else {
+                        mui.alert(data.error)
+                    }
+                }
+            })
+        },
+        joinPlanner: function() { //加入理财师
+            $("button#join").on('click', function() {
+
+                if (set.token == null || set.token == "") {
+                    //尝试再次获取token
+                    set.token = GetQueryString("app")
+                    //再次检测token
+                    if (set.token == null || set.token == "") {
+                        mui.alert("您尚未登录，请登录再试", function() {
+                            location.href = "./888_register.html";
+                        })
+                    } else {
+                        set.doAjax()
+                    }
+                } else {
+                    set.doAjax()
+                }
+
+            });
+        },
+        hasPlanner: function() { //已经是理财师，可以邀请好友和面对面二维码
+            $("button#join").text("马上邀请好友")
+            $("button#join").on("click", function(event) {
+                location.href = "https://www.sogou.com/";
+            })
+            $("#f2f").parent(".f2f_btn").css({ display: 'block' });
+            //加载面对面二维码
+            var data = {
+                "userType": set.userType
+            }
+            $.ajax({
+                type: "POST",
+                headers: base.ajaxHeadersWithToken(data),
+                dataType: 'json',
+                async: true,
+                data: data,
+                url: base.apiStr + "/user/inviteFriendCode",
+                success: function(data) {
+                    if (data.error == "操作成功!") {
+                        var result = data.result
+                        var code = $("#f2f-code")
+                        var phone = $("#f2f-phone")
+                        code.attr({
+                            src: "data:img/jpg;base64," + result.base64Str
+                        });
+                        phone.text(result.code.replace(/^(\d{3})\d{4}(\d+)/, "$1****$2"))
+                    } else {
+                        mui.alert(data.error)
+                    }
+                }
+            })
+        },
+        tipSuccess: function() { //温馨提示
+            var clos = $("#clos")
+            var bomb = $("#bomb")
+            var block = $("#bomb .block")
+            var win = $("#bomb .window")
+
+            function showClick() {
+                bomb.addClass("show")
+                block.addClass("show")
+                win.addClass("show")
+            }
+            clos.on('click', function() {
+                block.addClass("clos")
+                win.addClass("clos")
+                setTimeout(function() {
+                    bomb.removeClass("show")
+                    block.removeClass("show clos")
+                    win.removeClass("show clos")
+                }, 250)
+            })
+        },
+        f2face: function() { //面对面扫码
+            var fTip = $("#f2f")
+            var fClos = $("#f2f-clos img")
+            var fBomb = $("#face-2-face")
+            var fBlock = $("#face-2-face .block")
+            var fWin = $("#face-2-face .window")
+            fTip.click(function() {
+                fBomb.addClass("show")
+                fBlock.addClass("show")
+                fWin.addClass("show")
+            })
+            fClos.click(function() {
+                fBlock.addClass("clos")
+                fWin.addClass("clos")
+                setTimeout(function() {
+                    fBomb.removeClass("show")
+                    fBlock.removeClass("show clos")
+                    fWin.removeClass("show clos")
+                }, 250)
+            })
+        }
+    }
+    </script>
+</body>
+
+</html>

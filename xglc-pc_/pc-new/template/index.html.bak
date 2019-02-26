@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="baidu-site-verification" content="undl0figX4" />
+    <title>小鸽理财-2018胡润新金融最具潜力企业</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--#include virtual="_inc/_inc_import_header.html" -->
+    <!--banner 区-->
+    <div class="index_bannerPart">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" id="indexBanner_1"></div>
+                <div class="swiper-slide" id="indexBanner_2">
+					<a href="https://mp.weixin.qq.com/s/c3T94LydjBhxfGS9ubgPNw" target="_blank" style="display:block"></a>
+				</div>
+                <div class="swiper-slide" id="indexBanner_3"></div>
+                <div class="swiper-slide" id="indexBanner_4"></div>
+                <div class="swiper-slide" id="indexBanner_5"></div>
+                <div class="swiper-slide" id="indexBanner_6"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div id="boxContainer">
+                <div id="bannerBox">
+                    <div>合规平台，有银行存管更安全</div>
+                    <div>
+                        <font>新手</font>
+                        <font>15</font>
+                        <font>.0%</font>
+                    </div>
+                    <div>往期年化收益</div>
+                    <div>
+                        <button onclick="window.location.href='index_register.html'">注册立领888</button>
+                    </div>
+                    <div>
+                        <a href="index_login.html">已有账户? 立即登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Icon列表-->
+    <div class="index_iconBar">
+        <div>
+            <ul>
+                <li>
+                    <p>银行存管</p>
+                    <p>银行管理资金</p>
+                </li>
+                <li>
+                    <p>真实授信资料</p>
+                    <p>多维度高标准授信资料</p>
+                </li>
+                <li>
+                    <p>风控安全</p>
+                    <p>10年风控团队，29道流程</p>
+                </li>
+                <li>
+                    <p>投资安全</p>
+                    <p>小额分散投资，凭证同步</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--内容部分-->
+    <div class="index_contentPart">
+        <div>
+            <ul>
+                <li>最新消息 :</li>
+                <li>小鸽理财 银行存管 9.19正式上线</li>
+            </ul>
+        </div>
+        <div>
+            <div>
+                <div id="choice">
+                    <div>
+                        <p>银行存管 合规安全</p>
+                    </div>
+                    <div>
+                        <p>注册立领
+                            <font>888</font>元红包</p>
+                    </div>
+                    <!-- <div>
+                        <p>活动时间：3.1-3.31</p>
+                    </div> -->
+                </div>
+                <div id="choice">
+                    <div>
+                        <p>新手专享标
+                            <font>收益高</font><span>+7%限时福利</span></p>
+                    </div>
+                    <div><span><font>8</font><font>%</font><font>+7%</font></span><span><font>30</font>天</span></div>
+                    <div>
+                        <p>
+                            <font>往期年化收益率</font>
+                            <font>投资期限</font>
+                        </p>
+                    </div>
+                    <div>
+                        <button>立即购买</button>
+                    </div>
+                </div>
+                <div id="choice" data-new="1" onclick="Web.go('newPeopleGuide.html')"></div>
+            </div>
+        </div>
+        <div>
+            <div id="choice">
+                <ul>
+                    <li>
+                        <p>优选-散标</p>
+                        <p>精选理财，收益高</p>
+                    </li>
+                    <li>
+                        <p>
+                            <font>7.8%~13%</font> 往期年化收益率</p>
+                    </li>
+                    <li>
+                        <font>20~360</font>天/<font>1~12</font>月</li>
+                    <li>100元起投</li>
+                    <li style="padding-top: 58px;">
+                        <button>立即购买</button>
+                    </li>
+                </ul>
+            </div>
+            <div id="choice">
+                <ul>
+                    <li>
+                        <p>定存宝</p>
+                        <p>灵活理财，稳健高息</p>
+                    </li>
+                    <li>
+                        <p>
+                            <font>7.8%~12%</font></font> 往期年化收益率</p>
+                    </li>
+                    <li>
+                        <font>20~360</font>天/<font>1~12</font>月</li>
+                    <li>1000元起投</li>
+                    <li style="padding-top: 58px;">
+                        <button>立即购买</button>
+                    </li>
+                </ul>
+            </div>
+            <div id="choice">
+                <ul>
+                    <li>
+                        <p>散标</p>
+                        <p>超短期，超灵活</p>
+                    </li>
+                    <li>
+                        <p>
+                            <font>12</font>
+                            <font>%</font> 往期年化收益率
+                        </p>
+                    </li>
+                    <li>
+                        <font>15</font>天</li>
+                    <li>100元起投</li>
+                    <li style="padding-top: 58px;">
+                        <button>立即购买</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>我们的优势</div>
+        <div>
+            <div>
+                <div></div>
+                <div>银行存管</div>
+                <div>
+                    <p>开通银行存管，全程资金安全</p>
+                    <p>等保三级备案</p>
+                </div>
+            </div>
+            <div>
+                <div></div>
+                <div>真实授信资料</div>
+                <div>
+                    <p>线下专业团队确保授信资料真实可靠</p>
+                </div>
+            </div>
+            <div>
+                <div></div>
+                <div>29道流程</div>
+                <div>
+                    <p>SOP标准化作业，全系统实时监控</p>
+                    <p>国有银行资历风控团队，10年行业经验
+                        <br />29道流程把关，严丝不漏</p>
+                    <p>成熟业务体系，不良率低于1‰</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a href="about_xg.html" style="color: inherit;">进一步了解 ></a>
+        </div>
+    </div>
+    <!--合作伙伴-->
+    <div class="partnerPart">
+        <div>
+            <div>合作伙伴</div>
+            <div></div>
+        </div>
+    </div>
+    <!--#include virtual="_inc/_inc_import_footer.html" -->
+</body>
+<script>
+$(function() {
+    Index.initFunc();
+    /*$.ajax({
+        type: "POST",
+        headers: {
+            "clientType": base.dataWithoutToken.clientType,
+            "clientVersion": base.dataWithoutToken.clientVersion,
+            "timeStamp": base.dataWithoutToken.timeStamp,
+            "sign": base.getPostStrWithoutToken({}),
+            "imei": base.dataWithoutToken.timeStamp
+        },
+        dataType: 'json',
+        async: false,
+        data: {},
+        url: '/api/find/banner',
+        success: function(data) {
+            console.log(data)
+        }
+    });*/
+});
+
+var Index = {
+    initFunc: function() {
+        var self = this;
+        $('#navBar>li:nth-child(1)').addClass('active');
+        self.clickFunc();
+        self.checkLoginFunc();
+        self.swiperFunc();
+    },
+
+    clickFunc: function() {
+        $('div#choice').hover(function() {
+            var self = this;
+            if (!$(self).hasClass("choiceActive")) {
+                $('div#choice').removeClass("choiceActive");
+                $(self).addClass('choiceActive');
+            }
+        });
+
+        $('div#choice').mouseleave(function() {
+            var self = this;
+            $(self).removeClass('choiceActive');
+        });
+
+        $('div#choice').on('click', function() {
+            if (Utils.checkLogin()) {
+                Web.go('index_displayPage.html');
+            } else {
+                if ($(this).attr('data-new') == '1') {
+                    Web.go('newPeopleGuide.html');
+                } else {
+                    Web.go('index_register.html');
+                }
+            }
+        });
+    },
+
+    checkLoginFunc: function() {
+        if (Utils.checkLogin()) {
+            $('div#bannerBox').hide();
+        }
+    },
+
+    swiperFunc: function() {
+        var mySwiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable :true,
+            autoplay: 3000,
+        });
+    }
+};
+</script>
+
+</html>

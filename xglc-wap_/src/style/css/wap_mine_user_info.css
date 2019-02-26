@@ -1,0 +1,82 @@
+.margin-b {
+  margin-bottom: 7px;
+}
+
+.user-info .header-line,
+.user-info .tab-line {
+  background: #fff;
+  padding-left: 4%;
+}
+
+.user-info .header-line .border-box,
+.user-info .tab-line .border-box {
+  padding-right: 4%;
+}
+
+.user-info .header-line .border-box .left,
+.user-info .tab-line .border-box .left {
+  float: left;
+}
+
+.user-info .header-line .border-box .left span {
+  font-size: 15px;
+  color: #333;
+  line-height: 64px;
+}
+
+.user-info .tab-line .border-box .left span {
+  font-size: 15px;
+  color: #333;
+  line-height: 55px;
+}
+
+.user-info .tab-line .border-box .right {
+  float: right;
+  height: 55px;
+  position: relative;
+}
+
+.user-info .header-line .border-box .right {
+  float: right;
+  height: 64px;
+  position: relative;
+}
+
+.user-info .tab-line .border-box .right span {
+  font-size: 15px;
+  line-height: 55px;
+  color: #999;
+  padding-right: 17.5px;
+}
+
+.user-info .header-line .border-box .right img.right-header {
+  display: block;
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+}
+
+.user-info .header-line .border-box .right img.right-icon {
+  display: block;
+  width: 8px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.user-info .tab-line .border-box .right img {
+  display: block;
+  width: 8px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.user-info .tab-line .border-box .right .empty {
+  color: #333;
+}

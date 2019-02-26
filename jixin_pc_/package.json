@@ -1,0 +1,41 @@
+{
+  "name": "jianxin_pc",
+  "version": "1.0.0",
+  "description": "简信科技官方网站",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --open --mode development",
+    "build": "rm -rf dist/* & webpack -p --color"
+  },
+  "keywords": [
+    "简信科技"
+  ],
+  "author": "tianpengwei",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.4.6",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^2.1.0",
+    "ejs-loader": "^0.3.1",
+    "file-loader": "^3.0.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "html-withimg-loader": "^0.1.16",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "echarts": "^4.2.0-rc.2",
+    "jquery": "^3.3.1"
+  }
+}

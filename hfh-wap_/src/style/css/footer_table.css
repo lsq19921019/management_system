@@ -1,0 +1,54 @@
+.footer {
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footer .icon-btn {
+  height: 4.085rem;
+  text-align: center;
+  color: #a3a2a8;
+}
+
+.footer .icon-btn.active {
+  color: #F64427;
+}
+
+.footer .icon-btn img {
+  width: 1.66rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.footer .icon-btn:nth-child(1) img {
+  padding-top: .835rem;
+}
+
+.footer .icon-btn:nth-child(2) img {
+  padding-top: .675rem;
+}
+
+.footer .icon-btn:nth-child(3) img {
+  padding-top: .675rem;
+}
+
+.footer .icon-btn .icon-text {
+  display: block;
+  font-size: .835rem;
+  line-height: .835rem;
+}
+
+.footer .icon-btn:nth-child(1) .icon-text {
+  padding-top: .51rem;
+}
+
+.footer .icon-btn:nth-child(2) .icon-text {
+  padding-top: .51rem;
+}
+
+.footer .icon-btn:nth-child(3) .icon-text {
+  padding-top: .3rem;
+}

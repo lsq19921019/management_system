@@ -1,0 +1,76 @@
+.list p.title {
+  padding-left: 4%;
+  padding-right: 4%;
+  font-size: 13px;
+  line-height: 35px;
+  color: #ae6262;
+  background: #ffebe7;
+}
+
+.list table {
+  width: 100%;
+  margin-bottom: 42px;
+}
+
+.list table th {
+  width: 33.3%;
+  font-size: 12px;
+  line-height: 30px;
+  color: #723e13;
+  background: #ffdbbc;
+  font-weight: normal;
+  border: 1px solid #efe2d8;
+}
+
+.list table td {
+  width: 33.3%;
+  font-size: 12px;
+  line-height: 49px;
+  color: #545454;
+  text-align: center;
+  background: #fff7f1;
+  border: 1px solid #efe2d8;
+}
+
+.list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #fff;
+}
+
+.list ul li {
+  padding: 9px 0 7px;
+  margin: 0 4%;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.list ul li .bank-img {
+  float: left;
+  width: 40px;
+  height: 40px;
+  /* padding: 6px; */
+  /* border-radius: 50%; */
+  /* border: 1px solid #999; */
+}
+
+.list ul li .bank-img img {
+  width: 100%;
+}
+
+.list ul li .bank-text {
+  float: left;
+  padding-left: 4.4%;
+}
+
+.list ul li .bank-text .bank-title {
+  font-size: 14px;
+  line-height: 23px;
+  color: #555;
+}
+
+.list ul li .bank-text .bank-num {
+  font-size: 12px;
+  line-height: 21px;
+  color: #999;
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="email=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="./css/download.css" />
+<title>下载引导 </title>
+</head>
+<body>
+<div class="ban-box">
+     <img src="./images/300.png" class="img-box">
+	 <div class="word-box">
+	      <p style="font-size:14px;">尊敬的用户：<span id="user">134*******98</span></p>
+		  <p>您已注册成功！</p>
+		  <p>即刻下载app，享受随身理财的乐趣吧！</p>
+	 </div>
+	 <div class="down-but xiazai">点此下载app</div>
+	 <div class="clear" style="height:30px;"></div>
+</div>
+
+<img src="./images/301.png" class="img-box">
+<div class="support-box"><div class="clear" style="height:20px;"></div>
+     <div class="support-div"><div class="icon-one"></div>
+	      <p>小额分散，项目有代偿<br>投资有保障</p>
+	 </div>
+	 <div class="support-div"><div class="icon-two"></div>
+	     <p>所有项目 <br>第三方机构担保代偿</p>
+	 </div>
+     
+	 <div class="clear" style="height:30px;"></div>
+</div>
+<p class="word-p">更多专属福利，请登录app查看！</p>
+<div class="down-but2 xiazai">点此下载app</div>
+<div class="foot-box">
+	 <p class="foot-p2">市场有风险，投资需谨慎</p>
+     <img src="./images/114.png" class="img-box2">
+	 <p class="foot-p">copyright©2016-2017<br>深圳市温馨港湾网络技术有限公司  版权所有<br>粤ICP备14025100号-5<br>理财有风险 投资需谨慎</p>
+	 <div class="clear" style="height:40px;"></div>
+</div>
+
+<script type="text/javascript" src="./js/jquery.min.js" ></script>
+<script type="text/javascript" src="./js/common.js" ></script>
+<script type="text/javascript">
+var u = navigator.userAgent;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+function isWeiXin(){ 
+    var ua = window.navigator.userAgent.toLowerCase(); 
+	if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+	return true; 
+	}else{ 
+	return false; 
+	} 
+} 
+</script>
+<script>
+var user = GetQueryString("user");
+$("#user").text(user);
+
+$(".xiazai").on("click",function(){
+		if(isAndroid){
+			  if(isWeiXin()){
+			     window.location.href="http://appurl.me/16748143";
+			  }else{
+			     window.location.href="https://www.xiaogelicai.com/xglc.apk";
+			  }
+		  
+		}else if(isiOS){
+  
+			      window.location.href="https://itunes.apple.com/cn/app/%E5%B0%8F%E9%B8%BD%E7%90%86%E8%B4%A2/id1255464866?mt=8";
+		 
+		}
+	   
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我邀请的好友</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./css/mui.min.css">
+    <link rel="stylesheet" href="./css/friends.css">
+</head>
+
+<body>
+    <div class="no-f">
+        <img src="./images/nobody.png">
+        <p>你还没有邀请到好友哦</p>
+    </div>
+    <div class="top">
+        <span>头像/用户名</span><span class="fr">好友注册时间/是否投资</span>
+    </div>
+    <div id="all"></div>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+    <script type="text/javascript" src="./js/hmac-sha256.js"></script>
+    <script type="text/javascript" src="./js/enc-base64-min.js"></script>
+    <script type="text/javascript" src="./js/base.js"></script>
+    <script type="text/javascript" src="./js/mui.min.js"></script>
+    <script>
+    $(function() {
+        var urlN = base.apiStr + "/activity/invite/inviteList";
+        var token = GetQueryString("app");
+        var signJson = { "token": token };
+        var dataJson = {
+            "clientType": base.dataWithoutToken.clientType,
+            "clientVersion": base.dataWithoutToken.clientVersion,
+            "timeStamp": base.dataWithoutToken.timeStamp,
+            "token": token
+        }
+        $.ajax({
+            type: "POST",
+            headers: {
+                "clientType": base.dataWithoutToken.clientType,
+                "clientVersion": base.dataWithoutToken.clientVersion,
+                "timeStamp": base.dataWithoutToken.timeStamp,
+                "sign": base.getPostStrWithoutToken(dataJson),
+                "imei": base.dataWithoutToken.timeStamp,
+                "token": token
+            },
+            dataType: 'json',
+            async: false,
+            url: urlN,
+            success: function(data) {
+                if (data.status == "0") {
+                    var dataArr = data.result.inviteList;
+                    if (dataArr.length == 0) {
+                        $(".no-f").show();
+                        $(".top").hide();
+                    } else {
+
+                        for (var i = 0; i < dataArr.length; i++) {
+                            if (dataArr[i].isInvest == "1") {
+                                var iftouzi = "<p>已投资</p>";
+                            } else {
+                                var iftouzi = '<p class="red">未投资</p>';
+                            }
+
+                            var imgSrc = "./images/pic.png";
+                            if (dataArr[i].headImg != "") {
+                                imgSrc = dataArr[i].headImg;
+                            }
+                            var ss = '<div class="box"><img src="' + imgSrc + '"><span class="name">' + dataArr[i].userName + '</span><div><p class="date">' + dataArr[i].createTime + '</p>' + iftouzi + '</div></div>';
+                            $("#all").append(ss);
+                        }
+                    }
+
+                } else {
+                    mui.alert(base.errorStr);
+                };
+            }
+        });
+    })
+    </script>
+</body>
+
+</html>

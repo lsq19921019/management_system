@@ -1,0 +1,85 @@
+div.payPage_content {
+    position: relative;
+    width: 100%;
+    height: 1053px;
+    background: #f5f5f5;
+}
+
+div.payPage_content>div:nth-child(1) {
+    position: absolute;
+    top: 30px;
+    width: 1205px;
+    height: 1023px;
+    background: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+}
+
+div.payPage_content>div:nth-child(1)>div:nth-child(1) {
+    position: absolute;
+    width: 100%;
+    top: 235px;
+    text-align: center;
+    color: #ea553a;
+    font-size: 30px;
+}
+
+div.payPage_content>div:nth-child(1)>div:nth-child(2) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    top: 360px;
+    width: 980px;
+    background: #fb9c8b;
+    height: 50px;
+    border-radius: 25px;
+}
+
+div.payPage_content>div:nth-child(1)>div:nth-child(2)>span:nth-child(1) {
+    position: absolute;
+    left: 0;
+    height: 50px;
+    border-radius: 25px;
+    background: #ea553a;
+    // animation: processBar 3s infinite linear;
+    // -webkit-animation: processBar 3s infinite linear;
+}
+
+div.payPage_content>div:nth-child(1)>div:nth-child(2)>span:nth-child(2) {
+    position: absolute;
+    right: 0;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background: url('../../images/june_promotion/copperIcon.png')center center no-repeat;
+    background-size: 48px auto;
+    animation: circle 1s infinite linear;
+    -webkit-animation: circle 1s infinite linear;
+}
+
+@-webkit-keyframes circle {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes processBar {
+    0% {
+        width: 0;
+    }
+    20% {
+        width: 196px;
+    }
+    60% {
+        width: 588px;
+    }
+    100% {
+        width: 980px;
+    }
+}

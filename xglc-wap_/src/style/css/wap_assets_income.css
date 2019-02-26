@@ -1,0 +1,60 @@
+.income .margin-b {
+  margin-bottom: 7px;
+}
+
+.income .top-assets {
+  background: #ff5e37;
+  text-align: center;
+}
+
+.income .top-assets h5 {
+  font-size: 38px;
+  line-height: 46px;
+  font-weight: normal;
+  color: #fff;
+  padding-top: 35px;
+}
+
+.income .top-assets p {
+  font-size: 14px;
+  line-height: 24px;
+  color: #fff;
+  padding-bottom: 39px;
+  opacity: 0.9;
+}
+
+.income .top-assets p img {
+  width: 13px;
+  position: relative;
+  top: 2px;
+  padding-left: 6px;
+}
+
+.income .content-data {
+  background: #fff;
+}
+
+.income .content-data p {
+  padding-left: 4.1%;
+  padding-right: 4.1%;
+  font-size: 14px;
+  line-height: 34px;
+  color: #999;
+}
+
+.income .content-data p:first-child {
+  padding-left: 0;
+  margin-left: 4.1%;
+  font-size: 15px;
+  line-height: 42px;
+  color: #333;
+}
+
+.income .content-data p .right {
+  float: right;
+}
+
+.income .content-data p:first-child .right {
+  color: #ff5637;
+  float: right;
+}

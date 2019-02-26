@@ -1,0 +1,67 @@
+body {
+  background: #f2f2f2;
+}
+
+.with-drawal {
+  background: #fff;
+}
+
+.with-drawal .alr {
+  padding-top: 23px;
+  padding-left: 15%;
+  position: relative;
+}
+
+.with-drawal .alr .top {
+  font-size: 17px;
+  line-height: 24px;
+  color: #ff5637;
+}
+
+.with-drawal .alr .bank,
+.with-drawal .alr .money {
+  font-size: 14px;
+  line-height: 17px;
+  color: #999;
+}
+
+.with-drawal .alr img {
+	position: absolute;
+	left: 6.03%;
+	top: 24px;
+	height: 97px;
+}
+
+.with-drawal .exp {
+  padding-left: 15%;
+}
+
+.with-drawal .exp p {
+  line-height: 52px;
+  font-size: 17px;
+  color: #555;
+}
+
+.with-drawal .to-record {
+	border-top: 1px solid #ddd;
+}
+
+.with-drawal .to-record a {
+	display: block;
+	width: 100%;
+	line-height: 43px;
+	font-size: 15px;
+	color: #ff5637;
+	text-align: center;
+}
+.mui-btn{
+  display: block;
+  font-size: 15px;
+  color: #fff;
+  height: 42px;
+  background: linear-gradient(to right, #fd794b, #ff5637);
+  border-radius: 21px;
+  width: 6.5rem;
+  border: none;
+  margin: .52rem auto 0;
+}

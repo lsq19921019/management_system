@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--#include virtual="_inc/_inc_import_css.html" -->
+		<!--#include virtual="_inc/_inc_import_js.html" -->
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			if(!!sessionStorage.getItem('rechargeInfo')){
+				var info =  sessionStorage.getItem('rechargeInfo');
+				$('body').html(info);
+			}
+		});
+	</script>
+</html>

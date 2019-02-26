@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>扫一扫</title>
+		<!--#include virtual="_inc/_inc_import_css.html" -->
+		<!--#include virtual="_inc/_inc_import_js.html" -->
+	</head>
+
+	<body>
+		<!--#include virtual="_inc/_inc_import_header.html" -->
+
+		<!--这里是内容部分-->
+		<div class="scanPage_content">
+			<div>
+				<div>用小鸽理财app“扫一扫” ，使用大额网银支付</div>
+				<div>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<img id="imgCode" src="" alt="" />
+				</div>
+				<div>
+					<p>
+						<font>打开小鸽理财app-“资产”</font>
+						<font>屏幕右方-“充值”</font>
+						<font>点击大额充值，使用网银支付</font>
+					</p>
+				</div>
+				<div><p>点此 <a href="index_login.html" style="color: #ff5637;">登录</a> 或 <a href="index_register.html" style="color: #ff5637";>注册</a>，直接充值</p></div>
+			</div>
+		</div>
+
+		<!--#include virtual="_inc/_inc_import_footer.html" -->
+	</body>
+	<script>
+		$(function() {
+			Scan.initFunc();
+		});
+
+		var Scan = {
+			scanCode: '',
+			timer: null,
+			initFunc: function() {
+				var self = this;
+				self.requestNetCodeFunc();
+			},
+
+			requestNetCodeFunc: function() {
+				var self = this;
+				//二维码
+				if(!Utils.checkLogin()) {
+					$.ajax({
+						type: "POST",
+						headers: {
+							"clientType": base.dataWithoutToken.clientType,
+							"clientVersion": base.dataWithoutToken.clientVersion,
+							"timeStamp": base.dataWithoutToken.timeStamp,
+							"sign": base.getPostStrWithoutToken(),
+							"imei": base.dataWithoutToken.timeStamp
+						},
+						dataType: 'json',
+						async: false,
+						url: '/api/encode',
+						success: function(data) {
+							if(data.status == 0) {
+								$('img#imgCode').attr('src', 'data:image/png;base64,' + data.result.base64Str);
+								Scan.timer = setInterval(function() {
+									self.loopCheckFunc(data.result.code);
+								}, 2000);
+							}
+						}
+					});
+				}
+			},
+
+			//循环查询手机扫码状态
+			loopCheckFunc: function(code) {
+				if(!Utils.checkLogin()) {
+					var userInfo = {};
+					$.ajax({
+						type: "POST",
+						headers: {
+							"clientType": base.dataWithoutToken.clientType,
+							"clientVersion": base.dataWithoutToken.clientVersion,
+							"sign": base.getPostStrWithoutToken({code: code}),
+							"imei": base.dataWithoutToken.timeStamp,
+							"timeStamp": base.dataWithoutToken.timeStamp,
+						},
+						data: {
+							code: code
+						},
+						dataType: 'json',
+						async: false,
+						url: '/api/checkEncodeStatus',
+						success: function(data) {
+							if(data.status == 0) {
+								clearInterval(Scan.timer);
+								userInfo = {
+									headImg : data.result.headImg,
+									nickName : data.result.nickName,
+									phone : data.result.phone,
+									userName : data.result.userName,
+								};
+								sessionStorage.setItem('userInfo',JSON.stringify(userInfo));
+								localStorage.setItem('token', data.result.token);
+								localStorage.setItem('IMEI', Utils.creatImeiNumber());
+								setTimeout(function(){
+									Web.go('myAccount_onlineBank.html');
+								},2000);
+							}else if(data.status != '2743'){
+								alert(data.msg);
+								clearInterval(Scan.timer);
+							}
+						}
+					});
+				}
+			}
+		}
+	</script>
+
+</html>

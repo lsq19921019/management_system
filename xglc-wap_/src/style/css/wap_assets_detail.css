@@ -1,0 +1,84 @@
+.detail .chart {
+  background: #fff;
+  margin-bottom: 7px;
+  padding-top: 40px;
+}
+
+.detail .chart .echarts-box {
+  height: 138px;
+}
+
+.detail .chart .total {
+  padding-bottom: 25px;
+}
+
+.detail .chart .total p {
+  font-size: 14px;
+  line-height: 45px;
+  color: #999;
+  text-align: center;
+}
+
+.detail .chart .total p span {
+  color: #545454;
+}
+
+.detail .line-data {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  background: #fff;
+}
+
+.detail .line-data .data-type {
+  padding-left: 6.6%;
+  padding-right: 5.3%;
+}
+
+.detail .line-data .data-type p {
+  font-size: 14px;
+  line-height: 36px;
+  color: #999;
+  padding-left: 5.1%;
+  position: relative;
+}
+
+.detail .line-data .data-type p:before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border-radius: 50%;
+}
+
+.detail .line-data .data-type p span {
+  float: right;
+  color: #545454;
+}
+
+.detail .line-data .data-type:nth-child(1) p:before {
+  background: #fe908d;
+}
+
+.detail .line-data .data-type:nth-child(2) p:before {
+  background: #fcd07e;
+}
+
+.detail .line-data .data-type:nth-child(3) p:before {
+  background: #a9dafc;
+}
+.detail .line-data .data-type:nth-child(4) p:before {
+  background: #d9cbf3;
+}
+.detail .account_info {
+  padding-top: 0.4rem;
+  text-align: center;
+}
+.detail .account_info span {
+  font-size: 0.28rem;
+  line-height: 0.3rem;
+  color: #ff9c1c;
+}

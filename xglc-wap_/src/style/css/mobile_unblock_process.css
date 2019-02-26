@@ -1,0 +1,18 @@
+.process .top-img {
+  width: 100%;
+}
+
+.process .top-img img {
+  display: block;
+  width: 100%;
+}
+.process .footer {
+	margin: 0 9.33%;
+}
+
+.process .footer p {
+	padding-top: 22px;
+	line-height: 28px;
+	font-size: 13px;
+	color: #545454;
+}

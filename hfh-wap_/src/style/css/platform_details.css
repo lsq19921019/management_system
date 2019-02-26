@@ -1,0 +1,245 @@
+.plat-details .padding {
+  padding-left: 1.585rem;
+  padding-right: 1.585rem;
+}
+
+.plat-details .top-info {
+  background: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.plat-details .top-info .plat-name {
+  padding-top: 1.875rem;
+  padding-bottom: 2.25rem;
+}
+
+.plat-details .top-info .plat-name p {
+  font-size: 1.75rem;
+  line-height: 2.46rem;
+  color: #f64427;
+  text-align: center;
+}
+
+.plat-details .top-info .plat-reason {
+  text-align: center;
+  padding-bottom: 1.96rem;
+  position: relative;
+}
+
+.plat-details .top-info .plat-reason .right-border:after {
+  content: "";
+  height: 2.71rem;
+  width: 1px;
+  background: #e2e2e2;
+  position: absolute;
+  right: 0;
+  top: 0.625rem;
+}
+
+.plat-details .top-info .plat-reason .content {
+  font-size: 1.335rem;
+  line-height: 1.875rem;
+  color: #333;
+  padding-bottom: 0.5rem;
+}
+
+.plat-details .top-info .plat-reason .title {
+  font-size: 1.085rem;
+  line-height: 1.54rem;
+  color: #8c8c8c;
+  position: relative;
+}
+
+.plat-details .top-info .plat-reason .title img {
+  box-sizing: content-box;
+  width: 1.04rem;
+  position: relative;
+  top: 0.14rem;
+  padding-left: 0.335rem;
+}
+
+.plat-details .top-info .plat-reason .title .info-from {
+  padding-left: 0.56rem;
+  padding-right: 0.56rem;
+  position: absolute;
+  bottom: 2rem;
+  right: -5.5rem;
+  font-size: 0.915rem;
+  line-height: 2rem;
+  color: #666;
+  text-align: center;
+  background: #e7f7ff;
+  min-width: 9.375rem;
+  z-index: 9;
+}
+
+.plat-details .top-info .plat-reason .title .info-from::after {
+  content: "";
+  position: absolute;
+  bottom: -0.33rem;
+  left: 1.3rem;
+  width: 0.583rem;
+  height: 0.33rem;
+  background: url(/static/img/platform_details_03.png) no-repeat center;
+  background-size: contain;
+}
+
+.plat-details .way-safeguard {
+  background: #fff;
+}
+
+.plat-details .way-safeguard .way-title {
+  padding-top: 1.085rem;
+  padding-bottom: 1.085rem;
+}
+
+.plat-details .way-safeguard .way-title p {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: #333;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.plat-details .way-safeguard .way-title p::before {
+  content: "";
+  display: block;
+  width: 0.3rem;
+  height: 1.5rem;
+  background: #f64427;
+  border-radius: 0.15rem;
+  position: absolute;
+  left: 0;
+  top: 48%;
+  transform: translateY(-50%);
+}
+
+.plat-details .way-safeguard .way_table {
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.plat-details .way-safeguard .way_table p {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: #333;
+  text-align: center;
+  padding-top: 1.085rem;
+  padding-bottom: 1.085rem;
+}
+
+.plat-details .way-safeguard .way_table p::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.24rem;
+  border-radius: 0.12rem;
+  position: absolute;
+  bottom: -0.1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.plat-details .way-safeguard .way_table p.active::after {
+  background: linear-gradient(right, #ff9907, #f64427);
+}
+
+.plat-details .way-safeguard .way-content .left {
+  position: relative;
+}
+
+.plat-details .way-safeguard .way-content .left .left_content {
+  padding-bottom: 1rem;
+}
+
+.plat-details .way-safeguard .way-content .left .dynamic {
+  display: block;
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.plat-details .way-safeguard .way-content .left .dynamic:last-child {
+  border-bottom: none;
+}
+
+.plat-details .way-safeguard .way-content .left .dynamic p.dynamic_title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: #333;
+  padding-bottom: 0.835rem;
+}
+
+.plat-details .way-safeguard .way-content .left .left_empty {
+  position: absolute;
+  top: 6.7rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.plat-details .way-safeguard .way-content .left .left_empty img {
+  width: 30%;
+}
+
+.plat-details .way-safeguard .way-content .left .dynamic p.dynamic_time {
+  font-size: 0.915rem;
+  line-height: 1.25rem;
+  color: #666;
+}
+
+.plat-details .way-safeguard .way-content .rights .protection_title {
+  padding-top: 1.33rem;
+  padding-bottom: 1.75rem;
+}
+
+.plat-details .way-safeguard .way-content .rights .protection_title p {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: #333;
+  text-align: center;
+}
+
+.plat-details .way-safeguard .way-content .rights .terms {
+  padding-bottom: 1.25rem;
+}
+
+.plat-details .way-safeguard .way-content .rights .terms .terms-title {
+  font-size: 1.165rem;
+  line-height: 1.665rem;
+  color: #333;
+  padding-bottom: 0.665rem;
+}
+
+.plat-details .way-safeguard .way-content .rights .terms .terms-text {
+  font-size: 1.165rem;
+  line-height: 1.665rem;
+  color: #333;
+  text-align: justify;
+}
+
+.plat-details .way-safeguard .footer-line {
+  padding-top: 0.835rem;
+  padding-bottom: 4.82rem;
+}
+
+.plat-details .way-safeguard .footer-line p {
+  font-size: 1.085rem;
+  line-height: 1.54rem;
+}
+
+.plat-details .way-safeguard .footer-line p .time {
+  color: #8c8c8c;
+}
+
+.plat-details .way-safeguard .footer-line p a {
+  float: right;
+  color: #ff8445;
+}
+
+.plat-details .way-safeguard .footer-line p a img {
+  float: right;
+  height: 1rem;
+  margin-left: 0.315rem;
+  position: relative;
+  top: 3px;
+}

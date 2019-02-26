@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>银行存管</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--#include virtual="_inc/_inc_import_header.html" -->
+    <!--内容部分-->
+    <div class="inf-dis">
+        <div class="content">
+            <div class="left-box bank_dep">
+                <div class="head-title">
+                    <h2>银行存管</h2>
+                </div>
+                <div class="center-piece">
+                    <div class="piece">
+                        <h4>为什么一定要接入存管？</h4>
+                        <div class="why-bank">
+                            <p class="blod">银行存管，让您的资金更安全。</p>
+                            <p>在2016年8月，监管部门发布的《网络借贷信息中介机构业务活动管理暂行办法》中明确要求平台应当选择符合条件的银行业金融<br>机构作为存管机构。</p>
+                            <p>资金存管系统是存管银行依据行业监管政策，向网络借贷信息中介机构提供的用于管理投资人与借款人资金的系统，其功能包括开户、充值、投标、提现、还款等。除了充值、提现，其他的交易都是在存管内部的虚拟资金交易记录，不会产生外部资金流。合规安全，从我做起。</p>
+                            <img src="../img/why_bank.png">
+                            <!-- <a href="./3a575fd11622dc09eaa64e60d5424c71.pdf" class="ck-agr" target="_blank">查看资金存管协议</a> -->
+                        </div>
+                    </div>
+                    <div class="piece">
+                        <h4>银行如何保障用户资金安全</h4>
+                        <div class="bank-safe">
+                            <h5 class="no-1">系统分账</h5>
+                            <p>监管接入银行存管后，将由银行对平台用户账户资金及平台自有运营资金进行分账监管，二者完全独立且相互隔离，平台无法接触用户账户资金。</p>
+                            <h5 class="no-2">用户资金</h5>
+                            <p>用户进行充值、绑卡、提现等每一笔与资金有关的操作，均需要通过银行资金存管账户，由银行对用户资金信息进行管理，避免资金被挪用。</p>
+                            <h5 class="no-3">用户授权</h5>
+                            <p>操作用户需要开通银行存管账户，并单独设立交易密码。在充值投资操作时，系统会验证密码，在得到用户的授权后，由银行根据交易指令进行资金划转。</p>
+                            <h5 class="no-4">银行监管</h5>
+                            <p>交易流程银行对交易流程进行管理，并对所有的资金流水存档记录，确保借贷双方的资金流转和债权关系清晰明确。</p>
+                        </div>
+                    </div>
+                    <div class="piece">
+                        <h4>更多关于银行存管</h4>
+                        <div class="about-bank">
+                            <p class="bank-q"><span>Q：</span>银行存管上线后，用户资金有什么有变化？</p>
+                            <p class="bank-a"><span>A：</span>用户资金由银行专门管理，只有用户本人才能操作账户上的资金，从根本上杜绝了用户资金被挪用的潜在风险。</p>
+                            <p class="bank-q"><span>Q：</span>银行存管上线后，提现会有什么影响？</p>
+                            <p class="bank-a"><span>A：</span>银行会在收到申请的当日受理，下一个工作日到账；遇双休日、国家法定节假日，到账日期顺延。</p>
+                            <p class="bank-q"><span>Q：</span>银行存管上线后，有哪些银行卡支持绑定？</p>
+                            <p class="bank-a"><span>A：</span>当前支持21家银行绑卡开户：中国银行、农业银行、工商银行、建设银行、光大银行、浦发银行、兴业银行、平安银行、民生银行、中信银行、广发银行、邮政储蓄银行、华夏银行、北京银行、招商银行、上海银行、交通银行、杭州银行、广州银行、江苏银行、浙商银行。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 侧边栏 -->
+            <!--#include virtual="_inc/_inc_import_right_box.html" -->
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <!--#include virtual="_inc/_inc_import_footer.html" -->
+    
+    <script type="text/javascript">
+    $(function() {
+        $(".right-box ul li").eq(8).addClass('active')
+        $(".arch .arch-out").on('mouseenter', function() {
+            $(this).children(".wind").addClass('show')
+        })
+        $(".arch .arch-out").on('mouseleave', function() {
+            $(this).children(".wind").removeClass('show')
+        })
+        $("#pdf-btn").on('click', function(event) {
+            location.href = ""
+        });
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+.lender-edu {
+  background: #f2f2f2;
+}
+
+.lender-edu .open-text {
+  background: #fff;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 5.3%;
+  padding-right: 5.3%;
+  margin-bottom: 7px;
+}
+
+.lender-edu .open-text p {
+  font-size: 14px;
+  line-height: 26px;
+  color: #404451;
+  text-indent: 2em;
+}
+
+.lender-edu .href-line {
+	background: #fff;
+}
+
+.lender-edu .href-line .padding-in {
+  padding-left: 5.3%;
+}
+
+.lender-edu .href-line .line {
+	border-bottom: 1px solid #ede9e9;
+    padding-right: 4.2%;
+    font-size:15px;
+}
+
+.lender-edu .href-line .line span {
+	font-size: 15px;
+	line-height: 48px;
+	color: #333;
+}
+
+.lender-edu .href-line .line img {
+	float: right;
+	width: 8px;
+	padding-top: 18px;
+}

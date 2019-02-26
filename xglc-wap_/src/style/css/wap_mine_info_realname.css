@@ -1,0 +1,31 @@
+.realname .tab-line {
+  background: #fff;
+  padding-left: 4%;
+}
+
+.realname .tab-line .border-box {
+  padding-right: 4%;
+}
+
+.realname .tab-line .border-box .left {
+  float: left;
+}
+
+.realname .tab-line .border-box .left span {
+  font-size: 15px;
+  color: #333;
+  line-height: 55px;
+}
+
+.realname .tab-line .border-box .right {
+  float: right;
+  height: 55px;
+  position: relative;
+}
+
+.realname .tab-line .border-box .right span {
+  font-size: 15px;
+  line-height: 55px;
+  color: #999;
+  padding-right: 17.5px;
+}

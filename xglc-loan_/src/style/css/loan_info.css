@@ -1,0 +1,59 @@
+.form {
+  margin-top: 11px;
+}
+.form .info-list {
+  height: 45px;
+}
+.form .in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.form .list-bg {
+  background: #fff;
+}
+
+.form .in-border {
+  border-bottom: 1px solid #ede9e9;
+}
+
+.form .info-list:first-child .in-border {
+  border: none;
+}
+
+.form .info-list span {
+  float: left;
+  font-size: 14px;
+  line-height: 44px;
+  color: #333;
+  width: 34.4%;
+}
+.form .info-list span.info-text {
+  color: #666;
+  width: 65.5%;
+}
+.form .info-list span.no-card {
+  color: #999;
+  width: 65.5%;
+  text-align: right;
+}
+.form .btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: 0.9rem auto 0;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 86, 55, 0.5);
+  background: linear-gradient(left, #fe7229, #ff5637);
+}
+
+.form .btn.empty {
+  margin: 0.4rem auto 0;
+  color: #ff5637;
+  box-shadow: none;
+  background: #fff;
+}

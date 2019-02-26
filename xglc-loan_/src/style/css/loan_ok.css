@@ -1,0 +1,25 @@
+.center {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.center h2 {
+	font-size: 16px;
+	text-align: center;
+}
+.in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+.btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: 9px auto 0;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 86, 55, 0.5);
+  background: linear-gradient(left, #fe7229, #ff5637);
+}

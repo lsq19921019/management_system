@@ -1,0 +1,172 @@
+.footer{
+    background:#2C2E3A;
+    color:#afafaf;
+    padding-top:45px;
+    a{
+        color:#DEDFDF;
+    }
+    a:hover{
+        color:#ff5637;
+    }
+    .inner_list{
+        width:1205px;
+        margin:auto;
+        ul{
+            li{
+                float:left;
+                margin-right: 100px;
+                &:last-child{
+                    float: right;
+                    margin: 0;
+                }
+                .title{
+                    color:#fff;
+                }
+                .as{
+                    line-height:28px;
+                    a{
+                        display:block;
+                    }
+                }
+                .concat{
+                    color: #DEDFDF;
+                    p:nth-child(1){
+                        background:url(../../assets/images/phoneIcon1.png) left 3px no-repeat;                        
+                    }
+                    p:nth-child(2),
+                    p:nth-child(3){
+                        span{
+                            display:inline-block;
+                            width:90px;
+                        }
+                    }
+                    p:nth-child(4){
+                        background:url(../../assets/images/emailIcon.png) left 10px no-repeat; 
+                    }
+                }
+                .ewms{
+                    color: #DEDFDF;
+                    dl{
+                        float:left;
+                        width:100px;
+                        dt{
+                            padding-top:5px;
+                            img{
+                                width:82px;
+                                height:82px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .links_list{
+        width: 1200px;
+        margin: 0 auto;
+        margin-top:55px;
+        height: 60px;
+        border-top: 1px solid #5a5d63;
+        border-bottom: 1px solid #5a5d63;
+        li{
+            float: left;
+            margin-top: 20px;
+            padding-right:30px;
+            font-size: 14px;
+            line-height: 1;
+            &:nth-child(2){
+                padding-left: 30px;
+            }
+        }
+        li:nth-child(1){
+            border-right: 1px solid #5a5d63;
+            color: #fff;
+            font-size: 16px;
+        }
+    }
+
+    .copyright{
+        width: 1200px;
+        height: 176px;
+        font-size: 14px;
+        color: #afafaf;
+        text-align: center;
+        margin: 0 auto;
+        padding-top: 44px;
+        a{
+            color:#F91516;
+        }
+        a:hover{
+            color:#ff5637;
+        }
+        .pic{
+            width: 100%;
+            height: 36px;
+            position: relative;
+            background-size: auto 100%;
+            text-align: center;
+            .bottomIcp{
+                display: inline-block;
+                width: 103px;
+                height: 38px;
+                background: url(../../assets/images/bottomIcp.png)center center no-repeat;
+                background: 100% auto;
+                margin: 0 14px;
+                a{
+                    display:block;
+                    height:100%;
+                }
+            }
+        }
+    }
+}
+
+div.login_footerPart {
+    width: 100%;
+    height: 300px;
+    padding-top: 40px;
+}
+
+div.login_footerPart>div:nth-child(1) {
+    width: 520px;
+    height: 20px;
+    margin: 0 auto 20px;
+}
+
+div.login_footerPart>div:nth-child(1)>ul>li {
+    float: left;
+    font-size: 16px;
+    color: #999;
+    width: 90px;
+    padding: 0 19px;
+    text-align: center;
+    border-right: 1px solid #999;
+    cursor: pointer;
+}
+
+div.login_footerPart>div:nth-child(1)>ul>li:last-child {
+    border-right: none;
+}
+
+div.login_footerPart>div:nth-child(2) {
+    margin: 0 auto 50px;
+    width: 680px;
+    height: 14px;
+}
+
+div.login_footerPart>div:nth-child(2)>ul>li {
+    float: left;
+    font-size: 14px;
+    color: #c8c8c8;
+    line-height: 14px;
+    padding: 0 10px;
+    border-right: 1px solid #c8c8c8;
+    text-align: center;
+}
+.login_footerPart a{
+    color:#c8c8c8;
+}
+.login_footerPart a:hover{
+    color:#ff5637;
+}

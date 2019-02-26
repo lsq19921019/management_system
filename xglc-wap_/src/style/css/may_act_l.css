@@ -1,0 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.act_l {
+  background: #ff7544;
+}
+
+.act_l .top-img img {
+  display: block;
+  width: 100%;
+}
+
+.act_l .out-line {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.act_l .out-line .inner-box {
+  background: #fff;
+  border-radius: 6px;
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.act_l .box-1 {
+  padding-left: 4.3%;
+  padding-right: 4.3%;
+}
+
+.act_l .title-s {
+  padding-bottom: 24px;
+}
+
+.act_l .title-s img {
+  display: block;
+  width: 27.1%;
+}
+
+.act_l .box-1 .inputContainer input {
+  width: 100%;
+  margin-bottom: 15px;
+  height: 18px;
+  text-indent: 15px;
+  line-height: 18px;
+  padding: 12px 0;
+  background: #fff;
+  font-size: 15px;
+  border: 1px solid #fe8e43;
+  outline: none;
+  border-radius: 4px;
+}
+
+.act_l .box-1 #slideVerify {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.act_l .imgCodeBox {
+  height: 44px;
+  width: 34%;
+  float: right;
+}
+
+.act_l .imgCodeBox img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.act_l .inputContainer input#validateCode,
+.act_l .inputContainer input#photoCode {
+  border-radius: 0;
+  width: 65%;
+  float: left;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.act_l .inputContainer button#validateCodeBth {
+  width: 34%;
+  border: none;
+  outline: none;
+  height: 44px;
+  background: #f55e4a;
+  color: #fff;
+  float: right;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.act_l .box-1 .inputContainer#messVerify input {
+  margin-bottom: 0;
+}
+
+.act_l .box-1 .agree img {
+  display: inline-block;
+  width: 15px;
+  position: relative;
+  top: 2px;
+  padding-right: 5px;
+}
+
+.act_l .box-1 .agree {
+  font-size: 12px;
+  line-height: 47px;
+  color: #aaa;
+  text-align: center;
+}
+
+.act_l .box-1 .agree a {
+  color: #aaa;
+}
+
+.act_l .btn {
+  width: 88.3%;
+  margin: 0 auto;
+  padding-bottom: 22px;
+}
+
+.act_l .btn .btn-border {
+  background: #ea890b;
+  border-radius: 7px;
+  height: 48px;
+  box-shadow: 0 3px 6px rgba(248, 69, 65, 0.2);
+}
+
+.act_l .btn .btn-border .btn-top {
+  background: linear-gradient(top, #ffe761, #ffca22);
+  border-radius: 6px;
+  height: 44px;
+}
+
+.act_l .btn p {
+  font-size: 15px;
+  line-height: 44px;
+  text-align: center;
+  color: #e4430d;
+}
+
+.act_l .box-1 .plan-img {
+  padding-bottom: 19px;
+}
+
+.act_l .box-1 .plan-img img {
+  display: block;
+  width: 100%;
+}
+
+.act_l .box-1 .gift-list {
+  padding-bottom: 10px;
+}
+
+.act_l .box-1 .gift-list .th {
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.act_l .box-1 .gift-list .th span {
+  font-size: 12px;
+  line-height: 25px;
+  color: #aa5900;
+  text-align: center;
+  padding-bottom: 2px;
+}
+
+.act_l .box-1 .gift-list ul {
+  padding-bottom: 9px;
+}
+
+.act_l .box-1 .gift-list ul li {
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.act_l .box-1 .gift-list ul li span {
+  font-size: 14px;
+  line-height: 48px;
+  color: #ed3a06;
+  text-align: center;
+}
+
+.act_l .box-1 .gift-list ul li span.paper {
+  background: url(/static/img/may_act_l_05.png) no-repeat center;
+  background-size: 92% auto;
+}
+
+.act_l .box-1 .gift-list p.list-inst {
+  font-size: 12px;
+  line-height: 16px;
+  color: #999;
+  padding: 3px 8px;
+}
+
+.act_l .box-2 {
+  padding-top: 37px;
+  padding-bottom: 12px;
+}
+
+.act_l .box-title img {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: -13px;
+  left: 0;
+}
+
+.act_l .box-2 .mui-row {
+  padding: 0 5.7%
+}
+
+.act_l .box-2 .mui-row .mui-col-xs-6 {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.act_l .box-2 .mui-row .mui-col-xs-6 img {
+  width: 50px;
+}
+
+.act_l .box-2 .mui-row .mui-col-xs-6 p {
+  font-size: 10px;
+  line-height: 36px;
+  color: #aa5900;
+}
+
+.act_l .out-line .box-3 {
+  padding: 42px 7.9% 28px;
+  margin-bottom: 33px;
+}
+
+.act_l .box-3 .about-us p {
+  font-size: 12px;
+  line-height: 16px;
+  color: #aa5900;
+}
+
+.act_l .btn-line {
+  padding-bottom: 13px;
+}
+
+.act_l .logo-line {
+  text-align: center;
+  padding-bottom: 26px;
+}
+
+.act_l .logo-line img {
+  display: block;
+  width: 28.6%;
+  margin: 0 auto;
+  padding-bottom: 7px;
+}
+
+.act_l .logo-line p span {
+  font-size: 14px;
+  line-height: 30px;
+  color: #fff;
+}
+
+.act_l .logo-line p span:first-child {
+  padding-right: 3.6%;
+}
+
+.act_l .logo-line p span:last-child {
+  padding-left: 3.6%;
+}
+
+.act_l .logo-line .tips {
+  color: #fff;
+  opacity: 0.5;
+  font-size: 12px;
+  line-height: 26px;
+}

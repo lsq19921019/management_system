@@ -1,0 +1,85 @@
+.index .title {
+  padding-top: 39px;
+}
+
+.index .title p {
+  font-size: 16px;
+  line-height: 24px;
+  color: #999;
+  text-align: center;
+}
+
+.index .personal {
+  margin-top: 39px;
+}
+
+.index .personal .head-img {
+  width: 29.2%;
+  margin: 0 auto;
+}
+
+.index .personal .head-img img {
+  width: 100%;
+}
+
+.index .personal .head-text {
+  text-align: center;
+  padding-top: 12px;
+}
+
+.index .personal .head-text .check-box {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  padding-right: 2.4%;
+  position: relative;
+  top: 2px;
+}
+.index .personal .head-text .check-box img {
+	width: 100%;
+}
+
+.index .personal .head-text .text {
+  font-size: 18px;
+  color: #545454;
+  line-height: 24px;
+}
+
+
+
+.index .company {
+  margin-top: 54px;
+}
+
+.index .company .head-img {
+  width: 32%;
+  margin: 0 auto;
+}
+
+.index .company .head-img img {
+  width: 100%;
+}
+
+.index .company .head-text {
+  text-align: center;
+  padding-top: 12px;
+}
+
+.index .company .head-text .check-box {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  padding-right: 2.4%;
+  position: relative;
+  top: 2px;
+}
+.index .company .head-text .check-box img {
+	width: 100%;
+}
+
+.index .company .head-text .text {
+  font-size: 18px;
+  color: #545454;
+  line-height: 24px;
+}
+

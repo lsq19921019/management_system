@@ -1,0 +1,84 @@
+.reg_suc {
+  .top_banner {
+    height: 480px;
+    background: url(../../images/about_xg_company/reg_suc_banner.png) no-repeat
+      center;
+    background-size: cover;
+  }
+  .top_banner.nocg {
+    background: url(../../images/about_xg_company/nocg_banner.png) no-repeat
+      center;
+    background-size: cover;
+  }
+  .list {
+    background: #fff;
+    .inner {
+      width: 910px;
+      height: 560px;
+      margin: auto;
+      position: relative;
+      img {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .text {
+        position: absolute;
+        top: 180px;
+        right: 500px;
+        text-align: right;
+        .t1 {
+          font-size: 72px;
+          line-height: 100px;
+          color: #ff8000;
+          padding-bottom: 20px;
+          font-weight: bold;
+        }
+        .t2 {
+          font-size: 32px;
+          line-height: 45px;
+          color: #333;
+          font-weight: bold;
+          white-space: nowrap;
+        }
+        .t3 {
+          font-size: 26px;
+          line-height: 45px;
+          color: #333;
+        }
+      }
+    }
+    button {
+      width: 360px;
+      height: 88px;
+      background: linear-gradient(
+        90deg,
+        rgba(254, 114, 41, 1) 0%,
+        rgba(254, 110, 43, 1) 22%,
+        rgba(255, 86, 55, 1) 100%
+      );
+      box-shadow: 0px 2px 20px 0px rgba(255, 86, 55, 0.5);
+      border-radius: 44px;
+      font-size: 32px;
+      color: rgba(255, 255, 255, 1);
+      line-height: 45px;
+    }
+  }
+  .list.y {
+    background: #fff8f7;
+    img {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .text {
+      position: absolute;
+      top: 180px;
+      left: 500px;
+      right: auto;
+      text-align: left;
+    }
+  }
+}

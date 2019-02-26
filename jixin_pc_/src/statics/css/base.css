@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 12px;
+  color: #171717;
+  line-height: 1.5;
+  font-family: "Microsoft Yahei";
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-width: 1200px;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+  border: none;
+}
+a {
+  color: #171717;
+  text-decoration: none;
+}
+
+input,
+textarea,
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+a,
+button {
+  cursor: pointer;
+}
+.c:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+.por {
+  position: relative;
+}
+.poa {
+  position: absolute;
+}
+.cd-fixed-bg {
+  min-height: 100%;
+  background-size: cover!important;
+  background-attachment: fixed!important;
+  background-repeat: no-repeat!important;
+  background-position: center center!important;
+ }
+/* 最外层标签 */
+.wrap{
+    opacity:0;
+}
+/* 页面加载中 */
+.page_loading{width:100%;text-align:center;}
+.page_loading i{display:inline-block;width:16px;height:16px;border-top:2px solid #ff5637;border-radius:50%;animation:spinner .6s linear infinite;margin-top:200px;}
+.page_loading p{font-size:12px;line-height:30px;color:#bbb;}
+@keyframes spinner{
+    to{transform:rotate(360deg);}
+}

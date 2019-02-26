@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>我的账户</title>
+		<!--#include virtual="_inc/_inc_import_css.html" -->
+		<!--#include virtual="_inc/_inc_import_js.html" -->
+	</head>
+
+	<body>
+		<!--#include virtual="_inc/_inc_import_header.html" -->
+
+		<!--内容部分-->
+		<div class="myAccount_content">
+			<div>
+				<div>可用余额（元）</div>
+				<div id="balanceMoney">00.00</div>
+				<div onclick="Web.go('myAccount_payPage.html')">网银充值</div>
+				<div>当前仅支持app端提现</div>
+			</div>
+		</div>
+
+		<!--#include virtual="_inc/_inc_import_footer.html" -->
+	</body>
+	<script>
+		$(function() {
+			MyAccount.initFunc();
+		});
+
+		var MyAccount = {
+			initFunc: function() {
+				var self = this;
+				$('#navBar>li:nth-child(3)').addClass('active');
+				self.requestNetDataFunc();
+			},
+
+			requestNetDataFunc: function() {
+				var self = this;
+				if(Utils.checkLogin()) {
+					var token = localStorage.getItem('token');
+					$.ajax({
+						type: "POST",
+						headers: {
+							"clientType": base.dataWithoutToken.clientType,
+							"clientVersion": base.dataWithoutToken.clientVersion,
+							"timeStamp": base.dataWithoutToken.timeStamp,
+							"sign": base.getPostStrWithoutToken({
+								token: token
+							}),
+							"imei": base.dataWithoutToken.timeStamp,
+							"token": token,
+						},
+						dataType: 'json',
+						async: false,
+						url: '/api/assets/index',
+						success: function(data) {
+							if(data.status == 0) {
+								self.renderDomFunc(data.result);
+								sessionStorage.setItem('accountInfo', JSON.stringify(data.result));
+							} else {
+								if(data.msg.indexOf('已过期') > -1) {
+									if(confirm(data.msg)) {
+										Utils.signOut(function() {
+											Web.go('index_login.html');
+										});
+									}
+								}else{
+                                    if(data.msg.indexOf('未开通') > -1){
+                                    	if(confirm(data.msg)){
+                                    		Web.go('index_displayPage.html?notOpenOlineBank=1');
+                                    	}else{
+                                    		Web.go('index_displayPage.html?notOpenOlineBank=1');
+                                    	}
+                                    }else{
+                                    	alert(data.msg);
+                                    }
+								}
+							}
+						}
+					});
+				}
+			},
+
+			renderDomFunc: function(data) {
+				$('div#balanceMoney').html(data.usableSum);
+			}
+		};
+	</script>
+
+</html>

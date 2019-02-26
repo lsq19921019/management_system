@@ -1,0 +1,98 @@
+.main{
+    .login_wrap{
+        background:url(../../images/index_login/login_banner.png) top center no-repeat;
+        height:540px;
+        .login{
+            width:1205px;
+            margin:auto;
+            .text{
+                color:#fff;
+                font-size:40px;
+                width:500px;
+                text-align:center;
+                top:140px;
+                left:120px;
+                p:nth-child(2){
+                    padding: 44px 0 56px;
+                    font-size: 60px;
+                    font-weight: bold;
+                }
+                p:nth-child(3){
+                    font-size: 26px;
+                    background: url(../../images/index_login/loginPointLine.png)center center no-repeat;
+                    background-size: 100% auto;
+                }
+            }
+            .content{
+                position: absolute;
+                top: 60px;
+                right: 60px;
+                width: 400px;
+                height: 410px;
+                background: #fff;
+                .title{ 
+                    margin-top: 36px;
+                    padding: 0 20px 0 30px; 
+                    span:nth-child(1){
+                        font-size: 22px;
+                    }
+                    span:nth-child(2){
+                        padding-left: 96px;
+                        font-size: 14px;
+                        color: #c8c8c8;
+                        a{
+                            color:#ff5637;
+                        }
+                    }
+                }
+                ul{
+                    padding:30px;
+                    padding-bottom:10px;
+                    li{
+                        input{
+                            border:1px solid #e6e6e6;
+                            height:48px;
+                            width:86%;
+                            padding-left:40px;
+                        }
+                        ::-moz-placeholder{
+                            font: 400 13.3333px Arial;
+                            color: #C8C8C8;                            
+                        }
+                        input::-webkit-input-placeholder{
+                            font: 400 13.3333px Arial;
+                            color: #C8C8C8;
+                        }
+                        input:-ms-input-placeholder{
+                            font: 400 13.3333px Arial;
+                            color: #C8C8C8;                            
+                        }                    
+                        padding-bottom:30px;
+                    }
+                    .mobile{
+                        background:url(../../images/userIcon.png) 15px 12px no-repeat;
+                    }
+                    .password{
+                        background:url(../../images/passwordIcon.png) 15px 15px no-repeat;
+                    }
+                }
+                .login_btn{
+                    width: 360px;
+                    margin:auto;
+                    line-height: 66px;
+                    background: #ff5637;
+                    border: 0;
+                    font-size: 24px;
+                    color: #fff;
+                    border-radius: 4px;
+                    display:block;
+                    text-align:center;
+                }
+                .error_tips{
+                    bottom:12px;
+                }
+
+            }
+        }
+    }
+}

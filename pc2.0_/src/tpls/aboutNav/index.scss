@@ -1,0 +1,25 @@
+.about_nav{
+    ul{
+        display:flex;        
+        justify-content:center;
+        li{
+            float:left;
+            width:130px;
+            margin:0 8px;
+            a{
+                color:#333;
+                display:block;
+                text-align:center;
+                line-height:40px;
+                font-size:13px;
+            }
+        }
+        .active{
+            a{
+                background:linear-gradient(90deg,rgba(254,129,86,1),rgba(255,104,75,1),rgba(255,86,55,1));
+                border-radius:20px;
+                color:#fff;
+            }
+        }
+    }
+}

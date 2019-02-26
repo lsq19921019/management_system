@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>小鸽理财</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="email=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="./css/mui.min.css" />
+<link rel="stylesheet" href="./css/register.css">
+<style>
+.inp-box-div,.inp-box{width:79%;border-radius:10px;}
+.inp-box-right{background:#ffc001;color:#c43718}
+</style>
+</head>
+<body style="max-width:450px;background:#fed39e">
+<img src="./images/n1.jpg" class="img-box">
+ 
+<div class="form-box">
+     
+	 <div class="inp-div" style="background:#fed39e;border-radius:0;"> 
+	      <input type="tel" placeholder="请输入11位手机号领取" value=""  class="inp-box" name="cellphone" id="tel">
+		  <div class="hide-inp">
+		  <div class="inp-box-div">
+		       <input type="tel" placeholder="请输入随机码" value="" class="inp-box-left" name="imgCode"> 
+		       <div class="inp-box-right" id="picvalidation"></div>
+		  </div>
+		  <div class="inp-box-div">
+		       <input type="tel" placeholder="短信验证" value="" name="messagecode"  class="inp-box-left"> 
+		       <div class="inp-box-right" id="smscode">获取验证码</div>
+		  </div>
+		  <input type="password" placeholder="设置登录密码6-15位" value="" name="password"  class="inp-box">
+		  </div>
+		  <img src="./images/n2.png" class="img-but"> 
+		  <div class="clear"></div>
+	 </div> 
+</div>
+<img src="./images/n3.png" class="img-box"> 
+<img src="./images/n4.png" class="img-box">
+<img src="./images/n5.png" class="img-box"> 
+ <img src="./images/n2.png" class="img-box but-box3" style="width:80%;margin:20px auto;"> 
+<p class="p-tip" style="color:#b26d51">©2017 深圳市温馨港湾网络技术有限公司 版权所有<br>理财有风险   投资需谨慎</p>
+ 
+<div class="tan-box">
+     <div class="tan-div">
+	      <p class="tan-tit">您已是小鸽理财老用户啦~ </p>
+		  <p class="tan-p">登录app即可查看我的红包福利和资产收益， 还有每周爆款 【房优选】，别错过哦！</p>
+		  <div class="tan-ok">好的</div>
+	 </div>
+	 <img src="./images/119.png" class="tan-bg" >
+	 <div class="tan-x"></div>
+	 
+</div>
+<script type="text/javascript" src="./js/jquery.min.js" ></script>
+<script type="text/javascript" src="./js/common.js" ></script>
+<script type="text/javascript" src="./js/3DES.js" ></script>
+<script type="text/javascript" src="./js/hmac-sha256.js" ></script>
+<script type="text/javascript" src="./js/enc-base64-min.js" ></script>
+<script type="text/javascript" src="./js/base.js" ></script>
+<script type="text/javascript" src="./js/mui.min.js" ></script>
+<script type="text/javascript">
+var u = navigator.userAgent;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+function isWeiXin(){ 
+    var ua = window.navigator.userAgent.toLowerCase(); 
+	if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+	return true; 
+	}else{ 
+	return false; 
+	} 
+} 
+</script>
+<script>
+$(function(){
+
+//倒计时
+var countdown=function(id){
+	var codeTime=60;
+	var codeState="";
+    var st = setInterval(function(){
+		if (codeTime > 1) {
+			 codeState =(--codeTime + 's');
+
+		}else{
+			clearInterval(st);
+			codeState = '重新获取';
+			isRepeatSubmit=true;
+		}
+		$("#"+id).text(codeState);
+    }, 1000);
+}
+//图片验证码
+var getPicValid=function(cellphone){
+   if(base.checkPhone(cellphone)){
+	       var urlN=base.apiStr+"/img/code";
+           var timenow = new Date();
+		   $.ajax({ 
+				type:"POST",
+				headers: {
+							"clientType": base.dataWithoutToken.clientType,
+							"clientVersion": base.dataWithoutToken.clientVersion,
+							"timeStamp": base.dataWithoutToken.timeStamp,
+							"sign": base.getPostStrWithoutToken({"cellphone":cellphone,"id":timenow}),
+							"imei": base.dataWithoutToken.timeStamp
+						},
+				dataType: 'json',
+				async: false,
+				data:{"cellphone":cellphone,"id":timenow},
+				url: urlN, 
+				success: function(data){  
+					   if(data.status=="0"){
+						  var dataStr=data.result;
+						  var ss='<img src="data:image/png;base64,'+dataStr+'">'
+						  $("#picvalidation").html(ss); 
+					  }else{
+						  mui.alert(base.errorStr);
+					  }; 
+				  }
+			});
+   }
+}
+//短信验证码
+var GetSmsCode=function(imgCode,cellphone,type){
+   if(imgCode==""){
+      mui.alert("请输入随机码");
+   }else{
+		   if(base.checkPhone(cellphone)){
+				   if(isRepeatSubmit){
+						   isRepeatSubmit=false;
+						   var urlN=base.apiStr+"/sms/register";
+						   var dataJson={
+								   "imgCode":imgCode,
+								   "cellphone":cellphone,
+								   "type":type
+								}
+						   $.ajax({ 
+								type:"POST",
+								headers: {
+											"clientType": base.dataWithoutToken.clientType,
+											"clientVersion": base.dataWithoutToken.clientVersion,
+											"timeStamp": base.dataWithoutToken.timeStamp,
+											"sign": base.getPostStrWithoutToken(dataJson),
+											"imei": base.dataWithoutToken.timeStamp
+										},
+								dataType: 'json',
+								async: false,
+								data:dataJson,
+								url: urlN, 
+								success: function(data){  		 
+									  if(data.status=="0"){
+											 countdown("smscode");//倒计时完成可点击
+									  }else{
+										  mui.alert(data.msg);
+										  isRepeatSubmit=true;//报错可点击
+										  getPicValid(cellphone);//报错刷新图片验证码
+									  };
+								  }
+							});
+				   }
+		   }
+  }
+}
+//提交注册
+var registerNow=function(cellphone,messageCode,password,referrer){
+	var urlN=base.apiStr+"/user/register";
+	var dataJson={
+		   'cellphone':cellphone,
+		   'code':messageCode,
+		   'password':password,
+          'sourceType':'53'
+		   //'referrer':referrer
+		};
+	if(base.trimEmpty(referrer)!=""){
+	   dataJson.referrer=referrer;
+	}
+	
+   var	register = DES3.encrypt(base.desKey,JSON.stringify(dataJson));
+   
+   
+
+    $.ajax({
+			type:"POST",
+			headers: {
+						"clientType": base.dataWithoutToken.clientType,
+						"clientVersion": base.dataWithoutToken.clientVersion,
+						"timeStamp": base.dataWithoutToken.timeStamp,
+						"sign": base.getPostStrWithoutToken({"register":register}),
+						"imei": base.dataWithoutToken.timeStamp
+					},
+			dataType: 'json',
+			async: false,
+			data:{"register":register},
+			url: urlN, 
+			success: function(data){  	  
+				  if(data.status=="0"){
+					  var name=data.result.userName;
+                      window.location.href="download.html?user="+name;
+				  }else{
+					 mui.alert(data.msg);
+				  }
+				 
+			  }
+		});
+}
+
+
+//开始
+var referrer = GetQueryString("id");
+var firstClick=true;//注册按钮
+var isRepeatSubmit=true;//获取短信验证码
+$("#picvalidation").on("click",function(){//刷新图片验证码
+   var cellphone=$("input[name='cellphone']").val(); 
+   getPicValid(cellphone); 
+});
+$("#smscode").on("click",function(){//获取短信验证码
+	var cellphone=$("input[name='cellphone']").val(); 
+	var imgCode=$("input[name='imgCode']").val();
+	var imgCodeN=base.trimEmpty(imgCode);
+    GetSmsCode(imgCodeN,cellphone,"1");
+})
+$(".img-but").on("click",function(){//注册按钮
+	var cellphone=$("input[name='cellphone']").val();
+	var messageCode=$("input[name='messagecode']").val();
+    var messageCodeN=base.trimEmpty(messageCode);
+	var password=$("input[name='password']").val();
+	var passwordN=base.trimEmpty(password);
+	if(firstClick){
+		   if(base.checkPhone(cellphone)){
+			   $(".hide-inp").show(500);
+			   getPicValid(cellphone);
+			   firstClick=false;
+		   }
+	}else{
+		  if(base.checkPhone(cellphone)){
+			  if(messageCodeN==""){
+			      mui.alert("请输入短信验证码");
+			  }else{
+				  if(passwordN==""){
+				      mui.alert("密码不能为空");
+				  }else{
+				      registerNow(cellphone,messageCodeN,passwordN,referrer);
+				  }
+			  }
+          }
+	}
+	  //  $(".tan-box").show();
+       scrollFlag=false;
+	})
+    $(".tan-x").on("click",function(){
+	   $(".tan-box").hide();
+       scrollFlag=true;
+	})
+	$(".tan-ok").on("click",function(){
+	   $(".tan-box").hide();
+       scrollFlag=true;
+	})
+	$(".but-box").on("click",function(){
+	   $("#tel").focus();
+	})
+	$(".but-box3").on("click",function(){
+		if(isAndroid){
+			  if(isWeiXin()){
+			     window.location.href="http://appurl.me/16748143";
+			  }else{
+			     window.location.href="https://www.xiaogelicai.com/xglc.apk";
+			  }
+		  
+		}else if(isiOS){
+  
+			      window.location.href="https://itunes.apple.com/cn/app/%E5%B0%8F%E9%B8%BD%E7%90%86%E8%B4%A2/id1255464866?mt=8";
+		 
+		}
+	   
+	})
+    
+})
+</script>
+</body>
+</html>

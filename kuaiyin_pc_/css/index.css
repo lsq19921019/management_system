@@ -1,0 +1,28 @@
+/* main */
+.main .v_list .v_item .v_item_c{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 60px;    
+    width: 1080px;
+    margin: 0 auto;
+}
+.main .v_list .v_item:nth-of-type(odd){
+    background:#fff;
+}
+.main .v_list .v_item .v_item_l p:nth-child(1){
+    font-size:40px;
+    font-weight:800;
+    color:rgba(77,145,229,1);  
+}
+.main .v_list .v_item .v_item_l p:nth-child(2){
+    font-size:24px;
+    font-weight:400;
+    color:rgba(89,89,96,1);
+    width: 255px;
+    margin-top: 30px; 
+}
+.main .v_list .v_item .v_item_r{
+    width: 393px;
+    height: 393px;
+}

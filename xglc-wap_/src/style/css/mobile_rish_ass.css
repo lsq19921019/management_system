@@ -1,0 +1,119 @@
+.risk {
+  background: #fff;
+}
+
+.risk .in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.risk .risk-title {
+  background: #ffeede;
+}
+
+.risk .risk-title p {
+  font-size: 12px;
+  line-height: 35px;
+  color: #d9a472;
+  position: relative;
+  padding-left: 9px;
+}
+
+.risk .risk-title p:before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: url(/static/img/risk_01.png) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  left: -5px;
+  top: 12px;
+}
+
+.risk .line .in-line {
+  display: block;
+  height: 2px;
+  background: #ff5637;
+  width: 0%;
+}
+
+.risk .line .in-line.full {
+  transition: all 0.25s linear;
+  width: 100%;
+}
+
+.risk .test-num {
+  padding-top: 17px;
+}
+
+.risk .test-num .current-num {
+  font-size: 20px;
+  line-height: 28px;
+  color: #ff5637;
+}
+
+.risk .test-num .total-num {
+  font-size: 14px;
+  line-height: 28px;
+  color: #ff9a88;
+}
+
+.risk .test-topic p {
+  font-size: 16px;
+  line-height: 23px;
+  color: #ff5637;
+  font-weight: bold;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.risk .test-option .test-radio {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid #f0f0f0;
+  background: url(/static/img/risk_02.png) no-repeat;
+  background-size: 18px;
+  background-position: right 0 top 19px;
+}
+
+.risk .test-option .test-radio.checked {
+  background: url(/static/img/risk_03.png) no-repeat;
+  background-size: 18px;
+  background-position: right 0 top 19px;
+}
+
+.risk .test-option .test-radio span.answer-text {
+  display: inline-block;
+  width: 83.4%;
+  padding: 17px 0;
+  line-height: 20px;
+  font-size: 14px;
+  color: #666;
+  text-indent: -1.7em;
+  margin-left: 8.6%;
+}
+
+.risk .footer-back {
+  padding-top: 18px;
+}
+
+.risk .footer-back span {
+  font-size: 14px;
+  line-height: 34px;
+  color: #ff907c;
+}
+
+.risk .btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: 33px auto 107px;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 86, 55, 0.5);
+  background: linear-gradient(left, #fe7229, #ff5637);
+}

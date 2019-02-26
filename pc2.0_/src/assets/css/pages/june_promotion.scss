@@ -1,0 +1,438 @@
+.main {
+  .banner {
+    height: 100%;
+    background-image: url("../../images/june_promotion/june_promotion_02.png");
+    background-size: cover;
+    height: 480px;
+    .banner_box {
+      width: 1200px;
+      margin: 0 auto;
+      .title {
+        text-align: center;
+        padding: 30px 0 20px;
+        margin: 0 20px;
+        font-size: 16px;
+        color: #555;
+      }
+      .box {
+        width: 350px;
+        height: 420px;
+        background: #fff;
+        right: 0;
+        top: 40px;
+        #J_newloginCon {
+          width: 280px;
+          margin: auto;
+          ul li {
+            height: 40px;
+            padding-bottom: 20px;
+            input {
+              border: 1px solid #ccc;
+              height: 30px;
+              padding: 4px 6px;
+              color: #666;
+              font-size: 14px;
+              line-height: 30px;
+              width: 266px;
+              outline: none;
+            }
+            .fl {
+              float: left;
+              width: 160px;
+              input {
+                width: 148px;
+              }
+            }
+            .fr {
+              float: right;
+              width: 100px;
+              height: 40px;
+              .getCode {
+                color: #fff;
+                display: block;
+                text-align: center;
+                background: linear-gradient(to right, #ff865f, #ff7050);
+                font-size: 14px;
+                line-height: 40px;
+              }
+              img {
+                position: relative;
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+      .register_tips {
+        color: red;
+        font-size: 10px;
+        line-height: 1.5;
+        padding-left: 35px;
+        height: 18px;
+      }
+      .btn {
+        width: 280px;
+        margin: auto;
+        height: 50px;
+        margin-top: 10px;
+        button {
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          background: linear-gradient(to right, #fe8156, #ff5637);
+          filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 1, startColorstr = #fe8156, endColorstr = #fe8156);
+          border: 0;
+          border-radius: 2px;
+          color: #fff;
+          font-size: 16px;
+        }
+      }
+      .go-login {
+        color: #c8c8c8;
+        font-size: 14px;
+        text-align: center;
+        padding-top: 15px;
+      }
+    }
+  }
+  .clear {
+    clear: both;
+  }
+  .about {
+    background: #fff;
+    min-width: 1205px;
+  }
+}
+.june_promotion {
+  .novice {
+    padding-top: 67px;
+    .novice_con {
+      border: 10px solid #ffdd7c;
+      background: #fe6d48;
+      width: 1164px;
+      margin: auto;
+      margin-top: 55px;
+      padding: 40px 0;
+      .content {
+        width: 1045px;
+        background: #fff;
+        margin: auto;
+        position: relative;
+        i {
+          position: absolute;
+          top: -25px;
+          right: -25px;
+        }
+        ul {
+          height: 280px;
+          padding-left: 142px;
+          padding-top: 55px;
+        }
+        ul li {
+          float: left;
+          width: 336px;
+          text-align: left;
+          color: #333;
+        }
+        ul li.two {
+          float: left;
+          width: 107px;
+          text-align: center;
+          color: #333;
+        }
+        ul li.three {
+          float: left;
+          width: 432px;
+          text-align: left;
+          color: #333;
+        }
+        ul li.three .top {
+          padding-left: 207px;
+        }
+        ul li.three .desc {
+          padding-left: 205px;
+        }
+        li .top {
+          font-size: 58px;
+        }
+        li .top .orange {
+          color: #ff5637;
+        }
+        li .top .small {
+          font-size: 24px;
+        }
+        li .desc {
+          font-size: 20px;
+          color: #999;
+          padding: 35px 0 40px 0;
+        }
+        li .top .small1 {
+          font-size: 45px;
+          font-weight: bold;
+        }
+        li div {
+          height: 50px;
+          line-height: 50px;
+          font-size: 16px;
+        }
+        li div a {
+          width: 170px;
+          text-align: center;
+          color: #fff;
+          background: linear-gradient(to right, #fe8156, #ff5637);
+          display: block;
+          margin-left: 150px;
+        }
+      }
+    }
+    .title {
+      font-size: 38px;
+      line-height: 48px;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .title i {
+      display: block;
+      width: 38px;
+      height: 3px;
+      background: #fe7852;
+      position: absolute;
+      left: 50%;
+      margin-left: -19px;
+      bottom: -17px;
+    }
+  }
+  .plan-box {
+    padding-top: 160px;
+    text-align: center;
+    .title {
+      font-size: 38px;
+      line-height: 48px;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      i {
+        display: block;
+        width: 38px;
+        height: 3px;
+        background: #fe7852;
+        position: absolute;
+        left: 50%;
+        margin-left: -19px;
+        bottom: -17px;
+      }
+    }
+    .plan-s {
+      display: inline-block;
+      height: 392px;
+      width: 284px;
+      position: relative;
+      &.left {
+        margin-right: 45px;
+        background: url(../../images/june_promotion/june_promotion_03.png)
+          center no-repeat;
+        background-size: contain;
+      }
+      &.right {
+        margin-left: 45px;
+        background: url(../../images/june_promotion/june_promotion_05.png?v=1)
+          center no-repeat;
+        background-size: contain;
+      }
+      .title {
+        position: absolute;
+        top: 71px;
+        width: 100%;
+        font-size: 14px;
+        line-height: 26px;
+        color: #666;
+        text-align: center;
+      }
+      .rate {
+        position: absolute;
+        top: 145px;
+        width: 100%;
+        font-size: 47px;
+        line-height: 60px;
+        color: #ff5637;
+        text-align: center;
+      }
+      .foot-title {
+        position: absolute;
+        top: 204px;
+        width: 100%;
+        font-size: 14px;
+        line-height: 37px;
+        color: #999;
+        text-align: center;
+      }
+      .btn {
+        position: absolute;
+        top: 291px;
+        width: 100%;
+        text-align: center;
+        img {
+          display: block;
+          margin: 0 auto;
+          cursor: pointer;
+        }
+      }
+    }
+    .plan-l {
+      display: inline-block;
+      position: relative;
+      top: 47px;
+      height: 476px;
+      width: 344px;
+      background: url("../../images/june_promotion/june_promotion_04.png?v=1")
+        center no-repeat;
+      background-size: contain;
+      .title {
+        position: absolute;
+        top: 90px;
+        width: 100%;
+        font-size: 16px;
+        line-height: 26px;
+        color: #666;
+        text-align: center;
+      }
+      .rate {
+        position: absolute;
+        top: 176px;
+        width: 100%;
+        font-size: 70px;
+        line-height: 78px;
+        color: #ff5637;
+        text-align: center;
+      }
+      .foot-title {
+        position: absolute;
+        top: 254px;
+        width: 100%;
+        font-size: 16px;
+        line-height: 37px;
+        color: #999;
+        text-align: center;
+      }
+      .btn {
+        position: absolute;
+        top: 354px;
+        width: 100%;
+        text-align: center;
+        img {
+          display: block;
+          margin: 0 auto;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .footer-text {
+    padding-top: 150px;
+    .inner {
+      width: 1200px;
+      margin: auto;
+      padding-bottom: 125px;
+    }
+    .title {
+      margin-bottom: 60px;
+      position: relative;
+      font-size: 38px;
+      line-height: 48px;
+      text-align: center;
+      i {
+        display: block;
+        width: 38px;
+        height: 3px;
+        background: #fe7852;
+        position: absolute;
+        left: 50%;
+        margin-left: -19px;
+        bottom: -17px;
+      }
+    }
+    .text {
+      font-size: 14px;
+      line-height: 30px;
+      color: #333;
+      padding: 0 60px 0;
+      text-indent: 28px;
+    }
+  }
+  .advantage {
+    padding-top: 155px;
+    .title {
+      font-size: 38px;
+      line-height: 48px;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      i {
+        display: block;
+        width: 38px;
+        height: 3px;
+        background: #fe7852;
+        position: absolute;
+        left: 50%;
+        margin-left: -19px;
+        bottom: -17px;
+      }
+    }
+    .advantage-line {
+      width: 950px;
+      padding-top: 35px;
+      margin: 0 auto;
+      .right-line,
+      .left-line {
+        float: left;
+        width: 367px;
+        box-sizing: border-box;
+        img {
+          display: block;
+          float: left;
+          width: 88px;
+          height: 88px;
+          padding-right: 19px;
+        }
+        p {
+          float: left;
+        }
+        p {
+          font-size: 20px;
+          padding-top: 8px;
+          line-height: 22px;
+          color: #222;
+          span {
+            font-size: 16px;
+            color: #999;
+            padding-top: 8px;
+            display: block;
+          }
+        }
+      }
+      .right-line {
+        width: 380px;
+        float: right;
+        position: relative;
+        right: -100px;
+      }
+    }
+    .further-line {
+      padding-top: 40px;
+      padding-bottom: 42px;
+      .further {
+        display: block;
+        width: 100px;
+        font-size: 16px;
+        line-height: 26px;
+        color: #999;
+        margin: 0 auto;
+        &:hover {
+          color: #ff5637;
+        }
+      }
+    }
+  }
+}

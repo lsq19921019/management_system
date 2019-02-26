@@ -1,0 +1,110 @@
+.inv-tendet .in-padding {
+  padding-left: 5.33%;
+  padding-right: 5.33%;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  margin-bottom: 7px;
+}
+
+.inv-tendet .basic-info,
+.inv-tendet .pro-descrip,
+.inv-tendet .pro-princ,
+.inv-tendet .com-problem,
+.inv-tendet .cozy-prompt {
+  background: #fff;
+}
+
+.inv-tendet .title,
+.inv-tendet .pro-descrip .title,
+.inv-tendet .pro-princ .title,
+.inv-tendet .com-problem .title,
+.inv-tendet .cozy-prompt .title {
+  font-size: 14px;
+  line-height: 44px;
+  color: #162337;
+  background: #fff;
+  padding-left: 5.33%;
+  padding-right: 5.33%;
+}
+
+.inv-tendet .basic-info .info-list .full span {
+  font-size: 13px;
+  line-height: 23px;
+  color: #404451;
+}
+
+.inv-tendet .basic-info .info-list .full > span:nth-child(1) {
+  float: left;
+  width: 19.1%;
+  color: #909197;
+}
+
+.inv-tendet .basic-info .info-list .full > span:nth-child(2) {
+    float: right;
+    width: 80.9%;
+}
+
+.inv-tendet .pro-descrip .text-line p,
+.inv-tendet .pro-princ .text-line p {
+  font-size: 13px;
+  line-height: 18px;
+  color: #909197;
+}
+
+.inv-tendet .com-problem .problem-line .question {
+  font-size: 13px;
+  line-height: 32px;
+  color: #404451;
+}
+
+.inv-tendet .com-problem .problem-line .question img {
+  width: 18px;
+  padding-right: 8px;
+  position: relative;
+  top: 6px;
+  left: 0;
+}
+
+.inv-tendet .com-problem .problem-line .answer {
+  font-size: 13px;
+  line-height: 31px;
+  color: #909197;
+}
+
+.inv-tendet .cozy-prompt .text {
+  font-size: 13px;
+  line-height: 16px;
+  color: #909197;
+  padding-bottom: 12px;
+}
+
+.inv-tendet .cozy-prompt .prompt a {
+  display: inline-block;
+  width: 100%;
+  font-size: 13px;
+  line-height: 40px;
+  color: #909197;
+}
+
+.inv-tendet .cozy-prompt .prompt a img {
+  float: right;
+  width: 6px;
+  padding-top: 12px;
+}
+
+.inv-tendet .footer-buy {
+  background: #ff6241;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.inv-tendet .footer-buy a {
+  display: inline-block;
+  width: 100%;
+  color: #fff;
+  line-height: 45px;
+  font-size: 16px;
+  text-align: center;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>信息披露</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--#include virtual="_inc/_inc_import_header.html" -->
+    <!--内容部分-->
+    <div class="inf-dis">
+        <div class="content">
+            <div class="left-box about_xg">
+                <div class="head-title">
+                    <h2>收费标准</h2>
+                </div>
+                <div class="center-piece">
+                    <div class="piece">
+                        <h4>收费标准</h4>
+                        <div class="ul-major ul-aline-left">
+                            <ul>
+                                <li>
+                                    <span>业务类型</span>
+                                    <span>收费标准</span>
+                                </li>
+                                <li>
+                                    <span>1.用户注册</span>
+                                    <span>免费</span>
+                                </li>
+                                <li>
+                                    <span >2.开通银行存管</span>
+                                    <span>免费</span>
+                                </li>
+                                <li style="height: 89px;">
+                                    <span style="line-height: 89px;height: 89px;position: relative;">3、投标<ul style="position: absolute;right:0;top:0;width: 211px;height: 89px;border-left: 1px solid #cecece;">
+                                            <li style="height: 29px;line-height: 29px;border-bottom: 1px solid #cecece;padding-left: 28px;">G自动服务自动投标服务</li>
+                                            <li style="height: 29px;line-height: 29px;border-bottom: 1px solid #cecece;padding-left: 28px;">散标</li>
+                                            <li style="height: 29px;line-height: 29px;padding-left: 28px;">债权项目</li>
+                                        </ul>
+                                    </span>
+                                    <span style="height: 89px;padding-left: 0;padding-right: 0;">
+                                        <ul>
+                                            <li style="height: 29px;line-height: 29px;border-bottom: 1px solid #cecece;padding-left: 30px;">免费</li>
+                                            <li style="height: 29px;line-height: 29px;border-bottom: 1px solid #cecece;padding-left: 30px;">免费</li>
+                                            <li style="height: 29px;line-height: 29px;border-bottom: 1px solid #cecece;padding-left: 30px;">免费</li>
+                                        </ul>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>4、回款到账</span>
+                                    <span>免费</span>
+                                </li>
+                                <li>
+                                    <span>5、债权转让</span>
+                                    <span>平台按实际成交债权价格的 2% 收取服务费用</span>
+                                </li>
+                                <li>
+                                    <span>6、散标利息管理费</span>
+                                    <span>平台按回款利息的10%收取利息管理费</span>
+                                </li>
+                                <li>
+                                    <span>7、G自动服务利息管理费</span>
+                                    <span>免费</span>
+                                </li>
+                                <li>
+                                    <span>8、充值</span>
+                                    <span>免费</span>
+                                </li>
+                                <li style="height: 73px;">
+                                    <span style="height: 73px;">9、提现</span>
+                                    <span style="line-height: 24px;height: 73px;padding-top: 14px;">每月可免费提现5次，超过5次后收取提现金额的0.2%手续费（最低2元，无上限）</span>
+                                </li>
+                                <li>
+                                    <span>10、借款人收费</span>
+                                    <span>小鸽理财平台对借款人收费不超过5%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 侧边栏 -->
+            <!--#include virtual="_inc/_inc_import_right_box.html" -->
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <!--#include virtual="_inc/_inc_import_footer.html" -->
+    <script type="text/javascript">
+    $(function() {
+        $(".right-box ul li").eq(5).addClass('active')
+        $(".arch .arch-out").on('mouseenter', function() {
+            $(this).children(".wind").addClass('show')
+        })
+        $(".arch .arch-out").on('mouseleave', function() {
+            $(this).children(".wind").removeClass('show')
+        })
+    })
+    </script>
+</body>
+
+</html>

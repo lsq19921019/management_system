@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>业务介绍</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--#include virtual="_inc/_inc_import_header.html" -->
+    <!--内容部分-->
+    <div class="inf-dis">
+        <div class="content">
+            <div class="left-box business">
+                <div class="head-title">
+                    <h2>业务介绍</h2>
+                </div>
+                <div class="center-piece">
+                    <div class="piece where-from">
+                        <h4>小鸽理财的房产抵押资产从哪儿来？</h4>
+                        <p>小鸽理财与行业领先的房产金融科技公司签署独家战略合作协议，布局房产抵押类贷市场。<br>资产合作方定位于连接金融机构和中介机构，以移动端APP为载体，通过互联网大数据实时分析个人房屋资产数据，撮合从事个人贷款的金融机构与中介机构交易。<br>以深圳为核心，目前于上海、广州、惠州、东莞、武汉、长沙、杭州、南京设立了分公司，合作公司业务覆盖华南、华北、西南、西北等区域，未来将持续深耕二三线城市，打造全国化的战略布局。</p>
+                        <img src="../img/business.jpg">
+                    </div>
+                    <div class="piece superiority">
+                        <h4>资产合作方有何优势？</h4>
+                        <h5>行业移动互联网的领先者</h5>
+                        <p>金融科技运用程度领先行业，通过查房价、税费、房贷计算器、业务合作，房屋资产管理和找房机器人提供多维度的房产抵押服务，包括：线上业务申请；房屋信息实时查询；提供房屋资产管理；实时了解行业动态，随时随地便捷高效的解决客户问题。</p>
+                        <h5>风控标准化审批</h5>
+                        <p>深耕房产金融行业，建立风控模型及风险监测模型，实现系统标准化审批；线上报审，实时受理；对接交易中心、中介机构及各大金融机构（银行、信托、小贷等）系统，实现资产端业务流程的实时报审、放款及贷后风险监测。</p>
+                        <h5>业务流程操作标准化</h5>
+                        <p>办理流程透明化、标准化，可实时监测和评价；大幅提高行业效率，业务流程标准化，规范；区块链技术，数据去中心化，透明化，每个人可参与数据采集记录。</p>
+                    </div>
+                    <div class="piece mortgage">
+                        <h4>房产抵押资产是什么？</h4>
+                        <p>房产抵押是指借款人以房屋为抵押物进行贷款的融资方式。相比于其他类型资产，房产抵押具有周期短、流动性好、市场空间大、有抵押可靠性高等优势。对投资人来说，投资的每笔理财项目背后都有一套足值的房产作为抵押保障。若发生违约，可依法拍卖房产收回贷款。截止目前，平台未出现一笔坏账。</p>
+                    </div>
+                    <div class="piece protection">
+                        <h4>我们如何保障资金安全？</h4>
+                        <p><span>优质资产：</span>优质抵押资产，从源头把控风险</p>
+                        <p><span>银行级风控：</span>实现全流程实时跟踪管控和风险预警处置机制,业务流程与资质凭证同步，小额分散机制</p>
+                        <p><span>深化科技：</span>使用百度人脸识别技术，“穿透”借贷一一对应</p>
+                        <p><span>多维评估：</span>通过多方渠道进行评估，确保借款人的还款能力以及抵、抵押房产真实价值可覆盖应付本息，从而保障资产安全</p>
+                        <p><span>贷后管理：</span>打造总部控制专业高效的贷后管理团队，事前预警、事后控制，有效控制资产损失</p>
+                        <p><span>专业团队：</span>合作方管理层团队均有十年以上小额贷款、五年以上房产抵押贷款经验，对于资产审核、风险管控、贷后管理有丰富的实战经验</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 侧边栏 -->
+            <!--#include virtual="_inc/_inc_import_right_box.html" -->
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <!--#include virtual="_inc/_inc_import_footer.html" -->
+    <script type="text/javascript">
+    $(function() {
+        $(".right-box ul li").eq(3).addClass('active')
+        $(".arch .arch-out").on('mouseenter', function() {
+            $(this).children(".wind").addClass('show')
+        })
+        $(".arch .arch-out").on('mouseleave', function() {
+            $(this).children(".wind").removeClass('show')
+        })
+    })
+    </script>
+</body>
+
+</html>

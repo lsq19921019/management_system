@@ -1,0 +1,74 @@
+.guide {
+  position: relative;
+  /* padding-bottom: 1px; */
+  background: url(/static/img/mobile_novice_guide_06.jpg) no-repeat;
+  background-position: bottom 47px center;
+  background-size: 81.3%;
+}
+
+.guide .banner {
+  padding-bottom: 35px;
+}
+
+.guide .banner img {
+  width: 100%;
+  display: block;
+}
+
+.guide .title {
+  width: 87.3%;
+  margin: 0 auto;
+}
+
+.guide .title img {
+  width: 100%;
+  display: block;
+}
+
+.guide .guide-swiper {
+  width: 64%;
+  margin: 30px auto 80px;
+  position: relative;
+  box-shadow: 0 0 25px rgba(255, 86, 55, 0.1);
+}
+
+.guide .guide-swiper img {
+  width: 100%;
+  display: block;
+}
+
+.guide .swiper-pagination-2,
+.guide .swiper-pagination-3,
+.guide .swiper-pagination-4 {
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+}
+
+.guide .swiper-pagination-2 .swiper-pagination-bullet,
+.guide .swiper-pagination-3 .swiper-pagination-bullet,
+.guide .swiper-pagination-4 .swiper-pagination-bullet {
+  margin: 0 4px;
+  opacity: 0.12;
+  width: 5px;
+  height: 5px;
+}
+
+.guide .swiper-pagination-2 .swiper-pagination-bullet-active,
+.guide .swiper-pagination-3 .swiper-pagination-bullet-active,
+.guide .swiper-pagination-4 .swiper-pagination-bullet-active {
+  background: #ff5637;
+  opacity: 1;
+}
+
+.guide .footer a {
+  display: block;
+  height: 45px;
+  line-height: 45px;
+  font-size: 18px;
+  background: #fca431;
+  color: #fff;
+  text-align: center;
+}

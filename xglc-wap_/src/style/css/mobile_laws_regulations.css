@@ -1,0 +1,74 @@
+.laws-regula {
+  background: #fff;
+}
+
+.laws-regula .in-padding {
+  padding-left: 5.3%;
+  padding-right: 5.3%;
+}
+
+.laws-regula .big-title {
+  padding-top: 5px;
+}
+
+.laws-regula .big-title h5:before {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 13px;
+  background: #ff704f;
+  border-radius: 1px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.laws-regula .big-title h5 {
+  padding-left: 13px;
+  font-size: 15px;
+  line-height: 51px;
+  color: #333;
+  position: relative;
+}
+
+.laws-regula .top-line {
+  padding-bottom: 26px;
+  font-size:14px;
+}
+
+.laws-regula .top-line a {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 25px;
+  color: #1d9afa;
+}
+
+.laws-regula .terms {
+  padding-bottom: 25px;
+}
+
+.laws-regula .terms p.s-title {
+  font-size: 14px;
+  line-height: 21px;
+  color: #333;
+  padding-bottom: 7px;
+}
+
+.laws-regula .terms p.inner-text {
+  font-size: 12px;
+  line-height: 20px;
+  color: #404451;
+  text-indent: 2em;
+}
+
+.swiper{
+    width:89.4%;margin:auto;
+    overflow-x:scroll;
+}
+.swiper .wrap{width:9rem;height:5rem;}
+.swiper img{width:2.62rem;}
+.swiper .wrap div{float:left;width:3rem;text-align:center;}
+.swiper .wrap a{color:#333333;font-size:.2rem;display:block;width:3rem;}
+.swiper .wrap a span{display:block;line-height:1.2;padding:.45rem 0;text-align:center;}
+

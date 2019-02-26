@@ -1,0 +1,94 @@
+.open-account .in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+.open-account .margin-t {
+  margin-top: 7px;
+}
+
+.open-account .top_tip {
+  padding: 0.25rem 0.3rem;
+}
+
+.open-account .top_tip p {
+  width: 6.46rem;
+  float: right;
+  font-size: 0.24rem;
+  line-height: 0.3rem;
+  color: #aaa;
+}
+
+.open-account .top_tip img {
+  width: 0.24rem;
+  float: left;
+  position: relative;
+  top: 0.04rem;
+}
+
+.open-account .top-title {
+  font-size: 12px;
+  line-height: 35px;
+}
+
+.open-account .input-bg {
+  background: #fff;
+}
+
+.open-account .reg-input span {
+  float: left;
+  font-size: 14px;
+  line-height: 1rem;
+  color: #333;
+  width: 20%;
+}
+
+.open-account .in-border:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.open-account .reg-input input {
+  float: right;
+  padding: 0;
+  width: 79%;
+  border: none;
+  height: 1rem;
+  line-height: 18px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+}
+
+.open-account .reg-input input[disabled] {
+  color: #555555;
+  opacity: 1;
+}
+
+.open-account .bank-list {
+  height: 32px;
+  padding-top: 0.19rem;
+  padding-bottom: 0.19rem;
+}
+
+.open-account .bank-list a {
+  font-size: 0.28rem;
+  line-height: 32px;
+  color: #fd8923;
+  float: right;
+}
+.open-account .btn-list {
+  padding-top: 0.7rem;
+}
+.open-account .btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: auto;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  background: #ff5637;
+}

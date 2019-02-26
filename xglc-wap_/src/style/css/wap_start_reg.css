@@ -1,0 +1,261 @@
+.in-padding {
+  padding: 0 2.7%;
+}
+
+.register {
+  background: #fff;
+}
+
+.register .top {
+  padding-top: 18px;
+}
+
+.register .top a {
+  display: inline-block;
+  padding: 0 4.9%;
+  margin-right: 7%;
+  font-size: 18px;
+  line-height: 38px;
+  color: #545454;
+  border-bottom: 2px solid #fff;
+}
+
+.register .top a.active {
+  color: #ff5637;
+  border-bottom: 2px solid #ff5637;
+}
+
+.register .content {
+  padding-top: 22px;
+  padding-bottom: 20%;
+}
+
+.register .content .input-line {
+  position: relative;
+}
+
+.register .content .input-line img.icon {
+  margin-left: 4.7%;
+  margin-right: 3%;
+  width: 5.7%;
+  position: relative;
+  top: 5px;
+}
+
+.register .content .input-line .input {
+  display: inline-block;
+  width: 80.9%;
+}
+
+.register .content .input-line input {
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  height: 60px;
+  line-height: 18px;
+  font-size: 14px;
+  outline: none;
+  padding-left: 8.1%;
+  padding-right: 8.1%;
+}
+
+.register .content .input-line .getsms {
+  position: absolute;
+  top: 18px;
+  right: 4.9%;
+  width: 23.8%;
+  height: 25px;
+  font-size: 12px;
+  line-height: 25px;
+  background: #ff5637;
+  color: #fff;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.register .content .input-line .getsms.lock {
+  background: #999;
+}
+
+.register .content .input-line img.clos {
+  width: 18px;
+  height: 18px;
+  padding: 10px;
+  position: absolute;
+  right: 2%;
+  top: 10px;
+}
+
+.register .content .input-line img.show {
+  width: 25px;
+  height: 20px;
+  padding: 10px;
+  position: absolute;
+  right: 2%;
+  top: 10px;
+}
+
+.register .content .btn-line {
+  padding-top: 35px;
+}
+
+.register .content .reg-agree p {
+  line-height: 14px;
+  font-size: 12px;
+  color: #898787;
+  padding-left: 5.7%;
+  padding-top: 27px;
+}
+
+.register .content .reg-agree p img {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  top: 2px;
+  margin-right: 3.9%;
+}
+
+.register .content .reg-agree p a {
+  color: #ff5637;
+}
+
+.register .content .btn-line button {
+  display: block;
+  width: 91.5%;
+  height: 44px;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  margin: 0 auto;
+  background: #ff5637;
+  box-shadow: 0 0 10px rgba(255, 86, 55, 0.5);
+  border-radius: 22px;
+}
+
+.register #img-code {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.register #img-code .block {
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  background: #000;
+}
+
+.register #img-code .window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 204px;
+  margin-left: -40%;
+  margin-top: -102px;
+  background: #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.register #img-code .window .title {
+  font-size: 16px;
+  line-height: 60px;
+  color: #555;
+  text-align: center;
+  font-weight: normal;
+  position: relative;
+}
+
+.register #img-code .window .img {
+  padding-top: 10px;
+  width: 240px;
+  margin: 0 auto;
+}
+
+.register #img-code .window .img img {
+  display: block;
+  width: 75%;
+  height: 60px;
+  float: left;
+}
+
+.register #img-code .window .img .f5 {
+  display: block;
+  width: 25%;
+  height: 60px;
+  float: right;
+  background: #9eb7d6;
+  position: relative;
+}
+
+.register #img-code .window .img .f5 img {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 28px;
+  height: 31px;
+}
+
+.register #img-code .window .hidden-input {
+  text-align: center;
+  height: 0;
+  position: relative;
+  top: -300px;
+  opacity: 0;
+}
+
+.register #img-code .window .hidden-input input {
+  border: none;
+  background: none;
+}
+
+.register #img-code .window .num-input {
+  width: 240px;
+  padding-top: 12px;
+  margin: 0 auto;
+}
+
+.register #img-code .window .num-input span {
+  display: block;
+  height: 42px;
+  width: 42px;
+  font-size: 27px;
+  line-height: 42px;
+  float: left;
+  border: 1px solid #d1d1d1;
+  margin-right: 21px;
+  text-align: center;
+}
+
+.register #img-code .window .num-input span:last-child {
+  margin-right: 0;
+}
+
+.register #img-code .window .clos {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.register .bg {
+  width: 100%;
+  height: 53px;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

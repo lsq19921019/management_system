@@ -1,0 +1,66 @@
+.index{
+    p{
+        color:green;
+    }
+}
+.main{
+    .banner{
+        background: url(../img/index/banner.png) no-repeat;
+        height: 1052px;
+        background-position:center center;
+    }
+    .lev2{
+        background: url(../img/index/lev2_bg.png) no-repeat;
+        background-position:center center;
+        height: 802px;
+    }
+    .lev3{
+        background: url(../img/index/lev3_bg.png) no-repeat;
+        background-position:center center;
+        height: 802px;
+    }
+    .lev4{
+        background: url(../img/index/lev4_bg.png) no-repeat;
+        background-position:center center;
+        height: 802px;
+    } 
+    .lev5{
+        background: url(../img/index/lev5_bg.png) no-repeat;
+        background-position:center center;
+        height: 802px;
+    }
+    .team{
+        background:rgba(0,0,0,1);
+        padding: 110px 0px;
+        display: flex;
+        justify-content: center;        
+        .title{
+            display: flex;
+            align-items: center;
+            width: 150px;
+            .mark{
+                width:4px;
+                border-radius: 25%;
+                height:33px;
+                background:rgba(255,109,51,1);
+                display: inline-block;
+            }
+            .text{
+                font-size:30px;
+                font-weight:500;
+                color:rgba(255,255,255,1);
+                line-height:42px;
+                margin-left: 20px;
+            }
+        }
+        ul{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 1020px;
+            li{
+                margin-top: 30px;
+            }
+        }
+    } 
+}

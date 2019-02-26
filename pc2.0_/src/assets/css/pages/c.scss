@@ -1,0 +1,134 @@
+.scanPage_content {
+    position: relative;
+    width: 100%;
+    height: 1050px;
+    background: #f5f5f5;
+    &>div{
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        width: 1205px;
+        height: 1030px;
+        background: #fff;
+    }
+    div{
+        &:nth-child(1){
+            div{
+                &:nth-child(1){
+                    top: 48px;
+                    font-size: 24px;
+                    color: #ea553a;
+                    &{
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        -webkit-transform: translateX(-50%);
+                        background-color: white;
+                    }
+                }
+                &:nth-child(2){
+                    top: 147px;
+                    width: 284px;
+                    height: 247px;
+                    &{
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        -webkit-transform: translateX(-50%);
+                        background-color: white;
+                        img{
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            z-index: -1;
+                        }
+                    }
+                    span{
+                        width: 35px;
+                        height: 37px;
+                        position: absolute;
+                        display: block;
+                        &:nth-child(1){
+                            left: 0;
+                            top: 0;
+                            border-radius: 4px;
+                            border-top: 4px solid #ea553a;
+                            border-left: 4px solid #EA553A;
+                        }
+                        &:nth-child(2){
+                            right: 0;
+                            top: 0;
+                            border-radius: 4px;
+                            border-top: 4px solid #ea553a;
+                            border-right: 4px solid #EA553A;
+                        }
+                        &:nth-child(3){
+                            left: 0;
+                            bottom: 0;
+                            border-radius: 4px;
+                            border-bottom: 4px solid #ea553a;
+                            border-left: 4px solid #EA553A;
+                        }
+                        &:nth-child(4){
+                            bottom: 0;
+                            right: 0;
+                            border-radius: 4px;
+                            border-bottom: 4px solid #ea553a;
+                            border-right: 4px solid #EA553A;
+                        }
+                    }
+                }
+                &:nth-child(3){
+                    top: 500px;
+                    width: 940px;
+                    height: 100px;
+                    background: url('../../images/june_promotion/scanProcess.png')top center no-repeat;
+                    background-size: 694px auto;
+                    &{
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        -webkit-transform: translateX(-50%);
+                    }
+                    p{
+                        padding-top: 44px;
+                        font-size: 18px;
+                        color: #999;
+                        font{
+                            &:nth-child(1){
+                                padding-left: 10px;
+                            }
+                            &:nth-child(2){
+                                padding-left: 150px;
+                            }
+                            &:nth-child(3){
+                                padding-left: 150px;
+                            }
+                        }
+                    }
+                }
+                &:nth-child(4){
+                    width: 100%;
+                    text-align: right;
+                    p{
+                        padding-right: 30px;
+                        padding-top: 20px;
+                        color: #555;
+                        a{
+                            text-decoration: none;
+                            color: inherit;
+                            &:nth-child(1){
+                                color: #ff5637;
+                            }
+                            &:nth-child(2){
+                                color: #ff5637;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

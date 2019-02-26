@@ -1,0 +1,21 @@
+body{max-width:640px;background:#fcfcfc; background-size:42%; border-top:1px solid #c6c6c6; }
+
+.clear{width:100%; clear:both; height:1px; }
+.relative{position:relative;}
+.main-box{
+margin:10px auto;
+width:92%; 
+line-height:28px;
+font-size:14px;
+color:#1f1f1f;
+}
+.tab-box2{
+  width:98%;margin:20px auto;
+   border-collapse:collapse;
+}
+.tab-box2 tr th, .tab-box2 tr td {padding:4px 10px; border: 1px solid #ebdfd3; text-align:center;}
+.tab-box2 tr td{background:#fef6ef; color:#4c4c4c; }
+.tab-box2 tr th{background:#f9d8b5; color:#623a15;}
+
+
+ 

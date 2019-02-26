@@ -1,0 +1,480 @@
+.my-coupon .top-tab {
+  background: #fff;
+  text-align: center;
+  /* margin-bottom: 12px; */
+}
+
+.my-coupon .top-margin {
+  height: 0.21rem;
+}
+
+/* .my-coupon .top-tab .tab-text {
+  display: inline-block;
+  padding-left: 0.175rem;
+  padding-right: 0.175rem;
+  font-size: 13px;
+  line-height: 39px;
+  color: #545454;
+  border-bottom: 2px solid #fff;
+}
+
+.my-coupon .top-tab .tab-text.active {
+  color: #ff5637;
+  border-bottom: 2px solid #ff5637;
+} */
+
+.my-coupon .top-tab {
+  padding-top: 41px;
+}
+
+.my-coupon .top-tab /deep/ .van-tabs__wrap {
+  height: 41px;
+}
+
+.my-coupon .top-tab /deep/ .van-tab {
+  line-height: 41px;
+}
+
+.my-coupon .content-tab {
+  padding-top: 0.24rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  overflow: auto;
+}
+
+.my-coupon .content-tab .van-list .content-box {
+  position: relative;
+  display: block;
+  margin-bottom: 0.21rem;
+  border-radius: 0.04rem;
+  overflow: hidden;
+}
+
+.my-coupon .content-tab .van-list .content-box .fail-img {
+  width: 1.18rem;
+  position: absolute;
+  top: 0.1rem;
+  right: 0.1rem;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data {
+  background: #fff;
+  background-size: 0.66rem 0.68rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.21rem;
+  position: relative;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data.newTag {
+  background: #fff url(/static/img/wap_invest_my_coupon_09.png) no-repeat right
+    top;
+  background-size: 0.66rem 0.68rem;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .left {
+  float: left;
+  width: 29%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .left p {
+  font-size: 20px;
+  line-height: 47px;
+  text-align: center;
+  color: #ff5637;
+}
+
+.my-coupon .content-tab .van-list .content-box.fail .left p {
+  color: #ccc;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .left p .unit {
+  font-size: 0.3rem;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .left p .money {
+  font-size: 0.62rem;
+  font-weight: bold;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .left p .percent {
+  font-size: 0.62rem;
+  font-weight: bold;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .right {
+  float: right;
+  width: 71%;
+  box-sizing: border-box;
+  padding-left: 0.15rem;
+  padding-right: 1.17rem;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .right .title {
+  font-size: 0.3rem;
+  line-height: 0.28rem;
+  color: #333;
+  padding-bottom: 0.19rem;
+}
+
+.my-coupon .content-tab .van-list .content-box.fail .right .title {
+  color: #ccc;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .right li {
+  position: relative;
+  padding-bottom: 0.06rem;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .right li:before {
+  content: "";
+  display: block;
+  width: 0.04rem;
+  height: 0.04rem;
+  background: #8d8c92;
+  border-radius: 0.02rem;
+  position: absolute;
+  left: -0.15rem;
+  top: 0.11rem;
+}
+
+.my-coupon
+  .content-tab
+  .van-list
+  .content-box.fail
+  .center-data
+  .right
+  li:before {
+  background: #ccc;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .right li p {
+  font-size: 0.24rem;
+  line-height: 0.3rem;
+  color: #999;
+}
+
+.my-coupon .content-tab .van-list .content-box.fail .right li p {
+  color: #ccc;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .checkbox {
+  position: absolute;
+  right: 4.3%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .checkbox {
+  right: 4.3%;
+  top: 1.45rem;
+  transform: none;
+}
+
+.my-coupon
+  .content-tab
+  .van-list
+  .content-box
+  .center-data
+  .checkbox
+  .unselect {
+  display: block;
+  background: #fff;
+  border: 1px solid #bbb;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+}
+
+.my-coupon .content-tab .van-list .content-box .center-data .checkbox .select {
+  display: block;
+  background: #ff5637;
+  border: 1px solid #ff5637;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.my-coupon
+  .content-tab
+  .van-list
+  .content-box
+  .center-data
+  .checkbox
+  .select
+  img {
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.my-coupon .content-tab .van-list .content-box .footer-date {
+  background: #fcfcfc;
+  border-top: 1px dashed #e2e2e2;
+  position: relative;
+}
+
+.my-coupon .content-tab .van-list .content-box .footer-date:before {
+  content: "";
+  background: url(/static/img/wap_invest_my_coupon_02.png) no-repeat center;
+  background-size: cover;
+  height: 0.2rem;
+  width: 0.09rem;
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+}
+
+.my-coupon .content-tab .van-list .content-box .footer-date:after {
+  content: "";
+  background: url(/static/img/wap_invest_my_coupon_03.png) no-repeat center;
+  background-size: cover;
+  height: 0.2rem;
+  width: 0.09rem;
+  position: absolute;
+  right: 0;
+  top: -0.1rem;
+}
+
+.my-coupon .content-tab .van-list .content-box .footer-date p {
+  font-size: 0.24rem;
+  line-height: 0.63rem;
+  color: #666;
+  padding-left: 0.38rem;
+  position: relative;
+}
+
+.my-coupon .content-tab .van-list .content-box .footer-date p span {
+  margin-left: 0.1rem;
+  padding: 0.04rem 0.07rem;
+  font-size: 0.2rem;
+  color: #fff;
+  background: #febf26;
+  border-radius: 0.06rem;
+}
+
+.my-coupon .content-tab .van-list .content-box.fail .footer-date p {
+  color: #ccc;
+}
+
+.my-coupon .content-tab .cash-back ul li.content-box {
+  position: relative;
+  margin-bottom: 11px;
+  border-radius: 0.04rem;
+  overflow: hidden;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data {
+  padding: 0;
+  background: #fff;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .top {
+  box-sizing: border-box;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  border-bottom: 1px dashed #e2e2e2;
+  position: relative;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .top:before {
+  content: "";
+  background: url(/static/img/wap_invest_my_coupon_02.png) no-repeat center;
+  background-size: cover;
+  height: 0.2rem;
+  width: 0.09rem;
+  position: absolute;
+  left: 0;
+  bottom: -0.1rem;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .top:after {
+  content: "";
+  background: url(/static/img/wap_invest_my_coupon_03.png) no-repeat center;
+  background-size: cover;
+  height: 0.2rem;
+  width: 0.09rem;
+  position: absolute;
+  right: 0;
+  bottom: -0.1rem;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .top p {
+  font-size: 0.24rem;
+  line-height: 0.83rem;
+  color: #333;
+  position: relative;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .top p .unit {
+  font-size: 0.28rem;
+  color: #ff5637;
+  position: relative;
+  top: 0.06rem;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .top p .money {
+  font-size: 0.48rem;
+  color: #ff5637;
+  font-weight: bold;
+  margin-right: 0.1rem;
+  position: relative;
+  top: 0.06rem;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .top p .top-tips {
+  padding: 0.05rem 0.08rem;
+  font-size: 0.2rem;
+  color: #fff;
+  line-height: 0.2rem;
+  background: #ff9a37;
+  border-radius: 0.06rem;
+  position: absolute;
+  right: 0;
+  top: 0.26rem;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .bottom {
+  padding-top: 0.3rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  padding-bottom: 0.24rem;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .bottom li {
+  position: relative;
+  padding-bottom: 0.06rem;
+  padding-left: 0.15rem;
+  padding-right: 1.17rem;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .bottom li:before {
+  content: "";
+  display: block;
+  width: 0.04rem;
+  height: 0.04rem;
+  background: #8d8c92;
+  border-radius: 0.02rem;
+  position: absolute;
+  left: 0;
+  top: 0.11rem;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .bottom li:before {
+  background: #ccc;
+}
+
+.my-coupon .content-tab .cash-back ul li .center-data .bottom li p {
+  font-size: 0.24rem;
+  line-height: 0.3rem;
+  color: #999;
+}
+
+.my-coupon .content-tab .cash-back ul li.fail .bottom li p {
+  color: #ccc;
+}
+
+.my-coupon .content-tab .cash-back ul li .expired-tips {
+  background: #febf26;
+  border-radius: 0.04rem;
+  font-size: 0.22rem;
+  line-height: 0.4rem;
+  color: #fff;
+  text-align: center;
+}
+
+.my-coupon .content-tab .empty {
+  padding-top: 1.04rem;
+  box-sizing: border-box;
+}
+
+.my-coupon .content-tab .empty img {
+  display: block;
+  width: 32.8%;
+  margin: 0 auto;
+}
+
+.my-coupon .content-tab .empty p.empty-title {
+  font-size: 0.34rem;
+  color: #666;
+  line-height: 0.33rem;
+  text-align: center;
+  padding-top: 0.21rem;
+}
+
+.my-coupon .content-tab .empty p.empty-tip {
+  font-size: 0.28rem;
+  color: #aaa;
+  line-height: 0.29rem;
+  text-align: center;
+  padding-top: 0.26rem;
+}
+
+.my-coupon .rule {
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #ff9c1c;
+}
+
+.my-coupon .rule a {
+  font-size: 12px;
+  line-height: 20px;
+  color: #ff9c1c;
+}
+
+.my-coupon .rule .center-line {
+  font-size: 12px;
+}
+
+.my-coupon .not-use {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ff5d3d;
+}
+
+.my-coupon .not-use span {
+  display: block;
+  font-size: 16px;
+  line-height: 45px;
+  color: #fff;
+  text-align: center;
+}
+
+.my-coupon .load .load-more {
+  font-size: 12px;
+  line-height: 38px;
+  text-align: center;
+  color: #999;
+}
+
+.my-coupon .load .no-more {
+  font-size: 12px;
+  line-height: 38px;
+  text-align: center;
+  color: #ccc;
+}
+
+.my-coupon .go-use {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #fe5c3d;
+}
+
+.my-coupon .go-use a {
+  display: block;
+  font-size: 16px;
+  line-height: 45px;
+  color: #fff;
+  text-align: center;
+}

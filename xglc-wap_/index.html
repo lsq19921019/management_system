@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Last-Modified" content="Fri, 18 May 2018 20:22:00 GMT+0800">
+    <link rel="ico" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/static/css/mui.v3.7.2.css">
+    <script>
+        function initDocumentSize() {
+            var b = document.documentElement.clientWidth;
+            b = b > 750 ? 750 : b;
+            var c = b / 750 * 100;
+            document.getElementsByTagName("html")[0].style.fontSize = c + "px"
+        }
+        initDocumentSize();
+        window.onresize = initDocumentSize
+    </script>
+    <title></title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="/static/js/mui.v3.7.2.js"></script>
+    <script type="text/javascript" src="/static/js/9efab2399c7c560b34de477b9aa0a465.js?ver=1"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.addEventListener('touchstart', function (event) {
+                if (event.touches.length > 1) {
+                    event.preventDefault();
+                }
+            })
+            var lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                var now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false)
+        }
+
+    </script>
+</body>
+
+</html>

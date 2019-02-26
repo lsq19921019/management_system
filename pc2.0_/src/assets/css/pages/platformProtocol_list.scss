@@ -1,0 +1,48 @@
+div.protocolListContent {
+    position: relative;
+    width: 100%;
+    height: 820px;
+    background: #f5f5f5;
+}
+
+div.protocolListContent>div:nth-child(1) {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    width: 1205px;
+    height: 780px;
+    background: #fff;
+}
+
+div.protocolListContent>div:nth-child(1)>div:nth-child(1) {
+    width: 100%;
+    height: 160px;
+    background: url(../../images/june_promotion/protocolTopBg.png)top center no-repeat;
+    background-size: 100% auto;
+}
+
+div.protocolListContent>div:nth-child(1)>div:nth-child(2) {
+    padding: 40px 34px 0;
+    color: #555;
+}
+
+div.protocolListContent>div:nth-child(1)>div:nth-child(2) a:hover {
+    color: #ff5637;
+}
+
+div.protocolListContent>div:nth-child(1)>div:nth-child(2)>p:nth-child(1) {
+    font-size: 22px;
+}
+
+div.protocolListContent>div:nth-child(1)>div:nth-child(2)>p:nth-child(2),
+div.protocolListContent>div:nth-child(1)>div:nth-child(2)>p:nth-child(3),
+div.protocolListContent>div:nth-child(1)>div:nth-child(2)>p:nth-child(4) {
+    padding: 34px 40px 0;
+    font-size: 20px;
+}
+
+div.protocolListContent>div:nth-child(1)>div:nth-child(2)>p>a {
+    color: inherit;
+}

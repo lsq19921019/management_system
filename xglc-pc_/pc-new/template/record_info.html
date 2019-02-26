@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>信息披露</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--#include virtual="_inc/_inc_import_header.html" -->
+    <!--内容部分-->
+    <div class="inf-dis">
+        <div class="content">
+            <div class="left-box record_info">
+                <div class="head-title">
+                    <h2>备案信息</h2>
+                </div>
+                <div class="center-piece">
+                    <div class="piece">
+                        <h4>备案信息</h4>
+                        <p class="info">存管银行：上海银行资金存管
+                            <br>网站备案编号：<a target="_block" href="http://www.miit.gov.cn/">粤ICP备14025100号-5</a>
+                            <br>电信业务经营许可证：<a target="_block" href="../img/record_info_04.png">粤B2-20140418</a>
+                            <br>可信网站认证：<span style="display: inline-block;height: 36px;width: 100px;position: relative;top:10px;"><script src="https://kxlogo.knet.cn/seallogo.dll?sn=e17081144030068573cqng000000&size=0"></script></span>
+                            <br><span class="x-title">在地方金融监管部门的备案登记信息</span>
+                            <br>注备案登记地方金融监管部门：备案中
+                            <br>-备案登记时间：备案中
+                            <br>-备案登记编号：备案中</p>
+                    </div>
+                    <div class="piece">
+                        <h4>信息系统安全等级保护备案证明</h4>
+                        <div class="img-box">
+                            <img src="../img/record_info_02.png">
+                        </div>
+                    </div>
+                    <div class="piece">
+                        <h4>信息安全测评认证</h4>
+                        <div class="img-box">
+                            <img src="../img/record_info_03.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 侧边栏 -->
+            <!--#include virtual="_inc/_inc_import_right_box.html" -->
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <!--#include virtual="_inc/_inc_import_footer.html" -->
+    <script type="text/javascript">
+    $(function() {
+        $(".right-box ul li").eq(7).addClass('active')
+        $(".arch .arch-out").on('mouseenter', function() {
+            $(this).children(".wind").addClass('show')
+        })
+        $(".arch .arch-out").on('mouseleave', function() {
+            $(this).children(".wind").removeClass('show')
+        })
+    })
+    </script>
+</body>
+
+</html>

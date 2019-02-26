@@ -1,0 +1,124 @@
+.register{
+    height:710px;
+    background:url(../../images/index_register/register_banner.png) top center no-repeat;
+    overflow:hidden;
+    font-size:14px;
+    .box{
+        width:400px;
+        height:580px;
+        background:#fff;
+        margin:60px auto;
+        .tips{
+            font-size:18px;
+            padding:30px 0 20px;
+        }
+        ul{
+            margin:0 20px;
+            .error_tips{
+                bottom:-5px;
+            }
+            li{
+                padding-bottom:18px;
+                input{
+                    border:1px solid #e6e6e6;
+                    padding:13px 40px;
+                    line-height:24px;
+                    width:77%;
+                    font-size:14px;
+                }
+                ::-moz-placeholder{
+                    font: 400 13.3333px Arial;
+                    color: #C8C8C8;                            
+                }
+                input::-webkit-input-placeholder{
+                    font: 400 13.3333px Arial;
+                    color: #C8C8C8;
+                }
+                input:-ms-input-placeholder{
+                    font: 400 13.3333px Arial;
+                    color: #C8C8C8;                            
+                }    
+                span{
+                    width:100px;
+                    right:0;
+                    height:25px; 
+                    top:13px;
+                    .get_mobile_code{
+                        width:90px;
+                        background:#ff5637;
+                        border-radius:4px;
+                        color:#fff;
+                        line-height:36px;
+                        cursor: pointer;
+                    }
+                 }
+            }
+            .mobile{
+                input{
+                    background:url(../../images/userIcon.png) 14px center no-repeat;
+                }
+            }
+            .password{
+                input{
+                    background:url(../../images/passwordIcon.png) 14px center no-repeat;
+                }
+            }
+            .pic_code{
+                input{
+                    background:url(../../images/validateIcon.png) 14px center no-repeat;
+                }
+                span{
+                    border-left:1px solid #e6e6e6;
+                    img{
+                        width:80px;
+                        height:26px;
+                        margin-left:6px;
+                        cursor:pointer;
+                    }
+                }
+            }
+            .mobile_code{
+                input{
+                    background:url(../../images/validateIcon.png) 14px center no-repeat;
+                }
+                span{
+                    top:8px;
+                }
+            }
+        }
+        .agreement{
+            padding:5px 20px 10px 42px;
+            a{
+                color:#80b3ff;
+            }
+            i{
+                cursor:pointer;
+                width:16px;
+                height:16px;
+                left:20px;
+                top:8px;
+                background:url(../../images/unCheckIcon.png) no-repeat;
+            }
+            i.checked{
+                background:url(../../images/checkIcon.png) no-repeat;
+            }
+        }
+        .btn{
+            padding:3px 20px;
+            a{
+                background:#ff5637;
+                font-size:24px;
+                line-height:56px;
+                border-radius:4px;
+                color:#fff;
+            }
+        }
+        .gologin{
+            padding-right:20px;
+            line-height:30px;
+            a{
+                color:#ff5637;
+            }
+        }
+    }
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="email=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="./css/mui.min.css" />
+ 
+<title>登陆调试 </title>
+</head>
+<body>
+<br><br><br>
+   <input type="tel" placeholder="用户名" id="user"><br><br>
+  <input type="text" placeholder="密码" id="pas"><br><br>
+  <div id="ok">获取token</div><br><br>
+ 
+
+<script type="text/javascript" src="./js/jquery.min.js" ></script>
+<script type="text/javascript" src="./js/common.js" ></script>
+<script type="text/javascript" src="./js/hmac-sha256.js" ></script>
+<script type="text/javascript" src="./js/enc-base64-min.js" ></script>
+<script type="text/javascript" src="./js/3DES.js" ></script>
+<script type="text/javascript" src="./js/base.js" ></script>
+<script type="text/javascript" src="./js/mui.min.js" ></script>
+<script>
+$(function(){
+//获取token 
+var getToken=function(loginName,password){
+    var token="";
+    var urlN=base.apiStr+"/user/login";
+	var password = DES3.encrypt(base.desKey, password);
+	var dataJson={"loginName":loginName,"password":password} ;
+	 
+    $.ajax({ 
+		type:"POST",
+		headers: {
+					"clientType": base.dataWithoutToken.clientType,
+					"clientVersion": base.dataWithoutToken.clientVersion,
+					"timeStamp": base.dataWithoutToken.timeStamp,
+					"sign": base.getPostStrWithoutToken(dataJson),
+					"imei": base.dataWithoutToken.timeStamp
+				},
+        dataType: 'json',
+		async: false,
+		data:dataJson,
+		url: urlN, 
+		success: function(data){ 
+		 
+              if(data.msg=="操作成功!"){
+			      token=data.result.token;
+			  }else{
+			     mui.alert(base.errorStr);
+			  };
+			  
+          }
+		});
+		return token;
+}
+$("#ok").on("click",function(){
+   var user=$("#user").val();
+   var pas=$("#pas").val();
+   var hhh=getToken(user,pas);
+    console.log(hhh);
+
+});
+
+	
+})
+</script>
+</body>
+</html>

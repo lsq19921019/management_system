@@ -1,0 +1,200 @@
+.in-padding {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.founds-records .types-of-line {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  position: fixed;
+  z-index: 10;
+}
+
+.founds-records .types-of-line .type-title {
+  font-size: 14px;
+  line-height: 44px;
+  color: #545454;
+}
+
+.founds-records .types-of-line .check-types {
+  display: block;
+  float: right;
+  height: 44px;
+  font-size: 14px;
+  line-height: 44px;
+  padding-right: 17px;
+  position: relative;
+  color: #999;
+}
+
+.founds-records .types-of-line .check-types img {
+  display: block;
+  width: 6px;
+  position: absolute;
+  right: 4px;
+  top: 17px;
+  transform: rotate(90deg);
+  transition: all 0.3s;
+}
+
+.founds-records .types-of-line .check-types img.click {
+  transform: rotate(-90deg);
+}
+
+.founds-records .types-of-line .types-list {
+  position: absolute;
+  left: 0;
+  top: 44px;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 9px;
+}
+
+.founds-records .types-of-line .types-list li a {
+  display: block;
+  height: 30px;
+  margin: 5px 3px;
+  border-radius: 3px;
+  background: #f5f5f5;
+  font-size: 12px;
+  line-height: 30px;
+  color: #545454;
+  text-align: center;
+}
+
+.founds-records .types-of-line .types-list li a.active {
+  color: #ff5637;
+}
+
+.founds-records .block {
+  background: #000;
+  opacity: .5;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.founds-records .date-line {
+  background: #f2f2f2;
+}
+
+.founds-records .date-line p {
+  font-size: 12px;
+  line-height: 30px;
+  color: #999;
+}
+
+.founds-records .data-line {
+  background: #fff;
+  padding-top: 8px;
+  padding-bottom: 10px;
+}
+
+.founds-records .data-line a {
+  display: block;
+}
+
+.founds-records .data-line p.top {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.founds-records .data-line p.top .left-top {
+  color: #545454;
+}
+
+.founds-records .data-line p.top .right-top {
+  float: right;
+  color: #555;
+}
+
+.founds-records .data-line p.top .right-top.plus {
+  color: #e8ae31;
+}
+
+.founds-records .data-line p.top .right-top.minus {
+  color: #555;
+}
+
+.founds-records .data-line p.bottom {
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.founds-records .data-line p.bottom .left-bottom {
+  color: #999;
+}
+
+.founds-records .data-line p.bottom .right-bottom {
+  float: right;
+  color: #999;
+}
+
+.founds-records .list-content {
+  padding-top: 44px;
+}
+
+.founds-records .list-content .empty {
+  padding-top: 62px;
+}
+
+.founds-records .list-content .empty img {
+  display: block;
+  width: 26.5%;
+  margin: 0 auto;
+}
+
+.founds-records .list-content .empty p {
+  font-size: 14px;
+  color: #999;
+  line-height: 61px;
+  text-align: center;
+}
+
+.founds-records .list-content .load .load-more {
+  font-size: 12px;
+  line-height: 38px;
+  text-align: center;
+  color: #999;
+}
+
+.founds-records .list-content .load .no-more {
+  font-size: 12px;
+  line-height: 38px;
+  text-align: center;
+  color: #ccc;
+}
+
+.founds-records-detail {
+  padding-top: 7px;
+}
+
+.founds-records-detail .data-content {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #fff;
+}
+
+.founds-records-detail .data-line p {
+  font-size: 14px;
+  color: #404451;
+  line-height: 24px;
+}
+
+.founds-records-detail .data-line p span {
+  display: inline-block;
+  width: 20.9%;
+  color: #909197;
+  vertical-align: top;
+}
+
+.founds-records-detail .data-line p span.right {
+  display: inline-block;
+  width: 77.1%;
+  color: #404451;
+}

@@ -1,0 +1,150 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+.in-padding {
+  padding-left: 5.3%;
+}
+
+.center-borrow {
+  background: #fff;
+  margin-bottom: 6px;
+}
+
+.center-borrow .list-title h5 {
+  line-height: 44px;
+  font-size: 15px;
+  color: #0e1729;
+  font-weight: normal;
+}
+
+.center-borrow .list-title a {
+  float: right;
+  font-size: 12px;
+  color: #434b58;
+  line-height: 44px;
+  font-weight: normal;
+  color: #999;
+  padding-right: 3.9%;
+}
+
+.center-borrow .list-title img {
+  width: 6px;
+  position: relative;
+  top: 1px;
+  padding-left: 7px;
+}
+
+.center-borrow ul li {
+  padding: 5px 0 4px;
+  position: relative;
+}
+
+.center-borrow .link {
+  display: block;
+}
+
+.center-borrow .borrow-title {
+  font-size: 14px;
+  line-height: 38px;
+  color: #333;
+}
+
+.center-borrow .borrow-title .right-label {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 19px;
+  border: 1px solid #ff9a37;
+  border-radius: 3px;
+  color: #ff9a37;
+  transform: scale(0.83, 0.83);
+  padding: 0 5px;
+}
+
+.center-borrow .borrow-title .right-label:last-child {
+  transform: scale(0.83, 0.83) translateX(-7px);
+}
+
+.center-borrow .novice,
+.center-borrow .income {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 37px;
+  height: 37px;
+}
+
+.center-borrow .novice {
+  background: url(/static/img/wap_invest_index_02.png) no-repeat center;
+  background-size: cover;
+}
+
+.center-borrow .income {
+  background: url(/static/img/wap_invest_index_04.png) no-repeat center;
+  background-size: cover;
+}
+
+.center-borrow .left-income {
+  float: left;
+}
+
+.center-borrow .left-income .num {
+  display: block;
+  font-size: 27px;
+  height: 30px;
+  line-height: 30px;
+  color: #ff5637;
+}
+
+.center-borrow .left-income .num-s {
+  font-size: 22px;
+}
+
+.center-borrow .left-income .text {
+  display: block;
+  height: 35px;
+  font-size: 12px;
+  line-height: 35px;
+  color: #a3a2a8;
+}
+
+.center-borrow .right-btn {
+  float: right;
+  padding-right: 3.9%;
+  text-align: center;
+}
+
+.center-borrow .right-btn .mui-btn {
+  width: 66px;
+  height: 18px;
+  font-size: 14px;
+  line-height: 18px;
+  border: none;
+  border-radius: 15px;
+  color: #fff;
+  background: linear-gradient(to right, #fe8156, #ff5637);;
+}
+
+.center-borrow .right-btn .mui-btn.lock {
+  background: #ccc;
+  color: #fff;
+}
+
+.center-borrow .right-btn .remain {
+  display: block;
+  height: 35px;
+  font-size: 12px;
+  line-height: 35px;
+  color: #999;
+  text-align: right;
+}
+
+.center-borrow .right-btn .remain span {
+  color: #333;
+}

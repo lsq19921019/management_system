@@ -1,0 +1,4 @@
+﻿#忽略node_modules、dist下所有文件（不管该文件夹在根目录还是子目录）
+node_modules/
+dist/
+npm-debug.log

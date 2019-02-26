@@ -1,0 +1,156 @@
+.form {
+  position: relative;
+}
+
+.form .in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.form .top-title {
+  font-size: 12px;
+  line-height: 35px;
+  background: #ffebe7;
+  color: #ae6262;
+}
+
+.form .input-bg {
+  background: #fff;
+}
+
+.form .in-border {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.form .in-border:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.form .no-border {
+  border-bottom: none;
+}
+
+.form .reg-input span {
+  float: left;
+  font-size: 14px;
+  line-height: 44px;
+  color: #333;
+}
+
+.form .reg-input input {
+  float: right;
+  padding: 0;
+  border: none;
+  height: 44px;
+  line-height: 18px;
+  font-family: "Microsoft Yahei";
+  font-size: 14px;
+  outline: none;
+}
+
+.form .reg-input select {
+  float: right;
+  padding: 0;
+  border: none;
+  height: 43px;
+  line-height: 18px;
+  font-family: "Microsoft Yahei";
+  font-size: 14px;
+  outline: none;
+  background: none;
+}
+
+.form .text-out {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.form .center-title {
+  font-size: 12px;
+  line-height: 18px;
+  color: #fd8923;
+  padding-left: 18px;
+  position: relative;
+}
+
+.form .center-title:before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background: url(/static/img/loan_reg.png) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  left: -1px;
+  top: 11px;
+}
+
+.form .bank-list {
+  height: 32px;
+}
+
+.form .bank-list a {
+  font-size: 12px;
+  line-height: 32px;
+  color: #fd8923;
+  float: right;
+}
+
+.form .btn-list {
+  padding-top: 0.64rem;
+}
+
+.form .btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: 9px auto 0;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 86, 55, 0.5);
+  background: linear-gradient(left, #fe7229, #ff5637);
+}
+
+.form .foot-title {
+  margin-top: 5px;
+  margin-bottom: 71px;
+}
+
+.form .foot-title p {
+  text-align: center;
+  font-size: 14px;
+  line-height: 32px;
+  color: #999;
+}
+
+.form .foot-title p a {
+  color: #ff5637;
+}
+
+.form .agree {
+  padding-top: 3rem;
+  padding-bottom: 26px;
+  width: 86%;
+  margin: 0 auto;
+}
+
+.form .agree p {
+  font-size: 12px;
+  line-height: 15px;
+  color: #a3a2a8;
+  margin-left: 20px;
+}
+
+.form .agree p a {
+  color: #a3a2a8;
+}
+.form .agree .a_cb {
+  width: 12px;
+  height: 12px;
+  float: left;
+  display: inline-block;
+}

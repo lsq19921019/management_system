@@ -1,0 +1,83 @@
+.brand_services {
+  .top_banner {
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .content{
+      .brand_list{
+          padding-top: 90px;
+          img{
+              width: 100%;
+          }
+          .inner{
+              text-align: center;
+                  h5{
+                      font-size:40px;
+                      color:rgba(0,0,0,1);
+                      line-height:56px;
+                      letter-spacing:1px;                    
+                  }
+                  .title_info{
+                      font-size:20px;
+                      font-weight:300;
+                      color:rgba(0,0,0,1);
+                      line-height:28px; 
+                      margin-top: 20px;                   
+                  }
+                  .product_list{
+                      display: flex;
+                      justify-content: center;
+                      margin-top: 66px;
+                      &.creativity{
+                        .product_box{
+                            background:linear-gradient(180deg,rgba(255,222,107,1) 0%,rgba(254,157,75,1) 100%);
+                            p{
+                              padding: 55px 0;
+                              color: #fff;
+                            }                            
+                        }                       
+                      }
+                      &.activity{
+                        width: 894px;
+                        flex-wrap: wrap;
+                        justify-content: start;
+                        margin: 66px auto 26px;
+                        .product_box{
+                            &:nth-child(n+1){
+                              margin-left: 36px;
+                              margin-bottom: 40px;
+                            } 
+                            p{
+                              padding: 41px 0;                           
+                            }
+                        }
+                      }
+                      .product_box{
+                        background:rgba(255,255,255,1);
+                        box-shadow:0px 0px 16px 0px rgba(215,215,215,0.5);  
+                        &:nth-child(n+2){
+                          margin-left: 36px;
+                        }                   
+                        img{
+                          width: 250px;
+                          height: 180px;
+                        }
+                        p{
+                          font-size:20px;
+                          color:rgba(0,0,0,1);
+                          line-height:28px;
+                          padding: 61px 0;                          
+                        }
+                      }
+                  }
+          }
+      }
+  }
+}

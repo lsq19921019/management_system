@@ -1,0 +1,132 @@
+div.protocolInvestmentContent {
+    width: 100%;
+    background: #f5f5f5;
+    padding-top: 40px;
+}
+
+div.protocolInvestmentContent>div:nth-child(1) {
+    width: 1205px;
+    margin: 0 auto;
+    background: url(../../images/june_promotion/bgWaterMark.png)center center repeat;
+    background-size: 300px auto;
+}
+
+div.protocolInvestmentContent>div:nth-child(1)>div:nth-child(1) {
+    width: 100%;
+    height: 160px;
+    background: url(../../images/june_promotion/protocolTopBg.png)top center no-repeat;
+    background-size: 100% auto;
+}
+
+div.protocolInvestmentContent>div:nth-child(1)>div:nth-child(2) {
+    padding: 38px 40px 126px;
+}
+
+div.protocolInvestmentContent>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
+    position: relative;
+    text-align: center;
+    font-size: 30px;
+    color: #555;
+    font-weight: bold;
+}
+
+div.protocolInvestmentContent>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>span {
+    position: absolute;
+    padding: 10px 14px;
+    color: #fff;
+    font-size: 18px;
+    left: 0;
+    top: 0;
+    background: #ea553a;
+    border-radius: 4px;
+    font-weight: normal;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+
+div.protocolInvestmentContent div.text_info>div:nth-child(2) {
+    margin-top: 40px;
+    color: #555;
+}
+
+div.protocolInvestmentContent div.text_info>div:nth-child(2)>p {
+    font-size: 24px;
+    line-height: 44px;
+}
+
+div.protocolInvestmentContent div.text_info>div:nth-child(2)>p:nth-child(2) {
+    text-indent: 48px;
+}
+
+div.protocolInvestmentContent div.text_info>div:nth-child(3) {
+    position: relative;
+    margin-top: 64px;
+}
+
+div.protocolInvestmentContent div.text_info>div:nth-child(3)>span {
+    display: block;
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: 122px;
+    bottom: 80px;
+    background: url(../../images/june_promotion/sealImg.png)center center no-repeat;
+    background-size: 100% auto;
+}
+
+div.protocolInvestmentContent div.text_info>div:nth-child(4)>p {
+    margin-top: 50px;
+    font-size: 24px;
+    color: #212121;
+}
+
+div.protocolInvestmentContent div.text_info>div:nth-child(4)>div {
+    margin-top: 50px;
+}
+
+div.protocolInvestmentContent div.text_info>div:nth-child(4)>div>p {
+    line-height: 44px;
+    text-indent: 48px;
+    font-size: 24px;
+    color: #121212;
+}
+
+div.protocolInvestmentContent div.text_info>div:nth-child(4)>div p.third {
+    text-indent: 96px;
+}
+
+div.protocolInvestmentContent div.text_info>div:nth-child(4)>div>p>font {
+    color: #c53e3e;
+}
+table,
+tr,
+td {
+    border: 1px solid #cecece;
+}
+
+table {
+    width: 100%;
+    margin-top: 36px;
+}
+
+table td {
+    padding: 20px 34px;
+    font-size: 24px;
+    color: #212121;
+}
+
+table tr:nth-child(odd) {
+    background: #f7f4ee;
+}
+
+table tr:nth-child(even) {
+    background: #fff;
+}
+
+table tr:nth-child(1) {
+    background: #e6f1fa;
+}
+
+table tr.F2F2 {
+    background: #f2f2f2;
+}

@@ -1,0 +1,293 @@
+.margin-b {
+  margin-bottom: 10px;
+}
+
+.in-panding {
+  padding-left: 5.3%;
+  padding-right: 5.3%;
+}
+
+.conf_trans .header-data {
+  background: #ff5637;
+  padding-bottom: 19px;
+}
+
+.conf_trans .header-data .plan-title p {
+  font-size: 12px;
+  line-height: 55px;
+  color: #fff;
+}
+
+.conf_trans .header-data .plan-data p {
+  font-size: 15px;
+  line-height: 22px;
+  color: #fff;
+}
+
+.conf_trans .header-data .plan-data-title p {
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+}
+
+.conf_trans .center-into .balance {
+  background: #f2f2f2;
+}
+
+.conf_trans .center-into .balance p {
+  font-size: 12px;
+  line-height: 40px;
+}
+
+.conf_trans .center-into .balance p .usable {
+  color: #a3a2a8;
+}
+
+.conf_trans .center-into .balance p .recharge {
+  color: #fbb280;
+  padding: 0 6px;
+}
+
+.conf_trans .center-into .trans-input {
+  background: #fff;
+}
+
+.conf_trans .center-into .trans-input .title {
+  display: block;
+  float: left;
+  width: 22.2%;
+  font-size: 14px;
+  line-height: 47px;
+  color: #333;
+}
+
+.conf_trans .center-into .trans-input input {
+  float: left;
+  width: 55.2%;
+  height: 47px;
+  line-height: 18px;
+  font-size: 15px;
+  outline: none;
+  color: #333;
+  border: none;
+}
+
+.conf_trans .center-into .trans-input .all {
+  float: right;
+  text-align: right;
+  width: 22.6%;
+  font-size: 14px;
+  line-height: 25px;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  color: #999;
+  box-sizing: border-box;
+  border-left: 1px solid #ddd;
+}
+
+.conf_trans .coupon {
+  background: #fff;
+}
+
+.conf_trans .coupon .coupon-line {
+  display: block;
+  font-size: 14px;
+  line-height: 47px;
+  position: relative;
+}
+
+.conf_trans .coupon .coupon-line .title {
+  float: left;
+  color: #404451;
+}
+
+.conf_trans .coupon .coupon-line .coupon-text {
+  float: right;
+  color: #ff9000;
+  padding-right: 4.7%;
+}
+
+.conf_trans .coupon .coupon-line .coupon-text.empty {
+  color: #999;
+}
+
+.conf_trans .coupon .coupon-line img {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+}
+
+.conf_trans .ex-interest {
+  background: #f2f2f2;
+}
+
+.conf_trans .ex-interest p {
+  font-size: 12px;
+  line-height: 40px;
+  color: #a3a2a8;
+}
+
+.conf_trans .ex-interest p .color {
+  color: red;
+}
+
+.conf_trans .ex-interest .tips {
+  float: right;
+  font-size: 12px;
+  color: red;
+}
+
+.conf_trans .confirm_renewal {
+  padding-top: 0.31rem;
+  padding-left: 0.44rem;
+}
+
+.conf_trans .confirm_renewal span {
+  font-size: 0.24rem;
+  line-height: 0.24rem;
+  color: #333;
+}
+
+.conf_trans .confirm_renewal span .confirm_img {
+  width: 0.26rem;
+  margin-right: 0.12rem;
+  position: relative;
+  top: 0.04rem;
+}
+
+.conf_trans .confirm_renewal .confirm_tip {
+  width: 0.26rem;
+  margin-left: 0.14rem;
+  position: relative;
+  top: 0.05rem;
+}
+
+.conf_trans .trans-btn {
+  padding-top: 0.79rem;
+}
+
+.conf_trans .trans-btn button {
+  display: block;
+  background: #ff5637;
+  width: 86.6%;
+  height: 44px;
+  margin: 0 auto;
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
+  border-radius: 22px;
+  border: none;
+}
+
+.agree {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 86%;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-left: 7%;
+}
+
+.agree p {
+  display: inline-block;
+  font-size: 12px;
+  color: #a3a2a8;
+}
+
+.agree p .confirm_img {
+  width: 0.26rem;
+  margin-right: 0.1rem;
+  position: relative;
+  top: 0.04rem;
+}
+
+.agree a {
+  font-size: 12px;
+  color: #a3a2a8;
+}
+
+.continue_tips {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.continue_tips .bg {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.7;
+}
+
+.continue_tips .tips {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.continue_tips .tips .light {
+  position: absolute;
+  top: 0;
+  left: 0.28rem;
+  width: 2.91rem;
+}
+.continue_tips .tips .light img,
+.continue_tips .tips .smile img {
+  width: 100%;
+  display: block;
+}
+
+.continue_tips .tips .smile {
+  position: absolute;
+  top: 1.09rem;
+  left: 0.47rem;
+  width: 1.41rem;
+}
+
+.continue_tips .tips .text {
+  position: absolute;
+  top: 1.2rem;
+  left: 2.09rem;
+  width: 4.12rem;
+  box-sizing: border-box;
+  padding: 0.2rem;
+  background: linear-gradient(left, #f1a94d, #ea6f3f);
+  border-radius: 0.08rem;
+}
+
+.continue_tips .tips .text::before {
+  content: "";
+  position: absolute;
+  width: 0.22rem;
+  height: 0.11rem;
+  top: -0.11rem;
+  left: 0.3rem;
+  background: url(/static/img/continue_tips_03.png) no-repeat center;
+  background-size: contain;
+}
+
+.continue_tips .tips .text p {
+  font-size: 0.22rem;
+  line-height: 0.3rem;
+  color: #fff;
+}
+
+.continue_tips .tips button {
+  font-size: 0.28rem;
+  color: #fff;
+  background: none;
+  border: 0.02rem solid #fff;
+  border-radius: 0.08rem;
+  width: 1.98rem;
+  height: 0.68rem;
+  position: absolute;
+  top: 2.91rem;
+  left: 50%;
+  transform: translateX(-50%);
+}

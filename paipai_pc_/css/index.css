@@ -1,0 +1,30 @@
+/* main */
+.main{
+    background: url('../img/db7.png') no-repeat;
+    background-size: cover;
+    background-position: 0 75%;
+}
+.main .v_list .v_item .v_item_c{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 99px 60px;    
+    width: 1080px;
+    margin: 0 auto;
+}
+.main .v_list .v_item .v_item_l p:nth-child(1){
+    font-size:38px;
+    font-weight:800;
+    color:#333;  
+}
+.main .v_list .v_item .v_item_l p:nth-child(2){
+    font-size:24px;
+    font-weight:400;
+    color:#9B9B9B;
+    width: 361px;
+    margin-top: 30px; 
+}
+.main .v_list .v_item .v_item_r{
+    width: 407px;
+    height: 246px;
+}

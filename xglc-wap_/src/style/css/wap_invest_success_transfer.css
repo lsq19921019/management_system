@@ -1,0 +1,71 @@
+.suc-tran .top-schedule {
+  padding-top: 27px;
+  padding-left: 18.4%;
+  padding-bottom: 28px;
+  margin-bottom: 10px;
+  background: #fff;
+  position: relative;
+}
+
+.suc-tran .top-schedule img {
+  position: absolute;
+  left: 9.8%;
+  top: 31px;
+  height: 125px;
+}
+
+.suc-tran .top-schedule p {
+  font-size: 15px;
+  line-height: 25px;
+  color: #162337;
+}
+
+.suc-tran .top-schedule p span {
+  font-size: 14px;
+  color: #a3a2a8;
+}
+
+.suc-tran .ref-inco {
+  padding-left: 15px;
+  background: #fff;
+}
+
+.suc-tran .ref-inco p {
+  font-size: 14px;
+  line-height: 47px;
+  color: #404451;
+}
+
+.suc-tran .ref-inco p span {
+  color: #ff5637;
+}
+
+.suc-tran .btn-line {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.suc-tran .btn-line a,
+.suc-tran .btn-line span {
+  display: inline-block;
+  width: 37.3%;
+  height: 39px;
+  line-height: 39px;
+  font-size: 16px;
+  text-align: center;
+
+  border-radius: 20px;
+}
+
+.suc-tran .btn-line a {
+  margin-right: 3.3%;
+  color: #404451;
+  background: #fff;
+  border: 1px solid #e9e9e9;
+}
+
+.suc-tran .btn-line span {
+  margin-left: 3.3%;
+  color: #fff;
+  background: linear-gradient(to right, #ff5637, #ff7550);
+}

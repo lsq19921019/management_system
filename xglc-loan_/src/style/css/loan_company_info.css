@@ -1,0 +1,93 @@
+.form .in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.form .top-title {
+  font-size: 12px;
+  line-height: 35px;
+  background: #ffebe7;
+  color: #ae6262;
+}
+
+.form .input-bg {
+  background: #fff;
+}
+
+.form .in-border {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.form .in-border:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.form .no-border {
+  border-bottom: none;
+}
+
+.form .reg-input span {
+  float: left;
+  font-size: 14px;
+  line-height: 44px;
+  color: #333;
+}
+
+.form .reg-input p {
+  float: right;
+  height: 44px;
+  line-height: 44px;
+  color: #666;
+  font-size: 14px;
+}
+
+.form .bank-list {
+  height: 32px;
+}
+
+.form .bank-list a {
+  font-size: 12px;
+  line-height: 32px;
+  color: #fd8923;
+  float: right;
+}
+
+.form .btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: 0.9rem auto 0;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 86, 55, 0.5);
+  background: linear-gradient(left, #fe7229, #ff5637);
+}
+
+.form .btn.empty {
+  margin: 0.4rem auto 0;
+  color: #ff5637;
+  box-shadow: none;
+  background: #fff;
+  border: 1px solid #ff5637;
+}
+
+.form .foot-title {
+  margin-top: 5px;
+  margin-bottom: 89px;
+}
+
+.form .foot-title p {
+  text-align: center;
+  font-size: 14px;
+  line-height: 32px;
+  color: #999;
+}
+
+.form .foot-title p a {
+  color: #ff5637;
+}

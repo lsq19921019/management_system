@@ -1,0 +1,61 @@
+.form {
+  margin-top: 9px;
+}
+
+.form .in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.form .input-bg {
+  background: #fff;
+}
+
+.form .in-border {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.form .bind-input span {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 44px;
+  color: #333;
+  width: 20.3%;
+}
+
+.form .bind-input input {
+  display: inline-block;
+  padding: 0;
+  width: 78%;
+  border: none;
+  height: 44px;
+  line-height: 18px;
+  font-family: "Microsoft Yahei";
+  font-size: 14px;
+  outline: none;
+}
+
+.form .bank-list {
+  height: 32px;
+}
+
+.form .bank-list a {
+  font-size: 12px;
+  line-height: 32px;
+  color: #fd8923;
+  float: right;
+}
+
+.form .btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: 9px auto 0;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 86, 55, 0.5);
+  background: linear-gradient(left, #fe7229, #ff5637);
+}

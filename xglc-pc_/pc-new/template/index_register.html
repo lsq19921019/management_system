@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--登陆注册页面公用头部-->
+    <div class="login_headerPart">
+        <div>
+            <div onclick="window.location.href='index.html'"></div>
+            <div>注册</div>
+        </div>
+    </div>
+    <!--内容部分-->
+    <div class="register_contentPart">
+        <div>
+            <div>请先注册，领取
+                <font>888</font>元投资红包
+            </div>
+            <div class="inputContainer">
+                <input type="number" id="phoneNumber" oninput="Utils.inputLimitlengthFunc($(this),11)" maxlength="11" placeholder="请输入11位手机号" />
+                <span></span>
+            </div>
+            <div class="inputContainer">
+                <input type="password" id="password" maxlength="20" placeholder="请输入6-20位字母和数字密码" />
+                <span></span>
+            </div>
+            <div class="inputContainer">
+                <input type="text" id="photoCode" maxlength="4" placeholder="请输入验证码" />
+                <div><img id="imgCode" src="" alt="" /></div>
+                <span></span>
+            </div>
+            <div class="inputContainer">
+                <input type="number" id="validateCode" oninput="Utils.inputLimitlengthFunc($(this),6)" placeholder="请输入手机验证码" />
+                <div>
+                    <button id="validateCodeBth">获取验证码</button>
+                </div>
+                <span></span>
+            </div>
+            <div class="inputContainer">
+                <input type="number" id="inviteNumber" oninput="Utils.inputLimitlengthFunc($(this),11)" placeholder="请输入邀请人11位手机号 (选填)" />
+                <span></span>
+            </div>
+            <div>
+                <p><span id="protocolBtn"></span>我同意
+                    <a href="platformProtocol_register.html" target="_blank">《小鸽理财注册协议》</a>
+                    <a href="privacy_policy.html" target="_blank">《隐私条款》</a>
+                </p>
+            </div>
+            <div>
+                <button id="registerBtn">注册立领888</button>
+            </div>
+            <div>
+                <p>已有账号，
+                    <font>
+                        <a href="index_login.html" style="color: inherit;">立即登录</a>
+                    </font>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--底部-->
+    <div class="login_footerPart">
+        <div>
+            <ul>
+                <li>
+                    <a href="about_xg_company.html">关于我们</a>
+                </li>
+                <li>
+                    <a href="laws_page.html">法律法规</a>
+                </li>
+                <li>
+                    <a href="about_xg_contact.html">联系我们</a>
+                </li>
+                <li>
+                    <a href="#">帮助中心</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li>&copy;2016-2017 xiaogelicai.com</li>
+                <li>深圳市温馨港湾网络技术有限公司</li>
+                <li>备案号： <a href="http://www.miit.gov.cn">粤ICP备14025100号-5</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+$(function() {
+    Register.initFunc();
+});
+var Register = {
+    //信息完整
+    infoComplate: false,
+    //初始化方法
+    initFunc: function() {
+        var self = this;
+        self.clickFunc();
+        self.inputBlurFunc();
+        self.requestImgFunc();
+        //键盘enter事件
+        Utils.keyboardDownFunc($('button#registerBtn'), 13, 'click');
+    },
+    sourceType: base.GetQueryString("type"),
+    //点击事件
+    clickFunc: function() {
+
+        $('span#protocolBtn').on('click', function() {
+            $(this).toggleClass('active');
+        });
+
+        //图片验证码点击事件
+        $('img#imgCode').on('click', function() {
+            Register.requestImgFunc();
+        });
+
+        //短信验证码按钮点击
+        $('button#validateCodeBth').on('click', function() {
+            var self = this;
+            var errorPart;
+            if (Utils.checkPhone($('input#phoneNumber').val()) && Utils.checkPassword($('input#password').val()) && $('input#photoCode').val().length == 4) {
+                //输入正确
+                Register.infoComplate = true;
+                if (!Utils.checkLogin()) {
+                    Register.requestSmsFunc($('input#photoCode').val(), $('input#phoneNumber').val());
+                }
+
+            } else {
+                //输入错误
+                Register.infoComplate = false;
+                errorPart = '上面信息填写错误,请重新输入';
+                $(self).parent().parent().find('span').html(errorPart);
+            }
+        });
+
+        //注册按钮点击事件
+        $('button#registerBtn').on('click', function() {
+            if (!Utils.checkLogin() && Register.infoComplate && $('span#protocolBtn').hasClass('active')) {
+                Register.registerFunc($('input#phoneNumber').val(), $('input#validateCode').val(), $('input#password').val(), $('input#inviteNumber').val());
+            } else {
+                alert('请先填写全信息并同意协议');
+            }
+        });
+
+    },
+
+    //input失去焦点事件
+    inputBlurFunc: function() {
+        //手机号码判断
+        $('input#phoneNumber').blur(function() {
+            var self = this;
+            var errorPart;
+            if (!Utils.checkPhone($(self).val())) {
+                Register.infoComplate = false;
+                errorPart = $(self).val() ? '* 输入错误 , 请重新输入' : '';
+                $(self).parent().find('span').html(errorPart);
+            } else {
+                $(self).parent().find('span').html(' ');
+                Register.infoComplate = true;
+                Register.requestImgFunc($(self).val());
+            }
+        });
+
+        //密码判断
+        $('input#password').blur(function() {
+            var self = this;
+            var errorPart;
+            if (!Utils.checkPassword($(self).val())) {
+                Register.infoComplate = false;
+                errorPart = $(self).val() ? '* 输入错误 , 请重新输入' : '';
+                $(self).parent().find('span').html(errorPart);
+            } else {
+                Register.infoComplate = true;
+                $(self).parent().find('span').html(' ');
+            }
+        });
+
+        //手机号选填
+        $('input#inviteNumber').blur(function() {
+            var self = this;
+            var errorPart;
+            if (!Utils.checkPhone($(self).val())) {
+                errorPart = $(self).val() ? '* 输入错误 , 请重新输入' : '';
+                $(self).parent().find('span').html(errorPart);
+            }
+        });
+    },
+
+    //获取图片验证码
+    requestImgFunc: function(number) {
+        var phoneNumber = number || '15888888888';
+        if (!Utils.checkLogin()) {
+            $.ajax({
+                type: "POST",
+                headers: {
+                    "clientType": base.dataWithoutToken.clientType,
+                    "clientVersion": base.dataWithoutToken.clientVersion,
+                    "timeStamp": base.dataWithoutToken.timeStamp,
+                    "sign": base.getPostStrWithoutToken({
+                        cellphone: phoneNumber
+                    }),
+                    "imei": base.dataWithoutToken.timeStamp
+                },
+                data: {
+                    cellphone: phoneNumber
+                },
+                dataType: 'json',
+                async: false,
+                url: '/api/img/code',
+                success: function(data) {
+                    if (data.status == 0) {
+                        $('img#imgCode').attr('src', 'data:image/png;base64,' + data.result);
+                    }
+                }
+            });
+        }
+    },
+
+    //获取短信验证码
+    requestSmsFunc: function(photoCode, phoneNumber) {
+        if (!photoCode) return;
+        if (!phoneNumber) return;
+        var timer;
+        var jsonData = {
+            imgCode: photoCode,
+            cellphone: phoneNumber,
+            type: 1,
+        };
+        $.ajax({
+            type: "POST",
+            headers: {
+                "clientType": base.dataWithoutToken.clientType,
+                "clientVersion": base.dataWithoutToken.clientVersion,
+                "sign": base.getPostStrWithoutToken(jsonData),
+                "imei": base.dataWithoutToken.timeStamp,
+                "timeStamp": base.dataWithoutToken.timeStamp,
+            },
+            data: jsonData,
+            dataType: 'json',
+            async: false,
+            url: '/api/sms/register',
+            success: function(data) {
+                if (data.status == 0) {
+                    Register.infoComplate = true;
+                    var i = 60;
+                    var timer = setInterval(function() {
+                        $('button#validateCodeBth').attr('disabled', true);
+                        $('button#validateCodeBth').html(i + 's');
+                        if (i == 0) {
+                            clearInterval(timer);
+                            $('button#validateCodeBth').attr('disabled', false);
+                            $('button#validateCodeBth').html('重新发送');
+                        }
+                        i--;
+                    }, 1000);
+
+                } else {
+                    alert(data.msg);
+                    Register.requestImgFunc($('input#phoneNumber').val());
+                }
+            }
+        });
+    },
+
+    registerFunc: function(cellphone, messageCode, password, referrer) {
+        var dataJson = {
+            'cellphone': cellphone,
+            'code': messageCode,
+            'password': password,
+            'sourceType': Register.sourceType
+        };
+        if (referrer) {
+            dataJson.referrer = referrer
+        };
+        var register = DES3.encrypt(base.desKey, JSON.stringify(dataJson));
+
+        $.ajax({
+            type: "POST",
+            headers: {
+                "clientType": base.dataWithoutToken.clientType,
+                "clientVersion": base.dataWithoutToken.clientVersion,
+                "timeStamp": base.dataWithoutToken.timeStamp,
+                "sign": base.getPostStrWithoutToken({
+                    register: register
+                }),
+                "imei": base.dataWithoutToken.timeStamp
+            },
+            dataType: 'json',
+            async: false,
+            data: {
+                register: register
+            },
+            url: '/api/user/register',
+            success: function(data) {
+                if (data.status == "0") {
+                    var userInfo = {
+                        headImg: data.result.headImg,
+                        nickName: data.result.nickName,
+                        phone: data.result.phone,
+                        userName: data.result.userName,
+                    };
+                    sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
+                    localStorage.setItem('token', data.result.token);
+                    localStorage.setItem('IMEI', Utils.creatImeiNumber());
+                    Web.go('index_displayPage.html');
+                } else {
+                    alert(data.msg);
+                    Register.requestImgFunc($('input#phoneNumber').val());
+                }
+
+            }
+        });
+    }
+}
+</script>
+
+</html>

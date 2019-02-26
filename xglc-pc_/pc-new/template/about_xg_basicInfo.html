@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>信息披露</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--#include virtual="_inc/_inc_import_header.html" -->
+    <!--内容部分-->
+    <div class="inf-dis">
+        <div class="content">
+            <div class="left-box about_xg">
+                <div class="head-title">
+                    <h2>基本信息</h2>
+                </div>
+                <div class="center-piece">
+                    <div class="piece">
+                        <h4>营业信息</h4>
+                        <div class="ul">
+                            <ul>
+                                <li>
+                                    <span>全称及简称</span>
+                                    <span>深圳温馨港湾网络技术有限公司</span>
+                                </li>
+                                <li>
+                                    <span>注册资本</span>
+                                    <span>5000万</span>
+                                </li>
+                                <li>
+                                    <span>实缴资本</span>
+                                    <span>5000万</span>
+                                </li>
+                                <li>
+                                    <span>注册地址</span>
+                                    <span>深圳市南山区粤海街道科技园虚拟大学园粤兴五道9号北理工创新大厦12层</span>
+                                </li>
+                                <li>
+                                    <span>成立时间</span>
+                                    <span>2013年12月26日</span>
+                                </li>
+                                <li>
+                                    <span>法定代表人</span>
+                                    <span>莫立水</span>
+                                </li>
+                                <li>
+                                    <span>统一社会信用代码</span>
+                                    <span>9144030008775789X6</span>
+                                </li>
+                                <li>
+                                    <span>平台名称</span>
+                                    <span>小鸽理财</span>
+                                </li>
+                                <li>
+                                    <span>平台上线运营时间</span>
+                                    <span>2015年12月12日</span>
+                                </li>
+                                <li>
+                                    <span>经营地址</span>
+                                    <span>深圳市南山区粤海街道科技园虚拟大学园粤兴五道9号北理工创新大厦12层</span>
+                                </li>
+                                <li>
+                                    <span>经营期限</span>
+                                    <span>2013年12月26日至长期</span>
+                                </li>
+                                <li>
+                                    <span>经营状况</span>
+                                    <span>开业</span>
+                                </li>
+                                <li style="height: 99px;">
+                                    <span style="line-height: 99px;height: 99px;">经营范围</span>
+                                    <span style="line-height: 24px;height: 99px;padding-top: 14px;text-align: left;">计算机软硬件、电子产品、电器产品的技术开发、技术咨询与销售，网络软件的技术开发、销售，网页的设计、会务策划、商务信息咨询、互联网信息服务等</span>
+                                </li>
+                                <li>
+                                    <span>董事</span>
+                                    <span>莫立水</span>
+                                </li>
+                                <li>
+                                    <span>监事</span>
+                                    <span>李坚华</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="piece">
+                        <h4>股东信息</h4>
+                        <div class="ul">
+                            <ul>
+                                <li>
+                                    <span>股东名称</span>
+                                    <span>占股比例</span>
+                                </li>
+                                <li>
+                                    <span>深圳申易实业有限公司</span>
+                                    <span>35%</span>
+                                </li>
+                                <li>
+                                    <span>福建省致云融资租赁有限公司</span>
+                                    <span>23%</span>
+                                </li>
+                                <li>
+                                    <span>李坚华</span>
+                                    <span>31.92%</span>
+                                </li>
+                                <li>
+                                    <span>莫立水</span>
+                                    <span>10.08%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="piece">
+                        <h4>组织架构</h4>
+                        <div class="arch"></div>
+                    </div>
+                    <div class="piece">
+                        <h4>分支机构信息</h4>
+                        <p>暂无分支机构</p>
+                    </div>
+                    <div class="piece">
+                        <h4>员工情况</h4>
+                        <p>截止2018年3月末，小鸽理财从业人员数量47人，正式员工47人。</p>
+                        <p>从年龄结构来看， 30周岁以下员工38人，30周岁（含）以上员工9人。小鸽员工以充满活力的90后为主，管理团队多集中在30岁上下，且具备多年金融行业经验。</p>
+                        <p>从学历结构来看，小鸽员工大多具有本科及以上学历，其中研究生及以上员工3人，大专及本科44人。</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 侧边栏 -->
+            <!--#include virtual="_inc/_inc_import_right_box.html" -->
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <!--#include virtual="_inc/_inc_import_footer.html" -->
+    <script type="text/javascript">
+    $(function() {
+        $(".right-box ul li").eq(2).addClass('active')
+        $(".arch .arch-out").on('mouseenter', function() {
+            $(this).children(".wind").addClass('show')
+        })
+        $(".arch .arch-out").on('mouseleave', function() {
+            $(this).children(".wind").removeClass('show')
+        })
+    })
+    </script>
+</body>
+
+</html>

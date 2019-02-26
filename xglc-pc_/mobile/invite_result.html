@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="email=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="./css/mui.min.css" />
+<link rel="stylesheet" type="text/css" href="./css/invite.css" />
+<title>立即抽奖 </title>
+</head>
+<body>
+ 
+<div class="clear" style="height:30px;"></div>
+<div class="opacity-box">
+     <p class="opacity-p">尊敬的用户：<b id="username" class="red-word">--</b> <br>已邀约注册好友：<span class="red-word"><b id="registusercount">--</b>人</span><br>已投资用户：<span class="red-word"><b id="investusercount">--</b>人</span></p>
+</div>
+<div class="clear" style="height:45px;"></div>
+
+<div class="main-box">
+     <div class="main-tit">抽<br>奖</div><div class="main-mid">随机抽奖，最高3000元旅游基金</div>
+	 <p class="main-p big">当前剩余抽奖机会：<b class="you-times" id="drawchance">--</b><b>次</b></p>
+	 <div class="clear" style="height:10px;"></div>
+	 <div class="win-box" id="win-box">
+	      <div class="icon one one-0"><img src="./images/601.png"></div>
+		  <div class="icon one one-1"><img src="./images/602.png"></div>
+		  <div class="icon one one-2"><img src="./images/603.png"></div>
+		  <div class="icon one one-7"><img src="./images/604.png"></div>
+		  <div class="icon start"><p class="icon-tit2">立即<br>抽奖</p><img src="./images/605.png"></div>
+		  <div class="icon one one-3"><img src="./images/606.png"></div>
+		  <div class="icon one one-6"><img src="./images/607.png"></div>
+		  <div class="icon one one-5"><img src="./images/608.png"></div>
+		  <div class="icon one one-4"><img src="./images/609.png"></div>
+	 </div>
+	 <div class="clear" style="height:23px;"></div>
+</div>
+<div class="clear" style="height:30px;"></div>
+<div class="opacity-box">
+     <img src="./images/610.png" class="img-box5">
+     <div class="opacity-p2" id="prizes"></div>
+</div> 
+<div class="clear" style="height:10px;"></div> 
+
+<a href="https://www.sogou.com/"><img src="./images/512.png" class="img-box3"></a>
+
+<p class="rule-p">1. 中奖结果公布时间统一为<span class="under-line">2017年10月8日</span>，期间可通过app我的-邀请好友-好友列表随时查阅已注册好友名单，或该活动页面查询实时中奖结果;<br>
+2. <span class="under-line">2017.10.8-2017.10.9</span>为申诉期，若无申诉视为默认放弃，<span class="under-line">10.10</span>发奖，届时会有工作人员电话联系您的预留手机号，请保持电话畅通;<br>
+3. 禁止恶意刷取奖励，平台有权封禁账户并终止该用户奖励;<br>
+4. 该活动最终解释权归小鸽理财所有，与苹果公司无关。
+</p>
+
+<div class="clear" style="height:25px;"></div>
+<img src="./images/513.png" class="img-box2">
+<div class="clear" style="height:20px;"></div>
+
+<div class="foot-box">
+     <div class="foot-div">
+	      <div class="foot-left"></div>
+		  <div class="foot-right">
+		    深圳市温馨港湾网络技术有限公司<br>粤ICP备14025100号-5<br>客服热线 4007004007 
+		  </div>
+	 </div>
+</div>
+ 
+
+<script type="text/javascript" src="./js/jquery.min.js" ></script>
+<script type="text/javascript" src="./js/common.js" ></script>
+<script type="text/javascript" src="./js/3DES.js" ></script>
+<script type="text/javascript" src="./js/hmac-sha256.js" ></script>
+<script type="text/javascript" src="./js/enc-base64-min.js" ></script>
+<script type="text/javascript" src="./js/base.js" ></script>
+<script type="text/javascript" src="./js/mui.min.js" ></script>
+
+<script type="text/javascript">
+$(function(){
+//初始化
+var lottery={
+	index:-1,	//当前转动到哪个位置，起点位置
+	count:8,	//总共有多少个位置
+	timer:0,	//setTimeout的ID，用clearTimeout清除
+	speed:120,	//初始转动速度  
+	times:0,	//转动次数 
+	cycle:150,	//转动基本次数：即至少需要转动多少次再进入抽奖环节
+	prize:-1,	//中奖位置
+	init:function(id){
+		if ($("#"+id).find(".one").length>0) {
+			$lottery = $("#"+id);
+			this.obj = $lottery;
+			this.count = $lottery.find(".one").length;
+			$lottery.find(".one-"+this.index).addClass("active");
+		};
+	},
+	roll:function(){
+		var indexN = this.index;
+		var count = this.count;
+		var lottery = this.obj;
+		$(lottery).find(".one-"+indexN).removeClass("active");
+		indexN += 1;
+		if (indexN>count-1) {
+			indexN = 0;
+		};
+		$(lottery).find(".one-"+indexN).addClass("active");
+		this.index=indexN;
+		return false;
+	}
+};
+//旋转
+var roll=function(){
+	lottery.times += 1;
+	lottery.roll();
+	if (lottery.times > lottery.cycle+10 && lottery.prize==lottery.index) {
+			clearTimeout(lottery.timer);
+			lottery.prize=-1;
+			lottery.times=0;
+			lottery.speed=120;
+			clickFlag=false;
+			var prizeName=sessionStorage.prizeName
+			mui.alert("恭喜您抽到"+prizeName);
+			$(".active").css("opacity","1");
+			$(".icon-tit2").html('继续<br>抽奖');
+	}else{
+			if (lottery.times<lottery.cycle) {
+				lottery.speed -= 10;
+			}else if(lottery.times==lottery.cycle) {
+				//var index = Math.random()*(lottery.count)|0;
+				//lottery.prize = index;	
+				lottery.prize = parseInt(sessionStorage.prizeId);
+				sessionStorage.removeItem('prizeId');
+				initUser(token);
+			}else{
+				if (lottery.times > lottery.cycle+10 && ((lottery.prize==0 && lottery.index==7) || lottery.prize==lottery.index+1)) {
+					lottery.speed += 110;
+				}else{
+					lottery.speed += 20;
+				}
+			}
+			if (lottery.speed<20) {
+				lottery.speed=20;
+			};
+			lottery.timer = setTimeout(roll,lottery.speed);
+	}
+	return false;
+}
+
+//获取token
+var getToken=function(loginName,password){
+    var token="";
+    var urlN=base.apiStr+"/user/login";
+	var password = DES3.encrypt(base.desKey, password);
+	var dataJson={"loginName":loginName,"password":password} ;
+    $.ajax({ 
+		type:"POST",
+		headers: {
+					"clientType": base.dataWithoutToken.clientType,
+					"clientVersion": base.dataWithoutToken.clientVersion,
+					"timeStamp": base.dataWithoutToken.timeStamp,
+					"sign": base.getPostStrWithoutToken(dataJson),
+					"imei": base.dataWithoutToken.timeStamp
+				},
+        dataType: 'json',
+		async: false,
+		data:dataJson,
+		url: urlN, 
+		success: function(data){ 
+              if(data.msg=="操作成功!"){
+			      token=data.result.token;
+			  }else{
+			     mui.alert(base.errorStr);
+			  };
+			  
+          }
+		});
+		return token;
+}
+// 初始化用户数据
+var initUser=function(token){
+	    var urlN=base.apiStr+"/activity/invite/info";
+	    var signJson={"token":token};
+	    $.ajax({ 
+		type:"POST",
+		headers: {
+					"clientType":base.dataWithoutToken.clientType,
+					"clientVersion":base.dataWithoutToken.clientVersion,
+					"timeStamp":base.dataWithoutToken.timeStamp,
+					"sign":base.getPostStrWithoutToken(signJson),
+					"imei":base.dataWithoutToken.timeStamp,
+                    "token":token
+				},
+        dataType: 'json',
+		async: false,
+		//data:dataJson,
+		url: urlN, 
+		success: function(data){  
+			  if(data.status=="0"){
+				 var resultJson=data.result;
+				 $("#username").text(resultJson.userName);//用户名
+				 $("#registusercount").text(resultJson.registUserCount);//已邀约注册好友
+				 $("#investusercount").text(resultJson.investUserCount);//已投资用户
+				 youTimes=resultJson.drawChance;//抽奖次数
+				 //youTimes=3;
+				 $(".you-times").text(youTimes);
+				 var dataArr=data.result.list;
+				  $("#prizes").html("");
+				  for(var i=0;i<dataArr.length;i++){
+					  var tt=new Date(dataArr[i].createTime).format("yyyy-MM-dd");
+					  
+					  var ss='<p>'+dataArr[i].prizeName+'<span class="red-word"> *1</span><span class="opacity-time">获奖时间：'+tt+'</span></p>'
+				      $("#prizes").append(ss);
+				  }
+				
+			  }else{
+			     mui.alert(base.errorStr);
+			  }
+          }
+		});
+	}
+//抽奖一次
+var chouJiang=function(token){
+	    var urlN=base.apiStr+"/activity/invite/draw";
+	    var signJson={"token":token};
+		var ssss="";
+	    $.ajax({ 
+		type:"POST",
+		headers: {
+					"clientType":base.dataWithoutToken.clientType,
+					"clientVersion":base.dataWithoutToken.clientVersion,
+					"timeStamp":base.dataWithoutToken.timeStamp,
+					"sign":base.getPostStrWithoutToken(signJson),
+					"imei":base.dataWithoutToken.timeStamp,
+                    "token":token
+				},
+        dataType: 'json',
+		async: false,
+		//data:dataJson,
+		url: urlN, 
+		success: function(data){  
+			  if(data.status=="0"){
+					  if(data.result.status=="0"){
+							var resultJson=data.result;
+							ssss=resultJson.rotate;
+							var prizeName=resultJson.prizeName;
+							$(".icon-tit2").html('正在<br>抽奖');
+							clickFlag=true;
+							sessionStorage.removeItem('prizeId');
+							sessionStorage.prizeId=ssss;//抽奖
+							sessionStorage.removeItem('prizeName');
+							sessionStorage.prizeName=prizeName;//奖品
+							roll();
+							//youTimes--;
+							$(".you-times").text(youTimes);
+					  }
+					  else{ mui.alert(data.result.message);}
+					  return ssss;
+			  }else{
+			      mui.alert(base.errorStr);
+				  return ssss;
+			  }
+          }
+		});
+		
+		
+	}
+
+//开始
+   
+	var youTimes=1;//抽奖次数
+    //var token=getToken("13266550301","123456");
+	 var token = GetQueryString("app");
+	initUser(token);
+	
+	
+	
+    
+//抽奖开始
+	var clickFlag=false;
+	lottery.init('win-box');
+	$(".start").on("click",function(){
+		if(clickFlag){return false;}
+		else{
+		   if (youTimes<=0) {
+				mui.alert("您的抽奖次数用完咯!");
+				return false;
+			}else{
+			    var prizeId=chouJiang(token);//中奖奖品
+			}
+		}
+	});
+
+
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+.change-pass .in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.change-pass .input-bg {
+  background: #fff;
+}
+
+.change-pass .in-border {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.change-pass .input-line span {
+  float: left;
+  font-size: 16px;
+  line-height: 48px;
+  color: #333;
+  width: 20%;
+}
+
+.change-pass .in-border:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.change-pass .no-border {
+  border-bottom: none;
+}
+
+.change-pass .input-line input {
+  float: right;
+  padding: 0;
+  width: 79%;
+  border: none;
+  height: 48px;
+  line-height: 18px;
+  font-size: 16px;
+  outline: none;
+}
+
+.change-pass .btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: 28px auto 0;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  background: #ff5637;
+}

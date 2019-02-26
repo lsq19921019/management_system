@@ -1,0 +1,151 @@
+.detail .basic-info,
+.detail .introduction,
+.detail .er-info,
+.detail .com-info,
+.detail .estate-info,
+.detail .car-info,
+.detail .risk-ctr {
+  margin-top: 10px;
+  background: #fff;
+  padding-bottom: 0.22rem;
+}
+
+.detail .in-padding {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.detail .title {
+  font-size: 15px;
+  line-height: 40px;
+  color: #545454;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.detail .title p.subtitle {
+  font-size: 13px;
+  line-height: 25px;
+  color: #999;
+}
+.detail .title p .right_title {
+  font-size: 0.24rem;
+  line-height: 40px;
+  color: #aaa;
+  float: right;
+}
+
+.detail .title p .right_title img {
+    width: .13rem;
+    margin-left: 0.06rem;
+    position: relative;
+    top: 0.045rem;
+}
+
+.detail .int-text p {
+  font-size: 0.26rem;
+  line-height: 0.36rem;
+  color: #999;
+  padding-top: 0.22rem;
+  padding-bottom: 0.22rem;
+}
+
+.detail .info-list {
+  padding-top: 0.12rem;
+  padding-bottom: 0.12rem;
+}
+
+.detail .info-list.pt {
+  padding-top: 0.22rem;
+}
+
+.detail .info-list:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.detail .info-list span {
+  font-size: 0.26rem;
+  line-height: 0.32rem;
+  color: #404451;
+}
+
+.detail .info-list span img {
+  width: 0.24rem;
+  margin-left: 0.06rem;
+  position: relative;
+  top: 0.03rem;
+}
+
+.detail .info-list .full > span:nth-child(1) {
+  color: #909197;
+  float: left;
+  box-sizing: border-box;
+  width: 2.14rem;
+  padding-right: 0.33rem;
+}
+
+.detail .info-list .full > span:nth-child(2) {
+  float: left;
+  width: 4.56rem;
+}
+
+.detail .info-list .left {
+  float: left;
+  width: 65.3%;
+}
+
+.detail .info-list .right {
+  float: left;
+  width: 34.6%;
+}
+
+.detail .info-list .left span:first-child {
+  display: inline-block;
+  width: 34.7%;
+}
+
+.detail .info-list .right span:first-child {
+  display: inline-block;
+  width: 64.6%;
+}
+
+.detail .risk-ctr:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.detail .risk-ctr .icon-box img {
+  width: 0.28rem;
+  margin-right: 0.16rem;
+  position: relative;
+  top: 0.04rem;
+}
+
+.detail .risk-ctr .icon-box p {
+  float: left;
+  min-width: 3rem;
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #404451;
+  padding-top: 0.18rem;
+  padding-bottom: 0.18rem;
+}
+
+.detail .risk-ctr .to-riskwarn a {
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  line-height: 40px;
+  color: #999;
+  position: relative;
+}
+
+.detail .risk-ctr .to-riskwarn a img {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 7px;
+  transform: translateY(-50%);
+}

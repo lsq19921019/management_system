@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>充值页面</title>
+		<!--#include virtual="_inc/_inc_import_css.html" -->
+		<!--#include virtual="_inc/_inc_import_js.html" -->
+	</head>
+
+	<body>
+		<!--#include virtual="_inc/_inc_import_header.html" -->
+		
+		<!--内容部分-->
+		<div class="payPage_content">
+			<div>
+				<div>正在前往银行支付页面，请稍等</div>
+				<div>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</div>
+		
+		<!--#include virtual="_inc/_inc_import_footer.html" -->
+	</body>
+	
+	<script>
+		$(function(){
+			setTimeout(function(){
+				Web.go("myAccount_onlineBank.html");
+			},3000);
+		});
+	</script>
+</html>

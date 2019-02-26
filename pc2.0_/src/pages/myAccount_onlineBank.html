@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>网银充值</title>
+  </head>
+  <body module="myAccount">
+    <div id="J_wrap" class="dsn">
+      <!-- 页眉 -->
+      <section id="JS_header"></section>
+      <!-- 网页主内容 -->
+      <section class="myAccount_onlineBank">
+        <!--内容部分-->
+        <div class="account_bankPage_content">
+          <div>
+            <span></span> <span>携手银行账户资金存管，保障投资安全</span>
+            <span>可用余额：<font id="balanceMoney">0.00</font>元</span>
+          </div>
+          <div>
+            <div>
+              <p>
+                <font>网银充值</font> <font> <!--充值记录--> </font>
+              </p>
+            </div>
+            <div>
+              <div style="padding-top: 18px;">选择银行：</div>
+              <div id="bank_iconList">
+                <span id="moreBank"
+                  ><font>更多银行</font><span class="arr">></span></span
+                >
+              </div>
+              <div style="clear: both"></div>
+            </div>
+            <div>
+              <div>充值金额：</div>
+              <div>
+                <div>
+                  <input
+                    id="rechargeMoney"
+                    type="text"
+                    placeholder="请输入充值金额，10元起"
+                  /><span> 元</span>
+                  <p style="font-size: 15px;color: #999;padding: 8px 0 20px;">温馨提示：支付成功后，需等待大约5分钟，存管账户余额才会更新</p>
+                </div>
+                <div><button id="rechargeBtn">立即充值</button></div>
+                <!--onclick="location.href='myAccount_payPage.html'"-->
+              </div>
+              <div style="clear: both"></div>
+            </div>
+            <div class="limit">
+              <h3 class="title"></h3>
+              <div class="table"></div>
+              <!-- <table>
+                            <tr>
+                                <th>网银类型</th>
+                                <th>单笔限额(元)</th>
+                                <th>单日限额(元)</th>
+                            </tr>
+                            <tr>
+                                <td>中银快付</td>
+                                <td>1万</td>
+                                <td>2万</td>
+                            </tr>
+                            <tr>
+                                <td>USBKey证书认证、令牌+动态口令</td>
+                                <td>100万</td>
+                                <td>100万</td>
+                            </tr>
+                            <tr>
+                                <td>办理动态密码版个人网银（含文件证书），开通网上支付功能</td>
+                                <td>200万</td>
+                                <td>200万</td>
+                            </tr>
+                        </table> -->
+            </div>
+          </div>
+        </div>
+        <div id="testPart"></div>
+      </section>
+      <!-- 页脚 -->
+      <section id="JS_footer"></section>
+      <!-- 客服中心&返回顶部 -->
+      <section id="JS_goToTop"></section>
+    </div>
+    <div id="J_loading" class="page_loading"><i></i></div>
+  </body>
+</html>

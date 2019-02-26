@@ -1,0 +1,171 @@
+.mi-center {
+  background: #f2f2f2;
+}
+
+.clear {
+  clear: both;
+}
+
+.mi-center .top-assets {
+  background: #ff5637;
+  background-size: contain;
+  padding-top: 38px;
+  text-align: center;
+  position: relative;
+}
+
+.mi-center .top-assets .show-assets {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+}
+
+.mi-center .top-assets .show-assets span {
+  display: inline-block;
+  height: 100%;
+  margin-left: 9px;
+  width: 17px;
+}
+
+.mi-center .top-assets .show-assets img {
+  width: 100%;
+  display: inline-block;
+}
+
+.mi-center .top-assets .assets-title {
+  font-size: 14px;
+  line-height: 35px;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.mi-center .top-assets .assets-total {
+  font-size: 35px;
+  line-height: 47px;
+  color: #fff;
+}
+
+.mi-center .top-assets .assets-receive {
+  font-size: 14px;
+  line-height: 44px;
+  color: #fff;
+  padding-top: 20px;
+  padding-bottom: 25px;
+}
+
+.mi-center .top-assets .assets-receive p.receive-title {
+  font-size: 12px;
+  line-height: 12px;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.mi-center .top-assets .assets-receive p.receive-money {
+  font-size: 18px;
+  line-height: 32px;
+  color: #fff;
+}
+
+.mi-center .center-tab .assets-btn {
+  text-align: center;
+  background: #fff;
+  padding: 8px 0;
+}
+
+.mi-center .center-tab .assets-btn .mui-col-xs-6 {
+  font-size: 14px;
+  line-height: 41px;
+  color: #545454;
+  box-sizing: border-box;
+}
+
+.mi-center .center-tab .assets-btn .mui-col-xs-6 .icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  top: 6px;
+  padding-right: 7.4%;
+}
+
+.mi-center .center-tab .withdrawing {
+  padding-left: 3.7%;
+  padding-right: 3.7%;
+  background: #fff;
+}
+
+.mi-center .center-tab .withdrawing p {
+  font-size: 12px;
+  line-height: 41px;
+  color: #ff9c41;
+  padding-left: 5.5%;
+  position: relative;
+}
+
+.mi-center .center-tab .withdrawing p img.before {
+  display: block;
+  width: 11px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mi-center .center-tab .withdrawing p img.after {
+  display: block;
+  width: 8px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mi-center .center-tab .tab-line {
+  padding-left: 3.7%;
+  padding-right: 3.7%;
+  background: #fff;
+}
+
+.mi-center .center-tab .tab-line a {
+  display: block;
+}
+
+.mi-center .center-tab .tab-line a p {
+  font-size: 16px;
+  line-height: 55px;
+  color: #333;
+  padding-left: 8.9%;
+  position: relative;
+}
+
+.mi-center .center-tab .tab-line a p .icon {
+  width: 6.2%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mi-center .center-tab .tab-line a p span.data {
+  font-size: 14px;
+  color: #999;
+  float: right;
+  padding-right: 6.2%;
+}
+
+.mi-center .center-tab .tab-line a p span.data .label {
+  border: 0.02rem #ff5737 solid;
+  border-radius: 0.04rem;
+  font-size: 0.18rem;
+  color: #ff5737;
+  padding: 0.04rem 0.08rem;
+}
+
+.mi-center .center-tab .tab-line a p img {
+  display: block;
+  width: 8px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}

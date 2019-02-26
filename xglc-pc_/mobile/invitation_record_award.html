@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我的邀请记录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="email=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./css/mui.min.css">
+    <link rel="stylesheet" href="./css/invitation.css">
+</head>
+
+<body id="inv">
+    <div class="head-data">
+        <div class="center-box">
+            <h2 id="total"></h2>
+            <span class="text">累计奖励（元）</span>
+        </div>
+        <div class="double-box">
+            <div class="left">
+                <h5 id="person-num"></h5>
+                <span class="text">邀请好友（人）</span>
+            </div>
+            <div class="right">
+                <h5 id="be-closed"></h5>
+                <span class="text">待收奖励（元）</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="main-data">
+        <div class="title-box">
+            <div class="left"><a href="./invitation_record_friends.html">我的好友</a></div>
+            <div class="right"><a href="javascript:;" class="active">奖励记录</a></div>
+        </div>
+        <div class="right-box">
+            <div class="empty">
+                <p>您还未有奖励记录，赶快邀请好友得奖励吧~</p>
+                <!-- <button id="doFriends" type="button" class="mui-btn mui-btn-outlined">立即邀请</button> -->
+            </div>
+            <div class="data-list">
+                <ul id="jiangli"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="foot-financial">
+        <a href="./financial_planner.html"><img src="./images/financial.png"></a>
+    </div>
+    <div class="foot-position">
+        <a id="footFriends" href="javascript:;"><img src="./images/friends_1.png">分享邀请</a>
+        <a id="f2f" href="javascript:;"><img src="./images/friends_2.png">当面邀请</a>
+    </div>
+    <div id="face-2-face">
+        <div class="block show"></div>
+        <div class="window show">
+            <div class="out">
+                <p>请朋友扫描二维码</p>
+            </div>
+            <div class="main-win">
+                <div class="title">
+                    <img src="./images/f2f_peo.png">
+                    <p class="phone-num" id="f2f-phone"></p>
+                    <p class="txt">邀请小伙伴一起赚钱享福利</p>
+                </div>
+                <img src="./images/f2f_bg.png" class="bg">
+                <div class="code">
+                    <img id="f2f-code" src="">
+                </div>
+            </div>
+            <div id="f2f-clos">
+                <img src="./images/f2f_clos.png">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+    <script type="text/javascript" src="./js/3DES.js"></script>
+    <script type="text/javascript" src="./js/hmac-sha256.js"></script>
+    <script type="text/javascript" src="./js/enc-base64-min.js"></script>
+    <script type="text/javascript" src="./js/base.js"></script>
+    <script type="text/javascript" src="./js/mui.min.js"></script>
+    <script>
+    $(function() {
+
+        //面对面扫码
+
+        var fTip = $("#f2f")
+        var fClos = $("#f2f-clos img")
+        var fBomb = $("#face-2-face")
+        var fBlock = $("#face-2-face .block")
+        var fWin = $("#face-2-face .window")
+        fTip.click(function() {
+            fBomb.addClass("show")
+            fBlock.addClass("show")
+            fWin.addClass("show")
+        })
+        fClos.click(function() {
+            fBlock.addClass("clos")
+            fWin.addClass("clos")
+            setTimeout(function() {
+                fBomb.removeClass("show")
+                fBlock.removeClass("show clos")
+                fWin.removeClass("show clos")
+            }, 250)
+        })
+
+        $("#doFriends").on("click", function() {
+            location.href = "https://www.sogou.com/"
+        })
+
+        $("#footFriends").on('click', function() {
+            location.href = "https://www.sogou.com/"
+        })
+
+        //获取token
+        /*function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
+            var r = window.location.search.substr(1).match(reg)
+            if (r != null) return decodeURI(r[2])
+            return null;
+        }
+        var token = GetQueryString("app")
+        if (token == null) {
+            token = localStorage.getItem("token")
+        }*/
+        base.inLocalStorage()
+        var token = localStorage.getItem("token")
+
+        //判断是否理财师
+        base.getUserType()
+        var userType = localStorage.getItem("userType")
+        //获取二维码
+        $.ajax({
+            type: "POST",
+            headers: base.ajaxHeadersWithToken({}),
+            dataType: 'json',
+            async: true,
+            data: data,
+            url: base.apiStr + "/user/inviteFriendCode",
+            success: function(data) {
+                if (data.error == "操作成功!") {
+                    var result = data.result
+                    var code = $("#f2f-code")
+                    var phone = $("#f2f-phone")
+                    code.attr({
+                        src: "data:img/jpg;base64," + result.base64Str
+                    });
+                    phone.text(result.code.replace(/^(\d{3})\d{4}(\d+)/, "$1****$2"))
+                } else {
+                    mui.alert(data.error)
+                }
+            }
+        })
+
+        //ajax开始
+/*        var dataJson = {
+            "clientType": base.dataWithoutToken.clientType,
+            "clientVersion": base.dataWithoutToken.clientVersion,
+            "timeStamp": base.dataWithoutToken.timeStamp,
+            "token": token,
+        }
+*/
+        var data = {
+            "token": token
+        }
+        $.ajax({
+            type: "POST",
+            headers: base.ajaxHeadersWithToken({}),
+            dataType: 'json',
+            async: false,
+            data: data,
+            url: base.apiStr + "/activity/invite/inviTotal",
+            success: function(data) {
+                if (data.error == "操作成功!") {
+
+                    //头部统计数据
+                    //邀请好友人数
+                    var inviFriCount = data.result.summaryEntity.inviFriCount
+                    //累计奖励
+                    var redmoneySum = data.result.summaryEntity.redmoneySum
+                    //待收
+                    var waitredmoneySum = data.result.summaryEntity.waitredmoneySum
+                    $("h2#total").html(redmoneySum)
+                    $("h5#person-num").html(inviFriCount)
+                    $("h5#be-closed").html(waitredmoneySum)
+                    //奖励记录
+                    //lenth
+                    var redmoneyListEntities = data.result.redmoneyListEntities.length
+
+                    if (redmoneyListEntities == 0) {
+                        $(".empty").addClass("show")
+                        if (userType != 2) {
+                            $(".foot-financial").addClass("show")
+                        }
+                    } else {
+                        $(".data-list").addClass("show")
+
+                        for (var i = 0; i <= redmoneyListEntities; i++) {
+                            //奖励金额
+                            var redmoney = data.result.redmoneyListEntities[i].redmoney
+                            //奖励类型
+                            var rewardType = data.result.redmoneyListEntities[i].rewardType
+                            //奖励时间
+                            var updateTime = data.result.redmoneyListEntities[i].updateTime
+
+                            $("ul#jiangli").append("<li><span class='list-date'>" + updateTime + "</span><span class='list-type'>" + rewardType + "</span><span class='list-amount'>&yen;" + redmoney + "</span></li>")
+                        }
+                    }
+                } else {
+                    mui.alert(data.error)
+                }
+            }
+        })
+    })
+    </script>
+</body>
+
+</html>

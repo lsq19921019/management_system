@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>我的账户_充值成功</title>
+		<!--#include virtual="_inc/_inc_import_css.html" -->
+		<!--#include virtual="_inc/_inc_import_js.html" -->
+	</head>
+
+	<body>
+
+		<!--#include virtual="_inc/_inc_import_header.html" -->
+
+		<!--内容部分-->
+		<div class="myAccount_rechargeSucc_content">
+			<div>
+				<div>充值成功！</div>
+				<div>
+					<font id="seconds">3</font>秒后自动跳转- 我的账户</div>
+				<div></div>
+			</div>
+		</div>
+
+		<!--#include virtual="_inc/_inc_import_footer.html" -->
+
+	</body>
+	<script>
+		$(function() {
+			var i = 3;
+			var time = setInterval(function() {
+				i--;
+				$('font#seconds').html(i);
+				if(i == 0) {
+					clearInterval(time);
+					location.href = "myAccount.html";
+				}
+			}, 1000);
+		});
+	</script>
+
+</html>

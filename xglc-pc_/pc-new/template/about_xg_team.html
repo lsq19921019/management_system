@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>信息披露</title>
+    <!--#include virtual="_inc/_inc_import_css.html" -->
+    <!--#include virtual="_inc/_inc_import_js.html" -->
+</head>
+
+<body>
+    <!--#include virtual="_inc/_inc_import_header.html" -->
+    <!--内容部分-->
+    <div class="inf-dis">
+        <div class="content">
+            <div class="left-box about_xg">
+                <div class="head-title">
+                    <h2>管理团队</h2>
+                </div>
+                <div class="center-piece">
+                    <div class="piece">
+                        <h4>管理团队</h4>
+                        <div class="person">
+                            <img src="../img/about_xg_team_02.jpg">
+                            <div class="right">
+                                <h5>周翔<span>总裁</span></h5>
+                                <p>曾任职于中国工商银行深圳分行及永亨银行（中国）总行资产管理部门，担任资产管理业务主负责人，超10年资产管理行业经验，精通本币/外汇、贵金属、大宗商品、债券及股票等领域，具有丰富从业经验和深入金融资产研究。
+                                    <br>曾管理超过300亿资产，单只产品规模超30亿。服务对象包括华为、富士康、中广核、大鹏液化、招商局等大型企业，所在团队多次获得深圳市金融创新奖项。
+                                    <br>现任小鸽理财总裁，现全面负责公司管理。</p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="person">
+                            <img src="../img/about_xg_team_03.jpg">
+                            <div class="right">
+                                <h5>李坚华<span>首席风控官</span></h5>
+                                <p>信贷风险高级管理人才 资深风控专家。
+                                    <br>曾先后就职于中国工商银行金融信贷部门、中国工商银行深圳沙井支行行长助理等核心岗位，具有10余年金融信贷的从业经营、项目管理经验，熟知金融行业各项流程与监管政策， 2007年7月至2015年在中国工商银行金融信贷部门任职，期间累计成功发放个人贷款50亿元。
+                                    <br>现任小鸽理财风控首席风控官，统筹业务风险管控。</p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="person">
+                            <img src="../img/about_xg_team_05.jpg">
+                            <div class="right">
+                                <h5>彭磊<span>市场营销部总监</span></h5>
+                                <p>曾任职于中国工商银行深圳市分行机构金融资产托管业务负责人，近10年机构金融、资产托管、资产管理经验，历任券商理财、信托计划、保险资产、公募&私募基金、互联网等行业高层管理岗位，运营资产规模近万亿。
+                                    <br>在证券投资结构化配资、股票质押式回购、资产证券化、定向增发、委外投资等领域有丰富的项目经验，深谙资本运作规律和企业融资需求及发展风险，累计经手资金规模过千亿，曾操盘招商银行信贷资产证券化、招商银行大股东增持、招商蛇口工业区资产证券化、万科事业合伙人计划、中广核集团企业年金等重大项目。</p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="person">
+                            <img src="../img/about_xg_team_04.jpg">
+                            <div class="right">
+                                <h5>陈波<span>互联网部总监</span></h5>
+                                <p>知名互联网金融平台产品负责人，互联网金融资深产品人。
+                                    <br>曾就职于某知名一线平台，从业四年期间，平台交易额突破200亿，用户500万，担任平台用户运营、银行存管、产品优化等大型项目核心负责人，在产品理念、运营管理及客户体验领域经验丰富。</p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 侧边栏 -->
+            <!--#include virtual="_inc/_inc_import_right_box.html" -->
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <!--#include virtual="_inc/_inc_import_footer.html" -->
+    <script type="text/javascript">
+    $(function() {
+        $(".right-box ul li").eq(3).addClass('active')
+        $(".arch .arch-out").on('mouseenter', function() {
+            $(this).children(".wind").addClass('show')
+        })
+        $(".arch .arch-out").on('mouseleave', function() {
+            $(this).children(".wind").removeClass('show')
+        })
+    })
+    </script>
+</body>
+
+</html>

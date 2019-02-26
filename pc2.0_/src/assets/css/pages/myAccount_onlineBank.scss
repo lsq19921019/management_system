@@ -1,0 +1,261 @@
+div.account_bankPage_content {
+    width: 100%;
+    /* height: 1034px; */
+    background: #f5f5f5;
+}
+
+div.account_bankPage_content>div:nth-child(1) {
+    position: relative;
+    width: 1205px;
+    height: 95px;
+    margin: 0 auto;
+    top: 15px;
+    background: #fff;
+}
+
+div.account_bankPage_content>div:nth-child(1)>span {
+    display: inline;
+    float: left;
+    height: 95px;
+}
+
+div.account_bankPage_content>div:nth-child(1)>span:nth-child(1) {
+    display: block;
+    width: 160px;
+    background: url('../../images/june_promotion/bank_icon_shanghaiBank.png')72px center no-repeat;
+    background-size: auto 76%;
+}
+
+div.account_bankPage_content>div:nth-child(1)>span:nth-child(2) {
+    padding-left: 20px;
+    color: #555;
+    font-size: 22px;
+    line-height: 95px;
+}
+
+div.account_bankPage_content>div:nth-child(1)>span:nth-child(3) {
+    float: right;
+    padding-right: 48px;
+    color: #555;
+    font-size: 22px;
+    line-height: 95px;
+}
+
+div.account_bankPage_content>div:nth-child(1)>span:nth-child(3)>font {
+    color: #ff5637;
+}
+
+div.account_bankPage_content>div:nth-child(2) {
+    /* position: relative; */
+    width: 1205px;
+    /*height: 884px;*/
+    background: #fff;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    /* top: 55px; */
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(1)>p {
+    padding: 32px 52px 0 178px;
+    font-size: 22px;
+    color: #5695c4;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(1)>p>font:nth-child(2) {
+    float: right;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(2),
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(3) {
+    padding: 0 46px;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(2)>div:nth-child(1),
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(3)>div:nth-child(1) {
+    float: left;
+    font-size: 24px;
+    color: #999;
+    width: 140px;
+    padding-top: 40px;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(2)>div:nth-child(2),
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(3)>div:nth-child(2) {
+    float: left;
+    width: 970px;
+    height: 100%;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>span {
+    position: relative;
+    float: left;
+    margin: 18px 10px 0;
+    display: block;
+    width: 220px;
+    height: 64px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    line-height: 64px;
+    color: #999;
+    font-size: 22px;
+    cursor: pointer;
+    img{
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+    }
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>span.active {
+    border: 1px solid #ff5637;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>span>font {
+    padding-left: 68px;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>span:last-child {
+    border: 0;
+    text-align: left;
+    color: #5695c4;
+    line-height: 100px;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>span:last-child>font {
+    padding-left: 0;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(2)>div:nth-child(2)>span>img {
+    position: absolute;
+    left: 18px;
+    top: 13px;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(3)>div:nth-child(2)>div:nth-child(1) {
+    margin-top: 40px;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(3)>div:nth-child(2)>div:nth-child(1)>input {
+    width: 254px;
+    height: 44px;
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding-left: 36px;
+    font-size: 18px;
+}
+
+/* div.account_bankPage_content>div:nth-child(2)>div:nth-child(3)>div:nth-child(2)>div:nth-child(2) {
+    margin-top: 40px;
+} */
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(3)>div:nth-child(2)>div:nth-child(2)>button {
+    background: #ff5637;
+    color: #fff;
+    width: 220px;
+    height: 50px;
+    border: 0;
+    font-size: 22px;
+    padding: 0;
+    border-radius: 8px;
+}
+
+div.account_bankPage_content>div:nth-child(2)>div:nth-child(3)>div:nth-child(2)>div:nth-child(2)>button:active {
+    background: #cc452c;
+}
+
+div.account_bankPage_content .limit {
+    padding: 0 230px 0 176px;
+}
+
+div.account_bankPage_content .limit .title {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 62px;
+    color: #033333;
+    padding-top: 17px;
+}
+
+div.account_bankPage_content .limit table {
+    border-collapse: collapse;
+    margin-top: 0;
+    word-break: break-all;
+}
+
+div.account_bankPage_content .limit table tr {
+    border: 1px solid #a9a9a9;
+    background: none;
+}
+
+div.account_bankPage_content .limit table tr th {
+    border: 1px solid #a9a9a9;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: normal;
+    background: #dcdcdc;
+    padding: 10px 0;
+}
+
+div.account_bankPage_content .limit table tr th:nth-child(1),
+div.account_bankPage_content .limit table tr td:nth-child(1) {
+    width: 262px;
+}
+
+div.account_bankPage_content .limit table tr th:nth-child(2),
+div.account_bankPage_content .limit table tr td:nth-child(2) {
+    width: 263px;
+}
+
+div.account_bankPage_content .limit table tr th:nth-child(3),
+div.account_bankPage_content .limit table tr td:nth-child(3) {
+    width: 264px;
+}
+
+div.account_bankPage_content .limit table tr td {
+    border: 1px solid #a9a9a9;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 10px 0;
+}
+
+div.account_bankPage_content #moreBank {
+    position: relative;
+    float: left;
+    margin: 18px 10px 0;
+    display: none;
+    width: 220px;
+    height: 64px;
+    border: 1px solid #999;
+    text-align: center;
+    border-radius: 4px;
+    line-height: 64px;
+    color: #999;
+    font-size: 22px;
+    cursor: pointer;
+    color: #5695c4;
+}
+
+div.account_bankPage_content #moreBank .arr {
+    display: inline-block;
+    transform: rotate(90deg);
+    position: relative;
+    right: -8px;
+    top: 3px;
+}
+
+/* div.account_bankPage_content #comBank font {
+    position: relative;
+}
+
+div.account_bankPage_content #comBank font:after {
+    content: "";
+    background: url('../../images/june_promotion/bank_icon_comTip.png') no-repeat center;
+    background-size: contain;
+    position: absolute;
+    right: -27px;
+    top: -4px;
+    height: 14px;
+    width: 24px;
+} */

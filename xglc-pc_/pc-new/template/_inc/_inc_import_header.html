@@ -1,0 +1,115 @@
+<!--头部-->
+<div class="headerPart">
+	<div>
+		<div>
+			<ul id="topNavBar">
+				<li data-href="c.html" id="loginInfo">大额充值</li>
+				<li data-href="newPeopleGuide.html">新手指引</li>
+				<li data-href="about_xg_company.html">关于小鸽</li>
+			</ul>
+		</div>
+		<div>
+			<div id="logo" class="logoPart"></div>
+			<div class="logoPart">2018胡润新金融最具潜力企业</div>
+			<img id="gifImg" src="" style="position: relative;top: -9px;" alt="" />
+		</div>
+		<div>
+			<ul id="navBar">
+				<li data-href="index.html">首页</li>
+				<li id="infoList" data-href="about_xg_company.html">
+					<div>信息披露<!-- <span class="triangle"></span> --></div>
+					<!-- <ul class="boxPart" data-flag="0">
+						<li data-href="bankCustody.html">银行存管<span></span></li>
+						<li data-href="safe.html">安全保障</li>
+					</ul> -->
+				</li>
+				<li data-href="myAccount.html">我的账户</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		Utils.checkLogin();
+		if(!sessionStorage.getItem('showGif')){
+			sessionStorage.setItem('showGif' , '1');
+			//gifFunc();
+		}
+	});
+	$('ul#topNavBar>li').on('click', function() {
+		var self = this;
+		if($(self).attr('data-href')) {
+			Web.go($(self).attr('data-href'));
+		}
+	});
+
+	$('ul#navBar>li').on('click', function() {
+		var self = this;
+		$(self).siblings().removeClass('active');
+		$(self).addClass('active');
+		if($(self).attr('data-href')) {
+			if($(self).attr('data-href').indexOf('myAccount.html') > -1) {
+				if(Utils.checkLogin()) {
+					Web.go($(self).attr('data-href'));
+				} else {
+					Web.go('index_login.html');
+				}
+			} else {
+				Web.go($(self).attr('data-href'));
+			}
+		}
+	});
+
+	$('ul#navBar>li').mouseenter(function() {
+		var self = this;
+		if(!$(self).hasClass("active")) {
+			$(self).addClass('active');
+			$(self).mouseleave(function() {
+				$(self).removeClass('active');
+			});
+		}
+	});
+
+	$('#logo').on('click', function() {
+		Web.go('index.html');
+	});
+
+	$('ul.boxPart>li').on('click', function(ev) {
+		var self = this;
+		var ev = event || window.event;
+		ev.stopPropagation();
+		if($(self).attr('data-href')) {
+			Web.go($(self).attr('data-href'));
+		}
+
+	});
+
+	$('li#infoList').mouseenter(function() {
+		//$('span.triangle').addClass('changeDirection');
+		// $('ul.boxPart').show();
+	});
+
+	$('li#infoList').mouseleave(function() {
+		//$('span.triangle').removeClass('changeDirection');
+		//$('ul.boxPart>li').removeClass('active');
+		//$('ul.boxPart').hide();
+	});
+
+	$('ul.boxPart>li').mouseenter(function() {
+		if(!$(this).hasClass('active')) {
+			$(this).siblings().removeClass('active');
+			$(this).addClass('active');
+		}
+	});
+
+	function gifFunc() {
+		$('div.logoPart').hide();
+		$('img#gifImg').attr('src','../img/小鸽理财logo-gif.gif');
+		setTimeout(function() {
+			$('img#gifImg').fadeOut(function() {
+				$('div.logoPart').fadeIn();
+			});
+		}, 1000);
+	}
+</script>

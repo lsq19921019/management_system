@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="email=no">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="./css/mui.min.css" />
+<link rel="stylesheet" type="text/css" href="./css/help.css" />
+<title>帮助中心</title>
+</head>
+<body>
+ 
+<script type="text/javascript" src="./js/jquery.min.js" ></script>
+<script type="text/javascript" src="./js/common.js" ></script>
+<script type="text/javascript" src="./js/hmac-sha256.js" ></script>
+<script type="text/javascript" src="./js/enc-base64-min.js" ></script>
+<script type="text/javascript" src="./js/base.js" ></script>
+<script type="text/javascript" src="./js/mui.min.js" ></script>
+<script>
+$(function(){
+	var moduleIdN = GetQueryString("id");
+	var urlN=base.apiStr+"/help/interlocution";
+	var signJson={
+	    "clientType": base.dataWithoutToken.clientType,
+		"clientVersion": base.dataWithoutToken.clientVersion,
+		"timeStamp": base.dataWithoutToken.timeStamp,
+		"moduleId":moduleIdN
+	}
+    $.ajax({ 
+		type:"POST",
+		headers: {
+					"clientType": base.dataWithoutToken.clientType,
+					"clientVersion": base.dataWithoutToken.clientVersion,
+					"timeStamp": base.dataWithoutToken.timeStamp,
+					"sign": base.getPostStrWithoutToken(signJson),
+					"imei": base.dataWithoutToken.timeStamp
+				},
+        dataType: 'json',
+		async: false,
+		data:{"moduleId":moduleIdN},
+		url: urlN, 
+		success: function(data){
+              if(data.status=="0"){
+			      var dataArr=data.result.interlocutions;
+				  for(var i=0;i<dataArr.length;i++){
+					  var ss='<div class="main-box"><div class="clear"></div><div class="tit"><span class="ask"></span><p>'+dataArr[i].question+'</p></div><div class="answer">'+dataArr[i].answer+'</div></div>'
+
+				      $("body").append(ss);
+				  }
+			  }else{
+			     mui.alert(base.errorStr);
+			  }; 
+          }
+		});
+})
+</script>
+</body>
+</html>

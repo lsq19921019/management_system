@@ -1,0 +1,30 @@
+.notice {
+  background: url(/static/img/mobile_risk_warning.jpg) left -50% top -50%;
+  background-size: 50%;
+}
+.notice .in-padding {
+  padding-left: 5.33%;
+  padding-right: 5.33%;
+}
+.notice .title {
+  font-size: 0.28rem;
+  color: #212121;
+  line-height: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+.notice .text {
+  font-size: 0.22rem;
+  line-height: 23px;
+  color: #212121;
+}
+.notice .blod {
+  font-weight: bold;
+}
+.notice .footer {
+  font-size: 0.22rem;
+  line-height: 23px;
+  text-align: right;
+  color: #212121;
+  padding-bottom: 20px;
+}

@@ -1,0 +1,232 @@
+.update .top-img {
+  padding-top: 38px;
+}
+
+.update .up-title {
+  padding-top: 18px;
+}
+
+.update .up-title h2 {
+  font-size: 17px;
+  color: #333;
+  line-height: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.update .up-title h2:before {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 6px;
+  background: #333;
+  position: absolute;
+  left: 28.8%;
+  top: 14px;
+}
+
+.update .up-title h2:after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 6px;
+  background: #333;
+  position: absolute;
+  right: 28.8%;
+  top: 14px;
+}
+
+.update .up-title h5 {
+  font-size: 14px;
+  color: #333;
+  line-height: 28px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.update .top-img img {
+  display: block;
+  width: 55.2%;
+  margin: 0 auto;
+}
+
+.update .up-text {
+  padding-top: 35px;
+  width: 74%;
+  margin: 0 auto;
+}
+
+.update .list-line {
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.update .list-line:before {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 4px;
+  background: #ff5637;
+  border-radius: 50%;
+  position: absolute;
+  top: 9px;
+  left: -11px;
+}
+
+.update .up-text .list-line p.ma {
+  font-size: 14px;
+  line-height: 22px;
+  color: #333;
+}
+
+.update .up-text .list-line p.se {
+  font-size: 14px;
+  line-height: 22px;
+  color: #999;
+}
+
+.update .btn-line {
+  padding-top: 20px;
+}
+
+.update .btn-line button {
+  display: block;
+  width: 86.6%;
+  margin: 0 auto;
+  background: #ff5637;
+  color: #fff;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+}
+
+.update .footer-line {
+  padding-top: 74px;
+  padding-bottom: 35px;
+}
+
+.update .footer-line p {
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  color: #aaa;
+}
+
+.update #qrcode {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.update #qrcode .block {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+.update #qrcode .window {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+
+.update #qrcode .window .way-1 {
+  width: 71.2%;
+  margin: 0 auto;
+  padding-top: 6px;
+  padding-bottom: 28px;
+}
+
+.update #qrcode .window .way-1 h3 {
+  font-size: 17px;
+  line-height: 68px;
+  color: #ff5637;
+}
+
+.update #qrcode .window .way-1 img {
+  display: block;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 4px;
+  margin-bottom: 23px;
+}
+
+.update #qrcode .window .way-1 p {
+  font-size: 14px;
+  line-height: 24px;
+  color: #666;
+}
+
+.update #qrcode .window .way-2 {
+  width: 78.2%;
+  margin: 0 auto;
+  padding-top: 6px;
+  border-top: 1px solid #ddd;
+}
+
+.update #qrcode .window .way-2 h3 {
+  font-size: 17px;
+  line-height: 68px;
+  color: #ff5637;
+}
+
+.update #qrcode .window .way-2 p {
+  font-size: 14px;
+  line-height: 25px;
+  color: #666;
+}
+
+.update #qrcode .window .way-2 p .copy-btn {
+  border: 1px solid #ff5637;
+  color: #ff5637;
+  font-size: 12px;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.update #qrcode .window #qrcode-clos {
+  height: 45px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 24px;
+  text-align: center;
+}
+
+.update #qrcode .window #qrcode-clos img {
+  height: 100%;
+}
+
+.qrcode-enter-active,
+.qrcode-leave-active {
+  transition: opacity .3s;
+}
+
+.qrcode-enter,
+.qrcode-leave-to {
+  opacity: 0;
+}
+
+
+/* @media screen and (min-width: 320px) and (max-width: 374px) {
+  .update #qrcode .window #qrcode-clos {
+    bottom: 24px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 413px) {
+  .update #qrcode .window #qrcode-clos {
+    bottom: 24px;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  .update #qrcode .window #qrcode-clos {
+    bottom: 24px;
+  }
+} */

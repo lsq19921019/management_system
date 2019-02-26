@@ -1,0 +1,97 @@
+.new-pri {
+  background: #fff;
+}
+
+.new-pri .top-img img {
+  width: 100%;
+  display: block;
+}
+
+.new-pri .pri-text .title {
+  font-size: 15px;
+  line-height: 42px;
+  color: #545454;
+  padding-top: 6px;
+}
+
+.new-pri .in-padding {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.new-pri .pri-1,
+.new-pri .pri-2 {
+  font-size: 15px;
+  line-height: 22px;
+  padding: 0 7.24%;
+  position: relative;
+  padding-bottom: 14px;
+}
+
+.new-pri .pri-1:before {
+  content: "";
+  width: 12px;
+  height: 13px;
+  background: url(/static/img/mobile_novice_privilege_02.jpg) center no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+
+.new-pri .pri-2:before {
+  content: "";
+  width: 11px;
+  height: 12px;
+  background: url(/static/img/mobile_novice_privilege_03.jpg) center no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+
+.new-pri .pri-1 p:nth-child(1),
+.new-pri .pri-2 p:nth-child(1) {
+  color: #545454;
+}
+
+.new-pri .pri-1 p:nth-child(2),
+.new-pri .pri-2 p:nth-child(2) {
+  color: #999;
+}
+
+.new-pri .btn {
+  display: block;
+  outline: none;
+  width: 94.2%;
+  margin: 43px auto 0;
+  height: 44px;
+  border: none;
+  border-radius: 22px;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(left, #fe7229, #ff5637);
+}
+
+.new-pri .btn.locked {
+  background: #ff8069;
+}
+
+.new-pri .surplus {
+  font-size: 13px;
+  line-height: 42px;
+  text-align: center;
+  color: #a3a3a3;
+}
+
+.new-pri .surplus span {
+  color: #ff5637;
+}
+
+.new-pri .footer p {
+  padding-top: 100px;
+  padding-bottom: 30px;
+  font-size: 14px;
+  text-align: center;
+  color: #999;
+}

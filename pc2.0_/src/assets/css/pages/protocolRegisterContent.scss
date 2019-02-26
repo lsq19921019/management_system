@@ -1,0 +1,60 @@
+div.protocolRegisterContent {
+    width: 100%;
+    padding-top: 40px;
+    background: #f5f5f5;
+}
+
+
+div.protocolRegisterContent>div:nth-child(1) {
+    width: 1205px;
+    margin: 0 auto;
+    background: url(../../images/june_promotion/bgWaterMark.png) center center repeat;
+    background-size: 300px auto;
+}
+
+div.protocolRegisterContent>div:nth-child(1)>div:nth-child(1) {
+    width: 100%;
+    height: 160px;
+    background: url(../../images/june_promotion/protocolTopBg.png)top center no-repeat;
+    background-size: 100% auto;
+}
+
+div.protocolRegisterContent>div:nth-child(1)>div:nth-child(2) {
+    padding: 40px 40px 60px;
+}
+
+
+
+div.protocolRegisterContent>div:nth-child(1)>div:nth-child(2)>div:nth-child(1) {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    color: #555;
+}
+
+div.protocolRegisterContent>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>span {
+    position: absolute;
+    padding: 10px 14px;
+    font-size: 18px;
+    color: #fff;
+    left: 0;
+    top: 0;
+    background: #ea553a;
+    border-radius: 4px;
+    font-weight: normal;
+    cursor: pointer;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, .2);
+}
+
+
+div.protocolRegisterContent>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div {
+    padding-top: 60px;
+}
+
+div.protocolRegisterContent>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div>p {
+    font-size: 20px;
+    line-height: 40px;
+    color: #555;
+}

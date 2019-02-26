@@ -1,0 +1,46 @@
+.wrap{
+    .footer {
+        background: #000;
+        .inner {
+            width: 1200px;
+            margin: auto;
+            padding-bottom: 50px;
+            ul {
+                float: left;
+                width: 156px;
+                padding-top: 40px;
+                li {
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: #fff;
+                    padding: 10px 0;
+                    a {
+                        color: #fff;
+                    }
+                }
+                li.title {
+                    font-size: 20px;
+                    line-height: 28px;
+                }
+          }
+          .contact_inf {
+            float: left;
+            padding-left: 150px;
+            padding-top: 64px;
+            p {
+              font-size: 16px;
+              line-height: 22px;
+              color: #fff;
+              padding: 10px 0;
+            }
+          }
+        }
+        .icp {
+            background: #1a1a1a;
+            font-size: 14;
+            line-height: 60px;
+            color: #fff;
+            text-align: center;
+        }
+    }
+}

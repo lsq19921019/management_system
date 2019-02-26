@@ -1,0 +1,133 @@
+.recharge .inner-card {
+  margin: 0 4%;
+  padding-top: 0.3rem;
+}
+
+.recharge .inner-card .top_tip {
+  padding-bottom: 0.3rem;
+}
+
+.recharge .inner-card .top_tip p {
+  width: 6.53rem;
+  float: right;
+  font-size: 0.24rem;
+  line-height: 0.3rem;
+  color: #aaa;
+}
+
+.recharge .inner-card .top_tip p span {
+  color: #ff9c1c;
+}
+
+.recharge .inner-card .top_tip img {
+  width: 0.24rem;
+  float: left;
+  position: relative;
+  top: 0.04rem;
+}
+
+.recharge .inner-card .up-card {
+  background: #fbfbfb;
+  padding: 10px 0 11px 24.3%;
+  position: relative;
+}
+
+.recharge .inner-card .up-card .card-type {
+  font-size: 14px;
+  color: #333;
+  position: absolute;
+  left: 8.7%;
+  top: 13px;
+}
+
+.recharge .inner-card .bank-logo-name {
+  font-size: 15px;
+  line-height: 28px;
+  color: #000;
+}
+
+.recharge .inner-card .bank-logo-name img {
+  float: left;
+  width: 22px;
+  margin-right: 7px;
+  border-radius: 50%;
+  position: relative;
+  top: 3px;
+}
+
+.recharge .inner-card .quota {
+  font-size: 14px;
+  line-height: 27px;
+  color: #666;
+  padding-left: 28px;
+}
+
+.recharge .inner-card .inner-recharge {
+  background: #fff;
+  padding: 10px 9% 30px;
+}
+
+.recharge .inner-card .inner-recharge .title {
+  font-size: 14px;
+  color: #333;
+  line-height: 35px;
+}
+
+.recharge .inner-recharge .recharge-input {
+  margin-bottom: 30px;
+}
+
+.recharge .inner-recharge .recharge-input span {
+  display: inline-block;
+  width: 10%;
+  font-size: 36px;
+  line-height: 68px;
+  font-weight: bold;
+  color: #333;
+}
+
+.recharge .inner-recharge .recharge-input input {
+  display: inline-block;
+  width: 88%;
+  height: 68px;
+  font-size: 36px;
+  line-height: 42px;
+  color: #111;
+  border: none;
+  outline: none;
+}
+
+.recharge button {
+  display: block;
+  font-size: 15px;
+  color: #fff;
+  height: 42px;
+  background: linear-gradient(to right, #fd794b, #ff5637);
+  border-radius: 21px;
+  width: 100%;
+  border: none;
+}
+
+.recharge .large-amount {
+  text-align: center;
+}
+
+.recharge .large-amount a {
+  color: #ff9c1c;
+  font-size: 14px;
+  line-height: 53px;
+}
+
+.recharge .footer_recording {
+  position: fixed;
+  bottom: 0.52rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.recharge .footer_recording a {
+  font-size: 0.28rem;
+  line-height: 0.28rem;
+  color: #ff9c1c;
+}

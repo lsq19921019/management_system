@@ -1,0 +1,145 @@
+.reg-auth {
+  background: #fff;
+  padding-bottom: 33px;
+}
+
+.clear:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.reg-auth .auth-line {
+  padding-left: 4%;
+  background: #fff;
+}
+
+.reg-auth .auth-line .in-padding {
+  border-bottom: 1px solid #ede9e9;
+  padding-right: 4.1%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.reg-auth .auth-line .left-img {
+  float: left;
+  width: 20.6%;
+}
+
+.reg-auth .auth-line .left-img .img-broder {
+  border: 1px solid #eee;
+  box-shadow: 0 0 4px rgba(153, 153, 153, .15);
+  position: relative;
+}
+
+.reg-auth .auth-line .left-img .img-broder img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.reg-auth .auth-line .right-text {
+  float: right;
+  width: 79.4%;
+  box-sizing: border-box;
+  padding-left: 18px;
+}
+
+.reg-auth .auth-line .right-text h5 {
+  font-size: 15px;
+  line-height: 26px;
+  color: #000;
+  font-weight: normal;
+  padding-bottom: 6px;
+}
+
+.reg-auth .auth-line .right-text p {
+  font-size: 13px;
+  line-height: 21px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+
+
+/*----------------机构弹窗-----------------*/
+
+.reg-auth #auth-alert {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.reg-auth #auth-alert .block {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+.reg-auth #auth-alert .window {
+  position: absolute;
+  background: #fff;
+  top: 8.3%;
+  left: 50%;
+  width: 89.3%;
+  height: 73.8%;
+  margin-left: -44.6%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reg-auth #auth-alert .window .inner-scroll img {
+  width: 25%;
+  border: 1px solid #eee;
+  box-shadow: 0 0 4px rgba(153, 153, 153, .15);
+  display: block;
+  margin: 0 auto;
+}
+
+.reg-auth #auth-alert .window .inner-scroll .title {
+  font-size: 18px;
+  line-height: 49px;
+  text-align: center;
+  color: #000;
+  font-weight: normal;
+  padding-bottom: 21px;
+}
+
+.reg-auth #auth-alert .window .inner-scroll p {
+  font-size: 14px;
+  line-height: 26px;
+  color: #404451;
+  text-indent: 2em;
+}
+
+.reg-auth #auth-alert .auth-clos {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  width: 100%;
+  height: 46px;
+}
+
+.reg-auth #auth-alert .auth-clos img {
+  display: block;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.auth-alert-enter-active,
+.auth-alert-leave-active {
+  transition: opacity .3s;
+}
+
+.auth-alert-enter,
+.auth-alert-leave-to {
+  opacity: 0;
+}
+

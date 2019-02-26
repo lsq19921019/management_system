@@ -1,0 +1,50 @@
+.setting .tab-line {
+  background: #fff;
+  padding-left: 4%;
+}
+
+.setting .tab-line .border-box {
+  padding-right: 4%;
+}
+
+.setting .tab-line .border-box .left {
+  float: left;
+}
+
+.setting .tab-line .border-box .left span {
+  font-size: 15px;
+  color: #333;
+  line-height: 55px;
+}
+
+.setting .tab-line .border-box .right {
+  float: right;
+  height: 55px;
+  position: relative;
+}
+
+.setting .tab-line .border-box .right img {
+  display: block;
+  width: 8px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.setting .btn-line {
+  padding-top: 28px;
+}
+
+.setting .btn-line button {
+  display: block;
+  width: 91.5%;
+  height: 44px;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  margin: 0 auto;
+  background: #ff5637;
+  box-shadow: 0 0 10px rgba(255, 86, 55, 0.5);
+  border-radius: 22px;
+}

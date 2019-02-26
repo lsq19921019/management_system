@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>登陆</title>
+		<!--#include virtual="_inc/_inc_import_css.html" -->
+		<!--#include virtual="_inc/_inc_import_js.html" -->
+	</head>
+
+	<body>
+		<!--登录页面头部-->
+		<div class="login_headerPart">
+			<div>
+				<div onclick="window.location.href='index.html'"></div>
+				<div>登录</div>
+			</div>
+		</div>
+
+		<!--内容部分-->
+		<div class="login_contentPart">
+			<div>
+				<div>
+					<div>
+						<span>会员登录</span>
+						<span>还没有账号？<font><a href="index_register.html" style="color: inherit;">立即注册</a></font></span>
+					</div>
+					<div>
+						<input type="number" id="userName" oninput="Utils.inputLimitlengthFunc($(this),11);" placeholder="请输入11位手机号" />
+						<span id="userName_error"></span>
+					</div>
+					<div>
+						<input type="password" id="password" maxlength="20" placeholder="请输入登录密码" />
+						<span id="password_error"></span>
+					</div>
+					<div>
+						<font>
+							<!--<a href="#" style="color: inherit;">忘记密码</a>-->
+						</font>
+					</div>
+					<div>
+						<button id="loginBtn">登录</button>
+					</div>
+					<div><span id="login_error"></span></div>
+				</div>
+				<div>
+					<p>小鸽理财</p>
+					<p>开<span></span>通<span></span>资<span></span>金<span></span>存<span></span>管</p>
+					<p>银行存管 · 更安全</p>
+				</div>
+			</div>
+		</div>
+
+		<!--底部-->
+		<div class="login_footerPart">
+			<div>
+				<ul>
+					<li>
+						<a href="about_xg_company.html">关于我们</a>
+					</li>
+					<li>
+						<a href="laws_page.html">法律法规</a>
+					</li>
+					<li>
+						<a href="about_xg_contact.html">联系我们</a>
+					</li>
+					<li>
+						<a href="#">帮助中心</a>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<ul>
+					<li>&copy;2016-2017 xiaogelicai.com</li>
+					<li>深圳市温馨港湾网络技术有限公司</li>
+					<li>备案号： <a href="http://www.miit.gov.cn">粤ICP备14025100号-5</a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(function() {
+			Login.initFunc();
+		});
+
+		var Login = {
+			//用户名
+			userNameCorrect: false,
+			//密码
+			passwordCorrect: false,
+
+			initFunc: function() {
+				var self = this;
+				self.inputBlurFunc();
+				self.clickFunc();
+				//键盘enter事件
+				Utils.keyboardDownFunc($('button#loginBtn'), 13, 'click');
+			},
+
+			clickFunc: function() {
+				var self = this;
+				$('button#loginBtn').on('click', function() {
+					if(!$('input#userName').val()) $('span#userName_error').html('* 请输入手机号码');
+					if(!$('input#password').val()) $('span#password_error').html('* 请输入密码');
+					if(self.userNameCorrect && self.passwordCorrect) {
+						var token = self.getTokenFunc($('input#userName').val(), $('input#password').val());
+						if(!!token) {
+							localStorage.setItem('token', token);
+							localStorage.setItem('IMEI', Utils.creatImeiNumber());
+							Web.go('index.html');
+						}
+					}
+				});
+			},
+
+			inputBlurFunc: function() {
+				$('input#userName').blur(function() {
+					var self = this;
+					var errorInfo = '';
+					if(!Utils.checkPhone($(self).val())) {
+						Login.userNameCorrect = false;
+						errorInfo = $(self).val() ? '* 手机号码输入错误' : '';
+					} else {
+						Login.userNameCorrect = true;
+						errorInfo = '';
+					}
+					$('span#userName_error').html(errorInfo);
+				});
+
+				$('input#password').blur(function() {
+					var self = this;
+					var errorInfo = '';
+					if(Utils.checkPassword($(self).val())) {
+						errorInfo = '';
+						Login.passwordCorrect = true;
+					} else {
+						errorInfo = $(self).val() ? '* 请输入6-20位字母和数字' : '';
+						Login.passwordCorrect = false;
+					}
+					$('span#password_error').html(errorInfo);
+
+				});
+			},
+
+			getTokenFunc: function(loginName, password) {
+				var token = "";
+				var urlN = "/api/user/login";
+				var password = DES3.encrypt(base.desKey, password);
+				var dataJson = {
+					"loginName": loginName,
+					"password": password
+				};
+				$.ajax({
+					type: "POST",
+					headers: {
+						"clientType": base.dataWithoutToken.clientType,
+						"clientVersion": base.dataWithoutToken.clientVersion,
+						"timeStamp": base.dataWithoutToken.timeStamp,
+						"sign": base.getPostStrWithoutToken(dataJson),
+						"imei": base.dataWithoutToken.timeStamp
+					},
+					dataType: 'json',
+					async: false,
+					data: dataJson,
+					url: urlN,
+					success: function(data) {
+						if(data.status == 0) {
+							var userInfo = {
+								headImg: data.result.headImg,
+								nickName: data.result.nickName,
+								phone: data.result.phone,
+								userName: data.result.userName,
+							};
+							if (!data.result.headImg) {
+								userInfo.headImg = "../img/wap_mine_center.png"
+							}
+							sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
+							token = data.result.token;
+						} else {
+							$('span#login_error').html(data.msg);
+						};
+
+					}
+				});
+				return token;
+			},
+		}
+	</script>
+
+</html>

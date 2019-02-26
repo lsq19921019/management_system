@@ -1,0 +1,112 @@
+
+.follow {
+  background: #fff;
+}
+
+.follow .top-tip img {
+  display: block;
+  width: 100%;
+}
+
+.follow .public-num {
+  padding-top: 2rem;
+  padding-bottom: 40px;
+}
+
+.follow .public-num .public-title {
+  font-size: 1.335rem;
+  line-height: 1.875rem;
+  color: #333;
+  text-align: center;
+  padding-bottom: 2.585rem;
+  position: relative;
+}
+
+.follow .public-num .public-title:after {
+  content: "";
+  display: block;
+  width: 2.1rem;
+  height: .3rem;
+  border-radius: 1.5rem;
+  background: #f64427;
+  position: absolute;
+  left: 50%;
+  bottom: 1.59rem;
+  transform: translateX(-50%);
+}
+
+.follow .public-num .num-text {
+  font-size: 1.8rem;
+  line-height: 1.875rem;
+  height: 1.875rem;
+  color: #a3a3a3;
+  text-align: center;
+  padding: 0;
+  border: none;
+  margin-bottom: 0;
+}
+
+.follow .code-2d {
+  padding-bottom: 9.095rem;
+}
+
+.follow .code-2d .code-tips {
+  width: 89.3%;
+  margin: auto;
+  font-size: 1.335rem;
+  line-height: 1.875rem;
+  color: #333;
+  text-align: center;
+  padding-bottom: 2.5rem;
+  position: relative;
+}
+
+.follow .code-2d .code-tips:after {
+  content: "";
+  display: block;
+  width: 2.1rem;
+  height: .3rem;
+  border-radius: 1.5rem;
+  background: #f64427;
+  position: absolute;
+  left: 50%;
+  bottom: 1.51rem;
+  transform: translateX(-50%);
+}
+
+.follow .code-2d .img-2d {
+  width: 8.335rem;
+  height: 8.335rem;
+  margin: auto;
+}
+
+.follow .code-2d .img-2d img {
+  display: block;
+  width: 100%;
+}
+
+.follow .code-2d .img-2d p {
+  text-align: center;
+}
+
+.follow .disclaimer {
+  width: 100%;
+}
+
+.follow .disclaimer .disclaimer-title {
+  font-size: 1rem;
+  line-height: 1.375rem;
+  color: #cacaca;
+  text-align: center;
+  padding-bottom: .665rem;
+}
+
+.follow .disclaimer .disclaimer-content {
+  width: 71.4%;
+  margin: auto;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  color: #cacaca;
+  text-align: center;
+  padding-bottom: 2.5rem;
+}

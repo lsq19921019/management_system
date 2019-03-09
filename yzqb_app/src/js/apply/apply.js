@@ -153,7 +153,21 @@
 	// };
 	
 	$('.banner_to_detail').on('click',function(){
-		window.location.href = global.localUrl+'activity/toBorrowMoney.html';
+		//window.location.href = global.localUrl+'activity/toBorrowMoney.html';
+		var sessionId =userUtil.sid();
+		// $.ajax({
+		// 	//url: global.localUrl + "nw/orders/getJumpUrl/"+sessionId,
+		// 	url:'window.location.href = "AdminAction_login.action?"+ name + '&' + password;',
+		// 	type: "get",
+		// 	contentType: 'application/json;charset=utf-8',
+		// 	success: function (re) {
+		// 		location.href = re
+		// 	},
+		// 	error: function () {
+				
+		// 	}
+		// });
+		window.location.href =  global.localUrl + "nw/orders/getJumpUrl/"+sessionId	
 	});
 	function sort_data(lists){
 

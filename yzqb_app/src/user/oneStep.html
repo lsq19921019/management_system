@@ -178,7 +178,7 @@
         <div class="layer_load_icon icon-loading"></div>
     </div>
     
-    <img class="banner_to_detail" src="../images/activity/banner_apply_onekey.jpg" style="width:100%;" alt="">
+    <!-- <img class="banner_to_detail" src="../images/activity/banner_apply_onekey.jpg" style="width:100%;" alt=""> -->
     <div id="borrowList">
 
     </div>
@@ -223,7 +223,9 @@
       !(function(global,userUtil,layer,dataUtil){   
           var temp_status = '';
 	$('.banner_to_detail').on('click',function(){
-		window.location.href = global.localUrl+'activity/toBorrowMoney.html';
+        //window.location.href = global.localUrl+'activity/toBorrowMoney.html';
+        var sessionId =userUtil.sid();
+        window.location.href =  global.localUrl + "nw/orders/getJumpUrl/"+sessionId	
 	});
         var localH=localStorage.getItem("localH")
         if(!localH){
